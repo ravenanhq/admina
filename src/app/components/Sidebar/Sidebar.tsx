@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
+import { styled, Theme, CSSObject } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
@@ -12,7 +12,7 @@ import { useNavbarContext } from "@/contexts/NavbarContext";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import EditIcon from "@mui/icons-material/Edit";
 import TableIcon from "@mui/icons-material/TableChart";
-import { Typography, useMediaQuery } from "@mui/material";
+import { Link, Typography, useMediaQuery } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -63,8 +63,12 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const Sidebar: React.FC = () => {
-  const theme = useTheme();
-  const { handleDrawerClose, open } = useNavbarContext();
+  const { open } = useNavbarContext();
+  const menuItems = [
+    { label: "Dashboard", route: "/admin" },
+    { label: "Forms", route: "/form" },
+    { label: "Tables", route: "/table" },
+  ];
   const isMobile = useMediaQuery("(max-width:1023px)");
   return (
     <>
@@ -75,33 +79,41 @@ const Sidebar: React.FC = () => {
           </DrawerHeader>
           <Divider />
           <List>
-            {["Dashboard", "Forms", "Tables", "UI Elements"].map(
-              (text, index) => (
-                <ListItem key={text} disablePadding sx={{ display: "block" }}>
-                  <ListItemButton
-                    sx={{
-                      minHeight: 48,
-                      justifyContent: open ? "initial" : "center",
-                      px: 2.5,
-                    }}
+            {menuItems.map(
+              (menuItem) => (
+                <ListItem
+                  key={menuItem.label}
+                  disablePadding
+                  sx={{ display: "block" }}
+                >
+                  <Link
+                    href={menuItem.route}
+                    style={{ textDecoration: "none", color: "inherit" }}
                   >
-                    <ListItemIcon
+                    <ListItemButton
                       sx={{
-                        minWidth: 0,
-                        mr: open ? 3 : "auto",
-                        justifyContent: "center",
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
                       }}
                     >
-                      {text === "Dashboard" ? <DashboardIcon /> : ""}
-                      {text === "Forms" ? <EditIcon /> : ""}
-                      {text === "Tables" ? <TableIcon /> : ""}
-                      {text === "UI Elements" ? <TableIcon /> : ""}
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={text}
-                      sx={{ opacity: open ? 1 : 0 }}
-                    />
-                  </ListItemButton>
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {menuItem.label === "Dashboard" ? <DashboardIcon /> : ""}
+                        {menuItem.label === "Forms" ? <EditIcon /> : ""}
+                        {menuItem.label === "Tables" ? <TableIcon /> : ""}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={menuItem.label}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                  </Link>
                 </ListItem>
               )
             )}
