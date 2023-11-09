@@ -12,6 +12,7 @@ import { useNavbarContext } from "@/contexts/NavbarContext";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import EditIcon from "@mui/icons-material/Edit";
 import TableIcon from "@mui/icons-material/TableChart";
+import ParkIcon from "@mui/icons-material/Park";
 import { Link, Typography, useMediaQuery } from "@mui/material";
 
 const drawerWidth = 240;
@@ -68,6 +69,7 @@ const Sidebar: React.FC = () => {
     { label: "Dashboard", route: "/admin" },
     { label: "Forms", route: "/form" },
     { label: "Tables", route: "/table" },
+    { label: "UI Elements", route: "/uielements" },
   ];
   const isMobile = useMediaQuery("(max-width:1023px)");
   return (
@@ -107,6 +109,7 @@ const Sidebar: React.FC = () => {
                         {menuItem.label === "Dashboard" ? <DashboardIcon /> : ""}
                         {menuItem.label === "Forms" ? <EditIcon /> : ""}
                         {menuItem.label === "Tables" ? <TableIcon /> : ""}
+                        {menuItem.label === "UI Elements" ? <ParkIcon /> : ""}
                       </ListItemIcon>
                       <ListItemText
                         primary={menuItem.label}

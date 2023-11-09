@@ -1,0 +1,119 @@
+import React, { useState } from 'react';
+import {
+  Container,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Card,
+  CardContent,
+  Typography,
+} from '@mui/material';
+
+const ModalExample = ({ title, content, buttonText, color }) => {
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <Button variant="contained" color={color} onClick={handleClickOpen}>
+        {buttonText}
+      </Button>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>{title}</DialogTitle>
+        <DialogContent>
+          <DialogContentText>{content}</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color={color}>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
+};
+
+const ModalsElement = () => {
+  return (
+    <Container maxWidth="md">
+      <h2 style={{ textAlign: 'center', paddingTop: '20px' }}>Modals</h2>
+      <Card variant="outlined">
+        <CardContent>
+          <Typography variant="h6" component="div" gutterBottom>
+            Primary Modal
+          </Typography>
+          <ModalExample
+            title="Primary Modal Title"
+            content="This is the content of the Primary Modal."
+            buttonText="Open Primary Modal"
+            color="primary"
+          />
+        </CardContent>
+      </Card>
+      <Card variant="outlined" sx={{ marginTop: '20px' }}>
+        <CardContent>
+          <Typography variant="h6" component="div" gutterBottom>
+            Secondary Modal
+          </Typography>
+          <ModalExample
+            title="Secondary Modal Title"
+            content="This is the content of the Secondary Modal."
+            buttonText="Open Secondary Modal"
+            color="secondary"
+          />
+        </CardContent>
+      </Card>
+      <Card variant="outlined" sx={{ marginTop: '20px' }}>
+        <CardContent>
+          <Typography variant="h6" component="div" gutterBottom>
+            Info Modal
+          </Typography>
+          <ModalExample
+            title="Info Modal Title"
+            content="This is the content of the Info Modal."
+            buttonText="Open Info Modal"
+            color="info"
+          />
+        </CardContent>
+      </Card>
+      <Card variant="outlined" sx={{ marginTop: '20px' }}>
+        <CardContent>
+          <Typography variant="h6" component="div" gutterBottom>
+            Warning Modal
+          </Typography>
+          <ModalExample
+            title="Warning Modal Title"
+            content="This is the content of the Warning Modal."
+            buttonText="Open Warning Modal"
+            color="warning"
+          />
+        </CardContent>
+      </Card>
+      <Card variant="outlined" sx={{ marginTop: '20px' }}>
+        <CardContent>
+          <Typography variant="h6" component="div" gutterBottom>
+            Success Modal
+          </Typography>
+          <ModalExample
+            title="Success Modal Title"
+            content="This is the content of the Success Modal."
+            buttonText="Open Success Modal"
+            color="success"
+          />
+        </CardContent>
+      </Card>
+    </Container>
+  );
+};
+
+export default ModalsElement;
