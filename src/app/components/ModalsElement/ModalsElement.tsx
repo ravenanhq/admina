@@ -18,9 +18,11 @@ const ModalSection = ({ title, content, buttonText, color }) => {
 				{buttonText}
 			</Button>
 			<Dialog open={open} onClose={handleClose}>
-				<DialogTitle>{title}</DialogTitle>
-				<DialogContent>
-					<DialogContentText>{content}</DialogContentText>
+			<DialogTitle sx={{ backgroundColor: getColorBackground(color), color: '#ffffff' }}>
+			{title}
+			</DialogTitle>
+			<DialogContent>
+					<DialogContentText sx={{ paddingTop: '16px' }}>{content}</DialogContentText>
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={handleClose} color={color}>
@@ -30,6 +32,26 @@ const ModalSection = ({ title, content, buttonText, color }) => {
 			</Dialog>
 		</div>
 	);
+};
+
+const getColorBackground = (color) => {
+	// You can define your own color mapping based on the color prop
+	// For example, if color is "primary", return the corresponding primary color
+	// You can adjust this function based on your theme and color choices
+	switch (color) {
+		case 'primary':
+			return '#1976D2'; // Replace with your primary color
+		case 'secondary':
+			return '#E91E63'; // Replace with your secondary color
+		case 'info':
+			return '#2196F3'; // Replace with your info color
+		case 'warning':
+			return '#FFC107'; // Replace with your warning color
+		case 'success':
+			return '#4CAF50'; // Replace with your success color
+		default:
+			return '#FFFFFF'; // Default background color
+	}
 };
 
 const ModalsElement = () => {
