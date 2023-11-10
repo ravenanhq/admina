@@ -31,7 +31,7 @@ const CustomElements = () => {
       />
       <CardContent>
         <Grid container spacing={2}>
-          <Grid item xs={6}>
+          <Grid item xs={12} lg={6}>
             <h4>Switch Toggle</h4>
             <Box sx={{ marginTop: "15px" }}>
               <Switch {...label} defaultChecked />
@@ -90,7 +90,7 @@ const CustomElements = () => {
               </Box>
             </Box>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} lg={6}>
             <h4>Button Group</h4>
             <ButtonGroup
               variant="contained"
