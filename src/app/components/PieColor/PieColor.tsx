@@ -1,25 +1,35 @@
 "use client";
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import { PieChart } from '@mui/x-charts/PieChart';
+import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart';
 
-const pieParams = { height: 365, margin: { right: 5 } };
-const palette = ['red', 'blue', 'green'];
+const data = [
+  { value: 10, label: 'A' },
+  { value: 10, label: 'B' },
+  { value: 15, label: 'C' },
+  { value: 20, label: 'D' },
+];
+
+const size = {
+  height: 390,
+};
 
 export default function PieColor() {
   return (
-    <Stack direction="row" width="100%" textAlign="center" spacing={2}>
-      <Box flexGrow={1}>
-        <Typography>Item</Typography>
-        <PieChart
-          series={[
-            { data: [{ value: 10, color: 'orange' }, { value: 15 }, { value: 20 }] },
-          ]}
-          {...pieParams}
-        />
-      </Box>
-    </Stack>
+    <PieChart
+      series={[
+        {
+          arcLabel: (item) => `${item.label} (${item.value})`,
+          arcLabelMinAngle: 45,
+          data,
+        },
+      ]}
+      sx={{
+        [`& .${pieArcLabelClasses.root}`]: {
+          fill: 'white',
+          fontWeight: 'bold',
+        },
+      }}
+      {...size}
+    />
   );
 }
