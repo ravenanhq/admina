@@ -35,22 +35,19 @@ const ModalSection = ({ title, content, buttonText, color }) => {
 };
 
 const getColorBackground = (color) => {
-	// You can define your own color mapping based on the color prop
-	// For example, if color is "primary", return the corresponding primary color
-	// You can adjust this function based on your theme and color choices
 	switch (color) {
 		case 'primary':
-			return '#1976D2'; // Replace with your primary color
+			return '#1976d2';
 		case 'secondary':
-			return '#E91E63'; // Replace with your secondary color
+			return '#9c27b0';
 		case 'info':
-			return '#2196F3'; // Replace with your info color
+			return '#0288d1';
 		case 'warning':
-			return '#FFC107'; // Replace with your warning color
+			return '#ed6c02';
 		case 'success':
-			return '#4CAF50'; // Replace with your success color
+			return '#2e7d32';
 		default:
-			return '#FFFFFF'; // Default background color
+			return '#FFFFFF';
 	}
 };
 
