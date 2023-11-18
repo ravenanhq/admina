@@ -31,23 +31,15 @@ const GeneralElements = () => {
         titleTypographyProps={{ fontSize: "16px" }}
       />
       <CardContent>
-        <Box
-          component="form"
-          sx={{
-            "& > :not(style)": { m: 1, width: "25ch" },
-            marginBottom: "20",
-          }}
-          noValidate
-          autoComplete="off"
-        >
           <h4>Text Field Color</h4>
-          <TextField label="Outlined secondary" color="secondary" focused />
+          <TextField label="Outlined secondary" color="secondary" focused style={{ marginLeft: '15px', marginTop: '15px' }} />
           <TextField
             label="Filled success"
             variant="filled"
             color="success"
             focused
             size="small"
+            style={{ marginLeft: '15px', marginTop: '15px'  }}
           />
           <TextField
             label="Standard warning"
@@ -55,8 +47,9 @@ const GeneralElements = () => {
             color="warning"
             size="small"
             focused
+            style={{ marginLeft: '15px', marginTop: '15px', marginBottom: '15px' }}
           />
-        </Box>
+
         <div>
           <h4>Select</h4>
           <FormControl sx={{ m: 1, minWidth: 120 }} size="small" disabled>

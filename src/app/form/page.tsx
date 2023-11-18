@@ -12,18 +12,18 @@ export default function Form() {
       <h2 style={{ paddingTop: 30 }}>Forms</h2>
       <div style={{ paddingTop: 10 }}>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
-            <Grid item md={6}>
+            <Grid item md={6} sm={12}>
                 <VerticalForm></VerticalForm>
             </Grid>
-            <Grid item md={6}>
+            <Grid item md={6} sm={12}>
                 <HorizontalForm></HorizontalForm>
             </Grid>
         </Grid>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
-            <Grid item md={6}>
+            <Grid item md={6} sm={12}>
             <GeneralElements></GeneralElements>
             </Grid>
-            <Grid item md={6}>
+            <Grid item md={6} sm={12}>
                 <CustomElements></CustomElements>
             </Grid>
         </Grid>
