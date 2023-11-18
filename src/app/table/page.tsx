@@ -15,31 +15,31 @@ export default function Table() {
       <h2 style={{ paddingTop: 30 }}>Tables</h2>
       <div style={{ paddingTop: 10 }}>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
-            <Grid item md={6}>
+            <Grid item md={6} xs={12}>
                 <SimpleTable></SimpleTable>
             </Grid>
-            <Grid item md={6}>
+            <Grid item md={6} xs={12}>
                 <BorderedTable></BorderedTable>
             </Grid>
         </Grid>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
-            <Grid item md={6}>
+            <Grid item md={6} xs={12}>
                 <StripedTable></StripedTable>
             </Grid>
-            <Grid item md={6}>
+            <Grid item md={6} xs={12}>
                 <TableWithHover></TableWithHover>
             </Grid>
         </Grid>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
-            <Grid item md={6}>                
+            <Grid item md={6} xs={12}>
                 <ExpandableTable></ExpandableTable>
             </Grid>
-            <Grid item md={6}>
+            <Grid item md={6} xs={12}>
                 <TableWithSearch></TableWithSearch>
             </Grid>
         </Grid>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
-            <Grid item md={6}>                
+            <Grid item md={6} xs={12}>
                 <DataTable></DataTable>
             </Grid>
         </Grid>
