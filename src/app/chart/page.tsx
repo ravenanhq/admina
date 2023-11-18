@@ -19,42 +19,42 @@ export default function Charts() {
 			<div style={{ paddingTop: 10 }}>
 				<Grid container spacing={3} style={{ paddingTop: 10 }}>
 					<Grid item md={6}>
-						<LineChart></LineChart>
+						<LineChart />
 					</Grid>
 					<Grid item md={6}>
-						<BarChart></BarChart>
+						<BarChart />
 					</Grid>
 				</Grid>
 				<Grid container spacing={3} style={{ paddingTop: 20 }}>
 					<Grid item md={6}>
-						<AreaChart></AreaChart>
+						<AreaChart />
 					</Grid>
 					<Grid item md={6}>
-						<BubbleChart></BubbleChart>
-					</Grid>
-				</Grid>
-				<Grid container spacing={3} style={{ paddingTop: 10 }}>
-					<Grid item md={6}>
-						<PolarAreaChart></PolarAreaChart>
-					</Grid>
-					<Grid item md={6}>
-						<DonutChart></DonutChart>
+						<BubbleChart />
 					</Grid>
 				</Grid>
 				<Grid container spacing={3} style={{ paddingTop: 10 }}>
 					<Grid item md={6}>
-						<PieChart></PieChart>
+						<PolarAreaChart />
 					</Grid>
 					<Grid item md={6}>
-						<RadarChart></RadarChart>
+						<DonutChart />
 					</Grid>
 				</Grid>
 				<Grid container spacing={3} style={{ paddingTop: 10 }}>
 					<Grid item md={6}>
-						<ScatterCharts></ScatterCharts>
+						<PieChart />
 					</Grid>
 					<Grid item md={6}>
-						<StackedBarChart></StackedBarChart>
+						<RadarChart />
+					</Grid>
+				</Grid>
+				<Grid container spacing={3} style={{ paddingTop: 10 }}>
+					<Grid item md={6}>
+						<ScatterCharts />
+					</Grid>
+					<Grid item md={6}>
+						<StackedBarChart />
 					</Grid>
 				</Grid>
 			</div>
