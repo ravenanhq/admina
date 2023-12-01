@@ -26,7 +26,9 @@ export default function UIElements() {
             </Grid>
         </Grid>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
-            <Grid item md={12}>
+            <Grid item md={12} sx={{
+                width: '100%',
+            }}>
                 <TabsElement></TabsElement>
             </Grid>
         </Grid>
