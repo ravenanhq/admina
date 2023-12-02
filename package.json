@@ -16,14 +16,14 @@
     "@mui/types": "^7.2.6",
     "@mui/x-charts": "^6.0.0-alpha.15",
     "@mui/x-data-grid": "^6.17.0",
+    "chart.js": "^4.4.0",
     "next": "^13.5.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
-    "react-dom": "^18.2.0",
-    "styled-components": "^6.1.0",
-    "chart.js": "^4.4.0",
     "react-chartjs-2": "^5.2.0",
-    "recharts": "^2.9.3"
+    "react-dom": "^18.2.0",
+    "recharts": "^2.9.3",
+    "styled-components": "^6.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",

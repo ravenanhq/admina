@@ -22,10 +22,10 @@ dependencies:
     version: 7.2.6(@types/react@18.2.29)
   '@mui/x-charts':
     specifier: ^6.0.0-alpha.15
-    version: 6.18.2(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.14.14)(@mui/system@5.14.14)(@types/react@18.2.29)(react-dom@18.2.0)(react@18.2.0)
+    version: 6.0.0-alpha.15(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.14.14)(@mui/system@5.14.14)(@types/react@18.2.29)(react-dom@18.2.0)(react@18.2.0)
   '@mui/x-data-grid':
     specifier: ^6.17.0
-    version: 6.18.2(@mui/material@5.14.14)(@mui/system@5.14.14)(@types/react@18.2.29)(react-dom@18.2.0)(react@18.2.0)
+    version: 6.17.0(@mui/material@5.14.14)(@mui/system@5.14.14)(@types/react@18.2.29)(react-dom@18.2.0)(react@18.2.0)
   chart.js:
     specifier: ^4.4.0
     version: 4.4.0
@@ -46,7 +46,7 @@ dependencies:
     version: 18.2.0(react@18.2.0)
   recharts:
     specifier: ^2.9.3
-    version: 2.10.3(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
+    version: 2.9.3(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
   styled-components:
     specifier: ^6.1.0
     version: 6.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -561,27 +561,8 @@ packages:
       react: 18.2.0
       react-is: 18.2.0
     dev: false
-
-  /@mui/utils@5.14.19(@types/react@18.2.29)(react@18.2.0):
-    resolution: {integrity: sha512-qAHvTXzk7basbyqPvhgWqN6JbmI2wLB/mf97GkSlz5c76MiKYV6Ffjvw9BjKZQ1YRb8rDX9kgdjRezOcoB91oQ==}
-    engines: {node: '>=12.0.0'}
-    peerDependencies:
-      '@types/react': ^17.0.0 || ^18.0.0
-      react: ^17.0.0 || ^18.0.0
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-    dependencies:
-      '@babel/runtime': 7.23.5
-      '@types/prop-types': 15.7.11
-      '@types/react': 18.2.29
-      prop-types: 15.8.1
-      react: 18.2.0
-      react-is: 18.2.0
-    dev: false
-
-  /@mui/x-charts@6.18.2(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.14.14)(@mui/system@5.14.14)(@types/react@18.2.29)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-KFr4JMUsnw9UZp5QK/cCwBAeHs7OCQfDKEaWzgmStB4CW8hNtBms1N64K7r0byR+W5Yd0D7/iF46Tt0bzj3I+w==}
+  /@mui/x-charts@6.0.0-alpha.15(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@mui/material@5.14.14)(@mui/system@5.14.14)(@types/react@18.2.29)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-5O54e+9FYSIggT5vEYkXXnKVo3b8b4E5iIdYOrpkKAG3ZonASqpObUp8zblvdg0JRJc0UGV3X5o7n3HD0fMw4g==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       '@emotion/react': ^11.9.0
@@ -599,11 +580,9 @@ packages:
       '@babel/runtime': 7.23.2
       '@emotion/react': 11.11.1(@types/react@18.2.29)(react@18.2.0)
       '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.29)(react@18.2.0)
-      '@mui/base': 5.0.0-beta.25(@types/react@18.2.29)(react-dom@18.2.0)(react@18.2.0)
+      '@mui/base': 5.0.0-beta.20(@types/react@18.2.29)(react-dom@18.2.0)(react@18.2.0)
       '@mui/material': 5.14.14(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.29)(react-dom@18.2.0)(react@18.2.0)
       '@mui/system': 5.14.14(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.29)(react@18.2.0)
-      '@react-spring/rafz': 9.7.3
-      '@react-spring/web': 9.7.3(react-dom@18.2.0)(react@18.2.0)
       clsx: 2.0.0
       d3-color: 3.1.0
       d3-scale: 4.0.2
@@ -614,9 +593,8 @@ packages:
     transitivePeerDependencies:
       - '@types/react'
     dev: false
-
-  /@mui/x-data-grid@6.18.2(@mui/material@5.14.14)(@mui/system@5.14.14)(@types/react@18.2.29)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-XsVX8OCcYRbSoDVfjoX6gi+KfBitTkUvlMZnI/YkWOyms+pEValJQousvwjhGN1coWp15Yoz9YTGmSGCBxo2HA==}
+  /@mui/x-data-grid@6.17.0(@mui/material@5.14.14)(@mui/system@5.14.14)(@types/react@18.2.29)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-HlpavV9jR7bLDYfi7n05R0xSsLl5ZxCTy3J5g4OfQtxhg9Zsu1uOkkLfudsM5LFqTbi5o+3PvZ9Kh33VvNUN/w==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       '@mui/material': ^5.4.1
@@ -627,7 +605,7 @@ packages:
       '@babel/runtime': 7.23.2
       '@mui/material': 5.14.14(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.29)(react-dom@18.2.0)(react@18.2.0)
       '@mui/system': 5.14.14(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.29)(react@18.2.0)
-      '@mui/utils': 5.14.19(@types/react@18.2.29)(react@18.2.0)
+      '@mui/utils': 5.14.14(@types/react@18.2.29)(react@18.2.0)
       clsx: 2.0.0
       prop-types: 15.8.1
       react: 18.2.0
@@ -814,7 +792,6 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
-
   /@restart/hooks@0.4.11(react@18.2.0):
     resolution: {integrity: sha512-Ft/ncTULZN6ldGHiF/k5qt72O8JyRMOeg0tApvCni8LkoiEahO+z3TNxfXIVGy890YtWVDvJAl662dVJSJXvMw==}
     peerDependencies:
@@ -1471,7 +1448,7 @@ packages:
   /dom-helpers@3.4.0:
     resolution: {integrity: sha512-LnuPJ+dwqKDIyotW1VzmOZ5TONUN7CwkCR5hrgawTUbkBGYdeoNLZo6nNfGkCrjtE1nXXaj7iMMpDa8/d9WoIA==}
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.23.2
     dev: false
 
   /dom-helpers@5.2.1:
@@ -2772,7 +2749,16 @@ packages:
   /react-lifecycles-compat@3.0.4:
     resolution: {integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==}
     dev: false
-
+  /react-resize-detector@8.1.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-S7szxlaIuiy5UqLhLL1KY3aoyGHbZzsTpYal9eYMwCyKqoqoVLCmIgAgNyIM1FhnP2KyBygASJxdhejrzjMb+w==}
+    peerDependencies:
+      react: ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      lodash: 4.17.21
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
   /react-smooth@2.0.5(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-BMP2Ad42tD60h0JW6BFaib+RJuV5dsXJK9Baxiv/HlNFjvRLqA9xrNKxVWnUIZPQfzUwGXIlU/dSYLU+54YGQA==}
     peerDependencies:
@@ -2827,22 +2813,23 @@ packages:
     dependencies:
       decimal.js-light: 2.5.1
     dev: false
-
-  /recharts@2.10.3(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-G4J96fKTZdfFQd6aQnZjo2nVNdXhp+uuLb00+cBTGLo85pChvm1+E67K3wBOHDE/77spcYb2Cy9gYWVqiZvQCg==}
-    engines: {node: '>=14'}
+  /recharts@2.9.3(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-B61sKrDlTxHvYwOCw8eYrD6rTA2a2hJg0avaY8qFI1ZYdHKvU18+J5u7sBMFg//wfJ/C5RL5+HsXt5e8tcJNLg==}
+    engines: {node: '>=12'}
+    
     peerDependencies:
       prop-types: ^15.6.0
       react: ^16.0.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      clsx: 2.0.0
+      classnames: 2.3.2
       eventemitter3: 4.0.7
       lodash: 4.17.21
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-is: 16.13.1
+      react-resize-detector: 8.1.0(react-dom@18.2.0)(react@18.2.0)
       react-smooth: 2.0.5(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
       recharts-scale: 0.4.5
       tiny-invariant: 1.3.1
