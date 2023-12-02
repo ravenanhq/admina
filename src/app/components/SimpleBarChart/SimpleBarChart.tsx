@@ -8,13 +8,7 @@ Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip);
 const ResponsiveBarChart = () => {
 
   const data = {
-    labels: ['Page A',
-    'Page B',
-    'Page C',
-    'Page D',
-    'Page E',
-    'Page F',
-    'Page G'],
+    labels: ['Page A', 'Page B', 'Page C', 'Page D', 'Page E', 'Page F', 'Page G'],
     datasets: [
       {
         label: 'Dataset 1',
@@ -30,19 +24,34 @@ const ResponsiveBarChart = () => {
   };
 
   const options: ChartOptions<'bar'> = {
-    scales: {
-      x: {
-        stacked: false
-      },
-      y: {
-        stacked: false
+    indexAxis: 'x',
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
       },
     },
+    scales: {
+      x: {
+        stacked: false,
+      },
+      y: {
+        stacked: false,
+      },
+    },
+    layout: {
+      padding: {
+        top: 20,
+      },
+    },
+    maintainAspectRatio: false,
+
   };
 
-
   return (
+    <div style={{ height: '347px', width: '100%' }}>
       <Bar data={data} options={options} />
+    </div>
   );
 };
 
