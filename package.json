@@ -20,7 +20,10 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
-    "styled-components": "^6.1.0"
+    "styled-components": "^6.1.0",
+    "chart.js": "^4.4.0",
+    "react-chartjs-2": "^5.2.0",
+    "recharts": "^2.9.3"
   },
   "devDependencies": {
     "@types/node": "^20",
