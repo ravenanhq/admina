@@ -9,11 +9,9 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { useNavbarContext } from "@/contexts/NavbarContext";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import EditIcon from "@mui/icons-material/Edit";
-import TableIcon from "@mui/icons-material/TableChart";
-import ParkIcon from "@mui/icons-material/Park";
-import { Link, Typography, useMediaQuery } from "@mui/material";
+import { Link, useMediaQuery } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChartSimple, faDashboard, faEdit, faTable, faTree, faA } from "@fortawesome/free-solid-svg-icons";
 
 const drawerWidth = 240;
 
@@ -24,6 +22,7 @@ const openedMixin = (theme: Theme): CSSObject => ({
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: "hidden",
+  zIndex: theme.zIndex.drawer + 1,
 });
 
 const closedMixin = (theme: Theme): CSSObject => ({
@@ -36,6 +35,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
   [theme.breakpoints.up("sm")]: {
     width: `calc(${theme.spacing(8)} + 1px)`,
   },
+  zIndex: theme.zIndex.drawer + 1,
 });
 
 const Drawer = styled(MuiDrawer, {
@@ -64,23 +64,54 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const Sidebar: React.FC = () => {
-  const { open } = useNavbarContext();
+  const { handleDrawerOpen, handleDrawerClose, open } = useNavbarContext();
   const menuItems = [
     { label: "Dashboard", route: "/admin" },
     { label: "Forms", route: "/form" },
     { label: "Tables", route: "/table" },
     { label: "UI Elements", route: "/uielements" },
+    { label: "Charts", route: "/charts" },
   ];
   const isMobile = useMediaQuery("(max-width:1023px)");
+  const [hover, setHover] = React.useState(false);
+
+  const handleMouseEnter = () => {
+    if (!open && !isMobile) {
+      handleDrawerOpen();
+    }
+    setHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    if (open && !isMobile) {
+      handleDrawerClose();
+    }
+    setHover(false);
+  };
+
   return (
     <>
       {!isMobile ? (
-        <Drawer variant="permanent" open={open}>
-          <DrawerHeader>
-            <Typography variant="h6">Admina</Typography>
-          </DrawerHeader>
-          <Divider />
+        <Drawer variant="permanent" open={open || hover} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <List>
+            <DrawerHeader>
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+              <FontAwesomeIcon icon={faA} size="lg" style={{ marginLeft: "15px" }} />
+              </ListItemIcon>
+              <ListItemText
+                sx={{
+                  opacity: open ? 1 : 0,
+                  marginLeft: "1px"
+                }}>
+                Admina</ListItemText>
+            </DrawerHeader>
+            <Divider />
             {menuItems.map(
               (menuItem) => (
                 <ListItem
@@ -106,10 +137,11 @@ const Sidebar: React.FC = () => {
                           justifyContent: "center",
                         }}
                       >
-                        {menuItem.label === "Dashboard" ? <DashboardIcon /> : ""}
-                        {menuItem.label === "Forms" ? <EditIcon /> : ""}
-                        {menuItem.label === "Tables" ? <TableIcon /> : ""}
-                        {menuItem.label === "UI Elements" ? <ParkIcon /> : ""}
+                        {menuItem.label === "Dashboard" ? <FontAwesomeIcon icon={faDashboard} size="lg" /> : ""}
+                        {menuItem.label === "Forms" ? <FontAwesomeIcon icon={faEdit} size="lg" />  : ""}
+                        {menuItem.label === "Tables" ? <FontAwesomeIcon icon={faTable} size="lg" />  : ""}
+                        {menuItem.label === "UI Elements" ? <FontAwesomeIcon icon={faTree} size="lg" />  : ""}
+                        {menuItem.label === "Charts" ? <FontAwesomeIcon icon={faChartSimple} size="lg" />  : ""}
                       </ListItemIcon>
                       <ListItemText
                         primary={menuItem.label}
