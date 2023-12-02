@@ -33,7 +33,7 @@ const CustomElements = () => {
         <Grid container spacing={2}>
           <Grid item xs={12} lg={6}>
             <h4>Switch Toggle</h4>
-            <Box sx={{ marginTop: "15px" }}>
+
               <Switch {...label} defaultChecked />
               <Switch {...label} />
               <Switch {...label} disabled defaultChecked />
@@ -68,7 +68,7 @@ const CustomElements = () => {
                 </FormGroup>
               </FormControl>
               <h4>Slider</h4>
-              <Box sx={{ width: 200 }}>
+
                 <Slider
                   size="small"
                   defaultValue={70}
@@ -80,15 +80,14 @@ const CustomElements = () => {
                   aria-label="Default"
                   valueLabelDisplay="auto"
                 />
-              </Box>
+
               <h4>Checkbox Color</h4>
-              <Box sx={{ width: 300 }}>
+
                 <Checkbox {...label} defaultChecked />
                 <Checkbox {...label} defaultChecked color="secondary" />
                 <Checkbox {...label} defaultChecked color="success" />
                 <Checkbox {...label} defaultChecked color="default" />
-              </Box>
-            </Box>
+
           </Grid>
           <Grid item xs={12} lg={6}>
             <h4>Button Group</h4>
