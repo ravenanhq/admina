@@ -72,6 +72,7 @@ const Header: React.FC = () => {
     { label: "Tables", route: "/table" },
     { label: "UI Elements", route: "/uielements" },
     { label: "Charts", route: "/chart" },
+    { label: "Cards", route: "/card" },
   ];
   const list = () => (
     <Box
@@ -110,6 +111,7 @@ const Header: React.FC = () => {
                   {menuItem.label === "Tables" ? <TableIcon /> : ""}
                   {menuItem.label === "UI Elements" ? <ParkIcon /> : ""}
                   {menuItem.label === "Charts" ? <BarChartIcon /> : ""}
+                  {menuItem.label === "Card" ? <BarChartIcon /> : ""}
                 </ListItemIcon>
                 <ListItemText
                   primary={menuItem.label}
