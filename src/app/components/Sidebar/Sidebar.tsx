@@ -14,6 +14,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import TableIcon from "@mui/icons-material/TableChart";
 import ParkIcon from "@mui/icons-material/Park";
 import BarChartIcon from '@mui/icons-material/BarChart';
+import SearchIcon from '@mui/icons-material/Search';
 import { Link, Typography, useMediaQuery } from "@mui/material";
 
 const drawerWidth = 240;
@@ -72,6 +73,7 @@ const Sidebar: React.FC = () => {
     { label: "Tables", route: "/table" },
     { label: "UI Elements", route: "/uielements" },
     { label: "Charts", route: "/chart" },
+    { label: "Search", route: "/search" },
   ];
   const isMobile = useMediaQuery("(max-width:1023px)");
   return (
@@ -113,6 +115,7 @@ const Sidebar: React.FC = () => {
                         {menuItem.label === "Tables" ? <TableIcon /> : ""}
                         {menuItem.label === "UI Elements" ? <ParkIcon /> : ""}
                         {menuItem.label === "Charts" ? <BarChartIcon /> : ""}
+                        {menuItem.label === "Search" ? <SearchIcon /> : ""}
                       </ListItemIcon>
                       <ListItemText
                         primary={menuItem.label}
