@@ -9,14 +9,17 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { useNavbarContext } from "@/contexts/NavbarContext";
+import { Link, useMediaQuery } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faA } from "@fortawesome/free-solid-svg-icons";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import EditIcon from "@mui/icons-material/Edit";
 import TableIcon from "@mui/icons-material/TableChart";
 import ParkIcon from "@mui/icons-material/Park";
-import BarChartIcon from '@mui/icons-material/BarChart';
-import AutorenewIcon from '@mui/icons-material/Autorenew';
-import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
-import { Link, Typography, useMediaQuery } from "@mui/material";
+import BarChartIcon from "@mui/icons-material/BarChart";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
+import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import SearchIcon from "@mui/icons-material/Search";
 
 const drawerWidth = 240;
 
@@ -27,6 +30,7 @@ const openedMixin = (theme: Theme): CSSObject => ({
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: "hidden",
+  zIndex: theme.zIndex.drawer + 1,
 });
 
 const closedMixin = (theme: Theme): CSSObject => ({
@@ -39,6 +43,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
   [theme.breakpoints.up("sm")]: {
     width: `calc(${theme.spacing(8)} + 1px)`,
   },
+  zIndex: theme.zIndex.drawer + 1,
 });
 
 const Drawer = styled(MuiDrawer, {
@@ -67,7 +72,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const Sidebar: React.FC = () => {
-  const { open } = useNavbarContext();
+  const { handleDrawerOpen, handleDrawerClose, open } = useNavbarContext();
   const menuItems = [
     { label: "Dashboard", route: "/admin" },
     { label: "Forms", route: "/form" },
@@ -76,59 +81,104 @@ const Sidebar: React.FC = () => {
     { label: "Charts", route: "/chart" },
     { label: "Spinners", route: "/loader" },
     { label: "Breadcrumbs", route: "/breadcrumbs" },
+    { label: "Search", route: "/search" },
   ];
   const isMobile = useMediaQuery("(max-width:1023px)");
+  const [hover, setHover] = React.useState(false);
+
+  const handleMouseEnter = () => {
+    if (!open && !isMobile) {
+      handleDrawerOpen();
+    }
+    setHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    if (open && !isMobile) {
+      handleDrawerClose();
+    }
+    setHover(false);
+  };
+
   return (
     <>
       {!isMobile ? (
-        <Drawer variant="permanent" open={open}>
-          <DrawerHeader>
-            <Typography variant="h6">Admina</Typography>
-          </DrawerHeader>
-          <Divider />
+        <Drawer
+          variant="permanent"
+          open={open || hover}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <List>
-            {menuItems.map(
-              (menuItem) => (
-                <ListItem
-                  key={menuItem.label}
-                  disablePadding
-                  sx={{ display: "block" }}
+            <DrawerHeader>
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faA}
+                  size="lg"
+                  style={{ marginLeft: "15px" }}
+                />
+              </ListItemIcon>
+              <ListItemText
+                sx={{
+                  opacity: open ? 1 : 0,
+                  marginLeft: "1px",
+                }}
+              >
+                Admina
+              </ListItemText>
+            </DrawerHeader>
+            <Divider />
+            {menuItems.map((menuItem) => (
+              <ListItem
+                key={menuItem.label}
+                disablePadding
+                sx={{ display: "block" }}
+              >
+                <Link
+                  href={menuItem.route}
+                  style={{ textDecoration: "none", color: "inherit" }}
                 >
-                  <Link
-                    href={menuItem.route}
-                    style={{ textDecoration: "none", color: "inherit" }}
+                  <ListItemButton
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? "initial" : "center",
+                      px: 2.5,
+                    }}
                   >
-                    <ListItemButton
+                    <ListItemIcon
                       sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
+                        minWidth: 0,
+                        mr: open ? 3 : "auto",
+                        justifyContent: "center",
                       }}
                     >
-                      <ListItemIcon
-                        sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
-                        }}
-                      >
-                        {menuItem.label === "Dashboard" ? <DashboardIcon /> : ""}
-                        {menuItem.label === "Forms" ? <EditIcon /> : ""}
-                        {menuItem.label === "Tables" ? <TableIcon /> : ""}
-                        {menuItem.label === "UI Elements" ? <ParkIcon /> : ""}
-                        {menuItem.label === "Charts" ? <BarChartIcon /> : ""}
-                        {menuItem.label === "Spinners" ? <AutorenewIcon /> : ""}
-                        {menuItem.label === "Breadcrumbs" ? <KeyboardDoubleArrowRightIcon /> : ""}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={menuItem.label}
-                        sx={{ opacity: open ? 1 : 0 }}
-                      />
-                    </ListItemButton>
-                  </Link>
-                </ListItem>
-              )
-            )}
+                      {menuItem.label === "Dashboard" ? <DashboardIcon /> : ""}
+                      {menuItem.label === "Forms" ? <EditIcon /> : ""}
+                      {menuItem.label === "Tables" ? <TableIcon /> : ""}
+                      {menuItem.label === "UI Elements" ? <ParkIcon /> : ""}
+                      {menuItem.label === "Charts" ? <BarChartIcon /> : ""}
+                      {menuItem.label === "Spinners" ? <AutorenewIcon /> : ""}
+                      {menuItem.label === "Breadcrumbs" ? (
+                        <KeyboardDoubleArrowRightIcon />
+                      ) : (
+                        ""
+                      )}
+                      {menuItem.label === "Search" ? <SearchIcon /> : ""}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={menuItem.label}
+                      sx={{ opacity: open ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            ))}
           </List>
         </Drawer>
       ) : null}
