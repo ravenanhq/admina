@@ -1,10 +1,7 @@
 "use client";
 import React from "react";
-import { Collapse, Grid } from "@mui/material";
 import BasicCard from "../components/BasicCard/BasicCard";
-import CollapseCard from "../components/CollapseCard/CollapseCard";
-import RemoveCard from "../components/RemoveCard/RemoveCard";
-import HorizontalCard from "../components/HorizontalCard/Horizontal";
+import HorizontalCard from "../components/HorizontalCard/HorizontalCard";
 import GroupCard from "../components/GroupCard /GroupCard";
 import TextAlignCard from "../components/TextAlignCard/TextAlignCard";
 
