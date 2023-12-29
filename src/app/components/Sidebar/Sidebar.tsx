@@ -17,7 +17,9 @@ import EditIcon from "@mui/icons-material/Edit";
 import TableIcon from "@mui/icons-material/TableChart";
 import ParkIcon from "@mui/icons-material/Park";
 import BarChartIcon from '@mui/icons-material/BarChart';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
 import SearchIcon from '@mui/icons-material/Search';
+
 
 const drawerWidth = 240;
 
@@ -77,6 +79,7 @@ const Sidebar: React.FC = () => {
     { label: "Tables", route: "/table" },
     { label: "UI Elements", route: "/uielements" },
     { label: "Charts", route: "/chart" },
+    { label: "Spinners", route: "/loader" },
     { label: "Search", route: "/search" },
   ];
   const isMobile = useMediaQuery("(max-width:1023px)");
@@ -149,6 +152,7 @@ const Sidebar: React.FC = () => {
                         {menuItem.label === "Tables" ? <TableIcon /> : ""}
                         {menuItem.label === "UI Elements" ? <ParkIcon /> : ""}
                         {menuItem.label === "Charts" ? <BarChartIcon /> : ""}
+                        {menuItem.label === "Spinners" ? <AutorenewIcon /> : ""}
                         {menuItem.label === "Search" ? <SearchIcon /> : ""}
                       </ListItemIcon>
                       <ListItemText
