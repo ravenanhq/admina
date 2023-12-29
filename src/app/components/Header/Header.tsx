@@ -19,6 +19,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import TableIcon from "@mui/icons-material/TableChart";
 import ParkIcon from "@mui/icons-material/Park";
 import BarChartIcon from '@mui/icons-material/BarChart';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -111,7 +112,7 @@ const Header: React.FC = () => {
                   {menuItem.label === "Tables" ? <TableIcon /> : ""}
                   {menuItem.label === "UI Elements" ? <ParkIcon /> : ""}
                   {menuItem.label === "Charts" ? <BarChartIcon /> : ""}
-                  {menuItem.label === "Card" ? <BarChartIcon /> : ""}
+                  {menuItem.label === "Cards" ? <CreditCardIcon /> : ""}
                 </ListItemIcon>
                 <ListItemText
                   primary={menuItem.label}
