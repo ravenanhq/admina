@@ -13,7 +13,11 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { Link, useMediaQuery } from "@mui/material";
+import { Link, Typography, useMediaQuery } from "@mui/material";
+import Badge from "@mui/material/Badge";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import MailIcon from "@mui/icons-material/Mail";
+import SettingsIcon from "@mui/icons-material/Settings";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import EditIcon from "@mui/icons-material/Edit";
 import TableIcon from "@mui/icons-material/TableChart";
@@ -66,6 +70,11 @@ const Header: React.FC = () => {
       }
 
       setState({ ...state, left: open });
+      if (open) {
+        handleDrawerOpen();
+      } else {
+        handleDrawerClose();
+      }
     };
   const menuItems = [
     { label: "Dashboard", route: "/admin" },
@@ -127,43 +136,51 @@ const Header: React.FC = () => {
   );
   const isMobile = useMediaQuery("(max-width:1023px)");
   return (
-    <AppBar position="fixed" open={open}>
+    <AppBar position="fixed" open={open} sx={{ background: 'rgba(255, 255, 255, 0.2)' }}>
       <Toolbar>
-        {!isMobile ? (
-          !open ? (
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              sx={{
-                marginRight: 5,
-                ...(open && { display: "none" }),
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-          ) : (
-            <IconButton onClick={handleDrawerClose}>
-              <MenuIcon />
-            </IconButton>
-          )
-        ) : null}
-
         {isMobile ? (
           <IconButton color="inherit" onClick={toggleDrawer(true)}>
             <MenuIcon />
           </IconButton>
         ) : null}
 
-        <SwipeableDrawer
-          anchor="left"
-          open={state.left}
-          onClose={toggleDrawer(false)}
-          onOpen={toggleDrawer(true)}
-        >
-          {list()}
-        </SwipeableDrawer>
+        <Box sx={{ marginLeft: "auto", display: "flex", alignItems: "center" }}>
+          <IconButton color="inherit" sx={{ color: 'rgba(0,0,0,.5)' }}>
+            <Badge badgeContent={4} color="error">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+
+          <IconButton color="inherit" sx={{ color: 'rgba(0,0,0,.5)' }}>
+            <Badge badgeContent={2} color="error">
+              <MailIcon />
+            </Badge>
+          </IconButton>
+
+          <IconButton color="inherit" sx={{ color: 'rgba(0,0,0,.5)' }}>
+            <SettingsIcon />
+          </IconButton>
+
+          <IconButton color="inherit" sx={{ color: 'rgba(0,0,0,.5)' }}>
+            <SearchIcon />
+          </IconButton>
+
+          <Typography variant="body1" sx={{ marginLeft: 2, color: 'rgba(0,0,0,.5)' }}>
+            Welcome, User
+          </Typography>
+        </Box>
+
+        {isMobile && state.left ? (
+          <SwipeableDrawer
+            anchor="left"
+            open={state.left}
+            onClose={toggleDrawer(false)}
+            onOpen={toggleDrawer(true)}
+            BackdropProps={{ invisible: true }}
+          >
+            {list()}
+          </SwipeableDrawer>
+        ) : null}
       </Toolbar>
     </AppBar>
   );
