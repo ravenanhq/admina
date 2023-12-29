@@ -22,9 +22,10 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import EditIcon from "@mui/icons-material/Edit";
 import TableIcon from "@mui/icons-material/TableChart";
 import ParkIcon from "@mui/icons-material/Park";
-import SearchIcon from '@mui/icons-material/Search';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import AutorenewIcon from '@mui/icons-material/Autorenew';
+import SearchIcon from "@mui/icons-material/Search";
+import BarChartIcon from "@mui/icons-material/BarChart";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
+import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -84,6 +85,7 @@ const Header: React.FC = () => {
     { label: "UI Elements", route: "/uielements" },
     { label: "Charts", route: "/chart" },
     { label: "Spinners", route: "/loader" },
+    { label: "Breadcrumbs", route: "/breadcrumbs" },
     { label: "Search", route: "/search" },
   ];
   const list = () => (
@@ -124,12 +126,14 @@ const Header: React.FC = () => {
                   {menuItem.label === "UI Elements" ? <ParkIcon /> : ""}
                   {menuItem.label === "Charts" ? <BarChartIcon /> : ""}
                   {menuItem.label === "Spinners" ? <AutorenewIcon /> : ""}
+                  {menuItem.label === "Breadcrumbs" ? (
+                    <KeyboardDoubleArrowRightIcon />
+                  ) : (
+                    ""
+                  )}
                   {menuItem.label === "Search" ? <SearchIcon /> : ""}
                 </ListItemIcon>
-                <ListItemText
-                  primary={menuItem.label}
-                  sx={{ ml: 2 }}
-                />
+                <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
               </ListItemButton>
             </Link>
           </ListItem>
@@ -139,7 +143,11 @@ const Header: React.FC = () => {
   );
   const isMobile = useMediaQuery("(max-width:1023px)");
   return (
-    <AppBar position="fixed" open={open} sx={{ background: 'rgba(255, 255, 255, 0.2)' }}>
+    <AppBar
+      position="fixed"
+      open={open}
+      sx={{ background: "rgba(255, 255, 255, 0.2)" }}
+    >
       <Toolbar>
         {isMobile ? (
           <IconButton color="inherit" onClick={toggleDrawer(true)}>
@@ -148,27 +156,30 @@ const Header: React.FC = () => {
         ) : null}
 
         <Box sx={{ marginLeft: "auto", display: "flex", alignItems: "center" }}>
-          <IconButton color="inherit" sx={{ color: 'rgba(0,0,0,.5)' }}>
+          <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
             <Badge badgeContent={4} color="error">
               <NotificationsIcon />
             </Badge>
           </IconButton>
 
-          <IconButton color="inherit" sx={{ color: 'rgba(0,0,0,.5)' }}>
+          <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
             <Badge badgeContent={2} color="error">
               <MailIcon />
             </Badge>
           </IconButton>
 
-          <IconButton color="inherit" sx={{ color: 'rgba(0,0,0,.5)' }}>
+          <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
             <SettingsIcon />
           </IconButton>
 
-          <IconButton color="inherit" sx={{ color: 'rgba(0,0,0,.5)' }}>
+          <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
             <SearchIcon />
           </IconButton>
 
-          <Typography variant="body1" sx={{ marginLeft: 2, color: 'rgba(0,0,0,.5)' }}>
+          <Typography
+            variant="body1"
+            sx={{ marginLeft: 2, color: "rgba(0,0,0,.5)" }}
+          >
             Welcome, User
           </Typography>
         </Box>

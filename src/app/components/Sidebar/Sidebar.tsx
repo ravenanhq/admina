@@ -16,10 +16,10 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import EditIcon from "@mui/icons-material/Edit";
 import TableIcon from "@mui/icons-material/TableChart";
 import ParkIcon from "@mui/icons-material/Park";
-import BarChartIcon from '@mui/icons-material/BarChart';
-import AutorenewIcon from '@mui/icons-material/Autorenew';
-import SearchIcon from '@mui/icons-material/Search';
-
+import BarChartIcon from "@mui/icons-material/BarChart";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
+import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import SearchIcon from "@mui/icons-material/Search";
 
 const drawerWidth = 240;
 
@@ -80,6 +80,7 @@ const Sidebar: React.FC = () => {
     { label: "UI Elements", route: "/uielements" },
     { label: "Charts", route: "/chart" },
     { label: "Spinners", route: "/loader" },
+    { label: "Breadcrumbs", route: "/breadcrumbs" },
     { label: "Search", route: "/search" },
   ];
   const isMobile = useMediaQuery("(max-width:1023px)");
@@ -102,7 +103,12 @@ const Sidebar: React.FC = () => {
   return (
     <>
       {!isMobile ? (
-        <Drawer variant="permanent" open={open || hover} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <Drawer
+          variant="permanent"
+          open={open || hover}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           <List>
             <DrawerHeader>
               <ListItemIcon
@@ -112,58 +118,67 @@ const Sidebar: React.FC = () => {
                   justifyContent: "center",
                 }}
               >
-              <FontAwesomeIcon icon={faA} size="lg" style={{ marginLeft: "15px" }} />
+                <FontAwesomeIcon
+                  icon={faA}
+                  size="lg"
+                  style={{ marginLeft: "15px" }}
+                />
               </ListItemIcon>
               <ListItemText
                 sx={{
                   opacity: open ? 1 : 0,
-                  marginLeft: "1px"
-                }}>
-                Admina</ListItemText>
+                  marginLeft: "1px",
+                }}
+              >
+                Admina
+              </ListItemText>
             </DrawerHeader>
             <Divider />
-            {menuItems.map(
-              (menuItem) => (
-                <ListItem
-                  key={menuItem.label}
-                  disablePadding
-                  sx={{ display: "block" }}
+            {menuItems.map((menuItem) => (
+              <ListItem
+                key={menuItem.label}
+                disablePadding
+                sx={{ display: "block" }}
+              >
+                <Link
+                  href={menuItem.route}
+                  style={{ textDecoration: "none", color: "inherit" }}
                 >
-                  <Link
-                    href={menuItem.route}
-                    style={{ textDecoration: "none", color: "inherit" }}
+                  <ListItemButton
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? "initial" : "center",
+                      px: 2.5,
+                    }}
                   >
-                    <ListItemButton
+                    <ListItemIcon
                       sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
+                        minWidth: 0,
+                        mr: open ? 3 : "auto",
+                        justifyContent: "center",
                       }}
                     >
-                      <ListItemIcon
-                        sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
-                        }}
-                      >
-                        {menuItem.label === "Dashboard" ? <DashboardIcon /> : ""}
-                        {menuItem.label === "Forms" ? <EditIcon /> : ""}
-                        {menuItem.label === "Tables" ? <TableIcon /> : ""}
-                        {menuItem.label === "UI Elements" ? <ParkIcon /> : ""}
-                        {menuItem.label === "Charts" ? <BarChartIcon /> : ""}
-                        {menuItem.label === "Spinners" ? <AutorenewIcon /> : ""}
-                        {menuItem.label === "Search" ? <SearchIcon /> : ""}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={menuItem.label}
-                        sx={{ opacity: open ? 1 : 0 }}
-                      />
-                    </ListItemButton>
-                  </Link>
-                </ListItem>
-              )
-            )}
+                      {menuItem.label === "Dashboard" ? <DashboardIcon /> : ""}
+                      {menuItem.label === "Forms" ? <EditIcon /> : ""}
+                      {menuItem.label === "Tables" ? <TableIcon /> : ""}
+                      {menuItem.label === "UI Elements" ? <ParkIcon /> : ""}
+                      {menuItem.label === "Charts" ? <BarChartIcon /> : ""}
+                      {menuItem.label === "Spinners" ? <AutorenewIcon /> : ""}
+                      {menuItem.label === "Breadcrumbs" ? (
+                        <KeyboardDoubleArrowRightIcon />
+                      ) : (
+                        ""
+                      )}
+                      {menuItem.label === "Search" ? <SearchIcon /> : ""}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={menuItem.label}
+                      sx={{ opacity: open ? 1 : 0 }}
+                    />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            ))}
           </List>
         </Drawer>
       ) : null}
