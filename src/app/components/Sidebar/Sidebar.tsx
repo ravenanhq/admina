@@ -109,7 +109,9 @@ const Sidebar: React.FC = () => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <List>
+          <List sx={{
+            paddingTop:"0px"
+                }}>
             <DrawerHeader>
               <ListItemIcon
                 sx={{
@@ -121,7 +123,7 @@ const Sidebar: React.FC = () => {
                 <FontAwesomeIcon
                   icon={faA}
                   size="lg"
-                  style={{ marginLeft: "15px" }}
+                  style={{ marginLeft: "15px" , paddingTop:"0px"}}
                 />
               </ListItemIcon>
               <ListItemText

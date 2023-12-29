@@ -26,6 +26,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faA } from "@fortawesome/free-solid-svg-icons";
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -146,13 +148,22 @@ const Header: React.FC = () => {
     <AppBar
       position="fixed"
       open={open}
-      sx={{ background: "rgba(255, 255, 255, 0.2)" }}
+      sx={{ background: "rgba(255, 255, 255, 1)" }}
     >
       <Toolbar>
         {isMobile ? (
-          <IconButton color="inherit" onClick={toggleDrawer(true)}>
+        <>
+          <FontAwesomeIcon
+            icon={faA}
+            size="lg"
+            style={{ marginRight: "15px" }}
+            color= "#0000008a"
+          />
+          <IconButton color="inherit"  style={{ backgroundColor: 'black' }} onClick={toggleDrawer(true)}>
             <MenuIcon />
           </IconButton>
+        </>
+
         ) : null}
 
         <Box sx={{ marginLeft: "auto", display: "flex", alignItems: "center" }}>
