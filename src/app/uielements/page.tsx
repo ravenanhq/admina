@@ -26,32 +26,34 @@ export default function UIElements() {
             </Grid>
         </Grid>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
-            <Grid item md={12}>
+            <Grid item md={12} sx={{
+                width: '100%',
+            }}>
                 <TabsElement></TabsElement>
             </Grid>
         </Grid>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
-            <Grid item md={12}>
+            <Grid item md={12} sm={12} xs={12}>
                 <ProgressBarElement></ProgressBarElement>
             </Grid>
         </Grid>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
-            <Grid item md={12}>
+            <Grid item md={12} sm={12} xs={12}>
                 <SliderElement></SliderElement>
             </Grid>
         </Grid>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
-            <Grid item md={12}>
+            <Grid item md={12} sm={12} xs={12}>
                 <ModalsElement></ModalsElement>
             </Grid>
         </Grid>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
-            <Grid item md={12}>
+            <Grid item md={12} sm={12} xs={12}>
                 <NavbarElement></NavbarElement>
             </Grid>
         </Grid>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
-            <Grid item md={12}>
+            <Grid item md={12} sm={12} xs={12}>
                 <TimelineElement />
             </Grid>
         </Grid>

@@ -27,11 +27,10 @@ const DataTable = () => {
             />
 
             <CardContent>
-                <TableContainer component={Paper}>
                     <DataGrid
                         rows={rows}
                         columns={columns}
-                        getRowId={(row) => row.sno}                   
+                        getRowId={(row) => row.sno}
                         checkboxSelection
                         initialState={{
                           pagination: {
@@ -41,8 +40,6 @@ const DataTable = () => {
                         pageSizeOptions={[5, 10]}
                         disableRowSelectionOnClick={true}
                     />
-                </TableContainer>
-
             </CardContent>
         </Card>
     );

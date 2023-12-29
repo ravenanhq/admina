@@ -18,9 +18,12 @@ import Badge from "@mui/material/Badge";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MailIcon from "@mui/icons-material/Mail";
 import SettingsIcon from "@mui/icons-material/Settings";
-import SearchIcon from "@mui/icons-material/Search";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDashboard, faEdit, faTable, faTree, faChartSimple } from "@fortawesome/free-solid-svg-icons";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import EditIcon from "@mui/icons-material/Edit";
+import TableIcon from "@mui/icons-material/TableChart";
+import ParkIcon from "@mui/icons-material/Park";
+import SearchIcon from '@mui/icons-material/Search';
+import BarChartIcon from '@mui/icons-material/BarChart';
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -78,7 +81,8 @@ const Header: React.FC = () => {
     { label: "Forms", route: "/form" },
     { label: "Tables", route: "/table" },
     { label: "UI Elements", route: "/uielements" },
-    { label: "Charts", route: "/charts" },
+    { label: "Charts", route: "/chart" },
+    { label: "Search", route: "/search" },
   ];
   const list = () => (
     <Box
@@ -112,11 +116,12 @@ const Header: React.FC = () => {
                     justifyContent: "center",
                   }}
                 >
-                  {menuItem.label === "Dashboard" ? <FontAwesomeIcon icon={faDashboard} size="lg" /> : ""}
-                  {menuItem.label === "Forms" ? <FontAwesomeIcon icon={faEdit} size="lg" /> : ""}
-                  {menuItem.label === "Tables" ? <FontAwesomeIcon icon={faTable} size="lg" /> : ""}
-                  {menuItem.label === "UI Elements" ? <FontAwesomeIcon icon={faTree} size="lg" /> : ""}
-                  {menuItem.label === "Charts" ? <FontAwesomeIcon icon={faChartSimple} size="lg" /> : ""}
+                  {menuItem.label === "Dashboard" ? <DashboardIcon /> : ""}
+                  {menuItem.label === "Forms" ? <EditIcon /> : ""}
+                  {menuItem.label === "Tables" ? <TableIcon /> : ""}
+                  {menuItem.label === "UI Elements" ? <ParkIcon /> : ""}
+                  {menuItem.label === "Charts" ? <BarChartIcon /> : ""}
+                  {menuItem.label === "Search" ? <SearchIcon /> : ""}
                 </ListItemIcon>
                 <ListItemText
                   primary={menuItem.label}

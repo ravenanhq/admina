@@ -12,6 +12,7 @@ import {
 	List,
 	ListItem,
 	ListItemText,
+	Box,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -35,10 +36,12 @@ const Navbar = () => {
 						<Typography variant="h6" component="div">
 							Basic Navbar
 						</Typography>
-						<Button color="inherit">Home</Button>
-						<Button color="inherit">About</Button>
-						<Button color="inherit">Services</Button>
-						<Button color="inherit">Contact</Button>
+						<Box >
+							<Button color="inherit">Home</Button>
+							<Button color="inherit">About</Button>
+							<Button color="inherit">Services</Button>
+							<Button color="inherit">Contact</Button>
+						</Box>
 					</Toolbar>
 				</AppBar>
 
