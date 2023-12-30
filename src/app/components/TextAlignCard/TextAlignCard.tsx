@@ -1,18 +1,12 @@
 import React from "react";
 import {
-  Box,
   Card,
   CardContent,
-  CardHeader,
-  CardMedia,
   Typography,
   CardActions,
   Button,
   Grid,
-  IconButton,
-  Collapse,
 } from "@mui/material";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
 const TextAlignCard = () => {

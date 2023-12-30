@@ -1,18 +1,13 @@
 import React from "react";
 import {
-  Box,
   Card,
   CardContent,
-  CardHeader,
   CardMedia,
   Typography,
   CardActions,
   Button,
   Grid,
-  IconButton,
-  Collapse,
 } from "@mui/material";
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
 const GroupCard = () => {
@@ -87,7 +82,7 @@ const GroupCard = () => {
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit consectetur eros at varius.
-                    </Typography>
+                    </Typography>import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
                 </CardContent>
                 <CardActions>
                     <Button variant="contained" color="primary">
