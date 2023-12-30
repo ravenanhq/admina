@@ -56,7 +56,7 @@ const TextAlignCard = () => {
                 <Typography gutterBottom variant="h5" component="div">
                     Card title
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center' }}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit consectetur eros at varius.
                 </Typography>
                 </CardContent>
@@ -69,8 +69,8 @@ const TextAlignCard = () => {
         </Grid>
         <Grid item xs={12} sm={4} md={4} lg={4}>
             <Card>
-                <CardContent sx={cardContentStyle}>
-                <Typography gutterBottom variant="h5" component="div">
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="div" style={{ textAlign: 'right' }}>
                     Card title
                 </Typography>
                 <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'right' }}>

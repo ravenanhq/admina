@@ -82,7 +82,7 @@ const GroupCard = () => {
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit consectetur eros at varius.
-                    </Typography>import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+                    </Typography>
                 </CardContent>
                 <CardActions>
                     <Button variant="contained" color="primary">
