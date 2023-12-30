@@ -13,7 +13,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { Link, Typography, useMediaQuery } from "@mui/material";
+import { Divider, Link, Typography, useMediaQuery } from "@mui/material";
 import Badge from "@mui/material/Badge";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MailIcon from "@mui/icons-material/Mail";
@@ -27,6 +27,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faA } from "@fortawesome/free-solid-svg-icons";
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -49,6 +51,13 @@ const AppBar = styled(MuiAppBar, {
       duration: theme.transitions.duration.enteringScreen,
     }),
   }),
+}));
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-start",
+  padding: theme.spacing(0, 1),
+  ...theme.mixins.toolbar,
 }));
 
 const Header: React.FC = () => {
@@ -92,12 +101,36 @@ const Header: React.FC = () => {
   ];
   const list = () => (
     <Box
-      sx={{ width: 250, paddingTop: "70px" }}
+      sx={{ width: 250 }}
       role="presentation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-      <List>
+      <List sx={{paddingTop:'0px'}}>
+      <DrawerHeader>
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faA}
+                  size="lg"
+                  style={{ marginLeft: "15px" , paddingTop:"0px"}}
+                />
+              </ListItemIcon>
+              <ListItemText
+                sx={{
+                  opacity: open ? 1 : 0,
+                  marginLeft: "1px",
+                }}
+              >
+                Admina
+              </ListItemText>
+            </DrawerHeader>
+            <Divider />
         {menuItems.map((menuItem) => (
           <ListItem
             key={menuItem.label}
@@ -149,13 +182,16 @@ const Header: React.FC = () => {
     <AppBar
       position="fixed"
       open={open}
-      sx={{ background: "rgba(255, 255, 255, 0.2)" }}
+      sx={{ background: "rgba(255, 255, 255, 1)" }}
     >
       <Toolbar>
         {isMobile ? (
-          <IconButton color="inherit" onClick={toggleDrawer(true)}>
+        <>
+          <IconButton color="inherit"  style={{ backgroundColor: 'black' }} onClick={toggleDrawer(true)}>
             <MenuIcon />
           </IconButton>
+        </>
+
         ) : null}
 
         <Box sx={{ marginLeft: "auto", display: "flex", alignItems: "center" }}>
