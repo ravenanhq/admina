@@ -76,12 +76,12 @@ const SearchElement: React.FC = () => {
             {searchResults.map((result) => (
               <Card key={result.id} variant="outlined">
                 <CardContent>
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} sm={8}>
-                      <h3>{result.title}</h3>
-                      <p>{result.content}</p>
-                    </Grid>
-                  </Grid>
+                  <Typography variant="h6" color="textPrimary">
+                    {result.title}
+                  </Typography>
+                  <Typography variant="body1" color="textPrimary" style={{ marginTop: 10 }}>
+                    {result.content}
+                  </Typography>
                 </CardContent>
               </Card>
             ))}
