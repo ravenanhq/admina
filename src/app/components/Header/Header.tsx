@@ -98,6 +98,7 @@ const Header: React.FC = () => {
     { label: "Spinners", route: "/loader" },
     { label: "Breadcrumbs", route: "/breadcrumbs" },
     { label: "Search", route: "/search" },
+    { label: "Signin" , route:"/signin" }
   ];
   const list = () => (
     <Box
@@ -168,6 +169,7 @@ const Header: React.FC = () => {
                     ""
                   )}
                   {menuItem.label === "Search" ? <SearchIcon /> : ""}
+                  {menuItem.label === "SignIn"}
                 </ListItemIcon>
                 <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
               </ListItemButton>
