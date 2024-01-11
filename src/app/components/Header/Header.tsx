@@ -27,6 +27,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import VerticalAlignBottomIcon from '@mui/icons-material/VerticalAlignBottom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faA } from "@fortawesome/free-solid-svg-icons";
 
@@ -98,6 +99,7 @@ const Header: React.FC = () => {
     { label: "Spinners", route: "/loader" },
     { label: "Breadcrumbs", route: "/breadcrumbs" },
     { label: "Search", route: "/search" },
+    { label: "Footers", route: "/footer" },
   ];
   const list = () => (
     <Box
@@ -168,6 +170,7 @@ const Header: React.FC = () => {
                     ""
                   )}
                   {menuItem.label === "Search" ? <SearchIcon /> : ""}
+                  {menuItem.label === "Footers" ? <VerticalAlignBottomIcon /> : ""}
                 </ListItemIcon>
                 <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
               </ListItemButton>
