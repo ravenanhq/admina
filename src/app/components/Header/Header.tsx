@@ -29,6 +29,7 @@ import AutorenewIcon from "@mui/icons-material/Autorenew";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faA } from "@fortawesome/free-solid-svg-icons";
+import  LoginIcon from "@mui/icons-material/Login";
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -169,7 +170,7 @@ const Header: React.FC = () => {
                     ""
                   )}
                   {menuItem.label === "Search" ? <SearchIcon /> : ""}
-                  {menuItem.label === "SignIn"}
+                  {menuItem.label === "Signin" ? <LoginIcon /> : ""}
                 </ListItemIcon>
                 <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
               </ListItemButton>
