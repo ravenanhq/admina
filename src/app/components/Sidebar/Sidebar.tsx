@@ -86,7 +86,7 @@ const Sidebar: React.FC = () => {
     { label: "Spinners", route: "/loader" },
     { label: "Breadcrumbs", route: "/breadcrumbs" },
     { label: "Search", route: "/search" },
-    { label: "Signin" , route: "/signin"}
+    { label: "Signin" , route: "/signin"},
     { label: "Footers", route: "/footer" },
   ];
   const isMobile = useMediaQuery("(max-width:1023px)");
