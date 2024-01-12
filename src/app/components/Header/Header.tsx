@@ -30,6 +30,7 @@ import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArro
 import VerticalAlignBottomIcon from '@mui/icons-material/VerticalAlignBottom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faA } from "@fortawesome/free-solid-svg-icons";
+import  LoginIcon from "@mui/icons-material/Login";
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -99,6 +100,7 @@ const Header: React.FC = () => {
     { label: "Spinners", route: "/loader" },
     { label: "Breadcrumbs", route: "/breadcrumbs" },
     { label: "Search", route: "/search" },
+    { label: "Signin" , route:"/signin" },
     { label: "Footers", route: "/footer" },
   ];
   const list = () => (
@@ -170,6 +172,7 @@ const Header: React.FC = () => {
                     ""
                   )}
                   {menuItem.label === "Search" ? <SearchIcon /> : ""}
+                  {menuItem.label === "Signin" ? <LoginIcon /> : ""}
                   {menuItem.label === "Footers" ? <VerticalAlignBottomIcon /> : ""}
                 </ListItemIcon>
                 <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
