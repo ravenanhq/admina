@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Card, CardHeader, CardContent, CardActions, TextField, Button, InputAdornment, FormControlLabel, Checkbox, Grid, Link, Typography } from '@mui/material';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const OutlinedSigningForm = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +15,9 @@ const OutlinedSigningForm = () => {
     email: '',
     password: '',
   });
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const validateForm = () => {
     let isValid = true;
@@ -101,14 +106,17 @@ const OutlinedSigningForm = () => {
     
      <CardActions>
         <FormControlLabel
-          control={<Checkbox color="primary" />}
+          control={<Checkbox color="primary" style={{padding: isMobile ? "4px" : ""}}/>}
           label={
             <Typography variant="body2">
               Remember me
             </Typography>
           }
           labelPlacement="start"
-          sx={{fontSize:"14px",width:"183px"}}
+          sx={{fontSize:"14px",
+          width: isMobile ? 'auto' : '183px',
+          whiteSpace: isMobile ? 'nowrap' : 'normal',
+          }}
         />
         <Grid container justifyContent="flex-end">
           <Button variant="contained" color="success" type="submit" onClick={handleSubmit} size="small" sx={{ width: '100px' }}>

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Card, CardHeader, CardContent, Button, Divider, TextField, Grid } from '@mui/material';
 import LoginIcon from '@mui/icons-material/Login';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const StandardSigninForm = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +16,9 @@ const StandardSigninForm = () => {
     password: '',
   });
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  
   const validateForm = () => {
     let isValid = true;
     const newErrors = { ...errors };
@@ -76,7 +81,11 @@ const StandardSigninForm = () => {
                 fontWeight: 'bold', 
               },
             }}
-            style={{ maxWidth: '52%', margin: '0 auto',marginTop:"15px" }}
+            style={{
+              maxWidth: isMobile ? '100%' : '52%',
+              margin: '0 auto',
+              marginTop: isMobile ? '10px' : '15px',
+            }}
           >
          
           </TextField>
@@ -91,7 +100,11 @@ const StandardSigninForm = () => {
             helperText={errors.password}
             size='small'
             placeholder="Password"
-            style={{ maxWidth: '52%', margin: '0 auto',marginTop:"15px" }}
+            style={{
+              maxWidth: isMobile ? '100%' : '52%',
+              margin: '0 auto',
+              marginTop: isMobile ? '10px' : '15px',
+            }}
           />
    
         </form>
