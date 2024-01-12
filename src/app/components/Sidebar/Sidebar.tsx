@@ -22,6 +22,7 @@ import AutorenewIcon from "@mui/icons-material/Autorenew";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import SearchIcon from "@mui/icons-material/Search";
 import  LoginIcon from "@mui/icons-material/Login";
+import VerticalAlignBottomIcon from '@mui/icons-material/VerticalAlignBottom';
 
 const drawerWidth = 240;
 
@@ -86,6 +87,7 @@ const Sidebar: React.FC = () => {
     { label: "Breadcrumbs", route: "/breadcrumbs" },
     { label: "Search", route: "/search" },
     { label: "Signin" , route: "/signin"}
+    { label: "Footers", route: "/footer" },
   ];
   const isMobile = useMediaQuery("(max-width:1023px)");
   const [hover, setHover] = React.useState(false);
@@ -178,6 +180,7 @@ const Sidebar: React.FC = () => {
                       )}
                       {menuItem.label === "Search" ? <SearchIcon /> : ""}
                       {menuItem.label === "Signin" ? <LoginIcon /> : ""}
+                      {menuItem.label === "Footers" ? <VerticalAlignBottomIcon /> : ""}
                     </ListItemIcon>
                     <ListItemText
                       primary={menuItem.label}
