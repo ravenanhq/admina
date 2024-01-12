@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Card, CardHeader, CardContent, CardActions, TextField, Button, InputAdornment, FormControlLabel, Checkbox, Grid, Link, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const GeneralSigninForm = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +13,9 @@ const GeneralSigninForm = () => {
     email: '',
     password: '',
   });
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const validateForm = () => {
     let isValid = true;
@@ -52,8 +57,8 @@ const GeneralSigninForm = () => {
 
   return (
     <Card variant="outlined">
-      <CardHeader title="General Signin Form With Validation"  titleTypographyProps={{ fontSize: '16px'}} sx={{ bgcolor: '#1d8683', color: 'white' }}/>
-      <CardHeader title="Login"  titleTypographyProps={{ fontSize: '16px' , textAlign:"center" }}/>
+      <CardHeader title="General Signin Form With Validation" titleTypographyProps={{ fontSize: '16px' }} sx={{ bgcolor: '#1d8683', color: 'white' }} />
+      <CardHeader title="Login" titleTypographyProps={{ fontSize: '16px', textAlign: "center" }} />
       <CardContent style={{ textAlign: 'center' }}>
         <form onSubmit={handleSubmit}>
           <TextField
@@ -67,7 +72,11 @@ const GeneralSigninForm = () => {
             size='small'
             placeholder="Username or Email"
             label="Username or Email"
-            style={{ maxWidth: '52%', margin: '0 auto', marginTop:"15px" }}
+            style={{
+              maxWidth: isMobile ? '100%' : '52%',
+              margin: '0 auto',
+              marginTop: isMobile ? '10px' : '15px',
+            }}
           />
           <TextField
             fullWidth
@@ -80,21 +89,25 @@ const GeneralSigninForm = () => {
             size='small'
             placeholder="Password"
             label="password"
-            style={{ maxWidth: '52%', margin: '0 auto',marginTop:"15px" }}
+            style={{
+              maxWidth: isMobile ? '100%' : '52%',
+              margin: '0 auto',
+              marginTop: isMobile ? '10px' : '15px',
+            }}
           />
-   
+
         </form>
       </CardContent>
       <Grid container justifyContent="center">
-          <Button variant="contained"  type="submit" onClick={handleSubmit} size="small" sx={{ width: '50%',padding:"7px 0",background:"#1d8683"}}>
-            Log In
-          </Button>
-        </Grid>
+        <Button variant="contained" type="submit" onClick={handleSubmit} size="small" sx={{ width: '50%', padding: "7px 0", background: "#1d8683" }}>
+          Log In
+        </Button>
+      </Grid>
 
-      <CardActions sx={{justifyContent:"center"}}>
-      <Typography  sx={{fontSize:"14px"}}>
+      <CardActions sx={{ justifyContent: "center" }}>
+        <Typography sx={{ fontSize: "14px" }}>
           Not Registered?
-          <Link href="#" color="inherit" style={{color:"#1d8683"}}>
+          <Link href="#" color="inherit" style={{ color: "#1d8683" }}>
             Create an account
           </Link>
         </Typography>
