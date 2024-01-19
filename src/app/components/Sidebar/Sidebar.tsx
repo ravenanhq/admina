@@ -16,11 +16,16 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import EditIcon from "@mui/icons-material/Edit";
 import TableIcon from "@mui/icons-material/TableChart";
 import ParkIcon from "@mui/icons-material/Park";
-import CreditCardIcon from '@mui/icons-material/CreditCard';
+import CreditCardIcon from "@mui/icons-material/CreditCard";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import SearchIcon from "@mui/icons-material/Search";
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import Collapse from "@mui/material/Collapse";
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 const drawerWidth = 240;
 
@@ -84,9 +89,19 @@ const Sidebar: React.FC = () => {
     { label: "Spinners", route: "/loader" },
     { label: "Breadcrumbs", route: "/breadcrumbs" },
     { label: "Search", route: "/search" },
+    {
+      label: "Ecommerce",
+      submenu: [
+        { label: "Products", route: "/ecommerce/products" },
+        { label: "Product Details", route: "/ecommerce/product-details" },
+        { label: "Add New Product", route: "/ecommerce/add-new-product" },
+        { label: "Order", route: "/ecommerce/order" },
+      ],
+    },
   ];
   const isMobile = useMediaQuery("(max-width:1023px)");
   const [hover, setHover] = React.useState(false);
+  const [showEcommerceSubMenu, setShowEcommerceSubMenu] = React.useState(false);
 
   const handleMouseEnter = () => {
     if (!open && !isMobile) {
@@ -102,6 +117,15 @@ const Sidebar: React.FC = () => {
     setHover(false);
   };
 
+  const handleEcommerceClick = () => {
+    console.log("true")
+    setShowEcommerceSubMenu(!showEcommerceSubMenu);
+  };
+
+  const handleSubMenuItemClick = (label: string) => {
+    console.log(`Clicked on ${label}`);
+  };
+
   return (
     <>
       {!isMobile ? (
@@ -111,9 +135,11 @@ const Sidebar: React.FC = () => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <List sx={{
-            paddingTop:"0px"
-                }}>
+          <List
+            sx={{
+              paddingTop: "0px",
+            }}
+          >
             <DrawerHeader>
               <ListItemIcon
                 sx={{
@@ -125,7 +151,7 @@ const Sidebar: React.FC = () => {
                 <FontAwesomeIcon
                   icon={faA}
                   size="lg"
-                  style={{ marginLeft: "15px" , paddingTop:"0px"}}
+                  style={{ marginLeft: "15px", paddingTop: "0px" }}
                 />
               </ListItemIcon>
               <ListItemText
@@ -154,6 +180,7 @@ const Sidebar: React.FC = () => {
                       justifyContent: open ? "initial" : "center",
                       px: 2.5,
                     }}
+                    onClick={menuItem.label === "Ecommerce" ? handleEcommerceClick : undefined}
                   >
                     <ListItemIcon
                       sx={{
@@ -161,7 +188,7 @@ const Sidebar: React.FC = () => {
                         mr: open ? 3 : "auto",
                         justifyContent: "center",
                       }}
-                    >
+                    > 
                       {menuItem.label === "Dashboard" ? <DashboardIcon /> : ""}
                       {menuItem.label === "Forms" ? <EditIcon /> : ""}
                       {menuItem.label === "Tables" ? <TableIcon /> : ""}
@@ -175,13 +202,67 @@ const Sidebar: React.FC = () => {
                         ""
                       )}
                       {menuItem.label === "Search" ? <SearchIcon /> : ""}
+                      {menuItem.label === "Ecommerce" ? <ShoppingCartCheckoutIcon /> : ""}
                     </ListItemIcon>
                     <ListItemText
                       primary={menuItem.label}
                       sx={{ opacity: open ? 1 : 0 }}
                     />
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        ml: "auto",
+                        justifyContent: "center",
+                      }}
+                    >
+                      {menuItem.label === "Ecommerce" ? (
+                        showEcommerceSubMenu ? <ExpandLess /> : <ExpandMore />
+                      ) : null}
+                    </ListItemIcon>
                   </ListItemButton>
                 </Link>
+               {/* Nested List for Ecommerce Submenu */}
+              {menuItem.label === "Ecommerce" && (
+                <Collapse in={showEcommerceSubMenu} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                    {menuItem.submenu.map((subMenuItem) => (
+                      <ListItem
+                        key={subMenuItem.label}
+                        disablePadding
+                        sx={{ display: "block", paddingLeft: 4 }}
+                      >
+                        <Link
+                          href={subMenuItem.route}
+                          style={{ textDecoration: "none", color: "inherit" }}
+                        >
+                          <ListItemButton
+                            sx={{
+                              minHeight: 48,
+                              justifyContent: open ? "initial" : "center",
+                              px: 2.5,
+                            }}
+                            onClick={() => handleSubMenuItemClick(subMenuItem.label)}
+                          >
+                            <ListItemIcon
+                              sx={{
+                                minWidth: 0,
+                                mr: open ? 3 : "auto",
+                                justifyContent: "center",
+                              }}
+                            >
+                              {subMenuItem.label === "Products" ? <KeyboardArrowRightIcon style={{fontSize:"14px"}} /> : "" }
+                              {subMenuItem.label === "Product Details" ? <KeyboardArrowRightIcon style={{fontSize:"14px"}}/> : ""}
+                              {subMenuItem.label === "Add New Product" ? <KeyboardArrowRightIcon style={{fontSize:"14px"}}/> : ""}
+                              {subMenuItem.label === "Order" ? <KeyboardArrowRightIcon style={{fontSize:"14px"}} /> : ""}
+                            </ListItemIcon>
+                            <ListItemText primary={subMenuItem.label}  />
+                          </ListItemButton>
+                        </Link>
+                      </ListItem>
+                    ))}
+                  </List>
+                </Collapse>
+              )}
               </ListItem>
             ))}
           </List>
