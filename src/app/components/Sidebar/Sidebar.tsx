@@ -26,6 +26,9 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import  LoginIcon from "@mui/icons-material/Login";
+import VerticalAlignBottomIcon from '@mui/icons-material/VerticalAlignBottom';
+
 
 const drawerWidth = 240;
 
@@ -98,6 +101,8 @@ const Sidebar: React.FC = () => {
         { label: "Order", route: "/ecommerce/order" },
       ],
     },
+    { label: "Signin" , route: "/signin"},
+    { label: "Footers", route: "/footer" },
   ];
   const isMobile = useMediaQuery("(max-width:1023px)");
   const [hover, setHover] = React.useState(false);
@@ -202,6 +207,8 @@ const Sidebar: React.FC = () => {
                         ""
                       )}
                       {menuItem.label === "Search" ? <SearchIcon /> : ""}
+                      {menuItem.label === "Signin" ? <LoginIcon /> : ""}
+                      {menuItem.label === "Footers" ? <VerticalAlignBottomIcon /> : ""}
                       {menuItem.label === "Ecommerce" ? <ShoppingCartCheckoutIcon /> : ""}
                     </ListItemIcon>
                     <ListItemText

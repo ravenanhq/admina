@@ -27,6 +27,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
+import VerticalAlignBottomIcon from '@mui/icons-material/VerticalAlignBottom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faA } from "@fortawesome/free-solid-svg-icons";
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
@@ -34,6 +35,8 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import  LoginIcon from "@mui/icons-material/Login";
+
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -121,6 +124,8 @@ const Header: React.FC = () => {
         { label: "Order", route: "/ecommerce/order" },
       ],
     },
+    { label: "Signin" , route:"/signin" },
+    { label: "Footers", route: "/footer" },
   ];
   const list = () => (
     <Box
@@ -192,6 +197,8 @@ const Header: React.FC = () => {
                     ""
                   )}
                   {menuItem.label === "Search" ? <SearchIcon /> : ""}
+                  {menuItem.label === "Signin" ? <LoginIcon /> : ""}
+                  {menuItem.label === "Footers" ? <VerticalAlignBottomIcon /> : ""}
                   {menuItem.label === "Ecommerce" ? <ShoppingCartCheckoutIcon /> : ""}
                 </ListItemIcon>
                 <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
