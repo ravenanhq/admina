@@ -144,7 +144,6 @@ const ProductOrder = () => {
         open={deleteModalOpen}
         onClose={handleDeleteModalClose}
         onDeleteConfirm={handleDeleteConfirm}
-        rowData={selectedRow}
         orderId={selectedRow ? selectedRow.order : ''}
       />
     </Card>
