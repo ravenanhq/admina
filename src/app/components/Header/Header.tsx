@@ -30,8 +30,14 @@ import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArro
 import VerticalAlignBottomIcon from '@mui/icons-material/VerticalAlignBottom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faA } from "@fortawesome/free-solid-svg-icons";
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import Collapse from "@mui/material/Collapse";
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import  LoginIcon from "@mui/icons-material/Login";
 import ImportExportIcon from '@mui/icons-material/ImportExport';
+
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -72,7 +78,7 @@ const Header: React.FC = () => {
   const [state, setState] = React.useState({
     left: false,
   });
-
+  const [showEcommerceSubMenu, setShowEcommerceSubMenu] = React.useState(false);
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
@@ -91,6 +97,15 @@ const Header: React.FC = () => {
         handleDrawerClose();
       }
     };
+
+  const handleEcommerceClick = () => {
+    setShowEcommerceSubMenu(!showEcommerceSubMenu);
+  };
+
+  const handleSubMenuItemClick = (label: string) => {
+    console.log(`Clicked on ${label}`);
+  };
+
   const menuItems = [
     { label: "Dashboard", route: "/admin" },
     { label: "Forms", route: "/form" },
@@ -103,7 +118,16 @@ const Header: React.FC = () => {
     { label: "Search", route: "/search" },
     { label: "Signin" , route:"/signin" },
     { label: "Footers", route: "/footer" },
-    { label: "Import/Export", route: "/import-export-element" },
+    {
+      label: "Ecommerce",
+      submenu: [
+        { label: "Products", route: "/ecommerce/products" },
+        { label: "Product Details", route: "/ecommerce/product-details" },
+        { label: "Add New Product", route: "/ecommerce/add-new-product" },
+        { label: "Order", route: "/ecommerce/order" },
+      ],
+    },
+    { label: "Import/Export", route: "/import-export-element" }
   ];
   const list = () => (
     <Box
@@ -112,31 +136,31 @@ const Header: React.FC = () => {
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-      <List sx={{paddingTop:'0px'}}>
-      <DrawerHeader>
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-                <FontAwesomeIcon
-                  icon={faA}
-                  size="lg"
-                  style={{ marginLeft: "15px" , paddingTop:"0px"}}
-                />
-              </ListItemIcon>
-              <ListItemText
-                sx={{
-                  opacity: open ? 1 : 0,
-                  marginLeft: "1px",
-                }}
-              >
-                Admina
-              </ListItemText>
-            </DrawerHeader>
-            <Divider />
+      <List sx={{ paddingTop: '0px' }}>
+        <DrawerHeader>
+          <ListItemIcon
+            sx={{
+              minWidth: 0,
+              mr: open ? 3 : "auto",
+              justifyContent: "center",
+            }}
+          >
+            <FontAwesomeIcon
+              icon={faA}
+              size="lg"
+              style={{ marginLeft: "15px", paddingTop: "0px" }}
+            />
+          </ListItemIcon>
+          <ListItemText
+            sx={{
+              opacity: open ? 1 : 0,
+              marginLeft: "1px",
+            }}
+          >
+            Admina
+          </ListItemText>
+        </DrawerHeader>
+        <Divider />
         {menuItems.map((menuItem) => (
           <ListItem
             key={menuItem.label}
@@ -153,6 +177,7 @@ const Header: React.FC = () => {
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
                 }}
+                onClick={menuItem.label === "Ecommerce" ? handleEcommerceClick : undefined}
               >
                 <ListItemIcon
                   sx={{
@@ -176,11 +201,65 @@ const Header: React.FC = () => {
                   {menuItem.label === "Search" ? <SearchIcon /> : ""}
                   {menuItem.label === "Signin" ? <LoginIcon /> : ""}
                   {menuItem.label === "Footers" ? <VerticalAlignBottomIcon /> : ""}
+                  {menuItem.label === "Ecommerce" ? <ShoppingCartCheckoutIcon /> : ""}
                   {menuItem.label === "Import/Export" ? <ImportExportIcon /> : ""}
                 </ListItemIcon>
                 <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    ml: "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {menuItem.label === "Ecommerce" ? (
+                    showEcommerceSubMenu ? <ExpandLess /> : <ExpandMore />
+                  ) : null}
+                </ListItemIcon>
               </ListItemButton>
             </Link>
+            {/* Nested List for Ecommerce Submenu */}
+            {menuItem.label === "Ecommerce" && (
+              <Collapse in={showEcommerceSubMenu} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  {menuItem.submenu.map((subMenuItem) => (
+                    <ListItem
+                      key={subMenuItem.label}
+                      disablePadding
+                      sx={{ display: "block", paddingLeft: 4 }}
+                    >
+                      <Link
+                        href={subMenuItem.route}
+                        style={{ textDecoration: "none", color: "inherit" }}
+                      >
+                        <ListItemButton
+                          sx={{
+                            minHeight: 48,
+                            justifyContent: open ? "initial" : "center",
+                            px: 2.5,
+                          }}
+                          onClick={() => handleSubMenuItemClick(subMenuItem.label)}
+                        >
+                          <ListItemIcon
+                            sx={{
+                              minWidth: 0,
+                              mr: open ? 3 : "auto",
+                              justifyContent: "center",
+                            }}
+                          >
+                            {subMenuItem.label === "Products" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
+                            {subMenuItem.label === "Product Details" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
+                            {subMenuItem.label === "Add New Product" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
+                            {subMenuItem.label === "Order" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
+                          </ListItemIcon>
+                          <ListItemText primary={subMenuItem.label}  />
+                        </ListItemButton>
+                      </Link>
+                    </ListItem>
+                  ))}
+                </List>
+              </Collapse>
+            )}
           </ListItem>
         ))}
       </List>
@@ -195,11 +274,11 @@ const Header: React.FC = () => {
     >
       <Toolbar>
         {isMobile ? (
-        <>
-          <IconButton color="inherit"  style={{ backgroundColor: 'black' }} onClick={toggleDrawer(true)}>
-            <MenuIcon />
-          </IconButton>
-        </>
+          <>
+            <IconButton color="inherit" style={{ backgroundColor: 'black' }} onClick={toggleDrawer(true)}>
+              <MenuIcon />
+            </IconButton>
+          </>
 
         ) : null}
 
