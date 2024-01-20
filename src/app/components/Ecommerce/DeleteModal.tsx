@@ -3,7 +3,7 @@ import { Modal, Button, Box } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-const DeleteModal = ({ open, onClose, onDeleteConfirm, rowData,orderId }) => {
+const DeleteModal = ({ open, onClose, onDeleteConfirm,orderId }) => {
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));

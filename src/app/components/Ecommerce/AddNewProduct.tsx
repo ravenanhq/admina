@@ -57,7 +57,7 @@ const AddNewProduct = () => {
         }
 
         if (formData.compareAtPrice.trim() === "") {
-            newErrors.compareAtPrice = "compare at price is required";
+            newErrors.compareAtPrice = "Compare at price is required";
             isValid = false;
         } else {
             newErrors.compareAtPrice = "";
@@ -102,7 +102,6 @@ const AddNewProduct = () => {
                     imageFileName: file ? file.name : "",
                 }));
             };
-            console.log('file',reader.result)
             if (file) {
                 reader.readAsDataURL(file);
                 
@@ -299,8 +298,10 @@ const AddNewProduct = () => {
                                 fullWidth
                                 margin="normal"
                                 label="Product Tag"
-                                name="name"
-                                value={formData.name}
+                                type="text"
+                                name="productTag"
+                                value={formData.productTag}
+                                onChange={handleChange}
                                 size="small"
                             />
                         </form>
