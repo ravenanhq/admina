@@ -31,6 +31,7 @@ import VerticalAlignBottomIcon from '@mui/icons-material/VerticalAlignBottom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faA } from "@fortawesome/free-solid-svg-icons";
 import  LoginIcon from "@mui/icons-material/Login";
+import ImportExportIcon from '@mui/icons-material/ImportExport';
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -102,6 +103,7 @@ const Header: React.FC = () => {
     { label: "Search", route: "/search" },
     { label: "Signin" , route:"/signin" },
     { label: "Footers", route: "/footer" },
+    { label: "Import/Export", route: "/import-export-element" },
   ];
   const list = () => (
     <Box
@@ -174,6 +176,7 @@ const Header: React.FC = () => {
                   {menuItem.label === "Search" ? <SearchIcon /> : ""}
                   {menuItem.label === "Signin" ? <LoginIcon /> : ""}
                   {menuItem.label === "Footers" ? <VerticalAlignBottomIcon /> : ""}
+                  {menuItem.label === "Import/Export" ? <ImportExportIcon /> : ""}
                 </ListItemIcon>
                 <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
               </ListItemButton>

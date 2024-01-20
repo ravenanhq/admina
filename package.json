@@ -21,6 +21,7 @@
     "@mui/x-data-grid": "^6.17.0",
     "chart.js": "^4.4.0",
     "next": "^13.5.5",
+    "papaparse": "^5.4.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
     "react-chartjs-2": "^5.2.0",

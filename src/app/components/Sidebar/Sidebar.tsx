@@ -23,6 +23,7 @@ import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArro
 import SearchIcon from "@mui/icons-material/Search";
 import  LoginIcon from "@mui/icons-material/Login";
 import VerticalAlignBottomIcon from '@mui/icons-material/VerticalAlignBottom';
+import ImportExportIcon from '@mui/icons-material/ImportExport';
 
 const drawerWidth = 240;
 
@@ -88,6 +89,7 @@ const Sidebar: React.FC = () => {
     { label: "Search", route: "/search" },
     { label: "Signin" , route: "/signin"},
     { label: "Footers", route: "/footer" },
+    { label: "Import/Export", route: "/import-export-element" },
   ];
   const isMobile = useMediaQuery("(max-width:1023px)");
   const [hover, setHover] = React.useState(false);
@@ -181,6 +183,7 @@ const Sidebar: React.FC = () => {
                       {menuItem.label === "Search" ? <SearchIcon /> : ""}
                       {menuItem.label === "Signin" ? <LoginIcon /> : ""}
                       {menuItem.label === "Footers" ? <VerticalAlignBottomIcon /> : ""}
+                      {menuItem.label === "Import/Export" ? <ImportExportIcon /> : ""}
                     </ListItemIcon>
                     <ListItemText
                       primary={menuItem.label}
