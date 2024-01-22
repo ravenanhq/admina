@@ -12,7 +12,7 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 const DataTable = () => {
-  const [orders, setOrders] = useState([]);
+  const [data, setData] = useState([]);
   const [selectedRows, setSelectedRows] = useState([]);
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
@@ -21,15 +21,24 @@ const DataTable = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
-    setOrders(dataTable);
+    setData(dataTable);
   }, []);
 
   const handleImport = (importedData) => {
-    setOrders(importedData);
-    setSuccessMessage("Data imported successfully!");
-    setOpenSnackbar(true);
+    
+    const uniqueIdentifiers = new Set(data.map((row) => row.email));
+    const filteredImportedData = importedData.filter((row) => !uniqueIdentifiers.has(row.email));
+  
+    if (filteredImportedData.length > 0) {
+      setData((prevData) => [...prevData, ...filteredImportedData]);
+      setSuccessMessage("Data imported successfully!");
+      setOpenSnackbar(true);
+    } else {
+      setSuccessMessage("No new data to import or Email Id is already present!");
+      setOpenSnackbar(true);
+    }
   };
-
+  
   const handleSelectionChange = (selection) => {
     setSuccessMessage("Data exported successfully!");
     setSelectedRows(selection);
@@ -54,18 +63,18 @@ const DataTable = () => {
           <ImportElement onImport={handleImport} />
         </Grid>
         <Grid item xs={12} sm={6} style={{ textAlign:isMobile ? "start" : "right" }}>
-          <ExportElement dataToExport={orders} onExportSuccess={handleExportSuccess}/>
+          <ExportElement dataToExport={data} onExportSuccess={() => handleExportSuccess("Data exported successfully!")}/>
           <ExportSelectedData
-            dataToExport={orders}
+            dataToExport={data}
             selectedRows={selectedRows}
-            onExportSuccess={handleExportSuccess}
+            onExportSuccess={() => handleExportSuccess("Selected Data exported successfully!")}
           />
         </Grid>
       </Grid>
 
       <CardContent style={{ padding: "16px 0" }}>
         <DataGrid
-          rows={orders}
+          rows={data}
           columns={columns}
           getRowId={(row) => row.sno}
           checkboxSelection
