@@ -40,7 +40,7 @@ const ProductsListHeader = () => {
               New Product
             </Button></Link>
           </Grid>
-          <Grid item xs={12} sm={3} md={3} lg={2} style={{ paddingTop: '14px',width: '100%', }}>
+          <Grid item xs={12} sm={6} md={3} lg={2} style={{ paddingTop: '14px',width: '100%', }}>
             <TextField
               placeholder="Search"
               variant="outlined"
@@ -58,7 +58,7 @@ const ProductsListHeader = () => {
               sx={{ height: '40px', padding: '8px', width: '100%', '& input': { padding: '8px' } }}
             />
           </Grid>
-          <Grid item xs={12} sm={3} md={3} lg={2} style={{ paddingTop: '14px' }}>
+          <Grid item xs={12} sm={6} md={3} lg={2} style={{ paddingTop: '14px' }}>
             <TextField
               placeholder="Sort by"
               variant="outlined"
@@ -76,7 +76,7 @@ const ProductsListHeader = () => {
               sx={{ height: '40px', padding: '8px', width: '100%', '& input': { padding: '8px' } }}
             />
           </Grid>
-          <Grid item xs={12} sm={3} md={3} lg={2} style={{ paddingTop: '14px' }}>
+          <Grid item xs={12} sm={6} md={3} lg={2} style={{ paddingTop: '14px' }}>
             <TextField
               placeholder="Collection"
               variant="outlined"
@@ -94,7 +94,7 @@ const ProductsListHeader = () => {
               sx={{ height: '40px', padding: '8px', width: '100%', '& input': { padding: '8px' } }}
             />
           </Grid>
-          <Grid item xs={12} sm={3} md={3} lg={2} style={{ paddingTop: '14px' }}>
+          <Grid item xs={12} sm={6} md={3} lg={2} style={{ paddingTop: '14px' }}>
             <TextField
               placeholder="Price Range"
               variant="outlined"

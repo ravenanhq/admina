@@ -125,6 +125,7 @@ const Header: React.FC = () => {
         { label: "Product Details", route: "/ecommerce/product-details" },
         { label: "Add New Product", route: "/ecommerce/add-new-product" },
         { label: "Order", route: "/ecommerce/order" },
+        { label: "Product List", route: "/ecommerce/product-list" },
       ],
     },
     { label: "Import/Export", route: "/import-export-element" }
@@ -251,6 +252,7 @@ const Header: React.FC = () => {
                             {subMenuItem.label === "Product Details" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
                             {subMenuItem.label === "Add New Product" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
                             {subMenuItem.label === "Order" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
+                            {subMenuItem.label === "Product List" ? <KeyboardArrowRightIcon style={{fontSize:"14px"}} /> : ""}
                           </ListItemIcon>
                           <ListItemText primary={subMenuItem.label}  />
                         </ListItemButton>
