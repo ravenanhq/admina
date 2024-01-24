@@ -130,8 +130,7 @@ const ProductOrder = () => {
             },
           }}
           pageSizeOptions={[5, 10]}
-          disableRowSelectionOnClick={true}
-         className="orderDataTable"        />
+          disableRowSelectionOnClick={true}  />
       </CardContent>
 
       <EditModal
