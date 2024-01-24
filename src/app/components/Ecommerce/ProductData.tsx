@@ -99,7 +99,7 @@ const ProductData = () => {
           size="small"
           style={{
             backgroundColor:
-              params.value === "shipping" ? "#2196f3" : "#ff9800",
+            params.value.toLowerCase() === "shipping" ? "#2196f3" : "#ff9800",
             color: "white",
             width: "68%",
           }}
