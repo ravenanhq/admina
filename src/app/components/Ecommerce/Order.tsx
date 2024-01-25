@@ -67,12 +67,12 @@ const ProductOrder = () => {
   };
 
   const columns = [
-    { field: "order", headerName: "Order#", width: 200 },
-    { field: "companyName", headerName: "Company Name", width: 200 },
+    { field: "order", headerName: "Order#", width:120},
+    { field: "companyName", headerName: "Company Name", width:200},
     {
       field: "status",
       headerName: "Status",
-      width: 200,
+      width:150,
       renderCell: (params) => (
         <Button
           size="small"
@@ -80,19 +80,19 @@ const ProductOrder = () => {
             backgroundColor:
               params.value === "FULFILED" ? "#2196f3" : "#ff9800",
             color: "white",
-            width: "55%",
+            width: "68%",
           }}
         >
           {params.value}
         </Button>
       ),
     },
-    { field: "total", headerName: "Total", width: 200 },
-    { field: "date", headerName: "Date", width: 200 },
+    { field: "total", headerName: "Total", },
+    { field: "date", headerName: "Date",width:160  },
     {
       field: "actions",
       headerName: "Actions",
-      width: 150,
+     width:120,
       renderCell: (params) => (
         <>
           <IconButton aria-label="edit" onClick={() => handleEdit(params.row)}>
@@ -110,15 +110,16 @@ const ProductOrder = () => {
   ];
 
   return (
-    <Card>
+    <Card style={{boxShadow:"none"}}>
       <Snackbar
         open={successMessageOpen}
         autoHideDuration={3000}
         onClose={handleSnackbarClose}
         message={message}
       />
-      <CardContent>
+      <CardContent style={{padding:"0"}}>
         <DataGrid
+          key={Math.random()}
           rows={orders}
           columns={columns}
           getRowId={(row) => row.id}
@@ -129,8 +130,7 @@ const ProductOrder = () => {
             },
           }}
           pageSizeOptions={[5, 10]}
-          disableRowSelectionOnClick={true}
-        />
+          disableRowSelectionOnClick={true}  />
       </CardContent>
 
       <EditModal
