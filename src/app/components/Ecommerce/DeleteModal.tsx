@@ -24,7 +24,7 @@ const DeleteModal = ({ open, onClose, onDeleteConfirm,orderId }) => {
       >
       <div>
         <h2>Delete Confirmation</h2>
-        <p>Are you sure you want to delete this Order? <span style={{color:"#191c1a"}}>"${orderId}"</span></p>
+        <p>Are you sure you want to delete this item? <span style={{color:"#191c1a"}}>"${orderId}"</span></p>
         <Button onClick={onDeleteConfirm} variant="contained" color="primary" style={{margin:"15px 0 0 0"}}>Delete</Button>
         <Button onClick={onClose} variant="contained" color="warning" style={{margin:"15px 0 0 10px"}}>Cancel</Button>
       </div>
