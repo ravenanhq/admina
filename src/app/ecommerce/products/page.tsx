@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { Breadcrumbs, Grid, Typography } from "@mui/material";
-import ProductsListHeader from "@/app/components/Ecommerce/ProductsListHeader";
 import ProductsList from "@/app/components/Ecommerce/ProductList";
 
 
@@ -13,11 +12,6 @@ export default function Product() {
       </Breadcrumbs>
         <h2 style={{ paddingTop: 30 }}>Products</h2>
         <div style={{ paddingTop: 10 }}>
-          <Grid container spacing={3} style={{ paddingTop: 10 }}>
-              <Grid item xs={12}>
-                  <ProductsListHeader></ProductsListHeader>
-              </Grid>
-          </Grid>
           <Grid container spacing={3} style={{ paddingTop: 10 }}>
               <Grid item xs={12}>
                  <ProductsList></ProductsList>
