@@ -20,8 +20,6 @@ const ProductsList = () => {
   const [sortBy, setSortBy] = useState("");
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const [selectedCollection, setSelectedCollection] = useState("");
-  const [collectionOptions, setCollectionOptions] = useState([]);
   const [priceRange, setPriceRange] = useState([0, 1000]);
   const [noResultsFound, setNoResultsFound] = useState(false);
 
@@ -35,10 +33,6 @@ const ProductsList = () => {
     const mergedData = [...productsData, ...filteredLocalStorageData];
     setProducts(mergedData);
     setFilteredProducts(mergedData);
-    const uniqueCollections = Array.from(
-      new Set(mergedData.map((product) => product.collection))
-    );
-    setCollectionOptions(uniqueCollections);
   }, []);
 
   const getColorBasedOnRating = (rating) => {
@@ -54,11 +48,6 @@ const ProductsList = () => {
     setNoResultsFound(false); 
   };
 
-  const handleCollectionChange = (selectedCollection) => {
-    setSelectedCollection(selectedCollection);
-    setNoResultsFound(false); 
-  };
-
   const filterProducts = (product) => {
     const lowerCasedTerm = searchTerm.toLowerCase();
     const priceInRange =
@@ -67,8 +56,7 @@ const ProductsList = () => {
     return (
       (product.name.toLowerCase().includes(lowerCasedTerm) ||
         product.price.toString().includes(lowerCasedTerm)) &&
-      priceInRange &&
-      (selectedCollection === "" || product.collection === selectedCollection)
+      priceInRange 
     );
   };
 
@@ -99,7 +87,7 @@ const ProductsList = () => {
     // Check if there are no filtered products after applying filters
     const noResults = filteredProducts.filter(filterProducts).length === 0;
     setNoResultsFound(noResults);
-  }, [filteredProducts, searchTerm, priceRange, selectedCollection]);
+  }, [filteredProducts, searchTerm, priceRange]);
 
   return (
     <>
