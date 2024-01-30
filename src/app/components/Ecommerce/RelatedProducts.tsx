@@ -8,6 +8,7 @@ import {
   Divider,
   Button,
   CardHeader,
+  Grid,
 } from "@mui/material";
 import productsData from "../../../product-data.json";
 import { useTheme } from '@mui/material/styles';
@@ -18,7 +19,6 @@ const RelatedProducts = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isMobileOrTablet = useMediaQuery(theme.breakpoints.down('md'));
-
 
   useEffect(() => {
     setProducts(productsData);
@@ -35,43 +35,51 @@ const RelatedProducts = () => {
         }}
       />
       <Divider sx={{ margin: "0 auto", width: "100%" }} />
-      <Card
-        style={{ display: "flex", margin: "20px 0", border: "1px solid #ccc",overflow:isMobileOrTablet ? 'auto' : 'hidden' }}
-      >
+      <Grid container spacing={2}>
         {products.slice(0, 3).map((product) => (
-          <>
-            <CardMedia
-              component="img"
-              height="150"
-              image={product.image}
-              alt={product.name}
-              style={{ width: "30%" }}
-            />
-            <CardContent style={{ flex: 1, margin: isMobile ? "0" : "0 0 0 20px", }}>
-              <Typography variant="h6" component="div">
-                {product.name}
-              </Typography>
-              <Rating
-                name={`${product.name}-rating`}
-                value={product.rating}
-                precision={0.5}
-                readOnly
-                style={{ color: product.rating >= 1 ? "#FFD700" : "#C0C0C0" }}
+          <Grid item key={product.id} xs={12} sm={6} md={4} lg={4} xl={4}>
+            <Card
+              style={{
+                display: "flex",
+                flexDirection: isMobileOrTablet ? 'column' : 'row',
+                margin: "20px 0",
+                border: "1px solid #ccc",
+                overflow: isMobileOrTablet ? 'auto' : 'hidden',
+              }}
+            >
+              <CardMedia
+                component="img"
+                height="150"
+                image={product.image}
+                alt={product.name}
+                style={{ width: isMobileOrTablet ? "100%" : "auto", objectFit:isMobileOrTablet ? 'contain' : 'cover'}}
               />
-              <Typography color="textSecondary">{`$${product.price}`}</Typography>
-              <Button
-                variant="contained"
-                color="warning"
-                type="submit"
-                size="small"
-                 sx={{ padding: isMobile ? "8px" : "5px" }}
-              >
-                Add to Cart
-              </Button>
-            </CardContent>
-          </>
+              <CardContent style={{ flex: 1,  textAlign:"center"}}>
+                <Typography variant="h6" component="div">
+                  {product.name}
+                </Typography>
+                <Rating
+                  name={`${product.name}-rating`}
+                  value={product.rating}
+                  precision={0.5}
+                  readOnly
+                  style={{ color: product.rating >= 1 ? "#FFD700" : "#C0C0C0" }}
+                />
+                <Typography color="textSecondary">{`$${product.price}`}</Typography>
+                <Button
+                  variant="contained"
+                  color="warning"
+                  type="submit"
+                  size="small"
+                  sx={{ padding: isMobile ? "8px" : "5px" }}
+                >
+                  Add to Cart
+                </Button>
+              </CardContent>
+            </Card>
+          </Grid>
         ))}
-      </Card>
+      </Grid>
     </>
   );
 };

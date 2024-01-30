@@ -7,7 +7,7 @@ export default function order() {
     return (
       <>
        <Breadcrumbs aria-label="breadcrumb">
-        <Typography color="textPrimary"> ecommerce / Orders </Typography>
+        <Typography color="textPrimary"> Ecommerce / Orders </Typography>
       </Breadcrumbs>
         <h2 style={{ paddingTop: 30 }}>Orders</h2>
         <div style={{ paddingTop: 10 }}>

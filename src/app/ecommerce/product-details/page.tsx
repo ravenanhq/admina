@@ -9,7 +9,7 @@ export default function ProductDetail() {
     return (
       <>
       <Breadcrumbs aria-label="breadcrumb">
-        <Typography color="textPrimary"> ecommerce / Product Details</Typography>
+        <Typography color="textPrimary"> Ecommerce / Product Details</Typography>
       </Breadcrumbs>
         <h2 style={{ paddingTop: 30 }}>Product Details</h2>
         <div style={{ paddingTop: 10 }}>

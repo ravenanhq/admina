@@ -26,12 +26,19 @@ const ProductDetails = () => {
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
 
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobileOrTablet = useMediaQuery(theme.breakpoints.down('md'));
+
   const getColorBasedOnRating = (rating) => {
     return rating >= 4 ? '#FFD700' : '#C0C0C0';
   };
 
   const handleQuantityChange = (event) => {
-    setQuantity(event.target.value);
+    const value = event.target.value;
+    if (value === '' || (value > 0 && Number.isInteger(parseFloat(value)))) {
+      setQuantity(value);
+    }
   };
 
   const handleSizeChange = (event) => {
@@ -41,10 +48,6 @@ const ProductDetails = () => {
   const handleColorChange = (event) => {
     setSelectedColor(event.target.value);
   };
-
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const isMobileOrTablet = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <>
@@ -68,22 +71,29 @@ const ProductDetails = () => {
             style={{ color: getColorBasedOnRating(4) }}
           />
           <Typography color="textSecondary">$39.99</Typography>
+          <Typography color="#28a745" >In Stock</Typography>
           <Typography variant="body1" color="textPrimary">
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
             nisi ut aliquip ex ea commodo consequat.
           </Typography>
+
           <Divider sx={{ margin: "0 auto", marginY: 2, width: "100%" }} />
-          <Box display="flex" flexDirection="row">
+          <Box display={isMobileOrTablet ? "block" : "flex"} flexDirection={isMobileOrTablet ? "column" : "row"}>
             <TextField
               label="Quantity"
               type="number"
               value={quantity}
               onChange={handleQuantityChange}
-              style={{ marginRight: "10px", width: "40%", height: "20px" }}
+              inputProps={{ min: "1" }} 
+              style={{
+                marginRight: "10px",
+                width: isMobileOrTablet ? "100%" : "40%",
+                height: isMobileOrTablet ? "" : "20px"
+              }}
             />
             <FormControl
               component="fieldset"
-              style={{ margin: "0 22px 10px 22px" }}
+              style={{ margin: isMobileOrTablet ? "15px 22px 10px 0px" : "0 22px 10px 22px", width: isMobileOrTablet ? "100%" : "" }}
             >
               <FormLabel component="legend">Select Size</FormLabel>
               <RadioGroup
@@ -123,7 +133,7 @@ const ProductDetails = () => {
                 name="color"
                 value={selectedColor}
                 onChange={handleColorChange}
-                style={{ flexDirection: isMobileOrTablet ? "column" : "row" }}
+                style={{ width: isMobileOrTablet ? "100%" : "", flexDirection: "row" }}
               >
                 <FormControlLabel
                   value="#0000FF"
