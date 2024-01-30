@@ -58,7 +58,7 @@ const DataTable = () => {
 
   return (
     <Card style={{ border: '0px', boxShadow: "none", padding: 0 }}>
-      <Grid container spacing={2} alignItems="center">
+      <Grid container spacing={2} alignItems="center" className="importExportButton">
         <Grid item xs={12} sm={6} style={{ textAlign: "left" }}>
           <ImportElement onImport={handleImport} />
         </Grid>
