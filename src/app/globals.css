@@ -21,3 +21,9 @@ body {
   margin-bottom: 0.7rem;
   font-size: 16px;
 }
+
+@media (max-width: 400px) {
+  .importExportButton .MuiButtonBase-root{
+    text-transform: capitalize;
+  }
+}

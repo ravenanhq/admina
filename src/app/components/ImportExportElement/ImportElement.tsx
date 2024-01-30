@@ -6,29 +6,34 @@ const ImportElement = ({ onImport }) => {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-
+  
     if (file) {
       const reader = new FileReader();
-
+  
       reader.onload = (e) => {
         const result = e.target.result;
-
+  
         Papa.parse(result, {
           header: true,
           dynamicTyping: true,
           skipEmptyLines: true,
           complete: (parsedData) => {
-            onImport(parsedData.data);
+            const dataWithIds = parsedData.data.map((row, index) => ({
+              sno: index + 1,
+              ...row,
+            }));
+            onImport(dataWithIds);
           },
           error: (error) => {
             console.error("Error parsing CSV:", error.message);
           },
         });
       };
-
+  
       reader.readAsText(file);
     }
   };
+  
 
   return (
     <label>
