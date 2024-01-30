@@ -12,11 +12,8 @@ export default function PoductList() {
       </Breadcrumbs>
       <Grid container justifyContent="space-between">
         <Grid item >
-          <Typography variant="h5" style={{ paddingTop: 30 }}>
-            Product List
-          </Typography>
+          <h2 style={{ paddingTop: 30 }}>Product List</h2>
         </Grid>
-       
       </Grid>
       <div style={{ paddingTop: 10 }}>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
@@ -25,7 +22,6 @@ export default function PoductList() {
           </Grid>
         </Grid>
       </div>
-    
     </>
   );
 }
