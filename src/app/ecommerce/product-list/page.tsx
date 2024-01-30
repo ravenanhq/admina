@@ -8,7 +8,7 @@ export default function PoductList() {
   return (
     <>
       <Breadcrumbs aria-label="breadcrumb">
-        <Typography color="textPrimary"> ecommerce / productList </Typography>
+        <Typography color="textPrimary"> Ecommerce / Product List </Typography>
       </Breadcrumbs>
       <Grid container justifyContent="space-between">
         <Grid item >

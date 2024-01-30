@@ -7,7 +7,7 @@ export default function ProductDetail() {
     return (
       <>
        <Breadcrumbs aria-label="breadcrumb">
-        <Typography color="textPrimary"> ecommerce / Add New Product</Typography>
+        <Typography color="textPrimary"> Ecommerce / Add New Product</Typography>
       </Breadcrumbs>
         <h2 style={{ paddingTop: 30 }}>Add New Product</h2>
         <div style={{ paddingTop: 10 }}>
