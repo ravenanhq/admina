@@ -21,3 +21,25 @@ body {
   margin-bottom: 0.7rem;
   font-size: 16px;
 }
+
+@media (max-width: 400px) {
+  .importExportButton .MuiButtonBase-root {
+    text-transform: capitalize;
+  }
+}
+
+@media (max-width: 450px) {
+  .tabScroller .MuiTabs-flexContainer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .tabScroller .MuiTabs-indicator {
+    background-color: transparent;
+  }
+
+  .tabScroller .activeTab {
+    border: 1px solid #1976d2;
+  }
+}

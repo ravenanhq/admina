@@ -1,0 +1,6 @@
+[
+    { "sno": 1, "name": "John Doe", "firstName": "Jone","email": "john@example.com", "role": "Admin" },
+    { "sno": 2, "name": "Jane Doe", "firstName": "Jone","email": "jane@example.com", "role": "User" },
+    { "sno": 3, "name": "Bob Smith","firstName": "Jone", "email": "bob@example.com", "role": "Moderator" },
+    { "sno": 4, "name": "Alice Johnson","firstName": "Jone", "email": "alice@example.com", "role": "User" }
+]
