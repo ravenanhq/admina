@@ -19,6 +19,8 @@ import {
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const ProductDetails = () => {
 
@@ -29,6 +31,7 @@ const ProductDetails = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const isMobileOrTablet = useMediaQuery(theme.breakpoints.down('md'));
+  const [isInWishlist, setIsInWishlist] = useState(false);
 
   const getColorBasedOnRating = (rating) => {
     return rating >= 4 ? '#FFD700' : '#C0C0C0';
@@ -47,6 +50,10 @@ const ProductDetails = () => {
 
   const handleColorChange = (event) => {
     setSelectedColor(event.target.value);
+  };
+
+  const handleWishlistClick = () => {
+    setIsInWishlist(!isInWishlist);
   };
 
   return (
@@ -84,7 +91,7 @@ const ProductDetails = () => {
               type="number"
               value={quantity}
               onChange={handleQuantityChange}
-              inputProps={{ min: "1" }} 
+              inputProps={{ min: "1" }}
               style={{
                 marginRight: "10px",
                 width: isMobileOrTablet ? "100%" : "40%",
@@ -163,11 +170,11 @@ const ProductDetails = () => {
             </FormControl>
           </Box>
           <Box>
-            <Grid container spacing={2} sx={{ display: "flex" }}>
+            <Grid container spacing={2} sx={{ display: "flex" }} className="productBtn">
               <Grid
                 item
-                xs={6}
-                sm={12}
+                xs={12}
+                sm={6}
                 style={{
                   paddingLeft: "17px",
                   marginTop: "8px",
@@ -200,6 +207,22 @@ const ProductDetails = () => {
                   Add to Cart
                 </Button>
               </Grid>
+              <Grid item xs={6} sm={3}
+                style={{
+                  marginTop:"15px",
+                  paddingTop: "14px",
+                 
+                }} className="productWishlistBtn">{isInWishlist ? (
+                  <FavoriteIcon
+                    onClick={handleWishlistClick}
+                    style={{ color: '#e53e29' }} 
+                  />
+                ) : (
+                  <FavoriteBorderIcon
+                    onClick={handleWishlistClick}
+                    style={{ color: '#333333' }} 
+                  />
+                )}</Grid>
             </Grid>
           </Box>
         </CardContent>

@@ -126,6 +126,7 @@ const Header: React.FC = () => {
         { label: "Add New Product", route: "/ecommerce/add-new-product" },
         { label: "Orders", route: "/ecommerce/order" },
         { label: "Product List", route: "/ecommerce/product-list" },
+        { label: "Wishlist", route: "/ecommerce/wishlist" }
       ],
     },
     { label: "Import/Export", route: "/import-export-element" }
@@ -253,6 +254,7 @@ const Header: React.FC = () => {
                             {subMenuItem.label === "Add New Product" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
                             {subMenuItem.label === "Orders" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
                             {subMenuItem.label === "Product List" ? <KeyboardArrowRightIcon style={{fontSize:"14px"}} /> : ""}
+                            {subMenuItem.label === "Wishlist" ? <KeyboardArrowRightIcon style={{fontSize:"14px"}} /> : ""}
                           </ListItemIcon>
                           <ListItemText primary={subMenuItem.label}  />
                         </ListItemButton>
