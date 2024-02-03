@@ -37,6 +37,7 @@ import Collapse from "@mui/material/Collapse";
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import  LoginIcon from "@mui/icons-material/Login";
 import ImportExportIcon from '@mui/icons-material/ImportExport';
+import { usePathname } from "next/navigation";
 
 
 interface AppBarProps extends MuiAppBarProps {
@@ -70,6 +71,11 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const Header: React.FC = () => {
+  const pathName = usePathname();
+  const showHeader = ![
+    "/signin"
+  ].includes(pathName);
+
   const { handleDrawerOpen, open } = useNavbarContext();
   const { handleDrawerClose } = useNavbarContext();
   const handleSignOut = () => {
@@ -269,6 +275,8 @@ const Header: React.FC = () => {
   );
   const isMobile = useMediaQuery("(max-width:1023px)");
   return (
+    <>
+    {showHeader && (
     <AppBar
       position="fixed"
       open={open}
@@ -325,7 +333,8 @@ const Header: React.FC = () => {
           </SwipeableDrawer>
         ) : null}
       </Toolbar>
-    </AppBar>
+    </AppBar>)}
+    </>
   );
 };
 

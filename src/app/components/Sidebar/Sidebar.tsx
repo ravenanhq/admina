@@ -29,6 +29,8 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import  LoginIcon from "@mui/icons-material/Login";
 import VerticalAlignBottomIcon from '@mui/icons-material/VerticalAlignBottom';
 import ImportExportIcon from '@mui/icons-material/ImportExport';
+import { usePathname } from "next/navigation";
+
 
 const drawerWidth = 240;
 
@@ -81,6 +83,11 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const Sidebar: React.FC = () => {
+  const pathName = usePathname();
+  const showHeader = ![
+    "/signin"
+  ].includes(pathName);
+
   const { handleDrawerOpen, handleDrawerClose, open } = useNavbarContext();
   const menuItems = [
     { label: "Dashboard", route: "/admin" },
@@ -135,7 +142,7 @@ const Sidebar: React.FC = () => {
 
   return (
     <>
-      {!isMobile ? (
+      {!isMobile  && showHeader  ? (
         <Drawer
           variant="permanent"
           open={open || hover}

@@ -10,6 +10,7 @@ import { NavbarProvider } from "@/contexts/NavbarContext";
 import Head from "next/head";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
+import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathName = usePathname();
+  const showHeader = ![
+    "/signin"
+  ].includes(pathName);
   const theme = useTheme();
   const isMobile = useMediaQuery("(max-width:1023px)");
 
@@ -37,13 +42,13 @@ export default function RootLayout({
             <Box component="main"
             sx={{
               flexGrow: 1,
-              p: 3,
-              marginTop: "30px",
+              p: !showHeader ? 0 : 3,
+              marginTop: !showHeader ? '0' : "30px",
             }}>
             <CssBaseline />
             <Header />
             <Sidebar />
-              <div style={{ paddingTop: theme.spacing(2) }}>
+            <div style={{ paddingTop: !showHeader ? '0' : theme.spacing(2) }}>
                 {" "}
                 {/* Use theme spacing for consistent spacing */}
                 {children}
@@ -58,11 +63,11 @@ export default function RootLayout({
                 component="main"
                 sx={{
                   flexGrow: 1,
-                  p: 3,
-                  marginTop: "30px",
+                  p: !showHeader ? 0 : 3,
+                  marginTop: !showHeader ?  '0' : "30px" ,
                 }}
               >
-                <div style={{ paddingTop: theme.spacing(2) }}>
+                <div style={{ paddingTop: !showHeader ? '0' :  theme.spacing(2) }}>
                   {" "}
                   {/* Use theme spacing for consistent spacing */}
                   {children}
