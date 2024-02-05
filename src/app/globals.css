@@ -39,6 +39,18 @@ body {
   }
 }
 
+@media (max-width: 568px) {
+  .wishList .MuiTableCell-root {
+    padding:12px
+  }
+}
+
+@media (max-width: 540px) {
+  .wishList .MuiTableCell-root {
+    padding:10px
+  }
+}
+
 @media (max-width: 400px) {
   .importExportButton .MuiButtonBase-root {
     text-transform: capitalize;
@@ -78,6 +90,18 @@ body {
 
   .wishList .wishlishBtn .MuiButtonBase-root {
     text-transform: capitalize;
+    min-width: 100px;
   }
+}
 
+@media (max-width: 320px){
+.wishList .MuiTableCell-root {
+    border-bottom: transparent;
+    padding: 2px;
+}
+.wishList .wishlishBtn .MuiButtonBase-root {
+  text-transform: capitalize;
+  min-width: 146px;
+  margin-top: 10px;
+}
 }
