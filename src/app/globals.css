@@ -22,9 +22,17 @@ body {
   font-size: 16px;
 }
 
+.iconTab .MuiTabs-indicator{
+  background-color: transparent;
+}
+
 @media (max-width: 400px) {
   .importExportButton .MuiButtonBase-root {
     text-transform: capitalize;
+  }
+  
+  .iconTab .MuiTab-labelIcon{
+    padding: 12px;
   }
 }
 

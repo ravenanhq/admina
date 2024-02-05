@@ -1,5 +1,9 @@
 import React from 'react';
-import { Box, Button, Card, CardContent, CardHeader } from '@mui/material';
+import { Card, CardContent, CardHeader } from '@mui/material';
+import OutlineButtonElement from './OutlineButtonElement';
+import BasicButtonElement from './BasicButtonElement';
+import ButtonWithIcon from './ButtonWithIcon';
+import GroupButton from './GroupButton';
 
 const ButtonsElements = () => {
     return (
@@ -10,26 +14,10 @@ const ButtonsElements = () => {
                 titleTypographyProps={{ fontSize: '16px' }}
             />
             <CardContent>
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                    <Button variant="contained" color="primary">
-                        Primary Button
-                    </Button>
-                    <Button variant="contained" color="secondary">
-                        Secondary Button
-                    </Button>
-                    <Button variant="contained" color="success">
-                        Success
-                    </Button>
-                    <Button variant="contained" color="warning">
-                        Warning
-                    </Button>
-                    <Button variant="contained" color="info">
-                        Info
-                    </Button>
-                    <Button variant="contained" color="primary" disabled>
-                        Disabled
-                    </Button>
-                </Box>
+                <BasicButtonElement></BasicButtonElement>
+                <OutlineButtonElement></OutlineButtonElement>
+                <ButtonWithIcon></ButtonWithIcon>
+                <GroupButton></GroupButton>
             </CardContent>
         </Card>
     );
