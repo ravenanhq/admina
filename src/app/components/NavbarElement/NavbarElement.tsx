@@ -1,235 +1,335 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
-	AppBar,
-	Toolbar,
-	Typography,
-	Button,
-	IconButton,
-	CardContent,
-	Card,
-	CardHeader,
-	Drawer,
-	List,
-	ListItem,
-	ListItemText,
-	Box,
-	TextField,
-	Grid,
-	InputAdornment,
-} from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  CardContent,
+  Card,
+  CardHeader,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  Box,
+  TextField,
+  Grid,
+  InputAdornment,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import PersonIcon from '@mui/icons-material/Person';
-import LockIcon from '@mui/icons-material/Lock';
+import PersonIcon from "@mui/icons-material/Person";
+import LockIcon from "@mui/icons-material/Lock";
 
 const Navbar = () => {
-	const [open, setOpen] = useState(false);
-	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const [isMenuOpenWithLogin, setIsMenuOpenWithLogin] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpenWithLogin, setIsMenuOpenWithLogin] = useState(false);
 
-	const toggleDrawer = () => setOpen(!open);
-	const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-	const toggleMenuWithlogin = () => setIsMenuOpenWithLogin(!isMenuOpenWithLogin);
+  const toggleDrawer = () => setOpen(!open);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleMenuWithlogin = () =>
+    setIsMenuOpenWithLogin(!isMenuOpenWithLogin);
 
-	return (
-		<Card variant="outlined">
-			<CardHeader
-				title="Navbar"
-				sx={{ bgcolor: '#008744', color: 'white' }}
-				titleTypographyProps={{ fontSize: '16px' }}
-			/>
-			<CardContent>
-				<AppBar position="static" style={{ marginBottom: '20px' }}>
-					<Toolbar>
-						<Typography variant="h6" component="div">
-							Basic Navbar
-						</Typography>
-						<Box >
-							<Button color="inherit">Home</Button>
-							<Button color="inherit">About</Button>
-							<Button color="inherit">Services</Button>
-							<Button color="inherit">Contact</Button>
-						</Box>
-					</Toolbar>
-				</AppBar>
+  return (
+    <Card variant="outlined">
+      <CardHeader
+        title="Navbar"
+        sx={{ bgcolor: "#008744", color: "white" }}
+        titleTypographyProps={{ fontSize: "16px" }}
+      />
+      <CardContent>
+        <AppBar position="static" style={{ marginBottom: "20px" }}>
+          <Toolbar>
+            <Typography variant="h6" component="div">
+              Basic Navbar
+            </Typography>
+            <Box>
+              <Button color="inherit">Home</Button>
+              <Button color="inherit">About</Button>
+              <Button color="inherit">Services</Button>
+              <Button color="inherit">Contact</Button>
+            </Box>
+          </Toolbar>
+        </AppBar>
 
-				<AppBar position="static" style={{ marginBottom: '20px' }}>
-					<Toolbar>
-						<IconButton edge="start" color="inherit" onClick={toggleDrawer}>
-							<MenuIcon />
-						</IconButton>
-						<Typography variant="h6" component="div">
-							Drawer Navbar
-						</Typography>
-					</Toolbar>
-				</AppBar>
-				<Drawer anchor="left" open={open} onClose={toggleDrawer}>
-					<List>
-						{['Home', 'About', 'Services', 'Contact'].map((text) => (
-							<ListItem  key={text} onClick={toggleDrawer}>
-								<ListItemText primary={text} />
-							</ListItem>
-						))}
-					</List>
-				</Drawer>
+        <AppBar position="static" style={{ marginBottom: "20px" }}>
+          <Toolbar>
+            <IconButton edge="start" color="inherit" onClick={toggleDrawer}>
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" component="div">
+              Drawer Navbar
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Drawer anchor="left" open={open} onClose={toggleDrawer}>
+          <List>
+            {["Home", "About", "Services", "Contact"].map((text) => (
+              <ListItem key={text} onClick={toggleDrawer}>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+        </Drawer>
 
-				<AppBar position="static" style={{ marginBottom: '20px', background: "#6c757d" }}>
-					<Toolbar>
-						<Grid container rowSpacing={1} spacing={5} justifyContent="space-between">
-							<Grid item xs={8} sm={8} md={4} lg={8} style={{ display: 'flex', alignItems: 'center' }}>
-								<Typography variant="h6" component="div">
-									Navbar
-								</Typography>
-								<Box sx={{ marginLeft: '10px', display: { xs: 'none', sm: 'block' }}}>
-									<Button color="inherit">Home</Button>
-									<Button color="inherit">About</Button>
-									<Button color="inherit">Services</Button>
-									<Button color="inherit">Contact</Button>
-								</Box>
-							</Grid>
+        <AppBar
+          position="static"
+          style={{ marginBottom: "20px", background: "#6c757d" }}
+        >
+          <Toolbar>
+            <Grid
+              container
+              rowSpacing={1}
+              spacing={5}
+              justifyContent="space-between"
+            >
+              <Grid
+                item
+                xs={8}
+                sm={8}
+                md={4}
+                lg={8}
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                <Typography variant="h6" component="div">
+                  Navbar
+                </Typography>
+                <Box
+                  sx={{
+                    marginLeft: "10px",
+                    display: { xs: "none", sm: "block" },
+                  }}
+                >
+                  <Button color="inherit">Home</Button>
+                  <Button color="inherit">About</Button>
+                  <Button color="inherit">Services</Button>
+                  <Button color="inherit">Contact</Button>
+                </Box>
+              </Grid>
 
-							<Grid item xs={4} sm={4} md={4} lg={3} style={{ display: 'flex', justifyContent: 'flex-end', padding: "0" }}>
-								<IconButton
-									color="inherit"
-									aria-label="menu"
-									onClick={toggleMenu}
-									sx={{ display: { sm: 'none' } }} 
-								>
-									<MenuIcon />
-								</IconButton>
-								<TextField
-									placeholder="Search"
-									variant="outlined"
-									InputProps={{
-										endAdornment: (
-											<InputAdornment position="end">
-												<IconButton edge="end" sx={{ color: "#fff" }}>
-													<SearchIcon />
-												</IconButton>
-											</InputAdornment>
-										),
-									}}
-									sx={{
-										height: '40px',
-										padding: '8px',
-										width: 'auto',
-										color: "#fff",
-										'& input': { padding: '8px', color: "#fff" },
-										'& fieldset': { borderColor: '#fff', borderRadius: "20px" },
-										'& fieldset:hover': {
-											borderColor: '#fff',
-										},
-										display: { xs: 'none', sm: 'block' }
-									}}
-								/>
-							</Grid>
-						</Grid>
-					</Toolbar>
-					<Drawer
-						anchor="bottom"
-						open={isMenuOpen}
-						onClose={toggleMenu}
-					>
-						<div style={{ width: "100vw", maxWidth: "100%" ,background: "#6c757d",color:"#fff",paddingBottom:"20px"}}>
-							{['Home', 'About', 'Services', 'Contact'].map((text, index) => (
-								<Button color="inherit" fullWidth key={text} style={{paddingLeft:"15px",justifyContent:"left"}}>{text}</Button>
-							))}
-							<TextField
-									placeholder="Search"
-									variant="outlined"
-									InputProps={{
-										endAdornment: (
-											<InputAdornment position="end">
-												<IconButton edge="end" sx={{ color: "#fff" }}>
-													<SearchIcon />
-												</IconButton>
-											</InputAdornment>
-										),
-									}}
-									sx={{
-										height: '40px',
-										padding: '8px',
-										width: 'auto',
-										color: "#fff",
-										'& input': { padding: '8px', color: "#fff" },
-										'& fieldset': { borderColor: '#fff', borderRadius: "20px" },
-										'& fieldset:hover': {
-											borderColor: '#fff',
-										},
-									}}
-								/>
-						</div>
-					</Drawer>
-				</AppBar>
+              <Grid
+                item
+                xs={4}
+                sm={4}
+                md={4}
+                lg={3}
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  padding: "0",
+                }}
+              >
+                <IconButton
+                  color="inherit"
+                  aria-label="menu"
+                  onClick={toggleMenu}
+                  sx={{ display: { sm: "none" } }}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <TextField
+                  placeholder="Search"
+                  variant="outlined"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton edge="end" sx={{ color: "#fff" }}>
+                          <SearchIcon />
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
+                  sx={{
+                    height: "40px",
+                    padding: "8px",
+                    width: "auto",
+                    color: "#fff",
+                    "& input": { padding: "8px", color: "#fff" },
+                    "& fieldset": { borderColor: "#fff", borderRadius: "20px" },
+                    "& fieldset:hover": {
+                      borderColor: "#fff",
+                    },
+                    display: { xs: "none", sm: "block" },
+                  }}
+                />
+              </Grid>
+            </Grid>
+          </Toolbar>
+          <Drawer anchor="bottom" open={isMenuOpen} onClose={toggleMenu}>
+            <div
+              style={{
+                width: "100vw",
+                maxWidth: "100%",
+                background: "#6c757d",
+                color: "#fff",
+                paddingBottom: "20px",
+              }}
+            >
+              {["Home", "About", "Services", "Contact"].map((text, index) => (
+                <Button
+                  color="inherit"
+                  fullWidth
+                  key={text}
+                  style={{ paddingLeft: "15px", justifyContent: "left" }}
+                >
+                  {text}
+                </Button>
+              ))}
+              <TextField
+                placeholder="Search"
+                variant="outlined"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton edge="end" sx={{ color: "#fff" }}>
+                        <SearchIcon />
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+                sx={{
+                  height: "40px",
+                  padding: "8px",
+                  width: "auto",
+                  color: "#fff",
+                  "& input": { padding: "8px", color: "#fff" },
+                  "& fieldset": { borderColor: "#fff", borderRadius: "20px" },
+                  "& fieldset:hover": {
+                    borderColor: "#fff",
+                  },
+                }}
+              />
+            </div>
+          </Drawer>
+        </AppBar>
 
-				<AppBar position="static" style={{ marginBottom: '20px', background: "#fd3550" }}>
-					<Toolbar>
-						<Grid container rowSpacing={1} spacing={5} justifyContent="space-between">
-							<Grid item xs={8} sm={8} md={4} lg={8} style={{ display: 'flex', alignItems: 'center' }}>
-								<Typography variant="h6" component="div">
-									Navbar
-								</Typography>
-								<Box sx={{ marginLeft: '10px', display: { xs: 'none', sm: 'block' }}}>
-									<Button color="inherit">Home</Button>
-									<Button color="inherit">About</Button>
-									<Button color="inherit">Services</Button>
-									<Button color="inherit">Contact</Button>
-								</Box>
-							</Grid>
+        <AppBar
+          position="static"
+          style={{ marginBottom: "20px", background: "#fd3550" }}
+        >
+          <Toolbar>
+            <Grid
+              container
+              rowSpacing={1}
+              spacing={5}
+              justifyContent="space-between"
+            >
+              <Grid
+                item
+                xs={8}
+                sm={8}
+                md={4}
+                lg={8}
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                <Typography variant="h6" component="div">
+                  Navbar
+                </Typography>
+                <Box
+                  sx={{
+                    marginLeft: "10px",
+                    display: { xs: "none", sm: "block" },
+                  }}
+                >
+                  <Button color="inherit">Home</Button>
+                  <Button color="inherit">About</Button>
+                  <Button color="inherit">Services</Button>
+                  <Button color="inherit">Contact</Button>
+                </Box>
+              </Grid>
 
-							<Grid item xs={4} sm={4} md={4} lg={3} style={{ display: 'flex', justifyContent: 'flex-end', margin: "10px 0 0 0" }}>
-								<IconButton
-									color="inherit"
-									aria-label="menu"
-									onClick={toggleMenuWithlogin}
-									sx={{ display: { sm: 'none' }, }} 
-								>
-									<MenuIcon />
-								</IconButton>
-								<Button variant="contained"
-									type="submit"
-									size="small"
-									startIcon={<LockIcon />}
-									sx={{
-										padding: "7px 30px",
-										marginBottom: "10px",
-										background: "#fff",
-										color:"#000",
-										display: { xs: 'none', sm: 'block' }
-									}}>
-									Login
-								</Button>     
-								 <Button variant="contained"
-									type="submit"
-									size="small"
-									startIcon={<PersonIcon />}
-									sx={{
-										padding: "7px 30px",
-										marginBottom: "10px",
-										background: "#008cff",
-										marginLeft: "15px",
-										display: { xs: 'none', sm: 'block' }
-									}}>
-									Register
-								</Button>
-							</Grid>
-						</Grid>
-					</Toolbar>
-					<Drawer
-						anchor="bottom"
-						open={isMenuOpenWithLogin}
-						onClose={toggleMenuWithlogin}
-					>
-						<div style={{ width: "100vw", maxWidth: "100%" ,background: "#fd3550",color:"#fff",paddingBottom:"10px"}}>
-							{['Home', 'About', 'Services', 'Contact', 'Login', 'Register'].map((text) => (
-								<Button color="inherit" fullWidth key={text} style={{justifyContent:"left",paddingLeft:"15px"}}>{text}</Button>
-							))}
-						</div>
-					</Drawer>
-				</AppBar>
-			</CardContent>
-		</Card>
-	);
+              <Grid
+                item
+                xs={4}
+                sm={4}
+                md={4}
+                lg={3}
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  margin: "10px 0 0 0",
+                }}
+              >
+                <IconButton
+                  color="inherit"
+                  aria-label="menu"
+                  onClick={toggleMenuWithlogin}
+                  sx={{ display: { sm: "none" } }}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Button
+                  variant="contained"
+                  type="submit"
+                  size="small"
+                  startIcon={<LockIcon />}
+                  sx={{
+                    padding: "7px 30px",
+                    marginBottom: "10px",
+                    background: "#fff",
+                    color: "#000",
+                    display: { xs: "none", sm: "block" },
+                  }}
+                >
+                  Login
+                </Button>
+                <Button
+                  variant="contained"
+                  type="submit"
+                  size="small"
+                  startIcon={<PersonIcon />}
+                  sx={{
+                    padding: "7px 30px",
+                    marginBottom: "10px",
+                    background: "#008cff",
+                    marginLeft: "15px",
+                    display: { xs: "none", sm: "block" },
+                  }}
+                >
+                  Register
+                </Button>
+              </Grid>
+            </Grid>
+          </Toolbar>
+          <Drawer
+            anchor="bottom"
+            open={isMenuOpenWithLogin}
+            onClose={toggleMenuWithlogin}
+          >
+            <div
+              style={{
+                width: "100vw",
+                maxWidth: "100%",
+                background: "#fd3550",
+                color: "#fff",
+                paddingBottom: "10px",
+              }}
+            >
+              {[
+                "Home",
+                "About",
+                "Services",
+                "Contact",
+                "Login",
+                "Register",
+              ].map((text) => (
+                <Button
+                  color="inherit"
+                  fullWidth
+                  key={text}
+                  style={{ justifyContent: "left", paddingLeft: "15px" }}
+                >
+                  {text}
+                </Button>
+              ))}
+            </div>
+          </Drawer>
+        </AppBar>
+      </CardContent>
+    </Card>
+  );
 };
 
 export default Navbar;

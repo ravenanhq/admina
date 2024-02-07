@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-} from "@mui/material";
+import { Card, CardContent, CardHeader } from "@mui/material";
 import BasicAlert from "./BasicAlert";
 import AlertWithClose from "./AlertWithCloseButton";
 
@@ -16,9 +12,9 @@ const AlertElements = () => {
         titleTypographyProps={{ fontSize: "16px" }}
       />
       <CardContent>
-      <BasicAlert></BasicAlert>
-      <AlertWithClose></AlertWithClose>
-    </CardContent>
+        <BasicAlert></BasicAlert>
+        <AlertWithClose></AlertWithClose>
+      </CardContent>
     </Card>
   );
 };
