@@ -85,7 +85,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 const Sidebar: React.FC = () => {
   const pathName = usePathname();
   const showHeader = ![
-    "/signin"
+    "/login"
   ].includes(pathName);
 
   const { handleDrawerOpen, handleDrawerClose, open } = useNavbarContext();

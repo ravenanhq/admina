@@ -1,44 +1,33 @@
-// Import necessary types and the CredentialsProvider from next-auth/providers/credentials
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-// Define the authentication options using NextAuthOptions
 export const authOptions: NextAuthOptions = {
-  // Configure session strategy
-  session: {
-    strategy: "jwt",
-  },
-
-  // Define authentication providers
   providers: [
     CredentialsProvider({
-      type: "credentials", // Set the type to "credentials"
-      credentials: {}, // You can define additional options for credentials
+      type: "credentials",
+      credentials: {},
       async authorize(credentials) {
-        // Extract username and password from provided credentials
         const { username, password } = credentials as {
           username: string;
           password: string;
         };
-
-        // Example: Check if the username is 'demo' and password exists
-        if (username === 'demo' && password === 'demo') {
-          console.log('if');
-          // Return true if authentication is successful
+        if (username === "demo" && password === "demo") {
+          console.log("if");
           return Promise.resolve(true);
         } else {
-          console.log('else');
-          // Return false if authentication fails
+          console.log("else");
           return Promise.resolve(false);
         }
       },
     }),
   ],
-
-  // Define custom pages, in this case, the sign-in page
-  pages: {
-    signIn: "/signin",
+  session: {
+    strategy: "jwt",
   },
+  pages: {
+    signIn: "/login",
+  },
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async jwt({ token, user }) {
       if (user) {

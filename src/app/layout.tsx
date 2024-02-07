@@ -1,81 +1,33 @@
-"use client";
-import React from "react";
+import * as React from "react";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Header/Header";
-import Sidebar from "./components/Sidebar/Sidebar";
-import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import { NavbarProvider } from "@/contexts/NavbarContext";
-import Head from "next/head";
-import { useTheme } from "@mui/material/styles";
-import { useMediaQuery } from "@mui/material";
-import { usePathname } from "next/navigation";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/authOptions";
+
+import Provider from "./components/Auth/Auth";
+import Dashboard from "./components/Dashboard/Dashboard";
+
+export const metadata: Metadata = {
+  title: "Admina",
+  description: "MVP Theme",
+};
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const pathName = usePathname();
-  const showHeader = ![
-    "/signin"
-  ].includes(pathName);
-  const theme = useTheme();
-  const isMobile = useMediaQuery("(max-width:1023px)");
+  const session = (await getServerSession(authOptions))!;
 
   return (
     <html>
-      <Head>
-        <title>Material UI Dashboard</title>
-        <meta name="description" content="Description of my page" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
-      </Head>
       <body suppressHydrationWarning={true} className={inter.className}>
-        <NavbarProvider>
-          {isMobile ? (
-            <Box component="main"
-            sx={{
-              flexGrow: 1,
-              p: !showHeader ? 0 : 3,
-              marginTop: !showHeader ? '0' : "30px",
-            }}>
-            <CssBaseline />
-            <Header />
-            <Sidebar />
-            <div style={{ paddingTop: !showHeader ? '0' : theme.spacing(2) }}>
-                {" "}
-                {/* Use theme spacing for consistent spacing */}
-                {children}
-              </div>
-          </Box>
-          ) : (
-            <Box sx={{ display: "flex" }}>
-              <CssBaseline />
-              <Header />
-              <Sidebar />
-              <Box
-                component="main"
-                sx={{
-                  flexGrow: 1,
-                  p: !showHeader ? 0 : 3,
-                  marginTop: !showHeader ?  '0' : "30px" ,
-                }}
-              >
-                <div style={{ paddingTop: !showHeader ? '0' :  theme.spacing(2) }}>
-                  {" "}
-                  {/* Use theme spacing for consistent spacing */}
-                  {children}
-                </div>
-              </Box>
-            </Box>
-          )}
-        </NavbarProvider>
+        <Provider session={session}>
+          <Dashboard children={children} />
+        </Provider>
       </body>
     </html>
   );

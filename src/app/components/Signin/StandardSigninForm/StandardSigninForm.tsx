@@ -1,40 +1,50 @@
-import React, { useState } from 'react';
-import { Card, CardHeader, CardContent, Button, Divider, TextField, Grid } from '@mui/material';
-import LoginIcon from '@mui/icons-material/Login';
-import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import React, { useState } from "react";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  Button,
+  Divider,
+  TextField,
+  Grid,
+} from "@mui/material";
+import LoginIcon from "@mui/icons-material/Login";
+import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const StandardSigninForm = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const [errors, setErrors] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   const validateForm = () => {
     let isValid = true;
     const newErrors = { ...errors };
 
-    if (formData.email.trim() === '') {
-      newErrors.email = 'Email is required';
+    if (formData.email.trim() === "") {
+      newErrors.email = "Email is required";
       isValid = false;
     } else {
-      newErrors.email = '';
+      newErrors.email = "";
     }
 
-    if (formData.password.trim() === '') {
-      newErrors.password = 'Password is required';
+    if (formData.password.trim() === "") {
+      newErrors.password = "Password is required";
       isValid = false;
     } else {
-      newErrors.password = '';
+      newErrors.password = "";
     }
 
     setErrors(newErrors);
@@ -48,22 +58,39 @@ const StandardSigninForm = () => {
       [name]: value,
     });
   };
-
-  const handleSubmit = (e) => {
+  const router = useRouter();
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Handle form submission logic here
-      console.log(formData);
+      const res = await signIn("credentials", {
+        username: formData.email,
+        password: formData.password,
+        redirect: false,
+      });
+      console.log(res);
+      if (res?.error == null) {
+        console.log(res.error);
+        window.location.href = '/';
+      } else {
+        setErrors({ email: res.error, password: res.error });
+      }
     }
   };
 
   return (
     <Card variant="outlined">
-      <CardHeader title="Standard Form With Validation"  titleTypographyProps={{ fontSize: '16px'}} sx={{ bgcolor: '#e44d26', color: 'white' }}/>
-      <CardHeader title="Login"  titleTypographyProps={{ fontSize: '16px' , textAlign:"center" }} />
-      <CardContent style={{ textAlign: 'center' }}>
+      <CardHeader
+        title="Standard Form With Validation"
+        titleTypographyProps={{ fontSize: "16px" }}
+        sx={{ bgcolor: "#e44d26", color: "white" }}
+      />
+      <CardHeader
+        title="Login"
+        titleTypographyProps={{ fontSize: "16px", textAlign: "center" }}
+      />
+      <CardContent style={{ textAlign: "center" }}>
         <form onSubmit={handleSubmit}>
-        <TextField
+          <TextField
             variant="standard"
             fullWidth
             margin="normal"
@@ -78,17 +105,15 @@ const StandardSigninForm = () => {
               shrink: true,
               sx: {
                 fontSize: 18,
-                fontWeight: 'bold', 
+                fontWeight: "bold",
               },
             }}
             style={{
-              maxWidth: isMobile ? '100%' : '52%',
-              margin: '0 auto',
-              marginTop: isMobile ? '10px' : '15px',
+              maxWidth: isMobile ? "100%" : "52%",
+              margin: "0 auto",
+              marginTop: isMobile ? "10px" : "15px",
             }}
-          >
-         
-          </TextField>
+          ></TextField>
           <TextField
             fullWidth
             variant="standard"
@@ -98,44 +123,44 @@ const StandardSigninForm = () => {
             onChange={handleChange}
             error={!!errors.password}
             helperText={errors.password}
-            size='small'
+            size="small"
             placeholder="Password"
             style={{
-              maxWidth: isMobile ? '100%' : '52%',
-              margin: '0 auto',
-              marginTop: isMobile ? '10px' : '15px',
+              maxWidth: isMobile ? "100%" : "52%",
+              margin: "0 auto",
+              marginTop: isMobile ? "10px" : "15px",
             }}
           />
-   
         </form>
       </CardContent>
       <Grid container justifyContent="center">
-      <Button
+        <Button
           variant="contained"
           color="primary"
           type="submit"
           onClick={handleSubmit}
           size="small"
-          startIcon={<LoginIcon />} 
-          sx={{ width: '50%', padding: "7px 0",background:"#e44d26" }}
+          startIcon={<LoginIcon />}
+          sx={{ width: "50%", padding: "7px 0", background: "#e44d26" }}
         >
           Log In
         </Button>
-        </Grid>
-        <Divider sx={{ margin:"0 auto",marginY: 2 ,width:"50%",}} />
+      </Grid>
+      <Divider sx={{ margin: "0 auto", marginY: 2, width: "50%" }} />
 
-        <Grid container justifyContent="center">
-          <Button variant="contained" color="success"
-           type="submit"
-            onClick={handleSubmit} 
-            size="small" 
-           startIcon={<PersonAddAltIcon />}  
-           sx={{ width: '50%',
-           padding:"7px 0",
-           marginBottom:"10px" }}>
-           Sign Up
-          </Button>
-        </Grid>
+      <Grid container justifyContent="center">
+        <Button
+          variant="contained"
+          color="success"
+          type="submit"
+          onClick={handleSubmit}
+          size="small"
+          startIcon={<PersonAddAltIcon />}
+          sx={{ width: "50%", padding: "7px 0", marginBottom: "10px" }}
+        >
+          Sign Up
+        </Button>
+      </Grid>
     </Card>
   );
 };
