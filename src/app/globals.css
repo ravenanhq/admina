@@ -22,6 +22,10 @@ body {
   font-size: 16px;
 }
 
+.iconTab .MuiTabs-indicator {
+  background-color: transparent;
+}
+
 @media only screen and (max-width: 1024px) and (min-width: 600px) {
   .productBtn {
     display: flex;
@@ -33,7 +37,7 @@ body {
     margin-top: 10px;
   }
 
-  .productBtn .productWishlistBtn{
+  .productBtn .productWishlistBtn {
     margin: 20px;
     padding-left: 20px;
   }
@@ -42,6 +46,10 @@ body {
 @media (max-width: 400px) {
   .importExportButton .MuiButtonBase-root {
     text-transform: capitalize;
+  }
+
+  .iconTab .MuiTab-labelIcon {
+    padding: 12px;
   }
 }
 
