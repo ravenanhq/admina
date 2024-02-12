@@ -22,6 +22,12 @@ body {
   font-size: 16px;
 }
 
+.crudComponent .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight)>.crudCellName
+{
+  white-space:normal;
+  line-height: 23px;
+}
+
 @media only screen and (max-width: 1024px) and (min-width: 600px) {
   .productBtn {
     display: flex;
@@ -43,6 +49,7 @@ body {
   .importExportButton .MuiButtonBase-root {
     text-transform: capitalize;
   }
+  .crudComponentList .crudList{flex-basis: 73%;}
 }
 
 @media (max-width: 450px) {
@@ -79,5 +86,4 @@ body {
   .wishList .wishlishBtn .MuiButtonBase-root {
     text-transform: capitalize;
   }
-
 }
