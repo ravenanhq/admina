@@ -6,7 +6,8 @@ import { Box, Divider, Typography } from "@mui/material";
 const BasicTab = () => {
   const [tabValue, setTabValue] = React.useState(0);
 
-  const handleTabChange = (newValue) => {
+  const handleTabChange = (event,newValue) => {
+    console.log(newValue)
     setTabValue(newValue);
   };
 
