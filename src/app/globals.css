@@ -8,6 +8,11 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  padding-right: 0 !important;
+}
+
+header {
+  padding-right: 0 !important;
 }
 
 .card span {
@@ -87,5 +92,18 @@ body {
   .wishList .wishlishBtn .MuiButtonBase-root {
     text-transform: capitalize;
   }
+}
 
+@media (max-width: 300px) {
+  .tabElement .MuiTabs-flexContainer {
+    flex-wrap: wrap;
+  }
+
+  .tabElement .MuiTabs-indicator {
+    background-color: transparent;
+  }
+
+  .tabElement .Mui-selected {
+    border-bottom: 2px solid #1976d2;
+  }
 }

@@ -21,6 +21,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import LockIcon from "@mui/icons-material/Lock";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -32,6 +34,10 @@ const Navbar = () => {
   const toggleMenuWithlogin = () =>
     setIsMenuOpenWithLogin(!isMenuOpenWithLogin);
 
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+    const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+  
   return (
     <Card variant="outlined">
       <CardHeader
@@ -64,7 +70,7 @@ const Navbar = () => {
             </Typography>
           </Toolbar>
         </AppBar>
-        <Drawer anchor="left" open={open} onClose={toggleDrawer}>
+        <Drawer anchor="right" open={open} onClose={toggleDrawer} >
           <List>
             {["Home", "About", "Services", "Contact"].map((text) => (
               <ListItem key={text} onClick={toggleDrawer}>
@@ -89,9 +95,9 @@ const Navbar = () => {
                 item
                 xs={8}
                 sm={8}
-                md={4}
+                md={8}
                 lg={8}
-                style={{ display: "flex", alignItems: "center" }}
+                style={{ display: "flex", alignItems: "center",paddingLeft:"31px"  }}
               >
                 <Typography variant="h6" component="div">
                   Navbar
@@ -102,10 +108,10 @@ const Navbar = () => {
                     display: { xs: "none", sm: "block" },
                   }}
                 >
-                  <Button color="inherit">Home</Button>
-                  <Button color="inherit">About</Button>
-                  <Button color="inherit">Services</Button>
-                  <Button color="inherit">Contact</Button>
+                 <Button color="inherit" style={{minWidth:isTablet ? "55px" : "",fontSize:isTablet ? "12px" : ""}}>Home</Button>
+                  <Button color="inherit" style={{minWidth:isTablet ? "55px" : "",fontSize:isTablet ? "12px" : ""}}>About</Button>
+                  <Button color="inherit" style={{minWidth:isTablet ? "55px" : "",fontSize:isTablet ? "12px" : ""}}>Services</Button>
+                  <Button color="inherit" style={{minWidth:isTablet ? "55px" : "",fontSize:isTablet ? "12px" : ""}}>Contact</Button>
                 </Box>
               </Grid>
 
@@ -125,7 +131,7 @@ const Navbar = () => {
                   color="inherit"
                   aria-label="menu"
                   onClick={toggleMenu}
-                  sx={{ display: { sm: "none" } }}
+                  sx={{ display: { sm: "none" },marginTop:"8px" }}
                 >
                   <MenuIcon />
                 </IconButton>
@@ -143,7 +149,7 @@ const Navbar = () => {
                   }}
                   sx={{
                     height: "40px",
-                    padding: "8px",
+                    padding:isTablet ? "5px 8px 8px 8px" :"8px",
                     width: "auto",
                     color: "#fff",
                     "& input": { padding: "8px", color: "#fff" },
@@ -220,9 +226,9 @@ const Navbar = () => {
                 item
                 xs={8}
                 sm={8}
-                md={4}
+                md={8}
                 lg={8}
-                style={{ display: "flex", alignItems: "center" }}
+                style={{ display: "flex", alignItems: "center",paddingLeft:"31px" }}
               >
                 <Typography variant="h6" component="div">
                   Navbar
@@ -233,10 +239,10 @@ const Navbar = () => {
                     display: { xs: "none", sm: "block" },
                   }}
                 >
-                  <Button color="inherit">Home</Button>
-                  <Button color="inherit">About</Button>
-                  <Button color="inherit">Services</Button>
-                  <Button color="inherit">Contact</Button>
+                  <Button color="inherit" style={{minWidth:isTablet ? "55px" : "",fontSize:isTablet ? "12px" : ""}}>Home</Button>
+                  <Button color="inherit" style={{minWidth:isTablet ? "55px" : "",fontSize:isTablet ? "12px" : ""}}>About</Button>
+                  <Button color="inherit" style={{minWidth:isTablet ? "55px" : "",fontSize:isTablet ? "12px" : ""}}>Services</Button>
+                  <Button color="inherit" style={{minWidth:isTablet ? "55px" : "",fontSize:isTablet ? "12px" : ""}}>Contact</Button>
                 </Box>
               </Grid>
 
@@ -248,15 +254,16 @@ const Navbar = () => {
                 lg={3}
                 style={{
                   display: "flex",
-                  justifyContent: "flex-end",
-                  margin: "10px 0 0 0",
+                  justifyContent:isMobile ? "flex-end" : (isTablet ? "normal" : "flex-end"),
+                  padding:isMobile ? "0" : (isTablet ? "8px 0 0 0" : "0"),
+                  margin: "15px 0 0 0",
                 }}
               >
                 <IconButton
                   color="inherit"
                   aria-label="menu"
                   onClick={toggleMenuWithlogin}
-                  sx={{ display: { sm: "none" } }}
+                  sx={{ display: { sm: "none" } ,marginTop:"-6px"}}
                 >
                   <MenuIcon />
                 </IconButton>
@@ -270,7 +277,9 @@ const Navbar = () => {
                     marginBottom: "10px",
                     background: "#fff",
                     color: "#000",
-                    display: { xs: "none", sm: "block" },
+                    display: { xs: "none", sm: "flex" },
+                    minWidth:isTablet ? '80px' : '64px',
+                    marginTop:isTablet ? "-5px" : ""
                   }}
                 >
                   Login
@@ -284,8 +293,10 @@ const Navbar = () => {
                     padding: "7px 30px",
                     marginBottom: "10px",
                     background: "#008cff",
-                    marginLeft: "15px",
-                    display: { xs: "none", sm: "block" },
+                    marginLeft: "10px",
+                    display: { xs: "none", sm: "flex" },
+                    minWidth:isTablet ? '115px' : '64px',
+                    marginTop:isTablet ? "-5px" : ""
                   }}
                 >
                   Register
