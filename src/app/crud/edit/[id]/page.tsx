@@ -1,17 +1,17 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import EditData from "@/app/components/Crud/EditData";
-import dataTable from "@/data-table.json";
+import dataTable from "@/crud-table.json";
 
 export async function generateStaticParams() {
   return dataTable.map((row) => ({
-    sno: row.sno.toString(),
+    id: row.id.toString(),
   }));
 }
 
-const EditPage = ({ params }: { params: { sno: any } }) => {
-  const { sno } = params
-  const page = dataTable.find((page) => page.sno.toString() === sno);
+const EditPage = ({ params }: { params: { id: any } }) => {
+  const { id } = params
+  const page = dataTable.find((page) => page.id.toString() === id);
 
   if (!page) {
     return <div>Page not found</div>;

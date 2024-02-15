@@ -59,6 +59,7 @@ const ProductDetails = () => {
   return (
     <>
       <Card style={{ display: isMobile ? "block" : "flex", border: "1px solid #ccc" }} className="productDetail">
+       
         <CardMedia
           component="img"
           height="500"
@@ -66,6 +67,24 @@ const ProductDetails = () => {
           alt="Product 1"
           style={{ width: isMobile ? "100%" : "50%" }}
         />
+        <Grid item
+          style={{
+            marginTop: "15px",
+            paddingTop: "8px",
+            display: isMobile ? 'flex' : '',
+            justifyContent:isMobile ? 'right' : '',
+            paddingRight: isMobile ? "8px" : "",
+          }} className="productWishlistBtn">{isInWishlist ? (
+            <FavoriteIcon
+              onClick={handleWishlistClick}
+              style={{ color: '#e53e29' }}
+            />
+          ) : (
+            <FavoriteBorderIcon
+              onClick={handleWishlistClick}
+              style={{ color: '#333333' }}
+            />
+          )}</Grid>
         <CardContent style={{ flex: 1, marginLeft: "20px" }}>
           <Typography variant="h5" component="div">
             Product 1
@@ -174,7 +193,7 @@ const ProductDetails = () => {
               <Grid
                 item
                 xs={12}
-                sm={6}
+                sm={10}
                 style={{
                   paddingLeft: "17px",
                   marginTop: "8px",
@@ -207,22 +226,6 @@ const ProductDetails = () => {
                   Add to Cart
                 </Button>
               </Grid>
-              <Grid item xs={6} sm={3}
-                style={{
-                  marginTop:"15px",
-                  paddingTop: "14px",
-                 
-                }} className="productWishlistBtn">{isInWishlist ? (
-                  <FavoriteIcon
-                    onClick={handleWishlistClick}
-                    style={{ color: '#e53e29' }} 
-                  />
-                ) : (
-                  <FavoriteBorderIcon
-                    onClick={handleWishlistClick}
-                    style={{ color: '#333333' }} 
-                  />
-                )}</Grid>
             </Grid>
           </Box>
         </CardContent>

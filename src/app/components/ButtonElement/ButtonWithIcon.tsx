@@ -18,7 +18,7 @@ const ButtonWithIcon = () => {
           variant="contained"
           type="submit"
           size="small"
-          startIcon={<PersonIcon />}
+          startIcon={<PersonIcon sx={{marginTop:"-4px"}}/>}
           sx={{
             padding: "7px 30px",
             marginBottom: "10px",
@@ -31,7 +31,7 @@ const ButtonWithIcon = () => {
           variant="contained"
           type="submit"
           size="small"
-          startIcon={<HomeIcon />}
+          startIcon={<HomeIcon sx={{marginTop:"-3px"}}/>}
           sx={{
             padding: "7px 30px",
             marginBottom: "10px",

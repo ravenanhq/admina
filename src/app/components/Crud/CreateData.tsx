@@ -27,7 +27,7 @@ const CreateNewData = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const initialFormData = {
-    sno: "",
+    id: "",
     name: "",
     streetAddress: "",
     city: "",

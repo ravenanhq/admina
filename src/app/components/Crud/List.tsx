@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-Link;
 import {
   Button,
   Card,
@@ -12,7 +11,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import dataTable from "../../../data-table.json";
+import dataTable from "../../../crud-table.json";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import SearchIcon from "@mui/icons-material/Search";
@@ -57,14 +56,14 @@ const List = () => {
       sortable: false,
       renderCell: (params) => (
         <div>
-          <Link href={`/crud/edit/${params.row.sno}`}>
+          <Link href={`/crud/edit/${params.row.id}`}>
             <IconButton aria-label="edit">
               <EditIcon />
             </IconButton>
           </Link>
           <IconButton
             aria-label="delete"
-            onClick={() => handleDelete(params.row.sno)}
+            onClick={() => handleDelete(params.row.id)}
           >
             <DeleteIcon />
           </IconButton>
@@ -85,8 +84,8 @@ const List = () => {
     );
   });
 
-  const handleDelete = (sno: any) => {
-    const rowToDelete = data.find((item) => item.sno === sno);
+  const handleDelete = (id: any) => {
+    const rowToDelete = data.find((item) => item.id === id);
     setSelectedRow(rowToDelete);
     setDeleteModalOpen(true);
   };
@@ -97,7 +96,7 @@ const List = () => {
   };
 
   const handleDeleteConfirm = () => {
-    const updatedOrders = data.filter((item) => item.sno !== selectedRow.sno);
+    const updatedOrders = data.filter((item) => item.id !== selectedRow.id);
 
     setData(updatedOrders);
     setSuccessMessage("Deleted successfully!");
@@ -191,7 +190,7 @@ const List = () => {
         <DataGrid
           rows={filteredData}
           columns={columns}
-          getRowId={(row) => row.sno}
+          getRowId={(row) => row.id}
           checkboxSelection
           autoHeight
           style={{ border: "none" }}

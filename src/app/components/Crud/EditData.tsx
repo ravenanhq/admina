@@ -32,7 +32,7 @@ const EditData = ({ page }: { page: RowData }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const initialFormData = {
-    sno: "",
+    id: "",
     name: "",
     streetAddress: "",
     city: "",
