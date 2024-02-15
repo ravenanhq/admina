@@ -27,6 +27,11 @@ header {
   font-size: 16px;
 }
 
+.crudComponent .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight)>.crudCellName
+{
+  white-space:normal;
+  line-height: 23px;
+}
 .iconTab .MuiTabs-indicator {
   background-color: transparent;
 }
@@ -64,10 +69,13 @@ header {
   .importExportButton .MuiButtonBase-root {
     text-transform: capitalize;
   }
+  
+  .crudComponentList .crudList{flex-basis: 73%;}
 
   .iconTab .MuiTab-labelIcon {
     padding: 12px;
   }
+
 }
 
 @media (max-width: 450px) {
@@ -131,4 +139,5 @@ header {
   .tabElement .Mui-selected {
     border-bottom: 2px solid #1976d2;
   }
+
 }

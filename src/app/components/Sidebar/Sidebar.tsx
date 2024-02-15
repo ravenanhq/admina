@@ -29,6 +29,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import  LoginIcon from "@mui/icons-material/Login";
 import VerticalAlignBottomIcon from '@mui/icons-material/VerticalAlignBottom';
 import ImportExportIcon from '@mui/icons-material/ImportExport';
+import ListAltIcon from '@mui/icons-material/ListAlt';
 
 const drawerWidth = 240;
 
@@ -105,7 +106,8 @@ const Sidebar: React.FC = () => {
         { label: "Wishlist", route: "/ecommerce/wishlist" }
       ],
     },
-    { label: "Import/Export", route: "/import-export-element" }
+    { label: "Import/Export", route: "/import-export-element" },
+    { label: "Crud Component",  route:"/crud/list"}
   ];
   const isMobile = useMediaQuery("(max-width:1023px)");
   const [hover, setHover] = React.useState(false);
@@ -214,6 +216,7 @@ const Sidebar: React.FC = () => {
                       {menuItem.label === "Footers" ? <VerticalAlignBottomIcon /> : ""}
                       {menuItem.label === "Ecommerce" ? <ShoppingCartCheckoutIcon /> : ""}
                       {menuItem.label === "Import/Export" ? <ImportExportIcon /> : ""}
+                      {menuItem.label === "Crud Component" ? <ListAltIcon /> : ""}
                     </ListItemIcon>
                     <ListItemText
                       primary={menuItem.label}
@@ -232,7 +235,6 @@ const Sidebar: React.FC = () => {
                     </ListItemIcon>
                   </ListItemButton>
                 </Link>
-               {/* Nested List for Ecommerce Submenu */}
               {menuItem.label === "Ecommerce" && (
                 <Collapse in={showEcommerceSubMenu} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
