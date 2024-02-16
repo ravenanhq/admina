@@ -1,0 +1,6 @@
+[
+    { "id": 1, "name": "John Doe","streetAddress": "No: 211, Greams Lane","email": "john@example.com", "role": "Admin","city": "India","pinCode":"044625001","phone":"700042"},
+    { "id": 2, "name": "Jane Doe", "streetAddress": "No: 21, Greams Lane","email": "jane@example.com", "role": "User" ,"city": "India","pinCode":"625001","phone":"700042"},
+    { "id": 3, "name": "Bob Smith","streetAddress": "No: 21, Greams Lane", "email": "bob@example.com", "role": "Moderator","city": "India","pinCode":"625001","phone":"700042" },
+    { "id": 4, "name": "Alice Johnson","streetAddress": "No: 21, Greams Lane", "email": "alice@example.com", "role": "User","city": "India","pinCode":"625001","phone":"700042"}
+]

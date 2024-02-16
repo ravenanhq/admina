@@ -47,6 +47,7 @@ import ImportExportIcon from "@mui/icons-material/ImportExport";
 import { usePathname } from "next/navigation";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { signOut } from "next-auth/react";
+import ListAltIcon from '@mui/icons-material/ListAlt';
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -80,7 +81,10 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 const Header: React.FC = () => {
   const pathName = usePathname();
-  const showHeader = !["/login"].includes(pathName);
+  const showHeader = ![
+    "/login",
+    "/signup",
+    "/forgot-password"].includes(pathName);
 
   const { handleDrawerOpen, open } = useNavbarContext();
   const { handleDrawerClose } = useNavbarContext();
@@ -135,9 +139,11 @@ const Header: React.FC = () => {
         { label: "Add New Product", route: "/ecommerce/add-new-product" },
         { label: "Orders", route: "/ecommerce/order" },
         { label: "Product List", route: "/ecommerce/product-list" },
+        { label: "Wishlist", route: "/ecommerce/wishlist" }
       ],
     },
     { label: "Import/Export", route: "/import-export-element" },
+    { label: "Crud Component",  route:"/crud/list"}
   ];
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -231,21 +237,10 @@ const Header: React.FC = () => {
                   )}
                   {menuItem.label === "Search" ? <SearchIcon /> : ""}
                   {menuItem.label === "Signin" ? <LoginIcon /> : ""}
-                  {menuItem.label === "Footers" ? (
-                    <VerticalAlignBottomIcon />
-                  ) : (
-                    ""
-                  )}
-                  {menuItem.label === "Ecommerce" ? (
-                    <ShoppingCartCheckoutIcon />
-                  ) : (
-                    ""
-                  )}
-                  {menuItem.label === "Import/Export" ? (
-                    <ImportExportIcon />
-                  ) : (
-                    ""
-                  )}
+                  {menuItem.label === "Footers" ? <VerticalAlignBottomIcon /> : ""}
+                  {menuItem.label === "Ecommerce" ? <ShoppingCartCheckoutIcon /> : ""}
+                  {menuItem.label === "Import/Export" ? <ImportExportIcon /> : ""}
+                  {menuItem.label === "Crud Component" ? <ListAltIcon /> : ""}
                 </ListItemIcon>
                 <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
                 <ListItemIcon
@@ -296,41 +291,12 @@ const Header: React.FC = () => {
                               justifyContent: "center",
                             }}
                           >
-                            {subMenuItem.label === "Products" ? (
-                              <KeyboardArrowRightIcon
-                                style={{ fontSize: "14px" }}
-                              />
-                            ) : (
-                              ""
-                            )}
-                            {subMenuItem.label === "Product Details" ? (
-                              <KeyboardArrowRightIcon
-                                style={{ fontSize: "14px" }}
-                              />
-                            ) : (
-                              ""
-                            )}
-                            {subMenuItem.label === "Add New Product" ? (
-                              <KeyboardArrowRightIcon
-                                style={{ fontSize: "14px" }}
-                              />
-                            ) : (
-                              ""
-                            )}
-                            {subMenuItem.label === "Orders" ? (
-                              <KeyboardArrowRightIcon
-                                style={{ fontSize: "14px" }}
-                              />
-                            ) : (
-                              ""
-                            )}
-                            {subMenuItem.label === "Product List" ? (
-                              <KeyboardArrowRightIcon
-                                style={{ fontSize: "14px" }}
-                              />
-                            ) : (
-                              ""
-                            )}
+                            {subMenuItem.label === "Products" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
+                            {subMenuItem.label === "Product Details" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
+                            {subMenuItem.label === "Add New Product" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
+                            {subMenuItem.label === "Orders" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
+                            {subMenuItem.label === "Product List" ? <KeyboardArrowRightIcon style={{fontSize:"14px"}} /> : ""}
+                            {subMenuItem.label === "Wishlist" ? <KeyboardArrowRightIcon style={{fontSize:"14px"}} /> : ""}
                           </ListItemIcon>
                           <ListItemText primary={subMenuItem.label} />
                         </ListItemButton>

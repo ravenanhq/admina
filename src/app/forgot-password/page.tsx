@@ -1,11 +1,11 @@
 "use client";
 import Container from "@mui/material/Container";
-import LoginForm from "../components/Login/Login";
+import ForgotPasswordForm from "../components/Login/ForgotPassword";
 
 export default function Login() {
   return (
     <Container component="div" maxWidth="sm">
-      <LoginForm />
+      <ForgotPasswordForm />
     </Container>
   );
 }

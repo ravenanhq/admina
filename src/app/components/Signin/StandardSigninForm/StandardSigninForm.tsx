@@ -12,7 +12,6 @@ import LoginIcon from "@mui/icons-material/Login";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const StandardSigninForm = () => {
@@ -62,18 +61,8 @@ const StandardSigninForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      const res = await signIn("credentials", {
-        username: formData.email,
-        password: formData.password,
-        redirect: false,
-      });
-      console.log(res);
-      if (res?.error == null) {
-        console.log(res.error);
-        window.location.href = '/';
-      } else {
-        setErrors({ email: res.error, password: res.error });
-      }
+      // Handle form submission logic here
+      console.log(formData);
     }
   };
 

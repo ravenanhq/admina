@@ -11,7 +11,7 @@ export const authOptions: NextAuthOptions = {
           username: string;
           password: string;
         };
-        if (username === "demo" && password === "demo") {
+        if (username === "demo@gmail.com" && password === "demo123") {
           console.log("if");
           return Promise.resolve(true);
         } else {
