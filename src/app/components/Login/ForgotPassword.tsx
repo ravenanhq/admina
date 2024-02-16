@@ -107,7 +107,7 @@ const ForgotPasswordForm = () => {
         <CardActions>
           <Grid
             container
-            justifyContent="left"
+            justifyContent="right"
             sx={{ padding: "0 0 16px 16px" }}
           >
             <Button
@@ -116,6 +116,7 @@ const ForgotPasswordForm = () => {
               type="submit"
               onClick={handleSubmit}
               size="small"
+              sx={{borderRadius:"15px",padding:"5px 10px"}}
             >
               Send
             </Button>

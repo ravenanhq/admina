@@ -109,6 +109,7 @@ const LoginForm = () => {
                             fullWidth
                             margin="normal"
                             name="password"
+                            type="password"
                             value={formData.password}
                             onChange={handleChange}
                             error={!!errors.password}
@@ -144,7 +145,7 @@ const LoginForm = () => {
                         }}
                     />
                     <Grid container justifyContent={isMobile ? "flex-start" : "flex-end"}>
-                        <Button variant="contained" color="success" type="submit" onClick={handleSubmit} size="small" sx={{ width: '100px' }}>
+                        <Button variant="contained" color="success" type="submit" onClick={handleSubmit} size="small" sx={{ width: '100px',borderRadius:"15px"}}>
                             Log In
                         </Button>
                     </Grid>
@@ -158,7 +159,7 @@ const LoginForm = () => {
                         </Link>
                     </Typography>
                     <Grid container justifyContent={isMobile ? "flex-start" : "flex-end"} style={{margin:isMobile ? "8px 0 0 -1px" : ""}}>
-                    <Link href="/signup/" ><Button variant="contained" color="warning" type="submit" size="small" sx={{ width: '100px' }} >
+                    <Link href="/signup/" ><Button variant="contained" color="warning" type="submit" size="small" sx={{ width: '100px',borderRadius:"15px" }} >
                             Sign Up
                         </Button></Link>
                     </Grid>

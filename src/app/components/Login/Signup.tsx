@@ -226,7 +226,7 @@ const SignupForm = () => {
         <CardActions>
           <Grid
             container
-            justifyContent="left"
+            justifyContent="right"
             sx={{ padding: "0 0 16px 10px" }}
           >
             <Button
@@ -235,6 +235,7 @@ const SignupForm = () => {
               type="submit"
               onClick={handleSubmit}
               size="small"
+              sx={{borderRadius:"15px",padding:"5px 10px"}}
             >
               Submit
             </Button>
@@ -243,7 +244,7 @@ const SignupForm = () => {
               color="warning"
               size="small"
               onClick={handleCancel}
-              sx={{ marginLeft: "10px" }}
+              sx={{ marginLeft: "10px",borderRadius:"15px",padding:"5px 10px" }}
             >
               Cancel
             </Button>

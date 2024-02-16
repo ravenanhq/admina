@@ -1,6 +1,6 @@
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-
+ 
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
@@ -12,11 +12,10 @@ export const authOptions: NextAuthOptions = {
           password: string;
         };
         if (username === "demo@gmail.com" && password === "demo123") {
-          console.log("if");
-          return Promise.resolve(true);
+          const user = { username, password };
+          return Promise.resolve(user);
         } else {
-          console.log("else");
-          return Promise.resolve(false);
+          return Promise.resolve(null);
         }
       },
     }),
