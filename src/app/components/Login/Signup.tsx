@@ -17,6 +17,8 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import PersonIcon from "@mui/icons-material/Person";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const SignupForm = () => {
   const initialFormData = {
@@ -24,7 +26,7 @@ const SignupForm = () => {
     password: "",
     firstName: "",
     lastName: "",
-    confirmPassword: ""
+    confirmPassword: "",
   };
 
   const initialErrors = {
@@ -32,13 +34,14 @@ const SignupForm = () => {
     password: "",
     firstName: "",
     lastName: "",
-    confirmPassword: ""
+    confirmPassword: "",
   };
 
   const [formData, setFormData] = useState({ ...initialFormData });
   const [errors, setErrors] = useState({ ...initialErrors });
   const [successMessage, setSuccessMessage] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -50,7 +53,9 @@ const SignupForm = () => {
     if (formData.email.trim() === "") {
       newErrors.email = "Email is required";
       isValid = false;
-    } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
+    } else if (
+      !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)
+    ) {
       newErrors.email = "Email is not valid";
       isValid = false;
     } else {
@@ -95,6 +100,7 @@ const SignupForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
+      setFormData({ ...initialFormData });
       setSuccessMessage("Successfully Registered");
       setOpenSnackbar(true);
     }
@@ -107,6 +113,10 @@ const SignupForm = () => {
   const handleCancel = () => {
     setFormData({ ...initialFormData });
     setErrors({ ...initialErrors });
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -159,7 +169,7 @@ const SignupForm = () => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <MailOutlineIcon />
+                    <PersonIcon />
                   </InputAdornment>
                 ),
               }}
@@ -177,7 +187,7 @@ const SignupForm = () => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <MailOutlineIcon />
+                    <PersonIcon />
                   </InputAdornment>
                 ),
               }}
@@ -186,7 +196,7 @@ const SignupForm = () => {
               fullWidth
               margin="normal"
               name="password"
-              type="password"
+              type={showPassword ? "text" : "password"} 
               value={formData.password}
               onChange={handleChange}
               error={!!errors.password}
@@ -196,7 +206,17 @@ const SignupForm = () => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <VisibilityIcon />
+                    {showPassword ? (
+                      <VisibilityOffIcon
+                        onClick={togglePasswordVisibility}
+                        sx={{ cursor: "pointer" }}
+                      />
+                    ) : (
+                      <VisibilityIcon
+                        onClick={togglePasswordVisibility}
+                        sx={{ cursor: "pointer" }}
+                      />
+                    )}
                   </InputAdornment>
                 ),
               }}
@@ -205,7 +225,7 @@ const SignupForm = () => {
               fullWidth
               margin="normal"
               name="confirmPassword"
-              type="password"
+              type={showPassword ? "text" : "password"} 
               value={formData.confirmPassword}
               onChange={handleChange}
               error={!!errors.confirmPassword}
@@ -215,7 +235,17 @@ const SignupForm = () => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <VisibilityIcon />
+                    {showPassword ? (
+                      <VisibilityOffIcon
+                        onClick={togglePasswordVisibility}
+                        sx={{ cursor: "pointer" }}
+                      />
+                    ) : (
+                      <VisibilityIcon
+                        onClick={togglePasswordVisibility}
+                        sx={{ cursor: "pointer" }}
+                      />
+                    )}
                   </InputAdornment>
                 ),
               }}
@@ -235,7 +265,7 @@ const SignupForm = () => {
               type="submit"
               onClick={handleSubmit}
               size="small"
-              sx={{borderRadius:"15px",padding:"5px 10px"}}
+              sx={{ borderRadius: "15px", padding: "5px 10px" }}
             >
               Submit
             </Button>
@@ -244,7 +274,11 @@ const SignupForm = () => {
               color="warning"
               size="small"
               onClick={handleCancel}
-              sx={{ marginLeft: "10px",borderRadius:"15px",padding:"5px 10px" }}
+              sx={{
+                marginLeft: "10px",
+                borderRadius: "15px",
+                padding: "5px 10px",
+              }}
             >
               Cancel
             </Button>
