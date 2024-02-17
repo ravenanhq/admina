@@ -13,7 +13,14 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { Divider, Link, Typography, useMediaQuery } from "@mui/material";
+import {
+  Divider,
+  Link,
+  Menu,
+  MenuItem,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import Badge from "@mui/material/Badge";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MailIcon from "@mui/icons-material/Mail";
@@ -22,22 +29,25 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import EditIcon from "@mui/icons-material/Edit";
 import TableIcon from "@mui/icons-material/TableChart";
 import ParkIcon from "@mui/icons-material/Park";
-import CreditCardIcon from '@mui/icons-material/CreditCard';
+import CreditCardIcon from "@mui/icons-material/CreditCard";
 import SearchIcon from "@mui/icons-material/Search";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
-import VerticalAlignBottomIcon from '@mui/icons-material/VerticalAlignBottom';
+import VerticalAlignBottomIcon from "@mui/icons-material/VerticalAlignBottom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faA } from "@fortawesome/free-solid-svg-icons";
-import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import  LoginIcon from "@mui/icons-material/Login";
-import ImportExportIcon from '@mui/icons-material/ImportExport';
-
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import LoginIcon from "@mui/icons-material/Login";
+import ImportExportIcon from "@mui/icons-material/ImportExport";
+import { usePathname } from "next/navigation";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { signOut } from "next-auth/react";
+import ListAltIcon from '@mui/icons-material/ListAlt';
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -70,11 +80,14 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const Header: React.FC = () => {
+  const pathName = usePathname();
+  const showHeader = ![
+    "/login",
+    "/signup",
+    "/forgot-password"].includes(pathName);
+
   const { handleDrawerOpen, open } = useNavbarContext();
   const { handleDrawerClose } = useNavbarContext();
-  const handleSignOut = () => {
-    console.log("Sign out button clicked");
-  };
   const [state, setState] = React.useState({
     left: false,
   });
@@ -116,7 +129,7 @@ const Header: React.FC = () => {
     { label: "Spinners", route: "/loader" },
     { label: "Breadcrumbs", route: "/breadcrumbs" },
     { label: "Search", route: "/search" },
-    { label: "Signin" , route:"/signin" },
+    { label: "Signin", route: "/signin" },
     { label: "Footers", route: "/footer" },
     {
       label: "Ecommerce",
@@ -126,10 +139,29 @@ const Header: React.FC = () => {
         { label: "Add New Product", route: "/ecommerce/add-new-product" },
         { label: "Orders", route: "/ecommerce/order" },
         { label: "Product List", route: "/ecommerce/product-list" },
+        { label: "Wishlist", route: "/ecommerce/wishlist" }
       ],
     },
-    { label: "Import/Export", route: "/import-export-element" }
+    { label: "Import/Export", route: "/import-export-element" },
+    { label: "Crud Component",  route:"/crud/list"}
   ];
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleOpenMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
+  };
+
+  // Add your signout logic here
+  const handleSignout = async () => {
+    await signOut();
+    handleCloseMenu();
+  };
+
   const list = () => (
     <Box
       sx={{ width: 250 }}
@@ -137,7 +169,7 @@ const Header: React.FC = () => {
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
-      <List sx={{ paddingTop: '0px' }}>
+      <List sx={{ paddingTop: "0px" }}>
         <DrawerHeader>
           <ListItemIcon
             sx={{
@@ -178,7 +210,11 @@ const Header: React.FC = () => {
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
                 }}
-                onClick={menuItem.label === "Ecommerce" ? handleEcommerceClick : undefined}
+                onClick={
+                  menuItem.label === "Ecommerce"
+                    ? handleEcommerceClick
+                    : undefined
+                }
               >
                 <ListItemIcon
                   sx={{
@@ -204,6 +240,7 @@ const Header: React.FC = () => {
                   {menuItem.label === "Footers" ? <VerticalAlignBottomIcon /> : ""}
                   {menuItem.label === "Ecommerce" ? <ShoppingCartCheckoutIcon /> : ""}
                   {menuItem.label === "Import/Export" ? <ImportExportIcon /> : ""}
+                  {menuItem.label === "Crud Component" ? <ListAltIcon /> : ""}
                 </ListItemIcon>
                 <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
                 <ListItemIcon
@@ -214,7 +251,11 @@ const Header: React.FC = () => {
                   }}
                 >
                   {menuItem.label === "Ecommerce" ? (
-                    showEcommerceSubMenu ? <ExpandLess /> : <ExpandMore />
+                    showEcommerceSubMenu ? (
+                      <ExpandLess />
+                    ) : (
+                      <ExpandMore />
+                    )
                   ) : null}
                 </ListItemIcon>
               </ListItemButton>
@@ -239,7 +280,9 @@ const Header: React.FC = () => {
                             justifyContent: open ? "initial" : "center",
                             px: 2.5,
                           }}
-                          onClick={() => handleSubMenuItemClick(subMenuItem.label)}
+                          onClick={() =>
+                            handleSubMenuItemClick(subMenuItem.label)
+                          }
                         >
                           <ListItemIcon
                             sx={{
@@ -253,8 +296,9 @@ const Header: React.FC = () => {
                             {subMenuItem.label === "Add New Product" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
                             {subMenuItem.label === "Orders" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
                             {subMenuItem.label === "Product List" ? <KeyboardArrowRightIcon style={{fontSize:"14px"}} /> : ""}
+                            {subMenuItem.label === "Wishlist" ? <KeyboardArrowRightIcon style={{fontSize:"14px"}} /> : ""}
                           </ListItemIcon>
-                          <ListItemText primary={subMenuItem.label}  />
+                          <ListItemText primary={subMenuItem.label} />
                         </ListItemButton>
                       </Link>
                     </ListItem>
@@ -269,63 +313,89 @@ const Header: React.FC = () => {
   );
   const isMobile = useMediaQuery("(max-width:1023px)");
   return (
-    <AppBar
-      position="fixed"
-      open={open}
-      sx={{ background: "rgba(255, 255, 255, 1)" }}
-    >
-      <Toolbar>
-        {isMobile ? (
-          <>
-            <IconButton color="inherit" style={{ backgroundColor: 'black' }} onClick={toggleDrawer(true)}>
-              <MenuIcon />
-            </IconButton>
-          </>
+    <>
+      {showHeader && (
+        <AppBar
+          position="fixed"
+          open={open}
+          sx={{ background: "rgba(255, 255, 255, 1)" }}
+        >
+          <Toolbar>
+            {isMobile ? (
+              <>
+                <IconButton
+                  color="inherit"
+                  style={{ backgroundColor: "black" }}
+                  onClick={toggleDrawer(true)}
+                >
+                  <MenuIcon />
+                </IconButton>
+              </>
+            ) : null}
 
-        ) : null}
+            <Box
+              sx={{ marginLeft: "auto", display: "flex", alignItems: "center" }}
+            >
+              <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
+                <Badge badgeContent={4} color="error">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
 
-        <Box sx={{ marginLeft: "auto", display: "flex", alignItems: "center" }}>
-          <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
-            <Badge badgeContent={4} color="error">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
+              <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
+                <Badge badgeContent={2} color="error">
+                  <MailIcon />
+                </Badge>
+              </IconButton>
 
-          <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
-            <Badge badgeContent={2} color="error">
-              <MailIcon />
-            </Badge>
-          </IconButton>
+              <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
+                <SettingsIcon />
+              </IconButton>
 
-          <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
-            <SettingsIcon />
-          </IconButton>
+              <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
+                <SearchIcon />
+              </IconButton>
 
-          <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
-            <SearchIcon />
-          </IconButton>
+              <IconButton
+                color="inherit"
+                onClick={handleOpenMenu}
+                sx={{ color: "rgba(0,0,0,.5)" }}
+              >
+                <AccountCircleIcon />
+              </IconButton>
 
-          <Typography
-            variant="body1"
-            sx={{ marginLeft: 2, color: "rgba(0,0,0,.5)" }}
-          >
-            Welcome, User
-          </Typography>
-        </Box>
+              <Menu
+                anchorOrigin={{ vertical: "top", horizontal: "right" }}
+                transformOrigin={{ vertical: "top", horizontal: "right" }}
+                id="profile-menu"
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleCloseMenu}
+              >
+                <MenuItem>
+                  <Typography variant="body1" sx={{ color: "rgba(0,0,0,.5)" }}>
+                    Welcome, User
+                  </Typography>
+                </MenuItem>
+                <MenuItem onClick={handleSignout}>Logout</MenuItem>
+              </Menu>
+            </Box>
 
-        {isMobile && state.left ? (
-          <SwipeableDrawer
-            anchor="left"
-            open={state.left}
-            onClose={toggleDrawer(false)}
-            onOpen={toggleDrawer(true)}
-            BackdropProps={{ invisible: true }}
-          >
-            {list()}
-          </SwipeableDrawer>
-        ) : null}
-      </Toolbar>
-    </AppBar>
+            {isMobile && state.left ? (
+              <SwipeableDrawer
+                anchor="left"
+                open={state.left}
+                onClose={toggleDrawer(false)}
+                onOpen={toggleDrawer(true)}
+                BackdropProps={{ invisible: true }}
+              >
+                {list()}
+              </SwipeableDrawer>
+            ) : null}
+          </Toolbar>
+        </AppBar>
+      )}
+    </>
   );
 };
 

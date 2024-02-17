@@ -8,6 +8,11 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  padding-right: 0 !important;
+}
+
+header {
+  padding-right: 0 !important;
 }
 
 .card span {
@@ -22,10 +27,55 @@ body {
   font-size: 16px;
 }
 
+.crudComponent .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight)>.crudCellName
+{
+  white-space:normal;
+  line-height: 23px;
+}
+.iconTab .MuiTabs-indicator {
+  background-color: transparent;
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 600px) {
+  .productBtn {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .productBtn .MuiButtonBase-root {
+    width: 140px;
+    margin-top: 10px;
+  }
+
+  .productBtn .productWishlistBtn {
+    margin: 20px;
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 568px) {
+  .wishList .MuiTableCell-root {
+    padding:12px
+  }
+}
+
+@media (max-width: 540px) {
+  .wishList .MuiTableCell-root {
+    padding:10px
+  }
+}
+
 @media (max-width: 400px) {
   .importExportButton .MuiButtonBase-root {
     text-transform: capitalize;
   }
+  
+  .crudComponentList .crudList{flex-basis: 73%;}
+
+  .iconTab .MuiTab-labelIcon {
+    padding: 12px;
+  }
+
 }
 
 @media (max-width: 450px) {
@@ -42,4 +92,66 @@ body {
   .tabScroller .activeTab {
     border: 1px solid #1976d2;
   }
+
+  .wishList .MuiTableRow-root {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .wishList .MuiTableCell-root {
+    border-bottom: transparent;
+    padding: 15px;
+  }
+
+  .wishList .addToCart {
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .wishList .wishlishBtn .MuiButtonBase-root {
+    text-transform: capitalize;
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 320px){
+.wishList .MuiTableCell-root {
+    border-bottom: transparent;
+    padding: 2px;
+}
+.wishList .wishlishBtn .MuiButtonBase-root {
+  text-transform: capitalize;
+  min-width: 146px;
+  margin-top: 10px;
+}
+.loginPage{
+  justify-content: center;
+}
+.loginPage .rememberMe label{
+margin-left: 0;
+}
+.loginPage .forgotPassword{
+  margin-bottom: 10px;
+}
+.loginPage .forgotPassword a{
+  margin-right: 0;
+}
+.crudComponentList .crudList{
+  flex-basis: 69%;}
+}
+
+@media (max-width: 300px) {
+  .tabElement .MuiTabs-flexContainer {
+    flex-wrap: wrap;
+  }
+
+  .tabElement .MuiTabs-indicator {
+    background-color: transparent;
+  }
+
+  .tabElement .Mui-selected {
+    border-bottom: 2px solid #1976d2;
+  }
+
 }
