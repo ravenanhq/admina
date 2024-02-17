@@ -54,7 +54,7 @@ const CreateNewData = () => {
     const newErrors = { ...errors };
 
     if (formData.name.trim() === "") {
-      newErrors.name = "user Name is required";
+      newErrors.name = "User Name is required";
       isValid = false;
     } else {
       newErrors.name = "";

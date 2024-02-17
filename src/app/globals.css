@@ -125,6 +125,8 @@ header {
   min-width: 146px;
   margin-top: 10px;
 }
+.crudComponentList .crudList{
+  flex-basis: 69%;}
 }
 
 @media (max-width: 300px) {
