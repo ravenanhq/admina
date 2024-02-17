@@ -105,7 +105,7 @@ const CreateNewData = () => {
   };
 
   const handleCancel = () => {
-    setFormData(initialFormData);
+    router.push("/crud/list", { scroll: false });
   };
 
   return (
@@ -243,7 +243,7 @@ const CreateNewData = () => {
             </Grid>
           </Grid>
         </CardContent>
-        <CardActions style={{ margin: "0px 14px 14px 14px" }}>
+        <CardActions style={{ justifyContent: "flex-end", margin: "0px 14px 14px 14px" }}>
           <Button
             variant="contained"
             color="success"
