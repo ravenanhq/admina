@@ -137,6 +137,8 @@ margin-left: 0;
 .loginPage .forgotPassword a{
   margin-right: 0;
 }
+.crudComponentList .crudList{
+  flex-basis: 69%;}
 }
 
 @media (max-width: 300px) {

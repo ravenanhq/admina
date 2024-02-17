@@ -157,7 +157,7 @@ const List = () => {
           item
           xs={12}
           sm={6}
-          style={{ textAlign: isMobile ? "start" : "right", maxWidth: "100%" }}
+          style={{ textAlign: isMobile ? "start" : "right", maxWidth: "100%",margin:isMobile ? "0 0 18px 10px" : "0 0 10px 0px" }}
         >
           <TextField
             placeholder="Search"
