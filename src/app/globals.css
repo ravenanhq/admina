@@ -125,6 +125,18 @@ header {
   min-width: 146px;
   margin-top: 10px;
 }
+.loginPage{
+  justify-content: center;
+}
+.loginPage .rememberMe label{
+margin-left: 0;
+}
+.loginPage .forgotPassword{
+  margin-bottom: 10px;
+}
+.loginPage .forgotPassword a{
+  margin-right: 0;
+}
 }
 
 @media (max-width: 300px) {
