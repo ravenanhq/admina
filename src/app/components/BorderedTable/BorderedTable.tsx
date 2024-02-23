@@ -10,7 +10,7 @@ const BorderedTable = () => {
   ];
 
   return (
-    <Card variant="outlined">
+    <Card variant="outlined" sx={{borderRadius:"10px"}}>
       <CardHeader
         title="Bordered Table"
         sx={{ bgcolor: '#0057e7', color: 'white' }}

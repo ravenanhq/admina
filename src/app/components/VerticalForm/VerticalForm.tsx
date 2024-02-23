@@ -60,9 +60,8 @@ const VerticalForm = () => {
   };
 
   return (
-    <Card variant="outlined">
-      <CardHeader title="Outlined Form With Validation" sx={{ bgcolor: '#008744', color: 'white'}}         titleTypographyProps={{ fontSize: '16px' }}/>
-
+    <Card variant="outlined" sx={{borderRadius:"10px"}}>
+      <CardHeader title="Basic layout" sx={{ bgcolor: '#008744', color: 'white'}}  titleTypographyProps={{ fontSize: '16px' }}/>
       <CardContent>
         <form onSubmit={handleSubmit}>
           <TextField
@@ -103,8 +102,8 @@ const VerticalForm = () => {
           />
         </form>
       </CardContent>
-      <CardActions>
-        <Button variant="contained" color="success" type="submit" onClick={handleSubmit} size="small" >
+      <CardActions sx={{padding:"0 17px 17px 13px"}}>
+        <Button variant="contained" color="success" type="submit" onClick={handleSubmit} size="small" style={{borderRadius:"15px"}}>
           Submit
         </Button>
       </CardActions>
