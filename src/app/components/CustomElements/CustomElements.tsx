@@ -1,18 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Card,
   CardHeader,
   CardContent,
-  Button,
   Box,
   FormControl,
   FormControlLabel,
   FormLabel,
   Switch,
-  ButtonGroup,
   Grid,
   FormGroup,
-  Slider,
   Checkbox,
   Typography,
   Rating,
@@ -67,20 +64,6 @@ const CustomElements = () => {
                   />
                 </FormGroup>
               </FormControl>
-              <h4>Slider</h4>
-
-                <Slider
-                  size="small"
-                  defaultValue={70}
-                  aria-label="Small"
-                  valueLabelDisplay="auto"
-                />
-                <Slider
-                  defaultValue={50}
-                  aria-label="Default"
-                  valueLabelDisplay="auto"
-                />
-
               <h4>Checkbox Color</h4>
 
                 <Checkbox {...label} defaultChecked />
@@ -90,34 +73,6 @@ const CustomElements = () => {
 
           </Grid>
           <Grid item xs={12} lg={6}>
-            <h4>Button Group</h4>
-            <ButtonGroup
-              variant="contained"
-              aria-label="outlined primary button group"
-              sx={{ marginTop: "15px" }}
-            >
-              <Button>One</Button>
-              <Button>Two</Button>
-              <Button>Three</Button>
-            </ButtonGroup>
-            <ButtonGroup
-              variant="outlined"
-              aria-label="outlined button group"
-              sx={{ marginTop: "15px" }}
-            >
-              <Button>One</Button>
-              <Button>Two</Button>
-              <Button>Three</Button>
-            </ButtonGroup>
-            <ButtonGroup
-              variant="text"
-              aria-label="text button group"
-              sx={{ marginTop: "15px" }}
-            >
-              <Button>One</Button>
-              <Button>Two</Button>
-              <Button>Three</Button>
-            </ButtonGroup>
             <h4>Rating Star</h4>
             <Box
               sx={{

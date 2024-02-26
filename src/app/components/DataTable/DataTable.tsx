@@ -19,7 +19,7 @@ const DataTable = () => {
     ];
 
     return (
-        <Card variant="outlined">
+        <Card variant="outlined" sx={{borderRadius:"10px"}}>
             <CardHeader
                 title="DataTable"
                 sx={{ bgcolor: '#008744', color: 'white' }}
