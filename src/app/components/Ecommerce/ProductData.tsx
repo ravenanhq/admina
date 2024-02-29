@@ -130,14 +130,14 @@ const ProductData = () => {
   ];
 
   return (
-    <Card style={{ boxShadow: "none" }}>
+    <Card style={{ boxShadow: "none",background:"none" }}>
       <Snackbar
         open={successMessageOpen}
         autoHideDuration={3000}
         onClose={handleSnackbarClose}
         message={message}
       />
-      <CardContent style={{ padding: "0" }}>
+      <CardContent style={{ padding: "0" ,}}>
       <Grid container justifyContent="flex-end" alignItems="center" style={{ marginBottom: "20px" }}>
       <Grid item>
         <Button
@@ -163,6 +163,7 @@ const ProductData = () => {
           pageSizeOptions={[5, 10]}
           disableRowSelectionOnClick={true}
           className="orderDataTable"
+          style={{background:"#fff"}}
         />
       </CardContent>
 

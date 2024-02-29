@@ -53,7 +53,7 @@ const WishlistItem = () => {
               {products.length} <span style={{ color: '#e53e29' }}>items:</span>
             </Typography>
           </div>
-          <Table>
+          <Table style={{background:"#fff"}}>
             <TableBody>
               {products.map((item) => (
                 <TableRow key={item.id}>
@@ -103,7 +103,7 @@ const WishlistItem = () => {
         </>
       )}
 
-      <Grid container spacing={1} sx={{ display: "flex", marginTop: "15px" }} className="wishlishBtn">
+      <Grid container spacing={1} sx={{ display: "flex", marginTop: "15px",marginLeft:"0" }} className="wishlishBtn">
         <Link href={"/ecommerce/products"}>
           <Button
             variant="contained"
