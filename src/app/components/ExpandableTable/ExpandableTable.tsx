@@ -21,7 +21,7 @@ const ExpandableTable = () => {
   };
 
   return (
-    <Card variant="outlined">
+    <Card variant="outlined" sx={{borderRadius:"10px"}}>
       <CardHeader
         title="Expandable Table"
         sx={{ bgcolor: '#008744', color: 'white' }}
