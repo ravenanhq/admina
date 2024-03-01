@@ -57,7 +57,7 @@ const DataTable = () => {
   ];
 
   return (
-    <Card style={{ border: '0px', boxShadow: "none", padding: 0 }}>
+    <Card style={{ border: '0px', boxShadow: "none", padding: 0,background:"none"}}>
       <Grid container spacing={2} alignItems="center" className="importExportButton">
         <Grid item xs={12} sm={6} style={{ textAlign: "left" }}>
           <ImportElement onImport={handleImport} />
@@ -72,7 +72,7 @@ const DataTable = () => {
         </Grid>
       </Grid>
 
-      <CardContent style={{ padding: "16px 0" }}>
+      <CardContent style={{ padding: "16px 0",}}>
         <DataGrid
           rows={data}
           columns={columns}
@@ -80,6 +80,7 @@ const DataTable = () => {
           checkboxSelection
           autoHeight
           onRowSelectionModelChange={(selection) => handleSelectionChange(selection)}
+          style={{background:"#fff"}}
         />
         <Snackbar
           open={openSnackbar}
