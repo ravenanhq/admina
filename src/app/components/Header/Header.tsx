@@ -192,7 +192,6 @@ const Header: React.FC = () => {
     <Box
       sx={{ width: 250 }}
       role="presentation"
-      onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
       <List sx={{ paddingTop: "0px" }}>

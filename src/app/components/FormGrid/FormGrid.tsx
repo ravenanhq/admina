@@ -83,13 +83,6 @@ const FormGrid = () => {
       newErrors.phone = "";
     }
 
-    if (formData.name.trim() === "") {
-      newErrors.name = "Gender Name is required";
-      isValid = false;
-    } else {
-      newErrors.name = "";
-    }
-
     setErrors(newErrors);
     return isValid;
   };
