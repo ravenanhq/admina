@@ -13,6 +13,7 @@ import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useRouter } from "next/navigation";
+import OnButtonComponent from "../../OnButtonComponent/OnButtonComponent";
 
 const StandardSigninForm = () => {
   const [formData, setFormData] = useState({
@@ -123,32 +124,39 @@ const StandardSigninForm = () => {
         </form>
       </CardContent>
       <Grid container justifyContent="center">
-        <Button
+        <OnButtonComponent
           variant="contained"
-          color="primary"
           type="submit"
-          onClick={handleSubmit}
           size="small"
+          onClick={handleSubmit}
           startIcon={<LoginIcon />}
-          sx={{ width: "50%", padding: "7px 0", background: "#e44d26" }}
-        >
-          Log In
-        </Button>
+          style={{
+            width: "50%",
+            borderRadius: "10px",
+            background: "#e44d26",
+            padding: "7px 0",
+          }}
+          name="Log In"
+        ></OnButtonComponent>
       </Grid>
       <Divider sx={{ margin: "0 auto", marginY: 2, width: "50%" }} />
 
       <Grid container justifyContent="center">
-        <Button
+        <OnButtonComponent
           variant="contained"
-          color="success"
           type="submit"
-          onClick={handleSubmit}
           size="small"
+          onClick={handleSubmit}
           startIcon={<PersonAddAltIcon />}
-          sx={{ width: "50%", padding: "7px 0", marginBottom: "10px" }}
-        >
-          Sign Up
-        </Button>
+          style={{
+            width: "50%",
+            borderRadius: "10px",
+            padding: "7px 0",
+            background: "#2e7d32",
+            marginBottom: "10px",
+          }}
+          name="Sign Up"
+        ></OnButtonComponent>
       </Grid>
     </Card>
   );

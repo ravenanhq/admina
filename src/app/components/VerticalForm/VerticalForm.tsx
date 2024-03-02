@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Card, CardHeader, CardContent, CardActions, TextField, Button } from '@mui/material';
+import OnButtonComponent from '../OnButtonComponent/OnButtonComponent';
 
 const VerticalForm = () => {
   const [formData, setFormData] = useState({
@@ -102,10 +103,8 @@ const VerticalForm = () => {
           />
         </form>
       </CardContent>
-      <CardActions sx={{padding:"0 17px 17px 13px"}}>
-        <Button variant="contained" color="success" type="submit" onClick={handleSubmit} size="small" style={{borderRadius:"15px"}}>
-          Submit
-        </Button>
+      <CardActions sx={{padding:"0 17px 17px 13px",justifyContent:"right"}}>
+        <OnButtonComponent variant="contained" size="small" type="submit" onClick={handleSubmit} style={{textTransform: "capitalize",borderRadius:"10px",background:"#2e7d32"}} name="Submit"></OnButtonComponent>
       </CardActions>
     </Card>
   );

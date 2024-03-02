@@ -21,6 +21,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import OnButtonComponent from "../OnButtonComponent/OnButtonComponent";
 
 const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
@@ -245,34 +246,33 @@ const ProductDetails = () => {
                   paddingTop: "14px",
                 }}
               >
-                <Button
+                <OnButtonComponent
                   variant="contained"
-                  color="primary"
                   type="submit"
                   size="small"
-                  sx={{
+                  style={{
+                    borderRadius: "10px",
                     padding: "10px 16px",
                     background: "#008cff",
                     marginRight: "20px",
                     minWidth: isMobile ? "146px" : "",
                   }}
-                >
-                  Buy Now
-                </Button>
-                <Button
+                  name="Buy Now"
+                ></OnButtonComponent>
+                <OnButtonComponent
                   variant="contained"
-                  color="warning"
                   type="submit"
                   size="small"
                   startIcon={<ShoppingCartCheckoutIcon />}
-                  sx={{
+                  style={{
+                    borderRadius: "10px",
                     padding: isMobile ? "15px" : "10px",
                     minWidth: isMobile ? "146px" : "",
                     marginTop: isMobile ? "10px" : "",
+                    background: "#ed6c02",
                   }}
-                >
-                  Add to Cart
-                </Button>
+                  name="Add to Cart"
+                ></OnButtonComponent>
               </Grid>
             </Grid>
           </Box>

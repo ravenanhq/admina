@@ -1,35 +1,36 @@
-import React, { useState } from 'react';
-import { TextField, Button, Box, Grid, Typography } from '@mui/material';
+import React, { useState } from "react";
+import { TextField, Button, Box, Grid, Typography } from "@mui/material";
+import OnButtonComponent from "../OnButtonComponent/OnButtonComponent";
 
 const ReviewCommentForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const validateForm = () => {
     let isValid = true;
     const newErrors = { ...errors };
 
-    if (formData.name.trim() === '') {
-      newErrors.name = 'Name is required';
+    if (formData.name.trim() === "") {
+      newErrors.name = "Name is required";
       isValid = false;
     } else {
-      newErrors.name = '';
+      newErrors.name = "";
     }
 
-    if (formData.message.trim() === '') {
-      newErrors.message = 'Message is required';
+    if (formData.message.trim() === "") {
+      newErrors.message = "Message is required";
       isValid = false;
     } else {
-      newErrors.message = '';
+      newErrors.message = "";
     }
 
     setErrors(newErrors);
@@ -84,12 +85,22 @@ const ReviewCommentForm = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <Button variant="contained" color="primary" onClick={handleSubmit}>
-            Post Comment
-          </Button>
+          <OnButtonComponent
+            variant="contained"
+            type="button"
+            size="small"
+            onClick={handleSubmit}
+            style={{
+              borderRadius: "10px",
+              padding: "8px 10px",
+              background: "#1976d2",
+            }}
+            name="Post Comment"
+          ></OnButtonComponent>
         </Grid>
       </Grid>
-    </Box>  );
+    </Box>
+  );
 };
 
 export default ReviewCommentForm;

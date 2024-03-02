@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardHeader, CardContent, CardActions, TextField, Button, FormControl } from '@mui/material';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import OnButtonComponent from '../OnButtonComponent/OnButtonComponent';
 
 const HorizontalForm = () => {
   const [formData, setFormData] = useState({
@@ -125,10 +126,8 @@ const HorizontalForm = () => {
       </FormControl>
         </form>
       </CardContent>
-      <CardActions sx={{padding:"0 17px 17px 13px"}}>
-        <Button variant="contained" color="primary" type="submit" onClick={handleSubmit} size="small" style={{borderRadius:"15px"}}>
-          Submit
-        </Button>
+      <CardActions sx={{padding:"0 17px 17px 13px",justifyContent:"right"}}>
+        <OnButtonComponent variant="contained" type="submit" size="small" onClick={handleSubmit} style={{textTransform: "capitalize",borderRadius:"10px",background:"#1976d2"}} name="Submit"></OnButtonComponent>
       </CardActions>
     </Card>
   );

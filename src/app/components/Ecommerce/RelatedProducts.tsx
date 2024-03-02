@@ -11,14 +11,15 @@ import {
   Grid,
 } from "@mui/material";
 import productsData from "../../../product-data.json";
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import OnButtonComponent from "../OnButtonComponent/OnButtonComponent";
 
 const RelatedProducts = () => {
   const [products, setProducts] = useState([]);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const isMobileOrTablet = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobileOrTablet = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {
     setProducts(productsData);
@@ -41,10 +42,10 @@ const RelatedProducts = () => {
             <Card
               style={{
                 display: "flex",
-                flexDirection: isMobileOrTablet ? 'column' : 'row',
+                flexDirection: isMobileOrTablet ? "column" : "row",
                 margin: "20px 0",
                 border: "1px solid #ccc",
-                overflow: isMobileOrTablet ? 'auto' : 'hidden',
+                overflow: isMobileOrTablet ? "auto" : "hidden",
               }}
             >
               <CardMedia
@@ -52,9 +53,12 @@ const RelatedProducts = () => {
                 height="150"
                 image={product.image}
                 alt={product.name}
-                style={{ width: isMobileOrTablet ? "100%" : "auto", objectFit:isMobileOrTablet ? 'contain' : 'cover'}}
+                style={{
+                  width: isMobileOrTablet ? "100%" : "auto",
+                  objectFit: isMobileOrTablet ? "contain" : "cover",
+                }}
               />
-              <CardContent style={{ flex: 1,  textAlign:"center"}}>
+              <CardContent style={{ flex: 1, textAlign: "center" }}>
                 <Typography variant="h6" component="div">
                   {product.name}
                 </Typography>
@@ -66,15 +70,17 @@ const RelatedProducts = () => {
                   style={{ color: product.rating >= 1 ? "#FFD700" : "#C0C0C0" }}
                 />
                 <Typography color="textSecondary">{`$${product.price}`}</Typography>
-                <Button
+                <OnButtonComponent
                   variant="contained"
-                  color="warning"
                   type="submit"
                   size="small"
-                  sx={{ padding: isMobile ? "8px" : "5px" }}
-                >
-                  Add to Cart
-                </Button>
+                  style={{
+                    borderRadius: "10px",
+                    padding: isMobile ? "8px" : "7px",
+                    background: "#ed6c02",
+                  }}
+                  name="Add to Cart"
+                ></OnButtonComponent>
               </CardContent>
             </Card>
           </Grid>

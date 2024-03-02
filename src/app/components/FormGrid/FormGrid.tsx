@@ -19,6 +19,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import OnButtonComponent from "../OnButtonComponent/OnButtonComponent";
 
 const FormGrid = () => {
   const [successMessageOpen, setSuccessMessageOpen] = useState(false);
@@ -269,37 +270,8 @@ const FormGrid = () => {
           </Grid>
         </CardContent>
         <CardActions style={{ justifyContent: "flex-end", margin: "0px 14px 14px 14px" }}>
-          <Button
-            variant="contained"
-            color="success"
-            type="submit"
-            onClick={handleSubmit}
-            size="small"
-            style={{
-              textTransform: "capitalize",
-              borderRadius: "15px",
-              padding: "6px 15px",
-              boxShadow: "none",
-              background: "#1d8683",
-            }}
-          >
-            Submit
-          </Button>
-          <Button
-            variant="contained"
-            type="submit"
-            size="small"
-            onClick={handleCancel}
-            style={{
-              textTransform: "capitalize",
-              borderRadius: "15px",
-              padding: "6px 15px",
-              boxShadow: "none",
-              background: "#58544D",
-            }}
-          >
-            cancel
-          </Button>
+        <OnButtonComponent variant="contained" type="submit" size="small" onClick={handleSubmit} style={{textTransform: "capitalize",borderRadius:"10px",background:"#1d8683"}} name="Submit"></OnButtonComponent>
+        <OnButtonComponent variant="contained" type="submit" size="small" onClick={handleSubmit} style={{textTransform: "capitalize",borderRadius:"10px",background:"#58544D"}} name="Cancel"></OnButtonComponent>
         </CardActions>
       </Card>
     </>

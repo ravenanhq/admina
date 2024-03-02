@@ -16,6 +16,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import SearchIcon from "@mui/icons-material/Search";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import OnButtonComponent from "../OnButtonComponent/OnButtonComponent";
 
 const ProductsListHeader = ({
   sortBy,
@@ -53,20 +54,19 @@ const ProductsListHeader = ({
             style={{ marginTop: "8px", paddingTop: "14px" }}
           >
             <Link href={"/ecommerce/add-new-product"}>
-              <Button
+              <OnButtonComponent
                 variant="contained"
-                color="primary"
                 type="submit"
                 size="small"
                 startIcon={<AddCircleOutlineIcon />}
-                sx={{
-                  padding: "10px",
+                style={{
+                  borderRadius: "10px",
+                  padding: "8px 10px",
                   background: "#008cff",
                   margin: isMobile ? "0 0 0 10px" : "",
                 }}
-              >
-                New Product
-              </Button>
+                name="New Product"
+              ></OnButtonComponent>
             </Link>
           </Grid>
           <Grid
@@ -114,11 +114,11 @@ const ProductsListHeader = ({
             style={{ paddingTop: "14px", marginTop: "8px" }}
           >
             <Select
-              value={sortBy} 
+              value={sortBy}
               onChange={onSortChange}
               displayEmpty
               inputProps={{ "aria-label": "Sort By" }}
-              sx={{ height: "40px", padding: "8px", marginLeft:isMobile ? '8px' : "", width: isMobile ? "95%" : "100%" }}
+              sx={{ height: "40px", padding: "8px", marginLeft: isMobile ? '8px' : "", width: isMobile ? "95%" : "100%" }}
               style={{ color: "#888" }}
             >
               <MenuItem value="" disabled>
@@ -134,7 +134,7 @@ const ProductsListHeader = ({
             display: isMobile ? 'block' : 'flex',
             color: "#888"
           }}>
-            <Typography id="price-range-slider" variant="subtitle1" gutterBottom style={{marginLeft:isMobile ? '9px' : "",}}>
+            <Typography id="price-range-slider" variant="subtitle1" gutterBottom style={{ marginLeft: isMobile ? '9px' : "", }}>
               Price
             </Typography>
             <Slider
@@ -145,7 +145,7 @@ const ProductsListHeader = ({
               min={0}
               max={1000}
               step={10}
-              style={{ width:isMobile ? '90%' : '100%', marginLeft: '15px', padding:"13px 0"}} // Adjust the width of the slider
+              style={{ width: isMobile ? '90%' : '100%', marginLeft: '15px', padding: "13px 0" }} // Adjust the width of the slider
             />
           </Grid>
 

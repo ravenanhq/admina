@@ -6,6 +6,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import OnButtonComponent from '../OnButtonComponent/OnButtonComponent';
 
 const HorizontalFormWithIcon = () => {
   const [formData, setFormData] = useState({
@@ -166,10 +167,8 @@ const HorizontalFormWithIcon = () => {
       </FormControl>
         </form>
       </CardContent>
-      <CardActions sx={{padding:"0 17px 17px 13px"}}>
-        <Button variant="contained" type="submit" onClick={handleSubmit} size="small" style={{background:"#e44d26",borderRadius:"15px"}}>
-          Submit
-        </Button>
+      <CardActions sx={{padding:"0 17px 17px 13px",justifyContent:"right"}}>
+        <OnButtonComponent variant="contained" type="submit" size="small" onClick={handleSubmit} style={{textTransform: "capitalize",borderRadius:"10px",background:"#e44d26"}} name="Submit"></OnButtonComponent>
       </CardActions>
     </Card>
   );

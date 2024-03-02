@@ -1,38 +1,53 @@
-import React, { useState } from 'react';
-import { Card, CardHeader, CardContent, CardActions, TextField, Button, InputAdornment, FormControlLabel, Checkbox, Grid, Link, Typography, InputLabel } from '@mui/material';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import GoogleIcon from '@mui/icons-material/Google';
+import React, { useState } from "react";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  TextField,
+  Button,
+  InputAdornment,
+  FormControlLabel,
+  Checkbox,
+  Grid,
+  Link,
+  Typography,
+  InputLabel,
+} from "@mui/material";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import GoogleIcon from "@mui/icons-material/Google";
+import OnButtonComponent from "../../OnButtonComponent/OnButtonComponent";
 
 const SigninFormWithSocialButton = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const [errors, setErrors] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const validateForm = () => {
     let isValid = true;
     const newErrors = { ...errors };
 
-    if (formData.email.trim() === '') {
-      newErrors.email = 'Email is required';
+    if (formData.email.trim() === "") {
+      newErrors.email = "Email is required";
       isValid = false;
     } else {
-      newErrors.email = '';
+      newErrors.email = "";
     }
 
-    if (formData.password.trim() === '') {
-      newErrors.password = 'Password is required';
+    if (formData.password.trim() === "") {
+      newErrors.password = "Password is required";
       isValid = false;
     } else {
-      newErrors.password = '';
+      newErrors.password = "";
     }
 
     setErrors(newErrors);
@@ -57,11 +72,18 @@ const SigninFormWithSocialButton = () => {
 
   return (
     <Card variant="outlined">
-      <CardHeader title="Signin Form with Social Button"  titleTypographyProps={{ fontSize: '16px'}} sx={{ bgcolor: '#0057e7', color: 'white'}}   />
-      <CardHeader title="Login"  titleTypographyProps={{ fontSize: '16px' , textAlign:"center"}}    />
+      <CardHeader
+        title="Signin Form with Social Button"
+        titleTypographyProps={{ fontSize: "16px" }}
+        sx={{ bgcolor: "#0057e7", color: "white" }}
+      />
+      <CardHeader
+        title="Login"
+        titleTypographyProps={{ fontSize: "16px", textAlign: "center" }}
+      />
       <CardContent>
         <form onSubmit={handleSubmit}>
-         <TextField
+          <TextField
             variant="standard"
             fullWidth
             margin="normal"
@@ -74,26 +96,27 @@ const SigninFormWithSocialButton = () => {
             placeholder="Username or Email"
             InputProps={{
               startAdornment: (
-                <InputAdornment position="start" sx={{ fontSize: 18, color: 'gray' }}>
-                  <MailOutlineIcon sx={{ width: "15px"}}/>
+                <InputAdornment
+                  position="start"
+                  sx={{ fontSize: 18, color: "gray" }}
+                >
+                  <MailOutlineIcon sx={{ width: "15px" }} />
                 </InputAdornment>
               ),
-              sx: { fontSize: 12,paddingTop: 1}, 
+              sx: { fontSize: 12, paddingTop: 1 },
             }}
             InputLabelProps={{
               shrink: true,
               sx: {
                 fontSize: 18,
-                fontWeight: 'bold', 
+                fontWeight: "bold",
               },
             }}
-            label = "Email"
-          >
-         
-          </TextField>
-      
+            label="Email"
+          ></TextField>
+
           <TextField
-           variant="standard"
+            variant="standard"
             fullWidth
             margin="normal"
             name="password"
@@ -101,57 +124,70 @@ const SigninFormWithSocialButton = () => {
             onChange={handleChange}
             error={!!errors.password}
             helperText={errors.password}
-            size='small'
+            size="small"
             placeholder="Password"
             InputProps={{
               startAdornment: (
-                <InputAdornment position="start" sx={{ fontSize: 18, color: 'gray' }}>
-                  <VisibilityIcon sx={{ width: "15px"}}/>
+                <InputAdornment
+                  position="start"
+                  sx={{ fontSize: 18, color: "gray" }}
+                >
+                  <VisibilityIcon sx={{ width: "15px" }} />
                 </InputAdornment>
               ),
-              sx: { fontSize: 12,paddingTop: 1},
+              sx: { fontSize: 12, paddingTop: 1 },
             }}
             InputLabelProps={{
               shrink: true,
               sx: {
-                fontSize: 18, 
-                fontWeight: 'bold', 
+                fontSize: 18,
+                fontWeight: "bold",
               },
             }}
-            label = "Password"
+            label="Password"
           />
-   
         </form>
       </CardContent>
-    
-    
-          <Typography sx={{ fontSize: '14px',mr:2, textAlign:"right"}}>
-            <Link href="#" color="inherit" style={{textDecoration:"none" }}>
-              Forgot your password?
-            </Link>
-          </Typography>
-      
-      <CardActions> 
+
+      <Typography sx={{ fontSize: "14px", mr: 2, textAlign: "right" }}>
+        <Link href="#" color="inherit" style={{ textDecoration: "none" }}>
+          Forgot your password?
+        </Link>
+      </Typography>
+
+      <CardActions>
         <Grid container justifyContent="center">
-          <Button variant="contained" color="primary" type="submit" onClick={handleSubmit} size="small" sx={{ width: '35%' ,borderRadius:"20px"}}>
-            Log In
-          </Button>
+          <OnButtonComponent
+            variant="contained"
+            type="submit"
+            size="small"
+            onClick={handleSubmit}
+            style={{
+              width: "35%",
+              borderRadius: "10px",
+              background: "#1976d2",
+              padding: "5px 0",
+            }}
+            name="Log In"
+          ></OnButtonComponent>
         </Grid>
       </CardActions>
 
+      <Typography sx={{ fontSize: "14px", mt: 1, textAlign: "center" }}>
+        or Sign up using
+      </Typography>
 
-      <Typography sx={{ fontSize: '14px',mt:1,textAlign:"center"}}>
-              or Sign up using
-          </Typography>
-
-      <CardActions sx={{mt:1}}>
-        <Grid container justifyContent="center" >
-        <Link href="#" color="inherit" style={{textDecoration:"none" }}>
-           <FacebookIcon style={{ color: '#1877f2',marginRight:"3px" }}/></Link>
-           <Link href="#" color="inherit" style={{textDecoration:"none" }}>
-             <TwitterIcon style={{ color: '#1da1f2',marginRight:"3px" }}/></Link>
-             <Link href="#" color="inherit" style={{textDecoration:"none" }}> 
-              <GoogleIcon style={{ color: '#ea4335' }} /></Link>
+      <CardActions sx={{ mt: 1 }}>
+        <Grid container justifyContent="center">
+          <Link href="#" color="inherit" style={{ textDecoration: "none" }}>
+            <FacebookIcon style={{ color: "#1877f2", marginRight: "3px" }} />
+          </Link>
+          <Link href="#" color="inherit" style={{ textDecoration: "none" }}>
+            <TwitterIcon style={{ color: "#1da1f2", marginRight: "3px" }} />
+          </Link>
+          <Link href="#" color="inherit" style={{ textDecoration: "none" }}>
+            <GoogleIcon style={{ color: "#ea4335" }} />
+          </Link>
         </Grid>
       </CardActions>
     </Card>
