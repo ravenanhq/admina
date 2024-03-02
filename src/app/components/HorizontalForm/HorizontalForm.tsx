@@ -88,7 +88,7 @@ const HorizontalForm = () => {
           helperText={errors.name}
           size='small'
           placeholder='Name'
-          style={{marginTop: isMobile ? "5px" : "0",width:"80%"}}
+          style={{marginTop: isMobile ? "5px" : "0",width:isMobile ? "100%": "80%"}}
         />
       </FormControl>
       <FormControl style={{display:"flex",flexDirection: isMobile ? "column" : "row",marginTop:"10px",justifyContent:"space-between"}}>
@@ -104,7 +104,7 @@ const HorizontalForm = () => {
           helperText={errors.email}
           size='small'
           placeholder='Email'
-          style={{marginTop: isMobile ? "5px" : "0",width:"80%"}}
+          style={{marginTop: isMobile ? "5px" : "0",width:isMobile ? "100%": "80%"}}
         />
       </FormControl>
       <FormControl style={{display:"flex",flexDirection: isMobile ? "column" : "row",marginTop:"10px",justifyContent:"space-between"}}>
@@ -120,7 +120,7 @@ const HorizontalForm = () => {
           helperText={errors.password}
           size='small'
           placeholder='Password'
-          style={{marginTop: isMobile ? "5px" : "0",width:"80%"}}
+          style={{marginTop: isMobile ? "5px" : "0",width:isMobile ? "100%": "80%"}}
         />
       </FormControl>
         </form>

@@ -46,7 +46,7 @@ const HorizontalFormWithIcon = () => {
     }
 
     if (formData.password.trim() === '') {
-      newErrors.password = 'password is required';
+      newErrors.password = 'Password is required';
       isValid = false;
     } else {
       newErrors.password = '';
@@ -97,7 +97,7 @@ const HorizontalFormWithIcon = () => {
           helperText={errors.name}
           size='small'
           placeholder='Name'
-          style={{marginTop: isMobile ? "5px" : "0",width:"80%"}}
+          style={{marginTop: isMobile ? "5px" : "0",width:isMobile ? "100%": "80%"}}
           InputProps={{
             startAdornment: (
                 <InputAdornment position="start">
@@ -127,7 +127,7 @@ const HorizontalFormWithIcon = () => {
                 </InputAdornment>
             ),
         }}
-          style={{marginTop: isMobile ? "5px" : "0",width:"80%"}}
+          style={{marginTop: isMobile ? "5px" : "0",width:isMobile ? "100%": "80%"}}
         />
       </FormControl>
       <FormControl style={{display:"flex",flexDirection: isMobile ? "column" : "row",marginTop:"10px",justifyContent:"space-between"}}>
@@ -161,7 +161,7 @@ const HorizontalFormWithIcon = () => {
               </InputAdornment>
             ),
           }}
-          style={{marginTop: isMobile ? "5px" : "0",width:"80%"}}
+          style={{marginTop: isMobile ? "5px" : "0",width:isMobile ? "100%": "80%"}}
         />
       </FormControl>
         </form>
