@@ -67,11 +67,11 @@ const ForgotPasswordForm = () => {
 
   return (
     <>
-      <Card variant="outlined">
+      <Card variant="outlined" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 #ccc" }}>
         <CardHeader
           title="Forgot Password"
           titleTypographyProps={{ fontSize: "20px", fontWeight: "bold" }}
-          sx={{ bgcolor: "#2e7d32", color: "white", textAlign: "center" }}
+          sx={{ bgcolor: "#2b9b8e", color: "white", textAlign: "center" }}
         />
         <CardHeader
           title="Logo"
@@ -112,11 +112,10 @@ const ForgotPasswordForm = () => {
           >
             <Button
               variant="contained"
-              color="success"
               type="submit"
               onClick={handleSubmit}
               size="small"
-              sx={{borderRadius:"15px",padding:"5px 10px"}}
+              sx={{ borderRadius: "10px", padding: "5px 10px", background: "#fc9f66" }}
             >
               Send
             </Button>

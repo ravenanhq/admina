@@ -105,7 +105,7 @@ const List = () => {
   };
 
   return (
-    <Card style={{ border: "0px", boxShadow: "none", padding: 0 }}>
+    <Card style={{ border: "0px", boxShadow: "none", padding: 0 ,background:"none"}}>
       <Grid
         container
         spacing={2}
@@ -151,6 +151,7 @@ const List = () => {
           padding: "16px 0",
           border: "1px solid #ccc",
           marginTop: "15px",
+          background:"#fff"
         }}
       >
         <Grid

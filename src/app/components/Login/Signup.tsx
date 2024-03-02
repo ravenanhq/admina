@@ -121,11 +121,11 @@ const SignupForm = () => {
 
   return (
     <>
-      <Card variant="outlined">
+      <Card variant="outlined" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 #ccc" }}>
         <CardHeader
           title="SIGNUP"
           titleTypographyProps={{ fontSize: "20px", fontWeight: "bold" }}
-          sx={{ bgcolor: "#2e7d32", color: "white", textAlign: "center" }}
+          sx={{ bgcolor: "#2b9b8e", color: "white", textAlign: "center" }}
         />
         <CardHeader
           title="Logo"
@@ -196,7 +196,7 @@ const SignupForm = () => {
               fullWidth
               margin="normal"
               name="password"
-              type={showPassword ? "text" : "password"} 
+              type={showPassword ? "text" : "password"}
               value={formData.password}
               onChange={handleChange}
               error={!!errors.password}
@@ -225,7 +225,7 @@ const SignupForm = () => {
               fullWidth
               margin="normal"
               name="confirmPassword"
-              type={showPassword ? "text" : "password"} 
+              type={showPassword ? "text" : "password"}
               value={formData.confirmPassword}
               onChange={handleChange}
               error={!!errors.confirmPassword}
@@ -261,23 +261,22 @@ const SignupForm = () => {
           >
             <Button
               variant="contained"
-              color="success"
               type="submit"
               onClick={handleSubmit}
               size="small"
-              sx={{ borderRadius: "15px", padding: "5px 10px" }}
+              sx={{ borderRadius: "10px", padding: "5px 10px", background: "#2b9b8e" }}
             >
               Submit
             </Button>
             <Button
               variant="contained"
-              color="warning"
               size="small"
               onClick={handleCancel}
               sx={{
                 marginLeft: "10px",
-                borderRadius: "15px",
+                borderRadius: "10px",
                 padding: "5px 10px",
+                background: "#fc9f66"
               }}
             >
               Cancel

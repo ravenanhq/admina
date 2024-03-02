@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { Card, CardHeader, CardContent, CardActions, TextField, Button, FormControl } from '@mui/material';
+import { Card, CardHeader, CardContent, CardActions, TextField, Button, FormControl, InputAdornment } from '@mui/material';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import PersonIcon from '@mui/icons-material/Person';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
-const HorizontalForm = () => {
+const HorizontalFormWithIcon = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,6 +22,7 @@ const HorizontalForm = () => {
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const [showPassword, setShowPassword] = useState(false);
 
   const validateForm = () => {
     let isValid = true;
@@ -66,11 +71,15 @@ const HorizontalForm = () => {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <Card variant="outlined" style={{borderRadius:"10px"}}>
       <CardHeader
-        title="Basic Layout"
-        sx={{ bgcolor: '#0057e7', color: 'white' }}
+        title="Basic Layout with Icon"
+        sx={{ bgcolor: '#e44d26', color: 'white' }}
         titleTypographyProps={{ fontSize: '16px' }}
       />
       <CardContent>
@@ -89,6 +98,13 @@ const HorizontalForm = () => {
           size='small'
           placeholder='Name'
           style={{marginTop: isMobile ? "5px" : "0",width:isMobile ? "100%": "80%"}}
+          InputProps={{
+            startAdornment: (
+                <InputAdornment position="start">
+                    <PersonIcon />
+                </InputAdornment>
+            ),
+        }}
         />
       </FormControl>
       <FormControl style={{display:"flex",flexDirection: isMobile ? "column" : "row",marginTop:"10px",justifyContent:"space-between"}}>
@@ -104,6 +120,13 @@ const HorizontalForm = () => {
           helperText={errors.email}
           size='small'
           placeholder='Email'
+          InputProps={{
+            startAdornment: (
+                <InputAdornment position="start">
+                    <MailOutlineIcon />
+                </InputAdornment>
+            ),
+        }}
           style={{marginTop: isMobile ? "5px" : "0",width:isMobile ? "100%": "80%"}}
         />
       </FormControl>
@@ -114,19 +137,37 @@ const HorizontalForm = () => {
           margin="normal"
           id="password"
           name="password"
+          type={showPassword ? "text" : "password"}
           value={formData.password}
           onChange={handleChange}
           error={!!errors.password}
           helperText={errors.password}
           size='small'
           placeholder='Password'
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                {showPassword ? (
+                  <VisibilityOffIcon
+                    onClick={togglePasswordVisibility}
+                    sx={{ cursor: "pointer" }}
+                  />
+                ) : (
+                  <VisibilityIcon
+                    onClick={togglePasswordVisibility}
+                    sx={{ cursor: "pointer" }}
+                  />
+                )}
+              </InputAdornment>
+            ),
+          }}
           style={{marginTop: isMobile ? "5px" : "0",width:isMobile ? "100%": "80%"}}
         />
       </FormControl>
         </form>
       </CardContent>
       <CardActions sx={{padding:"0 17px 17px 13px"}}>
-        <Button variant="contained" color="primary" type="submit" onClick={handleSubmit} size="small" style={{borderRadius:"15px"}}>
+        <Button variant="contained" type="submit" onClick={handleSubmit} size="small" style={{background:"#e44d26",borderRadius:"15px"}}>
           Submit
         </Button>
       </CardActions>
@@ -134,4 +175,4 @@ const HorizontalForm = () => {
   );
 };
 
-export default HorizontalForm;
+export default HorizontalFormWithIcon;

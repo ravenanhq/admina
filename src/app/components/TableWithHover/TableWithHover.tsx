@@ -36,7 +36,7 @@ const TableWithHover = () => {
   };
 
   return (
-    <Card variant="outlined">
+    <Card variant="outlined" sx={{borderRadius:"10px"}}>
       <CardHeader
         title="Table with Hover Style"
         sx={{ bgcolor: '#0057e7', color: 'white' }}

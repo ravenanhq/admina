@@ -1,5 +1,12 @@
+"use client";
 import React from "react";
-import { Card, CardContent, Typography, Grid } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Typography,
+  Grid,
+  Divider,
+} from "@mui/material";
 import {
   AccountCircle,
   ShoppingCart,
@@ -8,6 +15,10 @@ import {
 } from "@mui/icons-material";
 import SimpleBarChart from "../components/SimpleBarChart/SimpleBarChart";
 import PieColor from "../components/PieColor/PieColor";
+import RecentOrder from "./RecentOrder";
+import NewProduct from "./NewProduct";
+import RecentAcitivty from "./RecentActivity";
+import Summary from "./Summary";
 
 export default function Admin() {
   const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
@@ -30,71 +41,149 @@ export default function Admin() {
           <Grid item xs={12} sm={6} md={6} lg={3}>
             <Card
               style={{
-                backgroundColor: "#008744",
+                backgroundImage: "linear-gradient(to right, #008744, #92F195)",
                 color: "#fff",
                 width: "100%",
+                paddingBottom: "10px",
+                borderRadius: "0",
               }}
             >
-              <CardContent>
-                <AccountCircle fontSize="large" />
-                <Typography variant="h3">500</Typography>
-                <Typography component="div">User</Typography>
+              <CardContent
+                sx={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div style={{ display: "flex", marginTop: "8px" }}>
+                  <AccountCircle fontSize="large" />
+                </div>
+                <div>
+                  <Typography variant="h4">500</Typography>
+                  <Typography component="div">User</Typography>
+                </div>
               </CardContent>
+              <Divider sx={{ margin: "0 20px 10px 20px", padding: "0 10px" }} />
+              <Typography
+                component="div"
+                sx={{
+                  textAlign: "center",
+                  fontSize: "12px",
+                  padding: "0 20px",
+                }}
+              >
+                Lorem Ipsum is simply dummy texLorem Ipsum is simply dummy text
+              </Typography>
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={3}>
             <Card
               style={{
-                backgroundColor: "#0057e7",
+                backgroundImage: "linear-gradient(to right, #F9588C, #F17CA2)",
                 color: "#fff",
                 width: "100%",
+                paddingBottom: "10px",
+                borderRadius: "0",
               }}
             >
-              <CardContent>
-                <ShoppingCart fontSize="large" />
-                <Typography variant="h3">200</Typography>
-                <Typography component="div">Shopping Cart</Typography>
+              <CardContent
+                sx={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div style={{ display: "flex", marginTop: "8px" }}>
+                  <ShoppingCart fontSize="large" />
+                </div>
+                <div>
+                  <Typography variant="h4">200</Typography>
+                  <Typography component="div">Shopping Cart</Typography>
+                </div>
               </CardContent>
+              <Divider sx={{ margin: "0 20px 10px 20px", padding: "0 10px" }} />
+              <Typography
+                component="div"
+                sx={{
+                  textAlign: "center",
+                  fontSize: "12px",
+                  padding: "0 20px",
+                }}
+              >
+                Lorem Ipsum is simply dummy texLorem Ipsum is simply dummy text
+              </Typography>
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={3}>
             <Card
               style={{
-                backgroundColor: "#d62d20",
+                backgroundImage: "linear-gradient(to bottom, #fbb80e,#f96924)",
                 color: "#fff",
                 width: "100%",
+                paddingBottom: "10px",
+                borderRadius: "0",
               }}
             >
-              <CardContent>
-                <Notifications fontSize="large" />
-                <Typography variant="h3">400</Typography>
-                <Typography component="div">Notification</Typography>
+              <CardContent
+                sx={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div style={{ display: "flex", marginTop: "8px" }}>
+                  <Notifications fontSize="large" />
+                </div>
+                <div>
+                  <Typography variant="h4">400</Typography>
+                  <Typography component="div">Notification</Typography>
+                </div>
               </CardContent>
+              <Divider sx={{ margin: "0 20px 10px 20px", padding: "0 10px" }} />
+              <Typography
+                component="div"
+                sx={{
+                  textAlign: "center",
+                  fontSize: "12px",
+                  padding: "0 20px",
+                }}
+              >
+                Lorem Ipsum is simply dummy texLorem Ipsum is simply dummy text
+              </Typography>
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={6} lg={3}>
             <Card
               style={{
-                backgroundColor: "#ffa700",
+                backgroundImage: "linear-gradient(to bottom,#4fcbf6,#5833f1)",
                 color: "#fff",
                 width: "100%",
+                paddingBottom: "10px",
+                borderRadius: "0",
               }}
             >
-              <CardContent>
-                <Settings fontSize="large" />
-                <Typography variant="h3">1000</Typography>
-                <Typography component="div">Visitors</Typography>
+              <CardContent
+                sx={{ display: "flex", justifyContent: "space-between" }}
+              >
+                <div style={{ display: "flex", marginTop: "8px" }}>
+                  <Settings fontSize="large" />
+                </div>
+                <div>
+                  <Typography variant="h4">1000</Typography>
+                  <Typography component="div">Visitors</Typography>
+                </div>
               </CardContent>
+              <Divider sx={{ margin: "0 20px 10px 20px", padding: "0 10px" }} />
+              <Typography
+                component="div"
+                sx={{
+                  textAlign: "center",
+                  fontSize: "12px",
+                  padding: "0 20px",
+                }}
+              >
+                Lorem Ipsum is simply dummy texLorem Ipsum is simply dummy text
+              </Typography>
             </Card>
           </Grid>
         </Grid>
+
         <Grid container spacing={3} style={{ paddingTop: 30 }}>
           <Grid item xs={12} sm={12} md={6}>
             <Card
               style={{
-                backgroundColor: "aliceblue",
                 color: "#fff",
                 width: "100%",
+                borderRadius: "10px",
+                borderBottom: "3px solid #33bebe",
               }}
             >
               <CardContent>
@@ -105,15 +194,33 @@ export default function Admin() {
           <Grid item xs={12} sm={12} md={6}>
             <Card
               style={{
-                backgroundColor: "aliceblue",
                 color: "#fff",
                 width: "100%",
-              }}
-            >
+                borderRadius: "10px",
+                borderBottom: "3px solid #33bebe",
+              }}>
               <CardContent>
                 <PieColor></PieColor>
               </CardContent>
             </Card>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={3} style={{ paddingTop: 30 }}>
+          <Grid item xs={12} sm={12} md={6}>
+            <RecentAcitivty></RecentAcitivty>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6}>
+            <Summary></Summary>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={3} style={{ paddingTop: 30 }}>
+          <Grid item xs={12} sm={12} md={6}>
+            <RecentOrder></RecentOrder>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6}>
+            <NewProduct></NewProduct>
           </Grid>
         </Grid>
       </div>

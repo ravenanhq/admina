@@ -8,11 +8,14 @@ import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
+import { usePathname } from 'next/navigation'
 
 const Dashboard = ({ children }: { children: React.ReactNode }) => {
+  const pathname = usePathname();
   const theme = useTheme();
   const isMobile = useMediaQuery("(max-width:1023px)");
-
+  const isLoginPage = pathname === "/login";
+  
   return (
     <>
       <Head>
@@ -51,11 +54,11 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
               component="main"
               sx={{
                 flexGrow: 1,
-                p: 3,
-                marginTop: "30px",
+                p: isLoginPage ? "0" : 3,
+                marginTop: isLoginPage ? "0" : "30px",
               }}
             >
-              <div style={{ paddingTop: theme.spacing(2) }}>
+              <div style={{ paddingTop:isLoginPage ? "0" : theme.spacing(2) }}>
                 {" "}
                 {/* Use theme spacing for consistent spacing */}
                 {children}

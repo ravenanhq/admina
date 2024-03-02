@@ -24,7 +24,7 @@ export default async function RootLayout({
 
   return (
     <html>
-      <body suppressHydrationWarning={true} className={inter.className}>
+      <body suppressHydrationWarning={true} className={inter.className} style={{backgroundColor:"#f5f5f5"}}>
         <Provider session={session}>
           <Dashboard children={children} />
         </Provider>

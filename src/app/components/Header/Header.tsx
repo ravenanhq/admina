@@ -28,7 +28,6 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import EditIcon from "@mui/icons-material/Edit";
 import TableIcon from "@mui/icons-material/TableChart";
-import ParkIcon from "@mui/icons-material/Park";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import SearchIcon from "@mui/icons-material/Search";
 import BarChartIcon from "@mui/icons-material/BarChart";
@@ -48,6 +47,7 @@ import { usePathname } from "next/navigation";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { signOut } from "next-auth/react";
 import ListAltIcon from '@mui/icons-material/ListAlt';
+import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -91,7 +91,10 @@ const Header: React.FC = () => {
   const [state, setState] = React.useState({
     left: false,
   });
+
   const [showEcommerceSubMenu, setShowEcommerceSubMenu] = React.useState(false);
+  const [showComponentsSubMenu, setShowComponentsSubMenu] = React.useState(false);
+
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
@@ -119,18 +122,41 @@ const Header: React.FC = () => {
     console.log(`Clicked on ${label}`);
   };
 
+
+  const handleComponentsClick = () => {
+    console.log("true")
+    setShowComponentsSubMenu(!showComponentsSubMenu);
+  };
+
+  const handleComponentsSubMenuItemClick = (label: string) => {
+    console.log(`Clicked on ${label}`);
+  };
+
   const menuItems = [
     { label: "Dashboard", route: "/admin" },
-    { label: "Forms", route: "/form" },
-    { label: "Tables", route: "/table" },
-    { label: "UI Elements", route: "/uielements" },
-    { label: "Charts", route: "/chart" },
-    { label: "Cards", route: "/card" },
-    { label: "Spinners", route: "/loader" },
-    { label: "Breadcrumbs", route: "/breadcrumbs" },
-    { label: "Search", route: "/search" },
-    { label: "Signin", route: "/signin" },
-    { label: "Footers", route: "/footer" },
+    {
+      label: "Components",
+      submenu: [
+        { label: "Forms", route: "/form" },
+        { label: "Charts", route: "/chart" },
+        { label: "Cards", route: "/card" },
+        { label: "Spinners", route: "/loader" },
+        { label: "Breadcrumbs", route: "/breadcrumbs" },
+        { label: "Search", route: "/search" },
+        { label: "Signin", route: "/signin" },
+        { label: "Footers", route: "/footer" },
+        { label: "Tables", route: "/table" },
+        { label: "Buttons", route: "/uielements/buttons" },
+        { label: "Alerts", route: "/uielements/alerts" },
+        { label: "Tabs", route: "/uielements/tabs" },
+        { label: "Modals", route: "/uielements/modals" },
+        { label: "Slider", route: "/uielements/slider" },
+        { label: "Timeline", route: "/uielements/timeline" },
+        { label: "Navbar", route: "/uielements/navbar" },
+        { label: "General Elements", route: "/uielements/general-elements" },
+      ],
+    },
+
     {
       label: "Ecommerce",
       submenu: [
@@ -143,7 +169,7 @@ const Header: React.FC = () => {
       ],
     },
     { label: "Import/Export", route: "/import-export-element" },
-    { label: "Crud Component",  route:"/crud/list"}
+    { label: "Crud Component", route: "/crud/list" }
   ];
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -166,7 +192,6 @@ const Header: React.FC = () => {
     <Box
       sx={{ width: 250 }}
       role="presentation"
-      onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
       <List sx={{ paddingTop: "0px" }}>
@@ -210,11 +235,9 @@ const Header: React.FC = () => {
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
                 }}
-                onClick={
-                  menuItem.label === "Ecommerce"
-                    ? handleEcommerceClick
-                    : undefined
-                }
+                onClick={menuItem.label === "Ecommerce"
+                  ? handleEcommerceClick : "Components"
+                    ? handleComponentsClick : undefined}
               >
                 <ListItemIcon
                   sx={{
@@ -224,20 +247,7 @@ const Header: React.FC = () => {
                   }}
                 >
                   {menuItem.label === "Dashboard" ? <DashboardIcon /> : ""}
-                  {menuItem.label === "Forms" ? <EditIcon /> : ""}
-                  {menuItem.label === "Tables" ? <TableIcon /> : ""}
-                  {menuItem.label === "UI Elements" ? <ParkIcon /> : ""}
-                  {menuItem.label === "Charts" ? <BarChartIcon /> : ""}
-                  {menuItem.label === "Cards" ? <CreditCardIcon /> : ""}
-                  {menuItem.label === "Spinners" ? <AutorenewIcon /> : ""}
-                  {menuItem.label === "Breadcrumbs" ? (
-                    <KeyboardDoubleArrowRightIcon />
-                  ) : (
-                    ""
-                  )}
-                  {menuItem.label === "Search" ? <SearchIcon /> : ""}
-                  {menuItem.label === "Signin" ? <LoginIcon /> : ""}
-                  {menuItem.label === "Footers" ? <VerticalAlignBottomIcon /> : ""}
+                  {menuItem.label === "Components" ? <GridViewOutlinedIcon /> : ""}
                   {menuItem.label === "Ecommerce" ? <ShoppingCartCheckoutIcon /> : ""}
                   {menuItem.label === "Import/Export" ? <ImportExportIcon /> : ""}
                   {menuItem.label === "Crud Component" ? <ListAltIcon /> : ""}
@@ -258,8 +268,85 @@ const Header: React.FC = () => {
                     )
                   ) : null}
                 </ListItemIcon>
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    ml: "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {menuItem.label === "Components" ? (
+                    showComponentsSubMenu ? <ExpandLess /> : <ExpandMore />
+                  ) : null}
+                </ListItemIcon>
               </ListItemButton>
             </Link>
+            {menuItem.label === "Components" && (
+              <Collapse in={showComponentsSubMenu} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  {menuItem.submenu.map((subMenuItem) => (
+                    <React.Fragment key={subMenuItem.label}>
+                      <ListItem
+                        key={subMenuItem.label}
+                        disablePadding
+                        sx={{ display: "block", paddingLeft: 4 }}
+                      >
+                        <Link
+                          href={subMenuItem.route}
+                          style={{ textDecoration: "none", color: "inherit" }}
+                        >
+                          <ListItemButton
+                            sx={{
+                              minHeight: 48,
+                              justifyContent: open ? "initial" : "center",
+                              px: 2.5,
+                            }}
+                            onClick={() => handleComponentsSubMenuItemClick(subMenuItem.label)}
+                          >
+                            <ListItemIcon
+                              sx={{
+                                minWidth: 0,
+                                mr: open ? 2 : "auto",
+                                justifyContent: "center",
+
+                              }}
+                            >
+                              {/* Your icon rendering code */}
+                              {subMenuItem.label === "Forms" ? <EditIcon style={{ fontSize: "20px" }} /> : ""}
+                              {subMenuItem.label === "Charts" ? <BarChartIcon style={{ fontSize: "20px" }} /> : ""}
+                              {subMenuItem.label === "Cards" ? <CreditCardIcon style={{ fontSize: "20px" }} /> : ""}
+                              {subMenuItem.label === "Spinners" ? <AutorenewIcon style={{ fontSize: "20px" }} /> : ""}
+                              {subMenuItem.label === "Breadcrumbs" ? <KeyboardDoubleArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
+                              {subMenuItem.label === "Search" ? <SearchIcon style={{ fontSize: "20px" }} /> : ""}
+                              {subMenuItem.label === "Signin" ? <LoginIcon style={{ fontSize: "20px" }} /> : ""}
+                              {subMenuItem.label === "Footers" ? <VerticalAlignBottomIcon style={{ fontSize: "20px" }} /> : ""}
+                              {subMenuItem.label === "Tables" ? <TableIcon style={{ fontSize: "20px" }} /> : ""}
+                              {subMenuItem.label === "Buttons" ? <KeyboardArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
+                              {subMenuItem.label === "Alerts" ? <KeyboardArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
+                              {subMenuItem.label === "Tabs" ? <KeyboardArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
+                              {subMenuItem.label === "Modals" ? <KeyboardArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
+                              {subMenuItem.label === "Slider" ? <KeyboardArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
+                              {subMenuItem.label === "Timeline" ? <KeyboardArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
+                              {subMenuItem.label === "Navbar" ? <KeyboardArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
+                              {subMenuItem.label === "General Elements" ? <KeyboardArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
+                            </ListItemIcon>
+                            <ListItemText primary={subMenuItem.label} />
+                          </ListItemButton>
+                        </Link>
+                      </ListItem>
+                      {subMenuItem.label === "Tables" && (
+                        <ListItem sx={{ paddingLeft: 4 }}>
+                          <Typography variant="h6" sx={{ fontSize: "15px", fontWeight: "bold", paddingLeft: 1, paddingBottom: 1 }}>
+                            UI Elements {/* Add your desired title here */}
+                          </Typography>
+                        </ListItem>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </List>
+              </Collapse>
+            )}
+
             {/* Nested List for Ecommerce Submenu */}
             {menuItem.label === "Ecommerce" && (
               <Collapse in={showEcommerceSubMenu} timeout="auto" unmountOnExit>
@@ -295,8 +382,8 @@ const Header: React.FC = () => {
                             {subMenuItem.label === "Product Details" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
                             {subMenuItem.label === "Add New Product" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
                             {subMenuItem.label === "Orders" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
-                            {subMenuItem.label === "Product List" ? <KeyboardArrowRightIcon style={{fontSize:"14px"}} /> : ""}
-                            {subMenuItem.label === "Wishlist" ? <KeyboardArrowRightIcon style={{fontSize:"14px"}} /> : ""}
+                            {subMenuItem.label === "Product List" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
+                            {subMenuItem.label === "Wishlist" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
                           </ListItemIcon>
                           <ListItemText primary={subMenuItem.label} />
                         </ListItemButton>

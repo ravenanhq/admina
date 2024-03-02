@@ -10,7 +10,7 @@ const SimpleTable = () => {
   ];
 
   return (
-    <Card variant="outlined">
+    <Card variant="outlined" sx={{borderRadius:"10px"}}>
       <CardHeader
         title="Simple Table"
         sx={{ bgcolor: '#008744', color: 'white' }}
