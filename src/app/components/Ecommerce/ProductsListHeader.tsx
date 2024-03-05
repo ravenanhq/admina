@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Button,
   IconButton,
   CardContent,
   Card,
@@ -16,13 +15,13 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import SearchIcon from "@mui/icons-material/Search";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import OnButtonComponent from "../OnButtonComponent/OnButtonComponent";
+import ButtonComponent from "../BasicUIElements/ButtonComponent";
 
 const ProductsListHeader = ({
   sortBy,
   onSortChange,
   onSearchTermChange,
-  onPriceChange
+  onPriceChange,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [priceRange, setPriceRange] = React.useState([0, 1000]);
@@ -54,7 +53,7 @@ const ProductsListHeader = ({
             style={{ marginTop: "8px", paddingTop: "14px" }}
           >
             <Link href={"/ecommerce/add-new-product"}>
-              <OnButtonComponent
+              <ButtonComponent
                 variant="contained"
                 type="submit"
                 size="small"
@@ -66,7 +65,7 @@ const ProductsListHeader = ({
                   margin: isMobile ? "0 0 0 10px" : "",
                 }}
                 name="New Product"
-              ></OnButtonComponent>
+              ></ButtonComponent>
             </Link>
           </Grid>
           <Grid
@@ -118,7 +117,12 @@ const ProductsListHeader = ({
               onChange={onSortChange}
               displayEmpty
               inputProps={{ "aria-label": "Sort By" }}
-              sx={{ height: "40px", padding: "8px", marginLeft: isMobile ? '8px' : "", width: isMobile ? "95%" : "100%" }}
+              sx={{
+                height: "40px",
+                padding: "8px",
+                marginLeft: isMobile ? "8px" : "",
+                width: isMobile ? "95%" : "100%",
+              }}
               style={{ color: "#888" }}
             >
               <MenuItem value="" disabled>
@@ -128,13 +132,25 @@ const ProductsListHeader = ({
               <MenuItem value="price">Price</MenuItem>
             </Select>
           </Grid>
-          <Grid item xs={12} sm={6} md={3} lg={2} style={{
-            paddingTop: '14px',
-            marginTop: isMobile ? '0' : '15px',
-            display: isMobile ? 'block' : 'flex',
-            color: "#888"
-          }}>
-            <Typography id="price-range-slider" variant="subtitle1" gutterBottom style={{ marginLeft: isMobile ? '9px' : "", }}>
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={3}
+            lg={2}
+            style={{
+              paddingTop: "14px",
+              marginTop: isMobile ? "0" : "15px",
+              display: isMobile ? "block" : "flex",
+              color: "#888",
+            }}
+          >
+            <Typography
+              id="price-range-slider"
+              variant="subtitle1"
+              gutterBottom
+              style={{ marginLeft: isMobile ? "9px" : "" }}
+            >
               Price
             </Typography>
             <Slider
@@ -145,10 +161,13 @@ const ProductsListHeader = ({
               min={0}
               max={1000}
               step={10}
-              style={{ width: isMobile ? '90%' : '100%', marginLeft: '15px', padding: "13px 0" }} // Adjust the width of the slider
+              style={{
+                width: isMobile ? "90%" : "100%",
+                marginLeft: "15px",
+                padding: "13px 0",
+              }}
             />
           </Grid>
-
         </Grid>
       </CardContent>
     </Card>

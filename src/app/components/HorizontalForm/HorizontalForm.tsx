@@ -1,20 +1,27 @@
-import React, { useState } from 'react';
-import { Card, CardHeader, CardContent, CardActions, TextField, Button, FormControl } from '@mui/material';
+import React, { useState } from "react";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  TextField,
+  FormControl,
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import OnButtonComponent from '../OnButtonComponent/OnButtonComponent';
+import ButtonComponent from "../BasicUIElements/ButtonComponent";
 
 const HorizontalForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
   });
 
   const [errors, setErrors] = useState({
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
   });
 
   const theme = useTheme();
@@ -24,28 +31,28 @@ const HorizontalForm = () => {
     let isValid = true;
     const newErrors = { ...errors };
 
-    if (formData.name.trim() === '') {
-      newErrors.name = 'Name is required';
+    if (formData.name.trim() === "") {
+      newErrors.name = "Name is required";
       isValid = false;
     } else {
-      newErrors.name = '';
+      newErrors.name = "";
     }
 
-    if (formData.email.trim() === '') {
-      newErrors.email = 'Email is required';
+    if (formData.email.trim() === "") {
+      newErrors.email = "Email is required";
       isValid = false;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Invalid email format';
+      newErrors.email = "Invalid email format";
       isValid = false;
     } else {
-      newErrors.email = '';
+      newErrors.email = "";
     }
 
-    if (formData.password.trim() === '') {
-      newErrors.password = 'Password is required';
+    if (formData.password.trim() === "") {
+      newErrors.password = "Password is required";
       isValid = false;
     } else {
-      newErrors.password = '';
+      newErrors.password = "";
     }
 
     setErrors(newErrors);
@@ -68,66 +75,116 @@ const HorizontalForm = () => {
   };
 
   return (
-    <Card variant="outlined" style={{borderRadius:"10px"}}>
+    <Card variant="outlined" style={{ borderRadius: "10px" }}>
       <CardHeader
         title="Basic Layout"
-        sx={{ bgcolor: '#0057e7', color: 'white' }}
-        titleTypographyProps={{ fontSize: '16px' }}
+        sx={{ bgcolor: "#0057e7", color: "white" }}
+        titleTypographyProps={{ fontSize: "16px" }}
       />
       <CardContent>
         <form onSubmit={handleSubmit}>
-        <FormControl style={{display:"flex",flexDirection: isMobile ? "column" : "row",marginTop:"0",justifyContent:"space-between"}}>
-        <label htmlFor="name" style={{marginTop:'5px'}}>Name</label>
-        <TextField
-          fullWidth
-          margin="normal"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          error={!!errors.name}
-          helperText={errors.name}
-          size='small'
-          placeholder='Name'
-          style={{marginTop: isMobile ? "5px" : "0",width:"80%"}}
-        />
-      </FormControl>
-      <FormControl style={{display:"flex",flexDirection: isMobile ? "column" : "row",marginTop:"10px",justifyContent:"space-between"}}>
-        <label htmlFor="email" style={{marginTop:'5px'}}>Email</label>
-        <TextField
-          fullWidth
-          margin="normal"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          error={!!errors.email}
-          helperText={errors.email}
-          size='small'
-          placeholder='Email'
-          style={{marginTop: isMobile ? "5px" : "0",width:"80%"}}
-        />
-      </FormControl>
-      <FormControl style={{display:"flex",flexDirection: isMobile ? "column" : "row",marginTop:"10px",justifyContent:"space-between"}}>
-        <label htmlFor="password" style={{marginTop:'5px'}}>Password</label>
-        <TextField
-          fullWidth
-          margin="normal"
-          id="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          error={!!errors.password}
-          helperText={errors.password}
-          size='small'
-          placeholder='Password'
-          style={{marginTop: isMobile ? "5px" : "0",width:"80%"}}
-        />
-      </FormControl>
+          <FormControl
+            style={{
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              marginTop: "0",
+              justifyContent: "space-between",
+            }}
+          >
+            <label htmlFor="name" style={{ marginTop: "5px" }}>
+              Name
+            </label>
+            <TextField
+              fullWidth
+              margin="normal"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              error={!!errors.name}
+              helperText={errors.name}
+              size="small"
+              placeholder="Name"
+              style={{
+                marginTop: isMobile ? "5px" : "0",
+                width: isMobile ? "100%" : "80%",
+              }}
+            />
+          </FormControl>
+          <FormControl
+            style={{
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              marginTop: "10px",
+              justifyContent: "space-between",
+            }}
+          >
+            <label htmlFor="email" style={{ marginTop: "5px" }}>
+              Email
+            </label>
+            <TextField
+              fullWidth
+              margin="normal"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              error={!!errors.email}
+              helperText={errors.email}
+              size="small"
+              placeholder="Email"
+              style={{
+                marginTop: isMobile ? "5px" : "0",
+                width: isMobile ? "100%" : "80%",
+              }}
+            />
+          </FormControl>
+          <FormControl
+            style={{
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              marginTop: "10px",
+              justifyContent: "space-between",
+            }}
+          >
+            <label htmlFor="password" style={{ marginTop: "5px" }}>
+              Password
+            </label>
+            <TextField
+              fullWidth
+              margin="normal"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              error={!!errors.password}
+              helperText={errors.password}
+              size="small"
+              placeholder="Password"
+              style={{
+                marginTop: isMobile ? "5px" : "0",
+                width: isMobile ? "100%" : "80%",
+              }}
+            />
+          </FormControl>
         </form>
       </CardContent>
-      <CardActions sx={{padding:"0 17px 17px 13px",justifyContent:"right"}}>
-        <OnButtonComponent variant="contained" type="submit" size="small" onClick={handleSubmit} style={{textTransform: "capitalize",borderRadius:"10px",background:"#1976d2"}} name="Submit"></OnButtonComponent>
+      <CardActions
+        sx={{ padding: "0 17px 17px 13px", justifyContent: "right" }}
+      >
+        <ButtonComponent
+          variant="contained"
+          type="submit"
+          size="small"
+          onClick={handleSubmit}
+          style={{
+            textTransform: "capitalize",
+            borderRadius: "10px",
+            background: "#1976d2",
+            padding: "5px 15px",
+          }}
+          name="Submit"
+        ></ButtonComponent>
       </CardActions>
     </Card>
   );

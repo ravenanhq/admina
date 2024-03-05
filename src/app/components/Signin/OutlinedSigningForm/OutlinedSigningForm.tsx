@@ -5,7 +5,6 @@ import {
   CardContent,
   CardActions,
   TextField,
-  Button,
   InputAdornment,
   FormControlLabel,
   Checkbox,
@@ -17,7 +16,7 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import OnButtonComponent from "../../OnButtonComponent/OnButtonComponent";
+import ButtonComponent from "../../BasicUIElements/ButtonComponent";
 
 const OutlinedSigningForm = () => {
   const [formData, setFormData] = useState({
@@ -148,7 +147,7 @@ const OutlinedSigningForm = () => {
           }}
         />
         <Grid container justifyContent="flex-end">
-          <OnButtonComponent
+          <ButtonComponent
             variant="contained"
             type="submit"
             size="small"
@@ -160,7 +159,7 @@ const OutlinedSigningForm = () => {
               padding: "5px 0",
             }}
             name="Log In"
-          ></OnButtonComponent>
+          ></ButtonComponent>
         </Grid>
       </CardActions>
 
@@ -172,7 +171,7 @@ const OutlinedSigningForm = () => {
           </Link>
         </Typography>
         <Grid container justifyContent="flex-end">
-          <OnButtonComponent
+          <ButtonComponent
             variant="contained"
             type="submit"
             onClick={handleSubmit}
@@ -184,7 +183,7 @@ const OutlinedSigningForm = () => {
               padding: "5px 0",
             }}
             name="Sign Up"
-          ></OnButtonComponent>
+          ></ButtonComponent>
         </Grid>
       </CardActions>
     </Card>

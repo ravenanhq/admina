@@ -5,17 +5,13 @@ import {
   CardContent,
   CardActions,
   TextField,
-  Button,
-  InputAdornment,
-  FormControlLabel,
-  Checkbox,
   Grid,
   Link,
   Typography,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import OnButtonComponent from "../../OnButtonComponent/OnButtonComponent";
+import ButtonComponent from "../../BasicUIElements/ButtonComponent";
 
 const GeneralSigninForm = () => {
   const [formData, setFormData] = useState({
@@ -119,7 +115,7 @@ const GeneralSigninForm = () => {
         </form>
       </CardContent>
       <Grid container justifyContent="center">
-        <OnButtonComponent
+        <ButtonComponent
           variant="contained"
           type="submit"
           size="small"
@@ -131,7 +127,7 @@ const GeneralSigninForm = () => {
             padding: "7px 0",
           }}
           name="Log In"
-        ></OnButtonComponent>
+        ></ButtonComponent>
       </Grid>
 
       <CardActions sx={{ justifyContent: "center" }}>

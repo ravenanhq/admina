@@ -18,6 +18,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import ButtonComponent from "../BasicUIElements/ButtonComponent";
 
 const AddNewProduct = () => {
     const [successMessageOpen, setSuccessMessageOpen] = useState(false);
@@ -323,16 +324,20 @@ const AddNewProduct = () => {
                     </form>
                 </Grid>
             </CardContent>
-            <CardActions style={{ margin: "0px 14px 14px 14px" }}>
-                <Button
-                    variant="contained"
-                    color="success"
-                    type="submit"
-                    onClick={handleSubmit}
-                    size="small"
-                >
-                    Save Product
-                </Button>
+            <CardActions style={{ margin: "0px 14px 14px 14px",justifyContent:"right" }}>
+            <ButtonComponent
+          variant="contained"
+          type="submit"
+          size="small"
+          onClick={handleSubmit}
+          style={{
+            
+            borderRadius: "10px",
+            background: "#2e7d32",
+            padding:"5px 10px"
+          }}
+          name="Save Product"
+        ></ButtonComponent>
             </CardActions>
         </Card>
     );

@@ -1,32 +1,55 @@
-import React from 'react';
-import { Box, Button, Divider, Typography } from '@mui/material';
+import React from "react";
+import { Box, Divider, Typography } from "@mui/material";
+import ButtonComponent from "../BasicUIElements/ButtonComponent";
 
 const BasicButtonElement = () => {
-    return (
-        <><Typography variant="h6" gutterBottom sx={{ marginTop: "10px" }}>Basic Buttons</Typography>
-        <Divider sx={{ margin: "0 auto", marginY: 2 }} />
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-            <Button variant="contained" color="primary">
-                Primary Button
-            </Button>
-            <Button variant="contained" color="secondary">
-                Secondary Button
-            </Button>
-            <Button variant="contained" color="success">
-                Success
-            </Button>
-            <Button variant="contained" color="warning">
-                Warning
-            </Button>
-            <Button variant="contained" color="info">
-                Info
-            </Button>
-            <Button variant="contained" color="primary" disabled>
-                Disabled
-            </Button>
-        </Box></>
-
-    );
+  return (
+    <>
+      <Typography variant="h6" gutterBottom sx={{ marginTop: "10px" }}>
+        Basic Buttons
+      </Typography>
+      <Divider sx={{ margin: "0 auto", marginY: 2 }} />
+      <Box sx={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+        <ButtonComponent
+          variant="contained"
+          color="primary"
+          name="Primary"
+          style={{ borderRadius: "10px" }}
+        ></ButtonComponent>
+        <ButtonComponent
+          variant="contained"
+          color="secondary"
+          name="Secondary"
+          style={{ borderRadius: "10px" }}
+        ></ButtonComponent>
+        <ButtonComponent
+          variant="contained"
+          color="success"
+          name="Success"
+          style={{ borderRadius: "10px" }}
+        ></ButtonComponent>
+        <ButtonComponent
+          variant="contained"
+          color="warning"
+          name="Warning"
+          style={{ borderRadius: "10px" }}
+        ></ButtonComponent>
+        <ButtonComponent
+          variant="contained"
+          color="info"
+          name="Info"
+          style={{ borderRadius: "10px" }}
+        ></ButtonComponent>
+        <ButtonComponent
+          variant="contained"
+          color="primary"
+          name="Disabled"
+          style={{ borderRadius: "10px" }}
+          disabled
+        ></ButtonComponent>
+      </Box>
+    </>
+  );
 };
 
 export default BasicButtonElement;

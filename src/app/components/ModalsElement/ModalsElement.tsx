@@ -11,6 +11,7 @@ import {
   Box,
   CardHeader,
 } from "@mui/material";
+import ButtonComponent from "../BasicUIElements/ButtonComponent";
 
 const ModalSection = ({ title, content, buttonText, color, size }) => {
   const [open, setOpen] = useState(false);
@@ -46,9 +47,12 @@ const ModalSection = ({ title, content, buttonText, color, size }) => {
 
   return (
     <div>
-      <Button variant="contained" color={color} onClick={handleOpen}>
-        {buttonText}
-      </Button>
+      <ButtonComponent
+        variant="contained"
+        name={buttonText}
+        color={color}
+        onClick={handleOpen}
+      ></ButtonComponent>
       <Dialog
         open={open}
         onClose={handleClose}
@@ -66,12 +70,22 @@ const ModalSection = ({ title, content, buttonText, color, size }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="success">
-            Save Changes
-          </Button>
-          <Button onClick={handleClose} color="warning">
-            Close
-          </Button>
+          <ButtonComponent
+            variant="text"
+            type="button"
+            style={{ fontSize: "13px", color: "#2e7d32" }}
+            size="small"
+            onClick={handleClose}
+            name="Save Changes"
+          ></ButtonComponent>
+          <ButtonComponent
+            variant="text"
+            type="button"
+            onClick={handleClose}
+            size="small"
+            style={{ fontSize: "13px", color: "#ed6c02" }}
+            name="Close"
+          ></ButtonComponent>
         </DialogActions>
       </Dialog>
     </div>

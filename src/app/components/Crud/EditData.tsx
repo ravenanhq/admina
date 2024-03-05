@@ -5,7 +5,6 @@ import {
   CardContent,
   CardActions,
   TextField,
-  Button,
   Grid,
   FormControl,
   InputLabel,
@@ -18,6 +17,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import ButtonComponent from "../BasicUIElements/ButtonComponent";
 
 interface RowData {
   name?: string;
@@ -266,38 +266,33 @@ const EditData = ({ page }: { page: RowData }) => {
             </Grid>
           </Grid>
         </CardContent>
-        <CardActions style={{ margin: "0px 14px 14px 14px" }}>
-          <Button
+        <CardActions
+          style={{ margin: "0px 14px 14px 14px", justifyContent: "right" }}
+        >
+          <ButtonComponent
             variant="contained"
-            color="success"
-            type="submit"
             onClick={handleSubmit}
-            size="small"
             style={{
               textTransform: "capitalize",
-              borderRadius: "15px",
+              borderRadius: "10px",
               padding: "6px 15px",
               boxShadow: "none",
               background: "#1d8683",
             }}
-          >
-            Update
-          </Button>
-          <Button
+            name="Update"
+          ></ButtonComponent>
+          <ButtonComponent
             variant="contained"
-            type="submit"
-            size="small"
             onClick={handleCancel}
             style={{
               textTransform: "capitalize",
-              borderRadius: "15px",
+              borderRadius: "10px",
               padding: "6px 15px",
               boxShadow: "none",
               background: "#58544D",
             }}
-          >
-            Cancel
-          </Button>
+            name="Cancel"
+          ></ButtonComponent>
         </CardActions>
       </Card>
     </>

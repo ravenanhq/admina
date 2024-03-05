@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardContent, IconButton, Button, Snackbar, Grid } from "@mui/material";
+import { Card, CardContent, IconButton, Snackbar, Grid } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -7,6 +7,7 @@ import productData from "../../../product-data.json";
 import DeleteModal from "./DeleteModal";
 import AddProductModal from "./AddProductModal";
 import EditProductModal from "./EditProductModal";
+import ButtonComponent from "../BasicUIElements/ButtonComponent";
 
 const ProductData = () => {
   const [orders, setOrder] = useState([]);
@@ -24,7 +25,7 @@ const ProductData = () => {
     setMessage("Product added successfully!");
     handleCloseAddProductModal();
   };
-  
+
   useEffect(() => {
     setOrder(productData);
   }, []);
@@ -95,17 +96,19 @@ const ProductData = () => {
       headerName: "Status",
       width: 150,
       renderCell: (params) => (
-        <Button
+        <ButtonComponent
+          variant="contained"
+          type="submit"
           size="small"
           style={{
+            borderRadius: "10px",
             backgroundColor:
-            params.value.toLowerCase() === "shipping" ? "#2196f3" : "#ff9800",
+              params.value.toLowerCase() === "shipping" ? "#2196f3" : "#ff9800",
             color: "white",
             width: "68%",
           }}
-        >
-          {params.value}
-        </Button>
+          name={params.value}
+        ></ButtonComponent>
       ),
     },
     { field: "date", headerName: "Created Date", width: 160 },
@@ -130,25 +133,34 @@ const ProductData = () => {
   ];
 
   return (
-    <Card style={{ boxShadow: "none",background:"none" }}>
+    <Card style={{ boxShadow: "none", background: "none" }}>
       <Snackbar
         open={successMessageOpen}
         autoHideDuration={3000}
         onClose={handleSnackbarClose}
         message={message}
       />
-      <CardContent style={{ padding: "0" ,}}>
-      <Grid container justifyContent="flex-end" alignItems="center" style={{ marginBottom: "20px" }}>
-      <Grid item>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleAddProductClick}
+      <CardContent style={{ padding: "0" }}>
+        <Grid
+          container
+          justifyContent="flex-end"
+          alignItems="center"
+          style={{ marginBottom: "20px" }}
         >
-          Add New Product
-        </Button>
-      </Grid>
-    </Grid>
+          <Grid item>
+            <ButtonComponent
+              variant="contained"
+              type="submit"
+              size="small"
+              style={{
+                borderRadius: "10px",
+                background: "#1976d2",
+                padding: "7px 15px",
+              }}
+              name="Add New Product"
+            ></ButtonComponent>
+          </Grid>
+        </Grid>
         <DataGrid
           key={Math.random()}
           rows={orders}
@@ -163,7 +175,7 @@ const ProductData = () => {
           pageSizeOptions={[5, 10]}
           disableRowSelectionOnClick={true}
           className="orderDataTable"
-          style={{background:"#fff"}}
+          style={{ background: "#fff" }}
         />
       </CardContent>
 

@@ -6,10 +6,9 @@ import {
   CardMedia,
   Typography,
   CardActions,
-  Button,
   Grid,
 } from "@mui/material";
-import OnButtonComponent from "../OnButtonComponent/OnButtonComponent";
+import ButtonComponent from "../BasicUIElements/ButtonComponent";
 
 const HorizontalCard = () => {
   const [expanded, setExpanded] = React.useState(true);
@@ -39,13 +38,17 @@ const HorizontalCard = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <OnButtonComponent
+                <ButtonComponent
                   variant="contained"
                   type="button"
                   size="small"
-                  style={{ borderRadius: "10px", background: "#1976d2" }}
+                  style={{
+                    borderRadius: "10px",
+                    background: "#1976d2",
+                    padding: "5px 15px",
+                  }}
                   name="Go somewhere"
-                ></OnButtonComponent>
+                ></ButtonComponent>
               </CardActions>
             </Box>
           </Card>
@@ -68,20 +71,20 @@ const HorizontalCard = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <OnButtonComponent
+                <ButtonComponent
                   variant="text"
                   type="button"
                   size="small"
                   style={{ fontSize: "13px" }}
                   name="Share"
-                ></OnButtonComponent>
-                <OnButtonComponent
+                ></ButtonComponent>
+                <ButtonComponent
                   variant="text"
                   type="button"
                   size="small"
                   style={{ fontSize: "13px" }}
                   name="Learn more"
-                ></OnButtonComponent>
+                ></ButtonComponent>
               </CardActions>
             </Box>
           </Card>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { TextField, Button, Box, Grid, Typography } from "@mui/material";
-import OnButtonComponent from "../OnButtonComponent/OnButtonComponent";
+import { TextField, Box, Grid, Typography } from "@mui/material";
+import ButtonComponent from "../BasicUIElements/ButtonComponent";
 
 const ReviewCommentForm = () => {
   const [formData, setFormData] = useState({
@@ -85,7 +85,7 @@ const ReviewCommentForm = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <OnButtonComponent
+          <ButtonComponent
             variant="contained"
             type="button"
             size="small"
@@ -96,7 +96,7 @@ const ReviewCommentForm = () => {
               background: "#1976d2",
             }}
             name="Post Comment"
-          ></OnButtonComponent>
+          ></ButtonComponent>
         </Grid>
       </Grid>
     </Box>

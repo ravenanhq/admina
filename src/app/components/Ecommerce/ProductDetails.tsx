@@ -13,7 +13,6 @@ import {
   FormControl,
   FormLabel,
   Divider,
-  Button,
   Grid,
 } from "@mui/material";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
@@ -21,7 +20,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import OnButtonComponent from "../OnButtonComponent/OnButtonComponent";
+import ButtonComponent from "../BasicUIElements/ButtonComponent";
 
 const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
@@ -246,7 +245,7 @@ const ProductDetails = () => {
                   paddingTop: "14px",
                 }}
               >
-                <OnButtonComponent
+                <ButtonComponent
                   variant="contained"
                   type="submit"
                   size="small"
@@ -258,8 +257,8 @@ const ProductDetails = () => {
                     minWidth: isMobile ? "146px" : "",
                   }}
                   name="Buy Now"
-                ></OnButtonComponent>
-                <OnButtonComponent
+                ></ButtonComponent>
+                <ButtonComponent
                   variant="contained"
                   type="submit"
                   size="small"
@@ -272,7 +271,7 @@ const ProductDetails = () => {
                     background: "#ed6c02",
                   }}
                   name="Add to Cart"
-                ></OnButtonComponent>
+                ></ButtonComponent>
               </Grid>
             </Grid>
           </Box>

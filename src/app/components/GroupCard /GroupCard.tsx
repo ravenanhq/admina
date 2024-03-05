@@ -5,10 +5,9 @@ import {
   CardMedia,
   Typography,
   CardActions,
-  Button,
   Grid,
 } from "@mui/material";
-import OnButtonComponent from "../OnButtonComponent/OnButtonComponent";
+import ButtonComponent from "../BasicUIElements/ButtonComponent";
 
 const GroupCard = () => {
   const [expanded, setExpanded] = React.useState(true);
@@ -41,13 +40,17 @@ const GroupCard = () => {
               </Typography>
             </CardContent>
             <CardActions>
-              <OnButtonComponent
+              <ButtonComponent
                 variant="contained"
                 type="button"
                 size="small"
-                style={{ borderRadius: "10px", background: "#1976d2" }}
+                style={{
+                  borderRadius: "10px",
+                  background: "#1976d2",
+                  padding: "5px 15px",
+                }}
                 name="Go somewhere"
-              ></OnButtonComponent>
+              ></ButtonComponent>
             </CardActions>
           </Card>
         </Grid>
@@ -68,13 +71,17 @@ const GroupCard = () => {
               </Typography>
             </CardContent>
             <CardActions>
-              <OnButtonComponent
+              <ButtonComponent
                 variant="contained"
                 type="button"
                 size="small"
-                style={{ borderRadius: "10px", background: "#1976d2" }}
+                style={{
+                  borderRadius: "10px",
+                  background: "#1976d2",
+                  padding: "5px 15px",
+                }}
                 name="Go somewhere"
-              ></OnButtonComponent>
+              ></ButtonComponent>
             </CardActions>
           </Card>
         </Grid>
@@ -95,13 +102,17 @@ const GroupCard = () => {
               </Typography>
             </CardContent>
             <CardActions>
-              <OnButtonComponent
+              <ButtonComponent
                 variant="contained"
                 type="button"
                 size="small"
-                style={{ borderRadius: "10px", background: "#1976d2" }}
+                style={{
+                  borderRadius: "10px",
+                  background: "#1976d2",
+                  padding: "5px 15px",
+                }}
                 name="Go somewhere"
-              ></OnButtonComponent>
+              ></ButtonComponent>
             </CardActions>
           </Card>
         </Grid>

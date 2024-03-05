@@ -1,24 +1,32 @@
-import React, { useState } from 'react';
-import { Card, CardHeader, CardContent, CardActions, TextField, Button, FormControl, InputAdornment } from '@mui/material';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import PersonIcon from '@mui/icons-material/Person';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+import React, { useState } from "react";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  TextField,
+  FormControl,
+  InputAdornment,
+} from "@mui/material";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import PersonIcon from "@mui/icons-material/Person";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import OnButtonComponent from '../OnButtonComponent/OnButtonComponent';
+import ButtonComponent from "../BasicUIElements/ButtonComponent";
 
 const HorizontalFormWithIcon = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
   });
 
   const [errors, setErrors] = useState({
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
   });
 
   const theme = useTheme();
@@ -29,28 +37,28 @@ const HorizontalFormWithIcon = () => {
     let isValid = true;
     const newErrors = { ...errors };
 
-    if (formData.name.trim() === '') {
-      newErrors.name = 'Name is required';
+    if (formData.name.trim() === "") {
+      newErrors.name = "Name is required";
       isValid = false;
     } else {
-      newErrors.name = '';
+      newErrors.name = "";
     }
 
-    if (formData.email.trim() === '') {
-      newErrors.email = 'Email is required';
+    if (formData.email.trim() === "") {
+      newErrors.email = "Email is required";
       isValid = false;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Invalid email format';
+      newErrors.email = "Invalid email format";
       isValid = false;
     } else {
-      newErrors.email = '';
+      newErrors.email = "";
     }
 
-    if (formData.password.trim() === '') {
-      newErrors.password = 'password is required';
+    if (formData.password.trim() === "") {
+      newErrors.password = "Password is required";
       isValid = false;
     } else {
-      newErrors.password = '';
+      newErrors.password = "";
     }
 
     setErrors(newErrors);
@@ -77,98 +85,148 @@ const HorizontalFormWithIcon = () => {
   };
 
   return (
-    <Card variant="outlined" style={{borderRadius:"10px"}}>
+    <Card variant="outlined" style={{ borderRadius: "10px" }}>
       <CardHeader
         title="Basic Layout with Icon"
-        sx={{ bgcolor: '#e44d26', color: 'white' }}
-        titleTypographyProps={{ fontSize: '16px' }}
+        sx={{ bgcolor: "#e44d26", color: "white" }}
+        titleTypographyProps={{ fontSize: "16px" }}
       />
       <CardContent>
         <form onSubmit={handleSubmit}>
-        <FormControl style={{display:"flex",flexDirection: isMobile ? "column" : "row",marginTop:"0",justifyContent:"space-between"}}>
-        <label htmlFor="name" style={{marginTop:'5px'}}>Name</label>
-        <TextField
-          fullWidth
-          margin="normal"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          error={!!errors.name}
-          helperText={errors.name}
-          size='small'
-          placeholder='Name'
-          style={{marginTop: isMobile ? "5px" : "0",width:"80%"}}
-          InputProps={{
-            startAdornment: (
-                <InputAdornment position="start">
+          <FormControl
+            style={{
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              marginTop: "0",
+              justifyContent: "space-between",
+            }}
+          >
+            <label htmlFor="name" style={{ marginTop: "5px" }}>
+              Name
+            </label>
+            <TextField
+              fullWidth
+              margin="normal"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              error={!!errors.name}
+              helperText={errors.name}
+              size="small"
+              placeholder="Name"
+              style={{
+                marginTop: isMobile ? "5px" : "0",
+                width: isMobile ? "100%" : "80%",
+              }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
                     <PersonIcon />
-                </InputAdornment>
-            ),
-        }}
-        />
-      </FormControl>
-      <FormControl style={{display:"flex",flexDirection: isMobile ? "column" : "row",marginTop:"10px",justifyContent:"space-between"}}>
-        <label htmlFor="email" style={{marginTop:'5px'}}>Email</label>
-        <TextField
-          fullWidth
-          margin="normal"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          error={!!errors.email}
-          helperText={errors.email}
-          size='small'
-          placeholder='Email'
-          InputProps={{
-            startAdornment: (
-                <InputAdornment position="start">
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </FormControl>
+          <FormControl
+            style={{
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              marginTop: "10px",
+              justifyContent: "space-between",
+            }}
+          >
+            <label htmlFor="email" style={{ marginTop: "5px" }}>
+              Email
+            </label>
+            <TextField
+              fullWidth
+              margin="normal"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              error={!!errors.email}
+              helperText={errors.email}
+              size="small"
+              placeholder="Email"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
                     <MailOutlineIcon />
-                </InputAdornment>
-            ),
-        }}
-          style={{marginTop: isMobile ? "5px" : "0",width:"80%"}}
-        />
-      </FormControl>
-      <FormControl style={{display:"flex",flexDirection: isMobile ? "column" : "row",marginTop:"10px",justifyContent:"space-between"}}>
-        <label htmlFor="password" style={{marginTop:'5px'}}>Password</label>
-        <TextField
-          fullWidth
-          margin="normal"
-          id="password"
-          name="password"
-          type={showPassword ? "text" : "password"}
-          value={formData.password}
-          onChange={handleChange}
-          error={!!errors.password}
-          helperText={errors.password}
-          size='small'
-          placeholder='Password'
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                {showPassword ? (
-                  <VisibilityOffIcon
-                    onClick={togglePasswordVisibility}
-                    sx={{ cursor: "pointer" }}
-                  />
-                ) : (
-                  <VisibilityIcon
-                    onClick={togglePasswordVisibility}
-                    sx={{ cursor: "pointer" }}
-                  />
-                )}
-              </InputAdornment>
-            ),
-          }}
-          style={{marginTop: isMobile ? "5px" : "0",width:"80%"}}
-        />
-      </FormControl>
+                  </InputAdornment>
+                ),
+              }}
+              style={{
+                marginTop: isMobile ? "5px" : "0",
+                width: isMobile ? "100%" : "80%",
+              }}
+            />
+          </FormControl>
+          <FormControl
+            style={{
+              display: "flex",
+              flexDirection: isMobile ? "column" : "row",
+              marginTop: "10px",
+              justifyContent: "space-between",
+            }}
+          >
+            <label htmlFor="password" style={{ marginTop: "5px" }}>
+              Password
+            </label>
+            <TextField
+              fullWidth
+              margin="normal"
+              id="password"
+              name="password"
+              type={showPassword ? "text" : "password"}
+              value={formData.password}
+              onChange={handleChange}
+              error={!!errors.password}
+              helperText={errors.password}
+              size="small"
+              placeholder="Password"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    {showPassword ? (
+                      <VisibilityOffIcon
+                        onClick={togglePasswordVisibility}
+                        sx={{ cursor: "pointer" }}
+                      />
+                    ) : (
+                      <VisibilityIcon
+                        onClick={togglePasswordVisibility}
+                        sx={{ cursor: "pointer" }}
+                      />
+                    )}
+                  </InputAdornment>
+                ),
+              }}
+              style={{
+                marginTop: isMobile ? "5px" : "0",
+                width: isMobile ? "100%" : "80%",
+              }}
+            />
+          </FormControl>
         </form>
       </CardContent>
-      <CardActions sx={{padding:"0 17px 17px 13px",justifyContent:"right"}}>
-        <OnButtonComponent variant="contained" type="submit" size="small" onClick={handleSubmit} style={{textTransform: "capitalize",borderRadius:"10px",background:"#e44d26"}} name="Submit"></OnButtonComponent>
+      <CardActions
+        sx={{ padding: "0 17px 17px 13px", justifyContent: "right" }}
+      >
+        <ButtonComponent
+          variant="contained"
+          type="submit"
+          size="small"
+          onClick={handleSubmit}
+          style={{
+            textTransform: "capitalize",
+            borderRadius: "10px",
+            background: "#e44d26",
+            padding: "5px 15px",
+          }}
+          name="Submit"
+        ></ButtonComponent>
       </CardActions>
     </Card>
   );

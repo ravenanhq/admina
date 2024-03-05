@@ -1,5 +1,4 @@
 import {
-  Button,
   Card,
   CardActions,
   CardContent,
@@ -12,7 +11,7 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import PersonIcon from "@mui/icons-material/Person";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import OnButtonComponent from "../OnButtonComponent/OnButtonComponent";
+import ButtonComponent from "../BasicUIElements/ButtonComponent";
 
 const BasicWithIcon = () => {
   const [formData, setFormData] = useState({
@@ -177,9 +176,9 @@ const BasicWithIcon = () => {
         </form>
       </CardContent>
       <CardActions
-        sx={{ padding: "0 17px 17px 13px", justifyContent: "right" }}
+        sx={{ padding: "0 17px 20px 13px", justifyContent: "right" }}
       >
-        <OnButtonComponent
+        <ButtonComponent
           variant="contained"
           type="submit"
           size="small"
@@ -188,12 +187,12 @@ const BasicWithIcon = () => {
             textTransform: "capitalize",
             borderRadius: "10px",
             background: "#1d8683",
+            padding: "5px 15px",
           }}
           name="Submit"
-        ></OnButtonComponent>
+        ></ButtonComponent>
       </CardActions>
     </Card>
   );
 };
-
 export default BasicWithIcon;

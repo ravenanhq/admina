@@ -6,14 +6,13 @@ import {
   Typography,
   Rating,
   Divider,
-  Button,
   CardHeader,
   Grid,
 } from "@mui/material";
 import productsData from "../../../product-data.json";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import OnButtonComponent from "../OnButtonComponent/OnButtonComponent";
+import ButtonComponent from "../BasicUIElements/ButtonComponent";
 
 const RelatedProducts = () => {
   const [products, setProducts] = useState([]);
@@ -70,7 +69,7 @@ const RelatedProducts = () => {
                   style={{ color: product.rating >= 1 ? "#FFD700" : "#C0C0C0" }}
                 />
                 <Typography color="textSecondary">{`$${product.price}`}</Typography>
-                <OnButtonComponent
+                <ButtonComponent
                   variant="contained"
                   type="submit"
                   size="small"
@@ -80,7 +79,7 @@ const RelatedProducts = () => {
                     background: "#ed6c02",
                   }}
                   name="Add to Cart"
-                ></OnButtonComponent>
+                ></ButtonComponent>
               </CardContent>
             </Card>
           </Grid>

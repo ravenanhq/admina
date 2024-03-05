@@ -4,7 +4,6 @@ import {
   CardContent,
   CardActions,
   TextField,
-  Button,
   Grid,
   FormControl,
   InputLabel,
@@ -18,6 +17,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import ButtonComponent from "../BasicUIElements/ButtonComponent";
 
 const CreateNewData = () => {
   const [successMessageOpen, setSuccessMessageOpen] = useState(false);
@@ -243,38 +243,37 @@ const CreateNewData = () => {
             </Grid>
           </Grid>
         </CardContent>
-        <CardActions style={{ justifyContent: "flex-end", margin: "0px 14px 14px 14px" }}>
-          <Button
+        <CardActions
+          style={{ justifyContent: "flex-end", margin: "0px 14px 14px 14px" }}
+        >
+          <ButtonComponent
             variant="contained"
-            color="success"
             type="submit"
-            onClick={handleSubmit}
             size="small"
+            onClick={handleSubmit}
             style={{
               textTransform: "capitalize",
-              borderRadius: "15px",
+              borderRadius: "10px",
               padding: "6px 15px",
               boxShadow: "none",
               background: "#1d8683",
             }}
-          >
-            Submit
-          </Button>
-          <Button
+            name="Submit"
+          ></ButtonComponent>
+          <ButtonComponent
             variant="contained"
             type="submit"
             size="small"
             onClick={handleCancel}
             style={{
               textTransform: "capitalize",
-              borderRadius: "15px",
+              borderRadius: "10px",
               padding: "6px 15px",
               boxShadow: "none",
               background: "#58544D",
             }}
-          >
-            cancel
-          </Button>
+            name="Cancel"
+          ></ButtonComponent>
         </CardActions>
       </Card>
     </>

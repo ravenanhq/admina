@@ -22,9 +22,9 @@ import { signIn } from "next-auth/react";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
 import { useRouter } from "next/navigation";
-import GoogleIcon from '@mui/icons-material/Google';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
+import GoogleIcon from "@mui/icons-material/Google";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -36,7 +36,7 @@ const LoginForm = () => {
     email: "",
     password: "",
   });
-
+  const [credentialsErr, setCredentialErr] = useState("");
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const router = useRouter();
@@ -84,7 +84,7 @@ const LoginForm = () => {
         console.log(res.error);
         window.location.href = "/admin";
       } else {
-        setErrors({ email: res.error, password: res.error });
+        setCredentialErr("Invalid email or password");
       }
     }
   };
@@ -100,17 +100,23 @@ const LoginForm = () => {
   return (
     <>
       <Grid container rowSpacing={1} style={{ padding: "0 20px" }}>
-        <Grid item xs={12} sm={12} md={6} style={{
-          background: "#2b9b8e",
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          paddingBottom: "15px",
-          borderTopLeftRadius: '10px',
-          borderBottomLeftRadius: '10px',
-          boxShadow: "0 4px 8px 0 #ccc"
-        }}>
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={6}
+          style={{
+            background: "#2b9b8e",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            paddingBottom: "15px",
+            borderTopLeftRadius: isMobile ? "0" : "10px",
+            borderBottomLeftRadius: isMobile ? "0" : "10px",
+            boxShadow: "0 4px 8px 0 #ccc",
+          }}
+        >
           <CardHeader
             title="ADMINA"
             titleTypographyProps={{
@@ -120,18 +126,20 @@ const LoginForm = () => {
             }}
             style={{ padding: "7px" }}
           />
-          <Typography sx={{
-            fontSize: "12px",
-            textAlign: 'center',
-            padding: "0 20px",
-            color: "#fff"
-          }}
-            component="div">
+          <Typography
+            sx={{
+              fontSize: "12px",
+              textAlign: "center",
+              padding: "0 20px",
+              color: "#fff",
+            }}
+            component="div"
+          >
             <div>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-              when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book
             </div>
           </Typography>
           <Button
@@ -144,21 +152,33 @@ const LoginForm = () => {
               padding: "5px 20px",
               marginTop: "10px",
               background: "#fc9f66",
-              borderRadius: "10px"
+              borderRadius: "10px",
+              "&:hover": {
+                background: "#282a35",
+              },
             }}
           >
             Signup
           </Button>
         </Grid>
 
-        <Grid item xs={12} sm={12} md={6} style={{
-          paddingTop: "0",
-          background: "#fff",
-          borderTopRightRadius: '10px',
-          borderBottomRightRadius: '10px',
-          boxShadow: "0 4px 8px 0 #ccc"
-        }}>
-          <Card variant="outlined" sx={{ paddingBottom: "10px", border: "none" }}>
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={6}
+          style={{
+            paddingTop: "0",
+            background: "#fff",
+            borderTopRightRadius: isMobile ? "0" : "10px",
+            borderBottomRightRadius: isMobile ? "0" : "10px",
+            boxShadow: "0 4px 8px 0 #ccc",
+          }}
+        >
+          <Card
+            variant="outlined"
+            sx={{ paddingBottom: "10px", border: "none" }}
+          >
             <CardContent sx={{ paddingBottom: "0", marginTop: "10px" }}>
               <CardHeader
                 title="Login your account"
@@ -187,9 +207,9 @@ const LoginForm = () => {
                     ),
                   }}
                   sx={{
-                    '& input': {
-                      fontSize: '15px'
-                    }
+                    "& input": {
+                      fontSize: "15px",
+                    },
                   }}
                 />
                 <TextField
@@ -221,30 +241,48 @@ const LoginForm = () => {
                     ),
                   }}
                 />
+                {credentialsErr && (
+                  <p style={{ color: "#d32f2f", fontSize: "14px" }}>
+                    {credentialsErr}
+                  </p>
+                )}
               </form>
             </CardContent>
 
-            <CardActions sx={{ display: isMobile ? 'block' : 'flex', padding: 0 }}>
-              <Grid container alignItems="center" justifyContent="space-between" className="loginPage"
-                style={{ marginBottom: "10px", display: isMobile ? 'block' : 'flex', }}>
-                <Grid item className="rememberMe" style={{ textAlign: "center" }}>
+            <CardActions
+              sx={{ display: isMobile ? "block" : "flex", padding: 0 }}
+            >
+              <Grid
+                container
+                alignItems="center"
+                justifyContent="space-between"
+                className="loginPage"
+                style={{
+                  marginBottom: "10px",
+                  display: isMobile ? "block" : "flex",
+                }}
+              >
+                <Grid
+                  item
+                  className="rememberMe"
+                  style={{ textAlign: "center" }}
+                >
                   <FormControlLabel
                     control={<Checkbox color="primary" />}
-                    label={
-                      <Typography variant="body2">
-                        Remember me
-                      </Typography>
-                    }
+                    label={<Typography variant="body2">Remember me</Typography>}
                     labelPlacement="start"
                     sx={{
                       fontSize: "14px",
                       whiteSpace: isMobile ? "nowrap" : "normal",
                     }}
                   />
-
                 </Grid>
 
-                <Grid item className="forgotPassword" style={{ textAlign: "center" }}>
+                <Grid
+                  item
+                  className="forgotPassword"
+                  style={{ textAlign: "center" }}
+                >
                   <Typography sx={{ fontSize: "14px" }}>
                     <Link
                       href="/forgot-password/"
@@ -267,28 +305,65 @@ const LoginForm = () => {
                 onClick={handleSubmit}
                 size="small"
                 startIcon={<LoginIcon />}
-                sx={{ width: "94%", padding: "10px 0", background: "#fc9f66", borderRadius: "10px" }}
+                sx={{
+                  width: "94%",
+                  padding: "10px 0",
+                  background: "#fc9f66",
+                  borderRadius: "10px",
+                }}
               >
                 Log In
               </Button>
             </Grid>
 
-            <Divider sx={{ margin: "0 auto", marginY: 3, width: "98%", padding: "0 10px", position: 'relative' }}>
-              <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', padding: '0 10px' }}>or sign in with</div>
+            <Divider
+              sx={{
+                margin: "0 auto",
+                marginY: 3,
+                width: "98%",
+                padding: "0 10px",
+                position: "relative",
+              }}
+            >
+              <div
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  backgroundColor: "white",
+                  padding: "0 10px",
+                }}
+              >
+                or sign in with
+              </div>
             </Divider>
 
-            <Grid container spacing={{ xs: 2 }} sx={{ padding: "0 14px 5px 14px", marginTop: "10px", justifyContent: "center" }}>
-              <Grid item sx={{ display: 'flex', justifyContent: 'center' }}>
-                <GoogleIcon style={{ fontSize: 25, color: '#e46a76', cursor: "pointer" }} />
+            <Grid
+              container
+              spacing={{ xs: 2 }}
+              sx={{
+                padding: "0 14px 5px 14px",
+                marginTop: "10px",
+                justifyContent: "center",
+              }}
+            >
+              <Grid item sx={{ display: "flex", justifyContent: "center" }}>
+                <GoogleIcon
+                  style={{ fontSize: 25, color: "#e46a76", cursor: "pointer" }}
+                />
               </Grid>
-              <Grid item sx={{ display: 'flex', justifyContent: 'center' }}>
-                <FacebookIcon style={{ fontSize: 25, color: '#0866ff', cursor: "pointer" }} />
+              <Grid item sx={{ display: "flex", justifyContent: "center" }}>
+                <FacebookIcon
+                  style={{ fontSize: 25, color: "#0866ff", cursor: "pointer" }}
+                />
               </Grid>
-              <Grid item sx={{ display: 'flex', justifyContent: 'center' }}>
-                <TwitterIcon style={{ fontSize: 25, color: '#03c9d7', cursor: "pointer" }} />
+              <Grid item sx={{ display: "flex", justifyContent: "center" }}>
+                <TwitterIcon
+                  style={{ fontSize: 25, color: "#03c9d7", cursor: "pointer" }}
+                />
               </Grid>
             </Grid>
-
           </Card>
         </Grid>
       </Grid>

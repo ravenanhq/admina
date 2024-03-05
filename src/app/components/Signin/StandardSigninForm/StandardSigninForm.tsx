@@ -3,7 +3,6 @@ import {
   Card,
   CardHeader,
   CardContent,
-  Button,
   Divider,
   TextField,
   Grid,
@@ -13,7 +12,7 @@ import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useRouter } from "next/navigation";
-import OnButtonComponent from "../../OnButtonComponent/OnButtonComponent";
+import ButtonComponent from "../../BasicUIElements/ButtonComponent";
 
 const StandardSigninForm = () => {
   const [formData, setFormData] = useState({
@@ -124,7 +123,7 @@ const StandardSigninForm = () => {
         </form>
       </CardContent>
       <Grid container justifyContent="center">
-        <OnButtonComponent
+        <ButtonComponent
           variant="contained"
           type="submit"
           size="small"
@@ -137,12 +136,12 @@ const StandardSigninForm = () => {
             padding: "7px 0",
           }}
           name="Log In"
-        ></OnButtonComponent>
+        ></ButtonComponent>
       </Grid>
       <Divider sx={{ margin: "0 auto", marginY: 2, width: "50%" }} />
 
       <Grid container justifyContent="center">
-        <OnButtonComponent
+        <ButtonComponent
           variant="contained"
           type="submit"
           size="small"
@@ -156,7 +155,7 @@ const StandardSigninForm = () => {
             marginBottom: "10px",
           }}
           name="Sign Up"
-        ></OnButtonComponent>
+        ></ButtonComponent>
       </Grid>
     </Card>
   );

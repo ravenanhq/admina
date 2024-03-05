@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, ButtonProps } from "@mui/material";
 
-interface OneButtonComponentProps extends ButtonProps {
+interface ButtonComponentProps extends ButtonProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   name: string;
   disabled?: boolean;
@@ -9,15 +9,17 @@ interface OneButtonComponentProps extends ButtonProps {
   style?: React.CSSProperties;
   startIcon?: React.ReactNode;
   size?: "small" | "medium" | "large" | undefined;
+  color?: "secondary" | "info" | "success" | "warning" | "primary" | undefined;
 }
 
-const OneButtonComponent: React.FC<OneButtonComponentProps> = ({
+const ButtonComponent: React.FC<ButtonComponentProps> = ({
   startIcon,
   size,
   style,
   name,
   variant,
   onClick,
+  color,
 }) => {
   return (
     <Button
@@ -26,10 +28,11 @@ const OneButtonComponent: React.FC<OneButtonComponentProps> = ({
       size={size}
       onClick={onClick}
       startIcon={startIcon}
+      color={color}
     >
       {name}
     </Button>
   );
 };
 
-export default OneButtonComponent;
+export default ButtonComponent;

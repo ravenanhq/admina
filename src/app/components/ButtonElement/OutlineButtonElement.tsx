@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Button, Divider, Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
+import ButtonComponent from "../BasicUIElements/ButtonComponent";
 
 const OutlineButtonElement = () => {
   return (
@@ -9,24 +10,43 @@ const OutlineButtonElement = () => {
       </Typography>
       <Divider sx={{ margin: "0 auto", marginY: 2 }} />
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-        <Button variant="outlined" color="primary">
-          Primary Button
-        </Button>
-        <Button variant="outlined" color="secondary">
-          Secondary Button
-        </Button>
-        <Button variant="outlined" color="success">
-          Success
-        </Button>
-        <Button variant="outlined" color="warning">
-          Warning
-        </Button>
-        <Button variant="outlined" color="info">
-          Info
-        </Button>
-        <Button variant="outlined" color="primary" disabled>
-          Disabled
-        </Button>
+        <ButtonComponent
+          variant="outlined"
+          color="primary"
+          name="Primary"
+          style={{ borderRadius: "10px" }}
+        ></ButtonComponent>
+        <ButtonComponent
+          variant="outlined"
+          color="secondary"
+          name="Secondary"
+          style={{ borderRadius: "10px" }}
+        ></ButtonComponent>
+        <ButtonComponent
+          variant="outlined"
+          color="success"
+          name="Success"
+          style={{ borderRadius: "10px" }}
+        ></ButtonComponent>
+        <ButtonComponent
+          variant="outlined"
+          color="warning"
+          name="Warning"
+          style={{ borderRadius: "10px" }}
+        ></ButtonComponent>
+        <ButtonComponent
+          variant="outlined"
+          color="info"
+          name="Info"
+          style={{ borderRadius: "10px" }}
+        ></ButtonComponent>
+        <ButtonComponent
+          variant="outlined"
+          color="primary"
+          name="Disabled"
+          style={{ borderRadius: "10px" }}
+          disabled
+        ></ButtonComponent>
       </Box>
     </>
   );

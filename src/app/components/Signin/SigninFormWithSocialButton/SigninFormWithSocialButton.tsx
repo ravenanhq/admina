@@ -5,21 +5,17 @@ import {
   CardContent,
   CardActions,
   TextField,
-  Button,
   InputAdornment,
-  FormControlLabel,
-  Checkbox,
   Grid,
   Link,
   Typography,
-  InputLabel,
 } from "@mui/material";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GoogleIcon from "@mui/icons-material/Google";
-import OnButtonComponent from "../../OnButtonComponent/OnButtonComponent";
+import ButtonComponent from "../../BasicUIElements/ButtonComponent";
 
 const SigninFormWithSocialButton = () => {
   const [formData, setFormData] = useState({
@@ -157,7 +153,7 @@ const SigninFormWithSocialButton = () => {
 
       <CardActions>
         <Grid container justifyContent="center">
-          <OnButtonComponent
+          <ButtonComponent
             variant="contained"
             type="submit"
             size="small"
@@ -169,7 +165,7 @@ const SigninFormWithSocialButton = () => {
               padding: "5px 0",
             }}
             name="Log In"
-          ></OnButtonComponent>
+          ></ButtonComponent>
         </Grid>
       </CardActions>
 

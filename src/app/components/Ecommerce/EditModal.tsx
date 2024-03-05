@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Button, TextField, Box } from "@mui/material";
+import { Modal, TextField, Box, CardActions } from "@mui/material";
+import ButtonComponent from "../BasicUIElements/ButtonComponent";
 
 interface RowData {
   order?: string;
@@ -23,7 +24,7 @@ const EditModal: React.FC<EditModalProps> = ({
   onEdit,
 }) => {
   const [editedData, setEditedData] = useState<RowData>({});
-  const [successMessageOpen,setSuccessMessageOpen] = useState(false);
+  const [successMessageOpen, setSuccessMessageOpen] = useState(false);
 
   useEffect(() => {
     setEditedData(rowData || {});
@@ -38,8 +39,7 @@ const EditModal: React.FC<EditModalProps> = ({
     onEdit(editedData);
     setSuccessMessageOpen(true);
   };
- 
-  
+
   return (
     <Modal open={open} onClose={onClose}>
       <Box
@@ -94,10 +94,33 @@ const EditModal: React.FC<EditModalProps> = ({
           fullWidth
           margin="normal"
         />
-        <Button onClick={handleSaveChanges} variant="contained" color="primary">
-          Save Changes
-        </Button>
-        <Button onClick={onClose} variant="contained" color="warning" style={{marginLeft:"10px"}}>Cancel</Button>
+        <CardActions sx={{ justifyContent: "right", padding: "8px 0" }}>
+          <ButtonComponent
+            variant="contained"
+            type="submit"
+            size="small"
+            onClick={handleSaveChanges}
+            style={{
+              borderRadius: "10px",
+              backgroundColor: "#1976d2",
+              padding: "7px 15px",
+            }}
+            name="Save Changes"
+          ></ButtonComponent>
+          <ButtonComponent
+            variant="contained"
+            type="submit"
+            size="small"
+            onClick={onClose}
+            style={{
+              borderRadius: "10px",
+              background: "#ed6c02",
+              marginLeft: "10px",
+              padding: "7px 15px",
+            }}
+            name="Cancel"
+          ></ButtonComponent>
+        </CardActions>
       </Box>
     </Modal>
   );
