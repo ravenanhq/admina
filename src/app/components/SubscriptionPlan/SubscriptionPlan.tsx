@@ -12,7 +12,8 @@ const SubscriptionPlanTable = () => {
   const [message, setMessage] = useState("");
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTab = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {
     setRows(subscriptionPlan);
@@ -30,8 +31,14 @@ const SubscriptionPlanTable = () => {
   return (
     <div>
       <Grid container>
-        <Grid item xs={12} md={4} sx={{ padding:isMobile ? "0 0 10px 0" : "0 10px 0 0" }}>
-          <Card>
+        <Grid
+          item
+          xs={12}
+          sm={3}
+          md={4}
+          sx={{ padding: isMobile ? "0 0 10px 0" : "0 10px 0 0" }}
+        >
+          <Card style={{ borderRadius: "0" }}>
             <Typography
               variant="h6"
               sx={{
@@ -40,7 +47,8 @@ const SubscriptionPlanTable = () => {
                 padding: "26px 8px",
                 color: "#fff",
                 textAlign: "center",
-                textTransform:"uppercase"
+                textTransform: "uppercase",
+                fontSize: isMobile ? "20px" : isTab ? "15px" : "20px",
               }}
             >
               Price Plan
@@ -58,10 +66,10 @@ const SubscriptionPlanTable = () => {
             ))}
           </Card>
         </Grid>
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} sm={9} md={8}>
           <Grid container>
             {rows.map((plan) => (
-              <Grid item key={plan.id} xs={12} md={3}>
+              <Grid item key={plan.id} xs={12} sm={3} md={3}>
                 <Card style={{ borderRadius: "0" }}>
                   <Typography
                     variant="h6"
@@ -71,7 +79,8 @@ const SubscriptionPlanTable = () => {
                       color: "#fff",
                       textAlign: "center",
                       opacity: 0.8,
-                      textTransform:"uppercase"
+                      textTransform: "uppercase",
+                      fontSize: isMobile ? "20px" : isTab ? "15px" : "20px",
                     }}
                   >
                     {plan.plan}

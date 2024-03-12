@@ -1,0 +1,150 @@
+import React, { useEffect, useState } from "react";
+import {
+  Button,
+  Snackbar,
+  Grid,
+  Card,
+  Typography,
+  Divider,
+} from "@mui/material";
+import subscriptionPlan from "../../../subscription-plan.json";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+const SubscriptionPlanCard = () => {
+  const [rows, setRows] = useState([]);
+  const [successMessageOpen, setSuccessMessageOpen] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTab = useMediaQuery(theme.breakpoints.down("md"));
+
+  useEffect(() => {
+    setRows(subscriptionPlan);
+  }, []);
+
+  const handleSnackbarClose = () => {
+    setSuccessMessageOpen(false);
+  };
+
+  const handleBuyNow = (planName) => {
+    setMessage(`You clicked Buy Now for ${planName}`);
+    setSuccessMessageOpen(true);
+  };
+
+  return (
+    <div>
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={12}>
+          <Grid container spacing={2}>
+            {rows.map((plan) => (
+              <Grid item key={plan.id} xs={12} sm={3} md={3}>
+                <Card
+                  style={{
+                    borderRadius: "10px",
+                    backgroundColor: plan.bgColor,
+                    padding: "20px",
+                    content: plan.price,
+                  }}
+                >
+                  <Typography
+                    variant="h4"
+                    sx={{
+                      padding: isMobile ? "8px" : isTab ? "" : "8px",
+                      color: "#000",
+                      textTransform: "uppercase",
+                      fontSize: isMobile ? "30px" : isTab ? "20px" : "35px",
+                    }}
+                  >
+                    {plan.plan}
+                  </Typography>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      backgroundColor: plan.price,
+                      padding: isMobile ? "8px" : isTab ? "" : "8px",
+                      color: "#fff",
+                      fontSize: "25px",
+                      position: "absolute",
+                      marginTop: isMobile ? "30px" : isTab ? "20px" : "35px",
+                    }}
+                  >
+                    {plan.price}
+                  </Typography>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      backgroundColor: plan.price,
+                      color: "#fff",
+                      fontSize: isMobile ? "70px" : isTab ? "50px" : "80px",
+                      display: "inline-block",
+                      opacity: 0.1,
+                    }}
+                  >
+                    {plan.price}
+                  </Typography>
+
+                  <Divider
+                    sx={{
+                      color: "#000",
+                      margin: "0 25px 10px 10px",
+                      padding: "0 10px",
+                    }}
+                  />
+                  <div style={{ height: "240px" }}>
+                    {plan.features.map(
+                      (feature) =>
+                        feature.included && (
+                          <Typography
+                            key={feature.name}
+                            color="#000"
+                            sx={{
+                              padding: "15px 0px 7px 10px",
+                            }}
+                          >
+                            {feature.name}
+                          </Typography>
+                        )
+                    )}
+                  </div>
+                  <div
+                    key={plan.id}
+                    style={{ textAlign: "center", padding: "15px 0" }}
+                  >
+                    <Button
+                      onClick={() => handleBuyNow(plan.plan)}
+                      sx={{
+                        backgroundColor: plan.bgColor,
+                        color: "#000",
+                        width: isMobile ? "50%" : isTab ? "100%" : "50%",
+                        padding: isTab ? "4px 0" : "10px 0",
+                        opacity: 0.8,
+                        border: "1px solid #000",
+                        boxShadow: "0px 2px 0px 2px #000",
+                        "&:hover": {
+                          outline: "none",
+                          boxShadow: "none",
+                        },
+                      }}
+                    >
+                      Buy Now
+                    </Button>
+                  </div>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Grid>
+      </Grid>
+      <Snackbar
+        open={successMessageOpen}
+        autoHideDuration={3000}
+        onClose={handleSnackbarClose}
+        message={message}
+      />
+    </div>
+  );
+};
+
+export default SubscriptionPlanCard;
