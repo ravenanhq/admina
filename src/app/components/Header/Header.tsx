@@ -48,6 +48,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { signOut } from "next-auth/react";
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -169,7 +170,8 @@ const Header: React.FC = () => {
       ],
     },
     { label: "Import/Export", route: "/import-export-element" },
-    { label: "Crud Component", route: "/crud/list" }
+    { label: "CRUD Component", route: "/crud/list" },
+    { label: "Subscription Plan", route: "/subscription-plan" }
   ];
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -250,7 +252,8 @@ const Header: React.FC = () => {
                   {menuItem.label === "Components" ? <GridViewOutlinedIcon /> : ""}
                   {menuItem.label === "Ecommerce" ? <ShoppingCartCheckoutIcon /> : ""}
                   {menuItem.label === "Import/Export" ? <ImportExportIcon /> : ""}
-                  {menuItem.label === "Crud Component" ? <ListAltIcon /> : ""}
+                  {menuItem.label === "CRUD Component" ? <ListAltIcon /> : ""},
+                  {menuItem.label === "Subscription Plan" ? <ThumbUpAltIcon /> : ""}
                 </ListItemIcon>
                 <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
                 <ListItemIcon
