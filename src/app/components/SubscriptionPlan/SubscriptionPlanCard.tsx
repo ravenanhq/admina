@@ -43,9 +43,8 @@ const SubscriptionPlanCard = () => {
                 <Card
                   style={{
                     borderRadius: "10px",
-                    backgroundColor: plan.bgColor,
+                    backgroundColor: "#fff",
                     padding: "20px",
-                    content: plan.price,
                   }}
                 >
                   <Typography
@@ -64,7 +63,7 @@ const SubscriptionPlanCard = () => {
                     sx={{
                       backgroundColor: plan.price,
                       padding: isMobile ? "8px" : isTab ? "" : "8px",
-                      color: "#fff",
+                      color: "#000",
                       fontSize: "25px",
                       position: "absolute",
                       marginTop: isMobile ? "30px" : isTab ? "20px" : "35px",
@@ -76,7 +75,7 @@ const SubscriptionPlanCard = () => {
                     variant="h6"
                     sx={{
                       backgroundColor: plan.price,
-                      color: "#fff",
+                      color: "#000",
                       fontSize: isMobile ? "70px" : isTab ? "50px" : "80px",
                       display: "inline-block",
                       opacity: 0.1,
@@ -116,16 +115,12 @@ const SubscriptionPlanCard = () => {
                       onClick={() => handleBuyNow(plan.plan)}
                       sx={{
                         backgroundColor: plan.bgColor,
-                        color: "#000",
+                        color: "#fff",
                         width: isMobile ? "50%" : isTab ? "100%" : "50%",
                         padding: isTab ? "4px 0" : "10px 0",
                         opacity: 0.8,
-                        border: "1px solid #000",
-                        boxShadow: "0px 2px 0px 2px #000",
-                        "&:hover": {
-                          outline: "none",
-                          boxShadow: "none",
-                        },
+                        border: "1px solid",
+                        borderColor: plan.bgColor,
                       }}
                     >
                       Buy Now

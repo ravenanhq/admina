@@ -43,7 +43,7 @@ const SubscriptionPlanTable = () => {
               variant="h6"
               sx={{
                 backgroundColor: "#36C7E2",
-                backgroundImage: "linear-gradient(to right, #008e81, #00cf97)",
+                backgroundImage: "linear-gradient(to bottom, #bf3b2c,#d54433)",
                 padding: "26px 8px",
                 color: "#fff",
                 textAlign: "center",

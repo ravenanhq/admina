@@ -26,7 +26,7 @@
         "included": false
       }
     ],
-    "bgColor": "#ffbe00"
+    "bgColor": "#0f7c9e"
   },
   {
     "id": 2,
@@ -55,7 +55,7 @@
         "included": true
       }
     ],
-    "bgColor": "#ff5474"
+    "bgColor": "#017b79"
   },
   {
     "id": 3,
@@ -84,7 +84,7 @@
         "included": false
       }
     ],
-    "bgColor": "#a772ff"
+    "bgColor": "#4ad0d0"
   },
   {
     "id": 4,
@@ -113,6 +113,6 @@
         "included": true
       }
     ],
-    "bgColor": "#00c3b9"
+    "bgColor": "#02979c"
   }
 ]
