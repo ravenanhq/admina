@@ -46,9 +46,9 @@ import ImportExportIcon from "@mui/icons-material/ImportExport";
 import { usePathname } from "next/navigation";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { signOut } from "next-auth/react";
-import ListAltIcon from '@mui/icons-material/ListAlt';
-import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -82,10 +82,9 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 const Header: React.FC = () => {
   const pathName = usePathname();
-  const showHeader = ![
-    "/login",
-    "/signup",
-    "/forgot-password"].includes(pathName);
+  const showHeader = !["/login", "/signup", "/forgot-password"].includes(
+    pathName
+  );
 
   const { handleDrawerOpen, open } = useNavbarContext();
   const { handleDrawerClose } = useNavbarContext();
@@ -94,7 +93,8 @@ const Header: React.FC = () => {
   });
 
   const [showEcommerceSubMenu, setShowEcommerceSubMenu] = React.useState(false);
-  const [showComponentsSubMenu, setShowComponentsSubMenu] = React.useState(false);
+  const [showComponentsSubMenu, setShowComponentsSubMenu] =
+    React.useState(false);
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -123,9 +123,8 @@ const Header: React.FC = () => {
     console.log(`Clicked on ${label}`);
   };
 
-
   const handleComponentsClick = () => {
-    console.log("true")
+    console.log("true");
     setShowComponentsSubMenu(!showComponentsSubMenu);
   };
 
@@ -166,12 +165,12 @@ const Header: React.FC = () => {
         { label: "Add New Product", route: "/ecommerce/add-new-product" },
         { label: "Orders", route: "/ecommerce/order" },
         { label: "Product List", route: "/ecommerce/product-list" },
-        { label: "Wishlist", route: "/ecommerce/wishlist" }
+        { label: "Wishlist", route: "/ecommerce/wishlist" },
       ],
     },
     { label: "Import/Export", route: "/import-export-element" },
     { label: "CRUD Component", route: "/crud/list" },
-    { label: "Subscription Plan", route: "/subscription-plan" }
+    { label: "Subscription Plan", route: "/subscription-plan" },
   ];
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -237,9 +236,13 @@ const Header: React.FC = () => {
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
                 }}
-                onClick={menuItem.label === "Ecommerce"
-                  ? handleEcommerceClick : "Components"
-                    ? handleComponentsClick : undefined}
+                onClick={() => {
+                  if (menuItem.label === "Ecommerce") {
+                    handleEcommerceClick();
+                  } else if (menuItem.label === "Components") {
+                    handleComponentsClick();
+                  }
+                }}
               >
                 <ListItemIcon
                   sx={{
@@ -249,11 +252,27 @@ const Header: React.FC = () => {
                   }}
                 >
                   {menuItem.label === "Dashboard" ? <DashboardIcon /> : ""}
-                  {menuItem.label === "Components" ? <GridViewOutlinedIcon /> : ""}
-                  {menuItem.label === "Ecommerce" ? <ShoppingCartCheckoutIcon /> : ""}
-                  {menuItem.label === "Import/Export" ? <ImportExportIcon /> : ""}
+                  {menuItem.label === "Components" ? (
+                    <GridViewOutlinedIcon />
+                  ) : (
+                    ""
+                  )}
+                  {menuItem.label === "Ecommerce" ? (
+                    <ShoppingCartCheckoutIcon />
+                  ) : (
+                    ""
+                  )}
+                  {menuItem.label === "Import/Export" ? (
+                    <ImportExportIcon />
+                  ) : (
+                    ""
+                  )}
                   {menuItem.label === "CRUD Component" ? <ListAltIcon /> : ""},
-                  {menuItem.label === "Subscription Plan" ? <ThumbUpAltIcon /> : ""}
+                  {menuItem.label === "Subscription Plan" ? (
+                    <ThumbUpAltIcon />
+                  ) : (
+                    ""
+                  )}
                 </ListItemIcon>
                 <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
                 <ListItemIcon
@@ -279,7 +298,11 @@ const Header: React.FC = () => {
                   }}
                 >
                   {menuItem.label === "Components" ? (
-                    showComponentsSubMenu ? <ExpandLess /> : <ExpandMore />
+                    showComponentsSubMenu ? (
+                      <ExpandLess />
+                    ) : (
+                      <ExpandMore />
+                    )
                   ) : null}
                 </ListItemIcon>
               </ListItemButton>
@@ -304,34 +327,125 @@ const Header: React.FC = () => {
                               justifyContent: open ? "initial" : "center",
                               px: 2.5,
                             }}
-                            onClick={() => handleComponentsSubMenuItemClick(subMenuItem.label)}
+                            onClick={() =>
+                              handleComponentsSubMenuItemClick(
+                                subMenuItem.label
+                              )
+                            }
                           >
                             <ListItemIcon
                               sx={{
                                 minWidth: 0,
                                 mr: open ? 2 : "auto",
                                 justifyContent: "center",
-
                               }}
                             >
                               {/* Your icon rendering code */}
-                              {subMenuItem.label === "Forms" ? <EditIcon style={{ fontSize: "20px" }} /> : ""}
-                              {subMenuItem.label === "Charts" ? <BarChartIcon style={{ fontSize: "20px" }} /> : ""}
-                              {subMenuItem.label === "Cards" ? <CreditCardIcon style={{ fontSize: "20px" }} /> : ""}
-                              {subMenuItem.label === "Spinners" ? <AutorenewIcon style={{ fontSize: "20px" }} /> : ""}
-                              {subMenuItem.label === "Breadcrumbs" ? <KeyboardDoubleArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
-                              {subMenuItem.label === "Search" ? <SearchIcon style={{ fontSize: "20px" }} /> : ""}
-                              {subMenuItem.label === "Signin" ? <LoginIcon style={{ fontSize: "20px" }} /> : ""}
-                              {subMenuItem.label === "Footers" ? <VerticalAlignBottomIcon style={{ fontSize: "20px" }} /> : ""}
-                              {subMenuItem.label === "Tables" ? <TableIcon style={{ fontSize: "20px" }} /> : ""}
-                              {subMenuItem.label === "Buttons" ? <KeyboardArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
-                              {subMenuItem.label === "Alerts" ? <KeyboardArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
-                              {subMenuItem.label === "Tabs" ? <KeyboardArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
-                              {subMenuItem.label === "Modals" ? <KeyboardArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
-                              {subMenuItem.label === "Slider" ? <KeyboardArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
-                              {subMenuItem.label === "Timeline" ? <KeyboardArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
-                              {subMenuItem.label === "Navbar" ? <KeyboardArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
-                              {subMenuItem.label === "General Elements" ? <KeyboardArrowRightIcon style={{ fontSize: "20px" }} /> : ""}
+                              {subMenuItem.label === "Forms" ? (
+                                <EditIcon style={{ fontSize: "20px" }} />
+                              ) : (
+                                ""
+                              )}
+                              {subMenuItem.label === "Charts" ? (
+                                <BarChartIcon style={{ fontSize: "20px" }} />
+                              ) : (
+                                ""
+                              )}
+                              {subMenuItem.label === "Cards" ? (
+                                <CreditCardIcon style={{ fontSize: "20px" }} />
+                              ) : (
+                                ""
+                              )}
+                              {subMenuItem.label === "Spinners" ? (
+                                <AutorenewIcon style={{ fontSize: "20px" }} />
+                              ) : (
+                                ""
+                              )}
+                              {subMenuItem.label === "Breadcrumbs" ? (
+                                <KeyboardDoubleArrowRightIcon
+                                  style={{ fontSize: "20px" }}
+                                />
+                              ) : (
+                                ""
+                              )}
+                              {subMenuItem.label === "Search" ? (
+                                <SearchIcon style={{ fontSize: "20px" }} />
+                              ) : (
+                                ""
+                              )}
+                              {subMenuItem.label === "Signin" ? (
+                                <LoginIcon style={{ fontSize: "20px" }} />
+                              ) : (
+                                ""
+                              )}
+                              {subMenuItem.label === "Footers" ? (
+                                <VerticalAlignBottomIcon
+                                  style={{ fontSize: "20px" }}
+                                />
+                              ) : (
+                                ""
+                              )}
+                              {subMenuItem.label === "Tables" ? (
+                                <TableIcon style={{ fontSize: "20px" }} />
+                              ) : (
+                                ""
+                              )}
+                              {subMenuItem.label === "Buttons" ? (
+                                <KeyboardArrowRightIcon
+                                  style={{ fontSize: "20px" }}
+                                />
+                              ) : (
+                                ""
+                              )}
+                              {subMenuItem.label === "Alerts" ? (
+                                <KeyboardArrowRightIcon
+                                  style={{ fontSize: "20px" }}
+                                />
+                              ) : (
+                                ""
+                              )}
+                              {subMenuItem.label === "Tabs" ? (
+                                <KeyboardArrowRightIcon
+                                  style={{ fontSize: "20px" }}
+                                />
+                              ) : (
+                                ""
+                              )}
+                              {subMenuItem.label === "Modals" ? (
+                                <KeyboardArrowRightIcon
+                                  style={{ fontSize: "20px" }}
+                                />
+                              ) : (
+                                ""
+                              )}
+                              {subMenuItem.label === "Slider" ? (
+                                <KeyboardArrowRightIcon
+                                  style={{ fontSize: "20px" }}
+                                />
+                              ) : (
+                                ""
+                              )}
+                              {subMenuItem.label === "Timeline" ? (
+                                <KeyboardArrowRightIcon
+                                  style={{ fontSize: "20px" }}
+                                />
+                              ) : (
+                                ""
+                              )}
+                              {subMenuItem.label === "Navbar" ? (
+                                <KeyboardArrowRightIcon
+                                  style={{ fontSize: "20px" }}
+                                />
+                              ) : (
+                                ""
+                              )}
+                              {subMenuItem.label === "General Elements" ? (
+                                <KeyboardArrowRightIcon
+                                  style={{ fontSize: "20px" }}
+                                />
+                              ) : (
+                                ""
+                              )}
                             </ListItemIcon>
                             <ListItemText primary={subMenuItem.label} />
                           </ListItemButton>
@@ -339,7 +453,15 @@ const Header: React.FC = () => {
                       </ListItem>
                       {subMenuItem.label === "Tables" && (
                         <ListItem sx={{ paddingLeft: 4 }}>
-                          <Typography variant="h6" sx={{ fontSize: "15px", fontWeight: "bold", paddingLeft: 1, paddingBottom: 1 }}>
+                          <Typography
+                            variant="h6"
+                            sx={{
+                              fontSize: "15px",
+                              fontWeight: "bold",
+                              paddingLeft: 1,
+                              paddingBottom: 1,
+                            }}
+                          >
                             UI Elements {/* Add your desired title here */}
                           </Typography>
                         </ListItem>
@@ -381,12 +503,48 @@ const Header: React.FC = () => {
                               justifyContent: "center",
                             }}
                           >
-                            {subMenuItem.label === "Products" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
-                            {subMenuItem.label === "Product Details" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
-                            {subMenuItem.label === "Add New Product" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
-                            {subMenuItem.label === "Orders" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
-                            {subMenuItem.label === "Product List" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
-                            {subMenuItem.label === "Wishlist" ? <KeyboardArrowRightIcon style={{ fontSize: "14px" }} /> : ""}
+                            {subMenuItem.label === "Products" ? (
+                              <KeyboardArrowRightIcon
+                                style={{ fontSize: "14px" }}
+                              />
+                            ) : (
+                              ""
+                            )}
+                            {subMenuItem.label === "Product Details" ? (
+                              <KeyboardArrowRightIcon
+                                style={{ fontSize: "14px" }}
+                              />
+                            ) : (
+                              ""
+                            )}
+                            {subMenuItem.label === "Add New Product" ? (
+                              <KeyboardArrowRightIcon
+                                style={{ fontSize: "14px" }}
+                              />
+                            ) : (
+                              ""
+                            )}
+                            {subMenuItem.label === "Orders" ? (
+                              <KeyboardArrowRightIcon
+                                style={{ fontSize: "14px" }}
+                              />
+                            ) : (
+                              ""
+                            )}
+                            {subMenuItem.label === "Product List" ? (
+                              <KeyboardArrowRightIcon
+                                style={{ fontSize: "14px" }}
+                              />
+                            ) : (
+                              ""
+                            )}
+                            {subMenuItem.label === "Wishlist" ? (
+                              <KeyboardArrowRightIcon
+                                style={{ fontSize: "14px" }}
+                              />
+                            ) : (
+                              ""
+                            )}
                           </ListItemIcon>
                           <ListItemText primary={subMenuItem.label} />
                         </ListItemButton>

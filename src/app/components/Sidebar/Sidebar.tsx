@@ -223,9 +223,13 @@ const Sidebar: React.FC = () => {
                       justifyContent: open ? "initial" : "center",
                       px: 2.5,
                     }}
-                    onClick={menuItem.label === "Ecommerce"
-                      ? handleEcommerceClick : "Components"
-                        ? handleComponentsClick : undefined}
+                    onClick={() => {
+                      if (menuItem.label === "Ecommerce") {
+                        handleEcommerceClick();
+                      } else if (menuItem.label === "Components") {
+                        handleComponentsClick();
+                      }
+                    }}
                   >
 
 
