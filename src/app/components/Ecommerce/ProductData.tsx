@@ -7,7 +7,7 @@ import productData from "../../../product-data.json";
 import DeleteModal from "./DeleteModal";
 import AddProductModal from "./AddProductModal";
 import EditProductModal from "./EditProductModal";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const ProductData = () => {
   const [orders, setOrder] = useState([]);
@@ -101,7 +101,6 @@ const ProductData = () => {
           type="submit"
           size="small"
           style={{
-            borderRadius: "10px",
             backgroundColor:
               params.value.toLowerCase() === "shipping" ? "#2196f3" : "#ff9800",
             color: "white",
@@ -152,8 +151,8 @@ const ProductData = () => {
               variant="contained"
               type="submit"
               size="small"
+              onClick={handleAddProductClick}
               style={{
-                borderRadius: "10px",
                 background: "#1976d2",
                 padding: "7px 15px",
               }}

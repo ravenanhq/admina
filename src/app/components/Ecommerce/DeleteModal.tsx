@@ -2,7 +2,7 @@ import React from "react";
 import { Modal, Box, CardActions } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const DeleteModal = ({ open, onClose, onDeleteConfirm, orderId }) => {
   const theme = useTheme();
@@ -48,7 +48,6 @@ const DeleteModal = ({ open, onClose, onDeleteConfirm, orderId }) => {
               size="small"
               onClick={onClose}
               style={{
-                borderRadius: "10px",
                 backgroundColor: "#ed6c02",
                 margin: "15px 0 0 10px",
                 padding: "7px 15px",

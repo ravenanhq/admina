@@ -6,7 +6,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import orderData from "../../../orders-data.json";
 import EditModal from "./EditModal";
 import DeleteModal from "./DeleteModal";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const ProductOrder = () => {
   const [orders, setOrder] = useState([]);
@@ -78,7 +78,6 @@ const ProductOrder = () => {
           type="submit"
           size="small"
           style={{
-            borderRadius: "10px",
             backgroundColor:
               params.value === "FULFILED" ? "#2196f3" : "#ff9800",
             color: "white",

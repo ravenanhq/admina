@@ -11,7 +11,7 @@ import {
   Box,
   CardHeader,
 } from "@mui/material";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const ModalSection = ({ title, content, buttonText, color, size }) => {
   const [open, setOpen] = useState(false);

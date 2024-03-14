@@ -15,7 +15,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GoogleIcon from "@mui/icons-material/Google";
-import ButtonComponent from "../../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../../BaseComponent/Button";
 
 const SigninFormWithSocialButton = () => {
   const [formData, setFormData] = useState({
@@ -160,7 +160,6 @@ const SigninFormWithSocialButton = () => {
             onClick={handleSubmit}
             style={{
               width: "35%",
-              borderRadius: "10px",
               background: "#1976d2",
               padding: "5px 0",
             }}

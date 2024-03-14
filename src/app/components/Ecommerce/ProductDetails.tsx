@@ -20,7 +20,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
@@ -250,7 +250,6 @@ const ProductDetails = () => {
                   type="submit"
                   size="small"
                   style={{
-                    borderRadius: "10px",
                     padding: "10px 16px",
                     background: "#008cff",
                     marginRight: "20px",
@@ -262,9 +261,8 @@ const ProductDetails = () => {
                   variant="contained"
                   type="submit"
                   size="small"
-                  startIcon={<ShoppingCartCheckoutIcon />}
+                  prefix={<ShoppingCartCheckoutIcon />}
                   style={{
-                    borderRadius: "10px",
                     padding: isMobile ? "15px" : "10px",
                     minWidth: isMobile ? "146px" : "",
                     marginTop: isMobile ? "10px" : "",

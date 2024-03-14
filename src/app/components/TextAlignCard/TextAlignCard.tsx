@@ -6,7 +6,7 @@ import {
   CardActions,
   Grid,
 } from "@mui/material";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const TextAlignCard = () => {
   const [expanded, setExpanded] = React.useState(true);
@@ -49,7 +49,6 @@ const TextAlignCard = () => {
                 type="button"
                 size="small"
                 style={{
-                  borderRadius: "10px",
                   background: "#1976d2",
                   padding: "5px 15px",
                 }}
@@ -79,7 +78,6 @@ const TextAlignCard = () => {
                 type="button"
                 size="small"
                 style={{
-                  borderRadius: "10px",
                   background: "#1976d2",
                   padding: "5px 15px",
                 }}
@@ -114,7 +112,6 @@ const TextAlignCard = () => {
                 type="button"
                 size="small"
                 style={{
-                  borderRadius: "10px",
                   background: "#1976d2",
                   padding: "5px 15px",
                 }}

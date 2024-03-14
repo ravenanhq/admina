@@ -16,7 +16,7 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ButtonComponent from "../../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../../BaseComponent/Button";
 
 const OutlinedSigningForm = () => {
   const [formData, setFormData] = useState({
@@ -154,7 +154,6 @@ const OutlinedSigningForm = () => {
             onClick={handleSubmit}
             style={{
               width: "100px",
-              borderRadius: "10px",
               background: "#2e7d32",
               padding: "5px 0",
             }}
@@ -178,7 +177,6 @@ const OutlinedSigningForm = () => {
             size="small"
             style={{
               width: "100px",
-              borderRadius: "10px",
               background: "#ed6c02",
               padding: "5px 0",
             }}

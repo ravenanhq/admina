@@ -15,7 +15,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import SearchIcon from "@mui/icons-material/Search";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const ProductsListHeader = ({
   sortBy,
@@ -57,9 +57,8 @@ const ProductsListHeader = ({
                 variant="contained"
                 type="submit"
                 size="small"
-                startIcon={<AddCircleOutlineIcon />}
+                prefix={<AddCircleOutlineIcon />}
                 style={{
-                  borderRadius: "10px",
                   padding: "8px 10px",
                   background: "#008cff",
                   margin: isMobile ? "0 0 0 10px" : "",

@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const HorizontalForm = () => {
   const [formData, setFormData] = useState({
@@ -179,7 +179,6 @@ const HorizontalForm = () => {
           onClick={handleSubmit}
           style={{
             textTransform: "capitalize",
-            borderRadius: "10px",
             background: "#1976d2",
             padding: "5px 15px",
           }}

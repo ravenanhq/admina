@@ -12,7 +12,7 @@ import {
 import productsData from "../../../product-data.json";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const RelatedProducts = () => {
   const [products, setProducts] = useState([]);
@@ -74,7 +74,6 @@ const RelatedProducts = () => {
                   type="submit"
                   size="small"
                   style={{
-                    borderRadius: "10px",
                     padding: isMobile ? "8px" : "7px",
                     background: "#ed6c02",
                   }}

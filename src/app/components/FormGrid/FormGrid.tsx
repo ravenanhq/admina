@@ -18,7 +18,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const FormGrid = () => {
   const [successMessageOpen, setSuccessMessageOpen] = useState(false);
@@ -292,7 +292,6 @@ const FormGrid = () => {
             onClick={handleSubmit}
             style={{
               textTransform: "capitalize",
-              borderRadius: "10px",
               background: "#1d8683",
               padding: "5px 15px",
             }}
@@ -305,7 +304,6 @@ const FormGrid = () => {
             onClick={handleCancel}
             style={{
               textTransform: "capitalize",
-              borderRadius: "10px",
               background: "#58544D",
               padding: "5px 15px",
             }}

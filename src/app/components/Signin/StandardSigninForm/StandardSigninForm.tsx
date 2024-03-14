@@ -12,7 +12,7 @@ import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useRouter } from "next/navigation";
-import ButtonComponent from "../../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../../BaseComponent/Button";
 
 const StandardSigninForm = () => {
   const [formData, setFormData] = useState({
@@ -128,10 +128,9 @@ const StandardSigninForm = () => {
           type="submit"
           size="small"
           onClick={handleSubmit}
-          startIcon={<LoginIcon />}
+          prefix={<LoginIcon />}
           style={{
             width: "50%",
-            borderRadius: "10px",
             background: "#e44d26",
             padding: "7px 0",
           }}
@@ -146,10 +145,9 @@ const StandardSigninForm = () => {
           type="submit"
           size="small"
           onClick={handleSubmit}
-          startIcon={<PersonAddAltIcon />}
+          prefix={<PersonAddAltIcon />}
           style={{
             width: "50%",
-            borderRadius: "10px",
             padding: "7px 0",
             background: "#2e7d32",
             marginBottom: "10px",

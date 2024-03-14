@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Divider, Typography } from "@mui/material";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const BasicButtonElement = () => {
   return (
@@ -14,37 +14,31 @@ const BasicButtonElement = () => {
           variant="contained"
           color="primary"
           name="Primary"
-          style={{ borderRadius: "10px" }}
         ></ButtonComponent>
         <ButtonComponent
           variant="contained"
           color="secondary"
           name="Secondary"
-          style={{ borderRadius: "10px" }}
         ></ButtonComponent>
         <ButtonComponent
           variant="contained"
           color="success"
           name="Success"
-          style={{ borderRadius: "10px" }}
         ></ButtonComponent>
         <ButtonComponent
           variant="contained"
           color="warning"
           name="Warning"
-          style={{ borderRadius: "10px" }}
         ></ButtonComponent>
         <ButtonComponent
           variant="contained"
           color="info"
           name="Info"
-          style={{ borderRadius: "10px" }}
         ></ButtonComponent>
         <ButtonComponent
           variant="contained"
           color="primary"
           name="Disabled"
-          style={{ borderRadius: "10px" }}
           disabled
         ></ButtonComponent>
       </Box>

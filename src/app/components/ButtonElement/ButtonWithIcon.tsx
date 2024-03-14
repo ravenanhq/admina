@@ -5,7 +5,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import DownloadIcon from "@mui/icons-material/Download";
 import CommentsDisabledIcon from "@mui/icons-material/CommentsDisabled";
 import UploadIcon from "@mui/icons-material/Upload";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const ButtonWithIcon = () => {
   return (
@@ -21,9 +21,8 @@ const ButtonWithIcon = () => {
           size="small"
           color="primary"
           name="Person"
-          startIcon={<PersonIcon sx={{ marginTop: "-4px" }} />}
+          prefix={<PersonIcon sx={{ marginTop: "-4px" }} />}
           style={{
-            borderRadius: "10px",
             padding: "7px 30px",
             marginBottom: "10px",
             background: "#008cff",
@@ -35,9 +34,8 @@ const ButtonWithIcon = () => {
           size="small"
           color="primary"
           name="Home"
-          startIcon={<HomeIcon sx={{ marginTop: "-4px" }} />}
+          prefix={<HomeIcon sx={{ marginTop: "-4px" }} />}
           style={{
-            borderRadius: "10px",
             padding: "7px 30px",
             marginBottom: "10px",
             background: "#fd3550",
@@ -49,9 +47,8 @@ const ButtonWithIcon = () => {
           size="small"
           color="primary"
           name="Download"
-          startIcon={<DownloadIcon />}
+          prefix={<DownloadIcon />}
           style={{
-            borderRadius: "10px",
             padding: "7px 30px",
             marginBottom: "10px",
             background: "#212529",
@@ -63,9 +60,8 @@ const ButtonWithIcon = () => {
           size="small"
           color="primary"
           name="Comments"
-          startIcon={<CommentsDisabledIcon />}
+          suffix={<CommentsDisabledIcon />}
           style={{
-            borderRadius: "10px",
             padding: "7px 30px",
             marginBottom: "10px",
             background: "#0dcaf0",
@@ -77,9 +73,8 @@ const ButtonWithIcon = () => {
           size="small"
           color="primary"
           name="Upload"
-          startIcon={<UploadIcon />}
+          prefix={<UploadIcon />}
           style={{
-            borderRadius: "10px",
             padding: "7px 30px",
             marginBottom: "10px",
             background: "#ffc107",

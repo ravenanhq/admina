@@ -7,7 +7,7 @@ import {
   CardActions,
   Grid,
 } from "@mui/material";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const GroupCard = () => {
   const [expanded, setExpanded] = React.useState(true);
@@ -45,7 +45,6 @@ const GroupCard = () => {
                 type="button"
                 size="small"
                 style={{
-                  borderRadius: "10px",
                   background: "#1976d2",
                   padding: "5px 15px",
                 }}
@@ -76,7 +75,6 @@ const GroupCard = () => {
                 type="button"
                 size="small"
                 style={{
-                  borderRadius: "10px",
                   background: "#1976d2",
                   padding: "5px 15px",
                 }}
@@ -107,7 +105,6 @@ const GroupCard = () => {
                 type="button"
                 size="small"
                 style={{
-                  borderRadius: "10px",
                   background: "#1976d2",
                   padding: "5px 15px",
                 }}

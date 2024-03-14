@@ -6,7 +6,7 @@ import {
   CardActions,
   TextField,
 } from "@mui/material";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const VerticalForm = () => {
   const [formData, setFormData] = useState({
@@ -123,7 +123,6 @@ const VerticalForm = () => {
           onClick={handleSubmit}
           style={{
             textTransform: "capitalize",
-            borderRadius: "10px",
             background: "#2e7d32",
             padding: "5px 15px",
           }}

@@ -14,7 +14,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const HorizontalFormWithIcon = () => {
   const [formData, setFormData] = useState({
@@ -221,7 +221,6 @@ const HorizontalFormWithIcon = () => {
           onClick={handleSubmit}
           style={{
             textTransform: "capitalize",
-            borderRadius: "10px",
             background: "#e44d26",
             padding: "5px 15px",
           }}

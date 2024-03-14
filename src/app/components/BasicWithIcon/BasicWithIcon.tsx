@@ -11,7 +11,7 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import PersonIcon from "@mui/icons-material/Person";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const BasicWithIcon = () => {
   const [formData, setFormData] = useState({
@@ -185,7 +185,6 @@ const BasicWithIcon = () => {
           onClick={handleSubmit}
           style={{
             textTransform: "capitalize",
-            borderRadius: "10px",
             background: "#1d8683",
             padding: "5px 15px",
           }}

@@ -18,7 +18,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const AddNewProduct = () => {
     const [successMessageOpen, setSuccessMessageOpen] = useState(false);
@@ -331,8 +331,6 @@ const AddNewProduct = () => {
           size="small"
           onClick={handleSubmit}
           style={{
-            
-            borderRadius: "10px",
             background: "#2e7d32",
             padding:"5px 10px"
           }}

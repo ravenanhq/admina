@@ -11,7 +11,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DeleteModal from "./Deletemodal";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const List = () => {
   const [data, setData] = useState([]);
@@ -133,7 +133,6 @@ const List = () => {
               variant="contained"
               style={{
                 textTransform: "capitalize",
-                borderRadius: "10px",
                 padding: "4px 10px",
                 boxShadow: "none",
                 background: "#1d8683",

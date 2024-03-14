@@ -17,7 +17,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const CreateNewData = () => {
   const [successMessageOpen, setSuccessMessageOpen] = useState(false);
@@ -253,7 +253,6 @@ const CreateNewData = () => {
             onClick={handleSubmit}
             style={{
               textTransform: "capitalize",
-              borderRadius: "10px",
               padding: "6px 15px",
               boxShadow: "none",
               background: "#1d8683",
@@ -267,7 +266,6 @@ const CreateNewData = () => {
             onClick={handleCancel}
             style={{
               textTransform: "capitalize",
-              borderRadius: "10px",
               padding: "6px 15px",
               boxShadow: "none",
               background: "#58544D",

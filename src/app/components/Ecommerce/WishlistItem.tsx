@@ -16,7 +16,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import productsData from "../../../product-data.json";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const WishlistItem = () => {
   const [products, setProducts] = useState([]);
@@ -163,7 +163,6 @@ const WishlistItem = () => {
               background: "#f15a2b",
               marginRight: "20px",
               minWidth: isMobile ? "146px" : "",
-              borderRadius: "10px",
             }}
             name="Continue Shopping"
           ></ButtonComponent>
@@ -177,7 +176,6 @@ const WishlistItem = () => {
             background: "#f15a2b",
             padding: "10px",
             minWidth: isMobile ? "146px" : "",
-            borderRadius: "10px",
           }}
           name="Clear Wishlist"
         ></ButtonComponent>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal, TextField, Box, CardActions } from "@mui/material";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 interface RowData {
   name?: string;
@@ -83,7 +83,6 @@ const EditProductModal: React.FC<EditModalProps> = ({
             size="small"
             onClick={handleSaveChanges}
             style={{
-              borderRadius: "10px",
               backgroundColor: "#1976d2",
               padding: "7px 15px",
             }}
@@ -95,7 +94,6 @@ const EditProductModal: React.FC<EditModalProps> = ({
             size="small"
             onClick={onClose}
             style={{
-              borderRadius: "10px",
               background: "#ed6c02",
               marginLeft: "10px",
               padding: "7px 15px",

@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ButtonComponent from "../../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../../BaseComponent/Button";
 
 const GeneralSigninForm = () => {
   const [formData, setFormData] = useState({
@@ -122,7 +122,6 @@ const GeneralSigninForm = () => {
           onClick={handleSubmit}
           style={{
             width: "50%",
-            borderRadius: "10px",
             background: "#1d8683",
             padding: "7px 0",
           }}

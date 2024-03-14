@@ -2,7 +2,7 @@ import React from "react";
 import Papa from "papaparse";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const ExportSelectedData = ({
   dataToExport,
@@ -46,7 +46,6 @@ const ExportSelectedData = ({
       style={{
         margin: isMobile ? "15px 0 0 4px" : isTab ? "6px 0 0 8px" : "0 0 0 8px",
         textTransform: "capitalize",
-        borderRadius: "10px",
         background: "#ed6c02",
         padding: "5px 15px",
       }}

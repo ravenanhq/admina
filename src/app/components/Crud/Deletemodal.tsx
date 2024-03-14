@@ -3,7 +3,7 @@ import { Modal, Box, IconButton, Divider } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import CloseIcon from "@mui/icons-material/Close";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const DeleteModal = ({ open, onClose, onDeleteConfirm }) => {
   const theme = useTheme();
@@ -46,7 +46,6 @@ const DeleteModal = ({ open, onClose, onDeleteConfirm }) => {
             style={{
               margin: "15px 0 0 10px",
               textTransform: "capitalize",
-              borderRadius: "10px",
               padding: "6px 20px",
               boxShadow: "none",
               background: "#1d8683",
@@ -59,7 +58,6 @@ const DeleteModal = ({ open, onClose, onDeleteConfirm }) => {
             style={{
               margin: "15px 0 0 10px",
               textTransform: "capitalize",
-              borderRadius: "15px",
               padding: "6px 20px",
               boxShadow: "none",
               background: "#58544D",

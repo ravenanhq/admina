@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TextField, Box, Grid, Typography } from "@mui/material";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const ReviewCommentForm = () => {
   const [formData, setFormData] = useState({
@@ -91,7 +91,6 @@ const ReviewCommentForm = () => {
             size="small"
             onClick={handleSubmit}
             style={{
-              borderRadius: "10px",
               padding: "8px 10px",
               background: "#1976d2",
             }}

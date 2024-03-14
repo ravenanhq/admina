@@ -7,7 +7,7 @@ import {
   CardActions,
   Grid,
 } from "@mui/material";
-import ButtonComponent from "../BasicUIElements/ButtonComponent";
+import ButtonComponent from "../BaseComponent/Button";
 
 const BasicCard = () => {
   const [expanded, setExpanded] = React.useState(true);
@@ -40,7 +40,6 @@ const BasicCard = () => {
                 variant="contained"
                 type="button"
                 style={{
-                  borderRadius: "10px",
                   background: "#1976d2",
                   padding: "5px 15px",
                 }}
