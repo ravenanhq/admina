@@ -1,38 +1,48 @@
-import React, { useState } from 'react';
-import { Card, CardHeader, CardContent, CardActions, TextField, Button, InputAdornment, FormControlLabel, Checkbox, Grid, Link, Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import React, { useState } from "react";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  TextField,
+  Grid,
+  Link,
+  Typography,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import ButtonComponent from "../../BaseComponent/Button";
 
 const GeneralSigninForm = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const [errors, setErrors] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const validateForm = () => {
     let isValid = true;
     const newErrors = { ...errors };
 
-    if (formData.email.trim() === '') {
-      newErrors.email = 'Email is required';
+    if (formData.email.trim() === "") {
+      newErrors.email = "Email is required";
       isValid = false;
     } else {
-      newErrors.email = '';
+      newErrors.email = "";
     }
 
-    if (formData.password.trim() === '') {
-      newErrors.password = 'Password is required';
+    if (formData.password.trim() === "") {
+      newErrors.password = "Password is required";
       isValid = false;
     } else {
-      newErrors.password = '';
+      newErrors.password = "";
     }
 
     setErrors(newErrors);
@@ -57,9 +67,16 @@ const GeneralSigninForm = () => {
 
   return (
     <Card variant="outlined">
-      <CardHeader title="General Signin Form With Validation" titleTypographyProps={{ fontSize: '16px' }} sx={{ bgcolor: '#1d8683', color: 'white' }} />
-      <CardHeader title="Login" titleTypographyProps={{ fontSize: '16px', textAlign: "center" }} />
-      <CardContent style={{ textAlign: 'center' }}>
+      <CardHeader
+        title="General Signin Form With Validation"
+        titleTypographyProps={{ fontSize: "16px" }}
+        sx={{ bgcolor: "#1d8683", color: "white" }}
+      />
+      <CardHeader
+        title="Login"
+        titleTypographyProps={{ fontSize: "16px", textAlign: "center" }}
+      />
+      <CardContent style={{ textAlign: "center" }}>
         <form onSubmit={handleSubmit}>
           <TextField
             fullWidth
@@ -69,13 +86,13 @@ const GeneralSigninForm = () => {
             onChange={handleChange}
             error={!!errors.email}
             helperText={errors.email}
-            size='small'
+            size="small"
             placeholder="Username or Email"
             label="Username or Email"
             style={{
-              maxWidth: isMobile ? '100%' : '52%',
-              margin: '0 auto',
-              marginTop: isMobile ? '10px' : '15px',
+              maxWidth: isMobile ? "100%" : "52%",
+              margin: "0 auto",
+              marginTop: isMobile ? "10px" : "15px",
             }}
           />
           <TextField
@@ -86,22 +103,30 @@ const GeneralSigninForm = () => {
             onChange={handleChange}
             error={!!errors.password}
             helperText={errors.password}
-            size='small'
+            size="small"
             placeholder="Password"
             label="password"
             style={{
-              maxWidth: isMobile ? '100%' : '52%',
-              margin: '0 auto',
-              marginTop: isMobile ? '10px' : '15px',
+              maxWidth: isMobile ? "100%" : "52%",
+              margin: "0 auto",
+              marginTop: isMobile ? "10px" : "15px",
             }}
           />
-
         </form>
       </CardContent>
       <Grid container justifyContent="center">
-        <Button variant="contained" type="submit" onClick={handleSubmit} size="small" sx={{ width: '50%', padding: "7px 0", background: "#1d8683" }}>
-          Log In
-        </Button>
+        <ButtonComponent
+          variant="contained"
+          type="submit"
+          size="small"
+          onClick={handleSubmit}
+          style={{
+            width: "50%",
+            background: "#1d8683",
+            padding: "7px 0",
+          }}
+          name="Log In"
+        ></ButtonComponent>
       </Grid>
 
       <CardActions sx={{ justifyContent: "center" }}>

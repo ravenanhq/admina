@@ -271,7 +271,7 @@ const Navbar = () => {
                   variant="contained"
                   type="submit"
                   size="small"
-                  startIcon={<LockIcon style={{marginTop:"-4px"}}/>}
+                  prefix={<LockIcon style={{marginTop:"-4px"}}/>}
                   sx={{
                     padding: "7px 30px",
                     marginBottom: "10px",
@@ -288,7 +288,7 @@ const Navbar = () => {
                   variant="contained"
                   type="submit"
                   size="small"
-                  startIcon={<PersonIcon style={{marginTop:"-4px"}}/>}
+                  prefix={<PersonIcon style={{marginTop:"-4px"}}/>}
                   sx={{
                     padding: "7px 30px",
                     marginBottom: "10px",

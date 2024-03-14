@@ -4,7 +4,6 @@ import {
   CardContent,
   CardActions,
   TextField,
-  Button,
   Grid,
   FormControl,
   InputLabel,
@@ -19,6 +18,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import ButtonComponent from "../BaseComponent/Button";
 
 const FormGrid = () => {
   const [successMessageOpen, setSuccessMessageOpen] = useState(false);
@@ -33,7 +33,7 @@ const FormGrid = () => {
     streetAddress: "",
     city: "",
     email: "",
-    role: null,
+    role: "",
     pinCode: "",
     phone: "",
     gender: "",
@@ -120,10 +120,10 @@ const FormGrid = () => {
         sx={{ marginBottom: "10px" }}
       >
         <Grid item xs={9} sm={6} style={{ textAlign: "left" }}>
-          <h2 style={{fontSize:"20px"}}>Form Grid</h2>
+          <h2 style={{ fontSize: "20px" }}>Form Grid</h2>
         </Grid>
       </Grid>
-      <Card variant="outlined" style={{borderRadius:"12px"}}>
+      <Card variant="outlined" style={{ borderRadius: "12px" }}>
         <Snackbar
           open={successMessageOpen}
           autoHideDuration={3000}
@@ -191,14 +191,14 @@ const FormGrid = () => {
                   helperText={errors.phone}
                   size="small"
                 />
-
-               
               </form>
             </Grid>
             <Grid
               item
-              xs={12} sm={6}
-              md={6} lg={6}
+              xs={12}
+              sm={6}
+              md={6}
+              lg={6}
               style={{ paddingTop: isMobile ? "0" : "" }}
             >
               <form onSubmit={handleSubmit}>
@@ -242,57 +242,73 @@ const FormGrid = () => {
             </Grid>
             <Grid
               item
-              xs={12} sm={6}
-              md={6} lg={6}
+              xs={12}
+              sm={6}
+              md={6}
+              lg={6}
               style={{ paddingTop: isMobile ? "0" : "" }}
             >
               <form onSubmit={handleSubmit}>
-            <FormControl style={{ margin:isMobile ? "10px 0 0 4px" : "0 0 0 4px" ,}}>
-                  <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+                <FormControl
+                  style={{ margin: isMobile ? "10px 0 0 4px" : "0 0 0 4px" }}
+                >
+                  <FormLabel id="demo-radio-buttons-group-label">
+                    Gender
+                  </FormLabel>
                   <RadioGroup
                     aria-labelledby="demo-radio-buttons-group-label"
                     defaultValue="female"
-                    name="radio-buttons-group" style={{ flexDirection: "row" }}
+                    name="radio-buttons-group"
+                    style={{ flexDirection: "row" }}
                   >
-                    <FormControlLabel value="female" control={<Radio />} label="Female" />
-                    <FormControlLabel value="male" control={<Radio />} label="Male" />
-                    <FormControlLabel value="other" control={<Radio />} label="Other" />
+                    <FormControlLabel
+                      value="female"
+                      control={<Radio />}
+                      label="Female"
+                    />
+                    <FormControlLabel
+                      value="male"
+                      control={<Radio />}
+                      label="Male"
+                    />
+                    <FormControlLabel
+                      value="other"
+                      control={<Radio />}
+                      label="Other"
+                    />
                   </RadioGroup>
-                </FormControl></form></Grid>
+                </FormControl>
+              </form>
+            </Grid>
           </Grid>
         </CardContent>
-        <CardActions style={{ justifyContent: "flex-end", margin: "0px 14px 14px 14px" }}>
-          <Button
+        <CardActions
+          style={{ justifyContent: "flex-end", margin: "0px 14px 14px 14px" }}
+        >
+          <ButtonComponent
             variant="contained"
-            color="success"
             type="submit"
-            onClick={handleSubmit}
             size="small"
+            onClick={handleSubmit}
             style={{
               textTransform: "capitalize",
-              borderRadius: "15px",
-              padding: "6px 15px",
-              boxShadow: "none",
               background: "#1d8683",
+              padding: "5px 15px",
             }}
-          >
-            Submit
-          </Button>
-          <Button
+            name="Submit"
+          ></ButtonComponent>
+          <ButtonComponent
             variant="contained"
             type="submit"
             size="small"
             onClick={handleCancel}
             style={{
               textTransform: "capitalize",
-              borderRadius: "15px",
-              padding: "6px 15px",
-              boxShadow: "none",
               background: "#58544D",
+              padding: "5px 15px",
             }}
-          >
-            cancel
-          </Button>
+            name="Cancel"
+          ></ButtonComponent>
         </CardActions>
       </Card>
     </>

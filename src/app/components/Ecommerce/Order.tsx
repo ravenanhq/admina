@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardContent, IconButton, Button, Snackbar } from "@mui/material";
+import { Card, CardContent, IconButton, Snackbar } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import orderData from "../../../orders-data.json";
 import EditModal from "./EditModal";
 import DeleteModal from "./DeleteModal";
+import ButtonComponent from "../BaseComponent/Button";
 
 const ProductOrder = () => {
   const [orders, setOrder] = useState([]);
@@ -13,7 +14,7 @@ const ProductOrder = () => {
   const [selectedRow, setSelectedRow] = useState(null);
   const [successMessageOpen, setSuccessMessageOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [message,setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     setOrder(orderData);
@@ -53,9 +54,7 @@ const ProductOrder = () => {
   };
 
   const handleDeleteConfirm = () => {
-    const updatedOrders = orders.filter(
-      (order) => order.id !== selectedRow.id
-    );
+    const updatedOrders = orders.filter((order) => order.id !== selectedRow.id);
     setOrder(updatedOrders);
     handleDeleteModalClose();
     setSuccessMessageOpen(true);
@@ -67,14 +66,16 @@ const ProductOrder = () => {
   };
 
   const columns = [
-    { field: "order", headerName: "Order#", width:120},
-    { field: "companyName", headerName: "Company Name", width:200},
+    { field: "order", headerName: "Order#", width: 120 },
+    { field: "companyName", headerName: "Company Name", width: 200 },
     {
       field: "status",
       headerName: "Status",
-      width:150,
+      width: 150,
       renderCell: (params) => (
-        <Button
+        <ButtonComponent
+          variant="contained"
+          type="submit"
           size="small"
           style={{
             backgroundColor:
@@ -82,17 +83,16 @@ const ProductOrder = () => {
             color: "white",
             width: "68%",
           }}
-        >
-          {params.value}
-        </Button>
+          name={params.value}
+        ></ButtonComponent>
       ),
     },
-    { field: "total", headerName: "Total", },
-    { field: "date", headerName: "Date",width:160  },
+    { field: "total", headerName: "Total" },
+    { field: "date", headerName: "Date", width: 160 },
     {
       field: "actions",
       headerName: "Actions",
-     width:120,
+      width: 120,
       renderCell: (params) => (
         <>
           <IconButton aria-label="edit" onClick={() => handleEdit(params.row)}>
@@ -110,14 +110,14 @@ const ProductOrder = () => {
   ];
 
   return (
-    <Card style={{boxShadow:"none"}}>
+    <Card style={{ boxShadow: "none" }}>
       <Snackbar
         open={successMessageOpen}
         autoHideDuration={3000}
         onClose={handleSnackbarClose}
         message={message}
       />
-      <CardContent style={{padding:"0"}}>
+      <CardContent style={{ padding: "0" }}>
         <DataGrid
           key={Math.random()}
           rows={orders}
@@ -130,7 +130,8 @@ const ProductOrder = () => {
             },
           }}
           pageSizeOptions={[5, 10]}
-          disableRowSelectionOnClick={true}  />
+          disableRowSelectionOnClick={true}
+        />
       </CardContent>
 
       <EditModal
@@ -144,7 +145,7 @@ const ProductOrder = () => {
         open={deleteModalOpen}
         onClose={handleDeleteModalClose}
         onDeleteConfirm={handleDeleteConfirm}
-        orderId={selectedRow ? selectedRow.order : ''}
+        orderId={selectedRow ? selectedRow.order : ""}
       />
     </Card>
   );
