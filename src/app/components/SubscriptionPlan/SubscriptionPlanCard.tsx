@@ -66,7 +66,7 @@ const SubscriptionPlanCard = () => {
                       color: "#000",
                       fontSize: "25px",
                       position: "absolute",
-                      marginTop: isMobile ? "30px" : isTab ? "20px" : "35px",
+                      marginTop: isMobile ? "30px" : isTab ? "13px" : "20px",
                     }}
                   >
                     {plan.price}
@@ -76,7 +76,7 @@ const SubscriptionPlanCard = () => {
                     sx={{
                       backgroundColor: plan.price,
                       color: "#000",
-                      fontSize: isMobile ? "70px" : isTab ? "50px" : "80px",
+                      fontSize: isMobile ? "70px" : isTab ? "40px" : "60px",
                       display: "inline-block",
                       opacity: 0.1,
                     }}
