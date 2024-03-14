@@ -53,7 +53,7 @@ const SubscriptionPlanCard = () => {
                       padding: isMobile ? "8px" : isTab ? "" : "8px",
                       color: "#000",
                       textTransform: "uppercase",
-                      fontSize: isMobile ? "30px" : isTab ? "20px" : "35px",
+                      fontSize: isMobile ? "30px" : isTab ? "20px" : "32px",
                     }}
                   >
                     {plan.plan}
