@@ -12,20 +12,20 @@ export default function Signin() {
       <h2 style={{ paddingTop: 30 }}>SignIn</h2>
       <div style={{ paddingTop: 10 }}>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
-            <Grid item md={6} sm={12}>
-                <OutlinedSigningForm></OutlinedSigningForm>
-            </Grid>
-            <Grid item md={6} sm={12}>
+          <Grid item md={6} sm={12}>
+            <OutlinedSigningForm></OutlinedSigningForm>
+          </Grid>
+          <Grid item md={6} sm={12}>
             <SigninFormWithSocialButton></SigninFormWithSocialButton>
-            </Grid>
+          </Grid>
         </Grid>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
-            <Grid item md={6} sm={12}>
+          <Grid item md={6} sm={12}>
             <GeneralSigninForm></GeneralSigninForm>
-            </Grid>
-            <Grid item md={6} sm={12}>
-                <StandardSigninForm></StandardSigninForm>
-            </Grid>
+          </Grid>
+          <Grid item md={6} sm={12}>
+            <StandardSigninForm></StandardSigninForm>
+          </Grid>
         </Grid>
       </div>
     </>

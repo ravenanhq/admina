@@ -1,40 +1,53 @@
-import React, { useState } from 'react';
-import { Card, CardHeader, CardContent, CardActions, TextField, Button, InputAdornment, FormControlLabel, Checkbox, Grid, Link, Typography } from '@mui/material';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import React, { useState } from "react";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  TextField,
+  InputAdornment,
+  FormControlLabel,
+  Checkbox,
+  Grid,
+  Link,
+  Typography,
+} from "@mui/material";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import ButtonComponent from "../../BaseComponent/Button";
 
 const OutlinedSigningForm = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const [errors, setErrors] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const validateForm = () => {
     let isValid = true;
     const newErrors = { ...errors };
 
-    if (formData.email.trim() === '') {
-      newErrors.email = 'Email is required';
+    if (formData.email.trim() === "") {
+      newErrors.email = "Email is required";
       isValid = false;
     } else {
-      newErrors.email = '';
+      newErrors.email = "";
     }
 
-    if (formData.password.trim() === '') {
-      newErrors.password = 'Password is required';
+    if (formData.password.trim() === "") {
+      newErrors.password = "Password is required";
       isValid = false;
     } else {
-      newErrors.password = '';
+      newErrors.password = "";
     }
 
     setErrors(newErrors);
@@ -59,9 +72,23 @@ const OutlinedSigningForm = () => {
 
   return (
     <Card variant="outlined">
-      <CardHeader title="Outlined Signin Form With Validation"  titleTypographyProps={{ fontSize: '16px'}} sx={{ bgcolor: '#008744', color: 'white' }}/>
-      <CardHeader title="Login"  titleTypographyProps={{ fontSize: '16px' , textAlign:"center" }}/>
-      <CardHeader title="Logo"  titleTypographyProps={{ fontSize: '20px' , textAlign:"center", fontWeight:"bold"}}/>
+      <CardHeader
+        title="Outlined Signin Form With Validation"
+        titleTypographyProps={{ fontSize: "16px" }}
+        sx={{ bgcolor: "#008744", color: "white" }}
+      />
+      <CardHeader
+        title="Login"
+        titleTypographyProps={{ fontSize: "16px", textAlign: "center" }}
+      />
+      <CardHeader
+        title="Logo"
+        titleTypographyProps={{
+          fontSize: "20px",
+          textAlign: "center",
+          fontWeight: "bold",
+        }}
+      />
       <CardContent>
         <form onSubmit={handleSubmit}>
           <TextField
@@ -72,7 +99,7 @@ const OutlinedSigningForm = () => {
             onChange={handleChange}
             error={!!errors.email}
             helperText={errors.email}
-            size='small'
+            size="small"
             placeholder="Username or Email"
             InputProps={{
               startAdornment: (
@@ -90,7 +117,7 @@ const OutlinedSigningForm = () => {
             onChange={handleChange}
             error={!!errors.password}
             helperText={errors.password}
-            size='small'
+            size="small"
             placeholder="Password"
             InputProps={{
               startAdornment: (
@@ -100,42 +127,61 @@ const OutlinedSigningForm = () => {
               ),
             }}
           />
-   
         </form>
       </CardContent>
-    
-     <CardActions>
+
+      <CardActions>
         <FormControlLabel
-          control={<Checkbox color="primary" style={{padding: isMobile ? "4px" : ""}}/>}
-          label={
-            <Typography variant="body2">
-              Remember me
-            </Typography>
+          control={
+            <Checkbox
+              color="primary"
+              style={{ padding: isMobile ? "4px" : "" }}
+            />
           }
+          label={<Typography variant="body2">Remember me</Typography>}
           labelPlacement="start"
-          sx={{fontSize:"14px",
-          width: isMobile ? 'auto' : '183px',
-          whiteSpace: isMobile ? 'nowrap' : 'normal',
+          sx={{
+            fontSize: "14px",
+            width: isMobile ? "auto" : "183px",
+            whiteSpace: isMobile ? "nowrap" : "normal",
           }}
         />
         <Grid container justifyContent="flex-end">
-          <Button variant="contained" color="success" type="submit" onClick={handleSubmit} size="small" sx={{ width: '100px' }}>
-            Log In
-          </Button>
+          <ButtonComponent
+            variant="contained"
+            type="submit"
+            size="small"
+            onClick={handleSubmit}
+            style={{
+              width: "100px",
+              background: "#2e7d32",
+              padding: "5px 0",
+            }}
+            name="Log In"
+          ></ButtonComponent>
         </Grid>
       </CardActions>
 
-      <CardActions sx={{marginLeft:"16px",}}>
-      <Typography  sx={{fontSize:"14px",width:"60%"}}>
+      <CardActions sx={{ marginLeft: "16px" }}>
+        <Typography sx={{ fontSize: "14px", width: "60%" }}>
           Forgot your password?
-          <Link href="#" color="inherit" style={{color:"#311ccf"}}>
+          <Link href="#" color="inherit" style={{ color: "#311ccf" }}>
             Click here
           </Link>
         </Typography>
         <Grid container justifyContent="flex-end">
-          <Button variant="contained" color="warning" type="submit" onClick={handleSubmit} size="small" sx={{ width: '100px' }} >
-            Sign Up
-          </Button>
+          <ButtonComponent
+            variant="contained"
+            type="submit"
+            onClick={handleSubmit}
+            size="small"
+            style={{
+              width: "100px",
+              background: "#ed6c02",
+              padding: "5px 0",
+            }}
+            name="Sign Up"
+          ></ButtonComponent>
         </Grid>
       </CardActions>
     </Card>

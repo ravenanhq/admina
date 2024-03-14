@@ -10,6 +10,7 @@ import {
 import subscriptionPlan from "../../../subscription-plan.json";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import ButtonComponent from "../BaseComponent/Button";
 
 const SubscriptionPlanCard = () => {
   const [rows, setRows] = useState([]);
@@ -111,9 +112,12 @@ const SubscriptionPlanCard = () => {
                     key={plan.id}
                     style={{ textAlign: "center", padding: "15px 0" }}
                   >
-                    <Button
+                    <ButtonComponent
+                      variant="contained"
+                      type="submit"
+                      size="small"
                       onClick={() => handleBuyNow(plan.plan)}
-                      sx={{
+                      style={{
                         backgroundColor: plan.bgColor,
                         color: "#fff",
                         width: isMobile ? "50%" : isTab ? "100%" : "50%",
@@ -122,9 +126,8 @@ const SubscriptionPlanCard = () => {
                         border: "1px solid",
                         borderColor: plan.bgColor,
                       }}
-                    >
-                      Buy Now
-                    </Button>
+                      name="Buy Now"
+                    ></ButtonComponent>
                   </div>
                 </Card>
               </Grid>

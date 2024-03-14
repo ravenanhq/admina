@@ -1,8 +1,9 @@
 import React from "react";
-import { Modal, Button, Box, IconButton, Divider } from "@mui/material";
+import { Modal, Box, IconButton, Divider } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import CloseIcon from "@mui/icons-material/Close";
+import ButtonComponent from "../BaseComponent/Button";
 
 const DeleteModal = ({ open, onClose, onDeleteConfirm }) => {
   const theme = useTheme();
@@ -39,34 +40,30 @@ const DeleteModal = ({ open, onClose, onDeleteConfirm }) => {
         </p>
         <Divider sx={{ margin: "0 17px 0 0", width: "100%" }} />
         <div style={{ textAlign: "right", padding: "0 16px 16px" }}>
-          <Button
-            onClick={onDeleteConfirm}
+          <ButtonComponent
             variant="contained"
+            onClick={onDeleteConfirm}
             style={{
-              margin: "15px 0 0 0",
+              margin: "15px 0 0 10px",
               textTransform: "capitalize",
-              borderRadius: "15px",
               padding: "6px 20px",
               boxShadow: "none",
               background: "#1d8683",
             }}
-          >
-            Delete
-          </Button>
-          <Button
-            onClick={onClose}
+            name="Delete"
+          ></ButtonComponent>
+          <ButtonComponent
             variant="contained"
+            onClick={onClose}
             style={{
               margin: "15px 0 0 10px",
               textTransform: "capitalize",
-              borderRadius: "15px",
               padding: "6px 20px",
               boxShadow: "none",
               background: "#58544D",
             }}
-          >
-            Cancel
-          </Button>
+            name="Cancel"
+          ></ButtonComponent>
         </div>
       </Box>
     </Modal>

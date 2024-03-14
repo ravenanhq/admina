@@ -3,16 +3,15 @@ import { Button } from "@mui/material";
 import Papa from "papaparse";
 
 const ImportElement = ({ onImport }) => {
-
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-  
+
     if (file) {
       const reader = new FileReader();
-  
+
       reader.onload = (e) => {
         const result = e.target.result;
-  
+
         Papa.parse(result, {
           header: true,
           dynamicTyping: true,
@@ -29,15 +28,20 @@ const ImportElement = ({ onImport }) => {
           },
         });
       };
-  
+
       reader.readAsText(file);
     }
   };
-  
 
   return (
     <label>
-      <Button variant="contained" component="span">
+      <Button
+        variant="contained"
+        component="span"
+        style={{
+          borderRadius: "10px",
+        }}
+      >
         Import Data
       </Button>
       <input

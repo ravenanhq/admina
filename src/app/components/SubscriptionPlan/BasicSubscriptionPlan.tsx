@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-  Button,
   Snackbar,
   Grid,
   Card,
@@ -10,6 +9,7 @@ import {
 import subscriptionPlan from "../../../subscription-plan.json";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import ButtonComponent from "../BaseComponent/Button";
 
 const BasicSubscriptionPlan = () => {
   const [rows, setRows] = useState([]);
@@ -103,22 +103,21 @@ const BasicSubscriptionPlan = () => {
                     )}
                   </div>
                   <div key={plan.id} style={{ textAlign: "center" }}>
-                    <Button
+                    <ButtonComponent
+                      variant="contained"
+                      type="submit"
+                      size="small"
                       onClick={() => handleBuyNow(plan.plan)}
-                      sx={{
+                      style={{
                         backgroundColor: plan.bgColor,
                         color: "#fff",
                         width: "100%",
                         padding: isTab ? "4px 0" : "10px 0",
                         opacity: 0.8,
                         borderRadius: "0",
-                        "&:hover": {
-                          backgroundColor: plan.bgColor,
-                        },
                       }}
-                    >
-                      Buy Now
-                    </Button>
+                      name="Buy Now"
+                    ></ButtonComponent>
                   </div>
                 </Card>
               </Grid>

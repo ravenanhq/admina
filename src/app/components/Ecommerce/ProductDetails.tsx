@@ -13,7 +13,6 @@ import {
   FormControl,
   FormLabel,
   Divider,
-  Button,
   Grid,
 } from "@mui/material";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
@@ -21,6 +20,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import ButtonComponent from "../BaseComponent/Button";
 
 const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
@@ -245,34 +245,31 @@ const ProductDetails = () => {
                   paddingTop: "14px",
                 }}
               >
-                <Button
+                <ButtonComponent
                   variant="contained"
-                  color="primary"
                   type="submit"
                   size="small"
-                  sx={{
+                  style={{
                     padding: "10px 16px",
                     background: "#008cff",
                     marginRight: "20px",
                     minWidth: isMobile ? "146px" : "",
                   }}
-                >
-                  Buy Now
-                </Button>
-                <Button
+                  name="Buy Now"
+                ></ButtonComponent>
+                <ButtonComponent
                   variant="contained"
-                  color="warning"
                   type="submit"
                   size="small"
-                  startIcon={<ShoppingCartCheckoutIcon />}
-                  sx={{
+                  prefix={<ShoppingCartCheckoutIcon />}
+                  style={{
                     padding: isMobile ? "15px" : "10px",
                     minWidth: isMobile ? "146px" : "",
                     marginTop: isMobile ? "10px" : "",
+                    background: "#ed6c02",
                   }}
-                >
-                  Add to Cart
-                </Button>
+                  name="Add to Cart"
+                ></ButtonComponent>
               </Grid>
             </Grid>
           </Box>

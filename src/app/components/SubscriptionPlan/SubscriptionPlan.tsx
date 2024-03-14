@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Button, Snackbar, Grid, Card, Typography } from "@mui/material";
+import { Snackbar, Grid, Card, Typography } from "@mui/material";
 import subscriptionPlan from "../../../subscription-plan.json";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import ButtonComponent from "../BaseComponent/Button";
 
 const SubscriptionPlanTable = () => {
   const [rows, setRows] = useState([]);
@@ -115,12 +116,18 @@ const SubscriptionPlanTable = () => {
                   key={plan.id}
                   style={{ textAlign: "center", padding: "15px 0" }}
                 >
-                  <Button
-                    onClick={() => handleBuyNow(plan.plan)}
-                    style={{ backgroundColor: plan.bgColor, color: "#fff" }}
-                  >
-                    Buy Now
-                  </Button>
+                  <ButtonComponent
+                      variant="contained"
+                      type="submit"
+                      size="small"
+                      onClick={() => handleBuyNow(plan.plan)}
+                      style={{
+                        backgroundColor: plan.bgColor,
+                        color: "#fff",
+                        padding:"7px 16px"
+                      }}
+                      name="Buy Now"
+                    ></ButtonComponent>
                 </div>
               </Grid>
             ))}

@@ -1,42 +1,49 @@
-import React, { useState } from 'react';
-import { Card, CardHeader, CardContent, CardActions, TextField, Button } from '@mui/material';
+import React, { useState } from "react";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  TextField,
+} from "@mui/material";
+import ButtonComponent from "../BaseComponent/Button";
 
 const VerticalForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const [errors, setErrors] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
 
   const validateForm = () => {
     let isValid = true;
     const newErrors = { ...errors };
 
-    if (formData.name.trim() === '') {
-      newErrors.name = 'Name is required';
+    if (formData.name.trim() === "") {
+      newErrors.name = "Name is required";
       isValid = false;
     } else {
-      newErrors.name = '';
+      newErrors.name = "";
     }
 
-    if (formData.email.trim() === '') {
-      newErrors.email = 'Email is required';
+    if (formData.email.trim() === "") {
+      newErrors.email = "Email is required";
       isValid = false;
     } else {
-      newErrors.email = '';
+      newErrors.email = "";
     }
 
-    if (formData.message.trim() === '') {
-      newErrors.message = 'Message is required';
+    if (formData.message.trim() === "") {
+      newErrors.message = "Message is required";
       isValid = false;
     } else {
-      newErrors.message = '';
+      newErrors.message = "";
     }
 
     setErrors(newErrors);
@@ -60,8 +67,12 @@ const VerticalForm = () => {
   };
 
   return (
-    <Card variant="outlined" sx={{borderRadius:"10px"}}>
-      <CardHeader title="Basic layout" sx={{ bgcolor: '#008744', color: 'white'}}  titleTypographyProps={{ fontSize: '16px' }}/>
+    <Card variant="outlined" sx={{ borderRadius: "10px" }}>
+      <CardHeader
+        title="Basic layout"
+        sx={{ bgcolor: "#008744", color: "white" }}
+        titleTypographyProps={{ fontSize: "16px" }}
+      />
       <CardContent>
         <form onSubmit={handleSubmit}>
           <TextField
@@ -73,7 +84,7 @@ const VerticalForm = () => {
             onChange={handleChange}
             error={!!errors.name}
             helperText={errors.name}
-            size='small'
+            size="small"
           />
           <TextField
             fullWidth
@@ -85,7 +96,7 @@ const VerticalForm = () => {
             onChange={handleChange}
             error={!!errors.email}
             helperText={errors.email}
-            size='small'
+            size="small"
           />
           <TextField
             fullWidth
@@ -98,14 +109,25 @@ const VerticalForm = () => {
             onChange={handleChange}
             error={!!errors.message}
             helperText={errors.message}
-            size='small'
+            size="small"
           />
         </form>
       </CardContent>
-      <CardActions sx={{padding:"0 17px 17px 13px"}}>
-        <Button variant="contained" color="success" type="submit" onClick={handleSubmit} size="small" style={{borderRadius:"15px"}}>
-          Submit
-        </Button>
+      <CardActions
+        sx={{ padding: "0 17px 17px 13px", justifyContent: "right" }}
+      >
+        <ButtonComponent
+          variant="contained"
+          size="small"
+          type="submit"
+          onClick={handleSubmit}
+          style={{
+            textTransform: "capitalize",
+            background: "#2e7d32",
+            padding: "5px 15px",
+          }}
+          name="Submit"
+        ></ButtonComponent>
       </CardActions>
     </Card>
   );
