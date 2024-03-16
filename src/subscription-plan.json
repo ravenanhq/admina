@@ -1,0 +1,118 @@
+[
+  {
+    "id": 1,
+    "plan": "Free",
+    "price": "$0.00",
+    "details": "Basic features included",
+    "features": [
+      {
+        "name": "FeatureA",
+        "included": true
+      },
+      {
+        "name": "FeatureB",
+        "included": false
+      },
+      {
+        "name": "FeatureC",
+        "included": true
+      },
+      {
+        "name": "FeatureD",
+        "included": true
+      },
+      {
+        "name": "FeatureE",
+        "included": false
+      }
+    ],
+    "bgColor": "#0f7c9e"
+  },
+  {
+    "id": 2,
+    "plan": "Basic",
+    "price": "$9.99",
+    "details": "Basic features included",
+    "features": [
+      {
+        "name": "FeatureA",
+        "included": true
+      },
+      {
+        "name": "FeatureB",
+        "included": false
+      },
+      {
+        "name": "FeatureC",
+        "included": true
+      },
+      {
+        "name": "FeatureD",
+        "included": false
+      },
+      {
+        "name": "FeatureE",
+        "included": true
+      }
+    ],
+    "bgColor": "#017b79"
+  },
+  {
+    "id": 3,
+    "plan": "Standard",
+    "price": "$19.99",
+    "details": "Standard features included",
+    "features": [
+      {
+        "name": "FeatureA",
+        "included": true
+      },
+      {
+        "name": "FeatureB",
+        "included": true
+      },
+      {
+        "name": "FeatureC",
+        "included": false
+      },
+      {
+        "name": "FeatureD",
+        "included": true
+      },
+      {
+        "name": "FeatureE",
+        "included": false
+      }
+    ],
+    "bgColor": "#4ad0d0"
+  },
+  {
+    "id": 4,
+    "plan": "Premium",
+    "price": "$29.99",
+    "details": "Premium features included",
+    "features": [
+      {
+        "name": "FeatureA",
+        "included": true
+      },
+      {
+        "name": "FeatureB",
+        "included": true
+      },
+      {
+        "name": "FeatureC",
+        "included": true
+      },
+      {
+        "name": "FeatureD",
+        "included": true
+      },
+      {
+        "name": "FeatureE",
+        "included": true
+      }
+    ],
+    "bgColor": "#02979c"
+  }
+]

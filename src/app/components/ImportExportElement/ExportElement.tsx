@@ -1,13 +1,12 @@
 import React from "react";
-import { Button } from "@mui/material";
 import Papa from "papaparse";
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import ButtonComponent from "../BaseComponent/Button";
 
-const ExportElement = ({ dataToExport ,onExportSuccess}) => {
-
+const ExportElement = ({ dataToExport, onExportSuccess }) => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const exportData = () => {
     const csvData = Papa.unparse(dataToExport, {
@@ -24,14 +23,17 @@ const ExportElement = ({ dataToExport ,onExportSuccess}) => {
   };
 
   return (
-    <Button
+    <ButtonComponent
       variant="contained"
-      color="warning"
       onClick={exportData}
-      style={{ margin: isMobile ? "15px 0 0 0" : "0 0 0 8px" }}
-    >
-      Export Data
-    </Button>
+      style={{
+        margin: isMobile ? "15px 0 0 0" : "0 0 0 8px",
+        textTransform: "capitalize",
+        background: "#ed6c02",
+        padding: "5px 20px",
+      }}
+      name="Export Data"
+    ></ButtonComponent>
   );
 };
 

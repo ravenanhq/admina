@@ -31,6 +31,7 @@ import ImportExportIcon from '@mui/icons-material/ImportExport';
 import { usePathname } from "next/navigation";
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 
 const drawerWidth = 240;
 
@@ -128,7 +129,8 @@ const Sidebar: React.FC = () => {
       ],
     },
     { label: "Import/Export", route: "/import-export-element" },
-    { label: "Crud Component", route: "/crud/list" }
+    { label: "CRUD Component", route: "/crud/list" },
+    { label: "Subscription Plan", route: "/subscription-plan" }
   ];
   const isMobile = useMediaQuery("(max-width:1023px)");
   const [hover, setHover] = React.useState(false);
@@ -221,9 +223,13 @@ const Sidebar: React.FC = () => {
                       justifyContent: open ? "initial" : "center",
                       px: 2.5,
                     }}
-                    onClick={menuItem.label === "Ecommerce"
-                      ? handleEcommerceClick : "Components"
-                        ? handleComponentsClick : undefined}
+                    onClick={() => {
+                      if (menuItem.label === "Ecommerce") {
+                        handleEcommerceClick();
+                      } else if (menuItem.label === "Components") {
+                        handleComponentsClick();
+                      }
+                    }}
                   >
 
 
@@ -238,7 +244,8 @@ const Sidebar: React.FC = () => {
                       {menuItem.label === "Components" ? <GridViewOutlinedIcon /> : ""}
                       {menuItem.label === "Ecommerce" ? <ShoppingCartCheckoutIcon /> : ""}
                       {menuItem.label === "Import/Export" ? <ImportExportIcon /> : ""}
-                      {menuItem.label === "Crud Component" ? <ListAltIcon /> : ""}
+                      {menuItem.label === "CRUD Component" ? <ListAltIcon /> : ""}
+                      {menuItem.label === "Subscription Plan" ? <ThumbUpAltIcon /> : ""}
                     </ListItemIcon>
                     <ListItemText
                       primary={menuItem.label}
