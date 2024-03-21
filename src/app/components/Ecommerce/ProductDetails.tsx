@@ -263,7 +263,7 @@ const ProductDetails = () => {
                   size="small"
                   prefix={<ShoppingCartCheckoutIcon />}
                   style={{
-                    padding: isMobile ? "15px" : "10px",
+                    padding: isMobile ? "15px" : "3px 10px",
                     minWidth: isMobile ? "146px" : "",
                     marginTop: isMobile ? "10px" : "",
                     background: "#ed6c02",

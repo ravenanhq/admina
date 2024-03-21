@@ -35,7 +35,7 @@ const TabWithIcon = () => {
               "&.Mui-selected": {
                 backgroundColor: "#1976d2",
                 color: "#fff",
-                borderRadius: "12px",
+                borderRadius: "7px",
               },
             }}
           />
@@ -48,7 +48,7 @@ const TabWithIcon = () => {
               "&.Mui-selected": {
                 backgroundColor: "#1976d2",
                 color: "#fff",
-                borderRadius: "12px",
+                borderRadius: "7px",
               },
             }}
           />

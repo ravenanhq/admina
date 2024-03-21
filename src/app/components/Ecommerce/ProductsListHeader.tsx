@@ -59,7 +59,7 @@ const ProductsListHeader = ({
                 size="small"
                 prefix={<AddCircleOutlineIcon />}
                 style={{
-                  padding: "8px 10px",
+                  padding: "3px 10px",
                   background: "#008cff",
                   margin: isMobile ? "0 0 0 10px" : "",
                 }}

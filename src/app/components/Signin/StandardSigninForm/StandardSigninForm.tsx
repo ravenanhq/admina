@@ -132,7 +132,7 @@ const StandardSigninForm = () => {
           style={{
             width: "50%",
             background: "#e44d26",
-            padding: "7px 0",
+            padding: "0",
           }}
           name="Log In"
         ></ButtonComponent>
@@ -148,7 +148,7 @@ const StandardSigninForm = () => {
           prefix={<PersonAddAltIcon />}
           style={{
             width: "50%",
-            padding: "7px 0",
+            padding: "0",
             background: "#2e7d32",
             marginBottom: "10px",
           }}
