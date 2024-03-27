@@ -1,14 +1,14 @@
 import React from "react";
 import DraggableCard from "../components/DragAndDrop/DraggableCard";
-import DraggableList from "../components/DragAndDrop/DraggableList";
 import SortableList from "../components/DragAndDrop/SortableList";
+import { DraggableList } from "../components/DragAndDrop/DraggableList";
 
 const Draggable = () => {
   return (
     <>
-      <DraggableCard></DraggableCard>
-      <DraggableList></DraggableList>
-      <SortableList></SortableList>
+      <DraggableCard />
+      <DraggableList />
+      <SortableList />
     </>
   );
 };

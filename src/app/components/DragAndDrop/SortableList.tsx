@@ -10,7 +10,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 const SortableList = () => {
   const [lists, setLists] = useState([]);
   const [draggedCard, setDraggedCard] = useState(null);
-  const [draggedIndex, setDraggedIndex] = useState(null);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -19,16 +18,18 @@ const SortableList = () => {
     setLists(List);
   }, []);
 
-  const handleDragStart = (e, index) => {
+  const handleDragStart = (
+    e: React.DragEvent<HTMLDivElement>,
+    index: number
+  ) => {
     setDraggedCard(lists[index]);
-    setDraggedIndex(index);
   };
 
-  const handleDragOver = (e) => {
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
 
-  const handleDrop = (e, index) => {
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>, index: number) => {
     const updatedCards = [...lists];
     const draggedCardIndex = updatedCards.indexOf(draggedCard);
     updatedCards.splice(draggedCardIndex, 1);

@@ -7,22 +7,23 @@ import CardList from "../../../drag-and-drop.json";
 const DraggableCard = () => {
   const [lists, setLists] = useState([]);
   const [draggedCard, setDraggedCard] = useState(null);
-  const [draggedIndex, setDraggedIndex] = useState(null);
 
   useEffect(() => {
     setLists(CardList);
   }, []);
 
-  const handleDragStart = (e, index) => {
+  const handleDragStart = (
+    e: React.DragEvent<HTMLDivElement>,
+    index: number
+  ) => {
     setDraggedCard(lists[index]);
-    setDraggedIndex(index);
   };
 
-  const handleDragOver = (e) => {
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
 
-  const handleDrop = (e, index) => {
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>, index: number) => {
     const updatedCards = [...lists];
     const draggedCardIndex = updatedCards.indexOf(draggedCard);
     updatedCards.splice(draggedCardIndex, 1);
