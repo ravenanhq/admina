@@ -44,7 +44,7 @@ header {
 }
 
 .activeMenu {
-  background-color: #4a4949;
+  background-color: #007bff;
   color: #fff;
   display: block;
 }
@@ -64,6 +64,14 @@ header {
 
 .loginbtn:hover{
   background: "#282a35",
+}
+
+.headerLogo span{
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+  /* line-height: 12px; */
 }
 
 @media only screen and (max-width: 1024px) and (min-width: 600px) {

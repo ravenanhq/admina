@@ -29,11 +29,11 @@ import LoginIcon from "@mui/icons-material/Login";
 import VerticalAlignBottomIcon from "@mui/icons-material/VerticalAlignBottom";
 import ImportExportIcon from "@mui/icons-material/ImportExport";
 import { usePathname } from "next/navigation";
-import ListAltIcon from "@mui/icons-material/ListAlt";
-import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
-import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
 const drawerWidth = 240;
 
@@ -133,21 +133,19 @@ const Sidebar: React.FC = () => {
     { label: "Import/Export", route: "/import-export-element" },
     { label: "CRUD Component", route: "/crud/list" },
     { label: "Subscription Plan", route: "/subscription-plan" },
+    { label:"Drag and Drop", route:"/drag-and-drop"}
   ];
   const [open, setOpen] = React.useState(true);
-  const [menuOpen, setMenuOpen] = React.useState(true);
   const isMobile = useMediaQuery("(max-width:1023px)");
-  const [hover, setHover] = React.useState(false);
   const [showEcommerceSubMenu, setShowEcommerceSubMenu] = React.useState(false);
   const [showComponentsSubMenu, setShowComponentsSubMenu] =
     React.useState(false);
 
   const handleDrawerToggle = () => {
-    setMenuOpen(!open);
+    setOpen(!open);
   };
 
   const handleEcommerceClick = () => {
-    console.log("true");
     setShowEcommerceSubMenu(!showEcommerceSubMenu);
   };
 
@@ -156,7 +154,6 @@ const Sidebar: React.FC = () => {
   };
 
   const handleComponentsClick = () => {
-    console.log("true");
     setShowComponentsSubMenu(!showComponentsSubMenu);
   };
 
@@ -190,7 +187,7 @@ const Sidebar: React.FC = () => {
                 <FontAwesomeIcon
                   icon={faA}
                   size="lg"
-                  style={{ marginLeft: "15px", paddingTop: "0px" }}
+                  style={{fontSize:"24px",marginLeft: "15px", paddingTop: "0px", color:"#007bff",marginTop:"-3px"}}
                 />
               </ListItemIcon>
               <ListItemText
@@ -198,6 +195,7 @@ const Sidebar: React.FC = () => {
                   opacity: open ? 1 : 0,
                   marginLeft: "1px",
                 }}
+                className="headerLogo"
               >
                 Admina
               </ListItemText>
@@ -291,31 +289,12 @@ const Sidebar: React.FC = () => {
                       }}
                     >
                       {menuItem.label === "Dashboard" ? <DashboardIcon /> : ""}
-                      {menuItem.label === "Components" ? (
-                        <GridViewOutlinedIcon />
-                      ) : (
-                        ""
-                      )}
-                      {menuItem.label === "Ecommerce" ? (
-                        <ShoppingCartCheckoutIcon />
-                      ) : (
-                        ""
-                      )}
-                      {menuItem.label === "Import/Export" ? (
-                        <ImportExportIcon />
-                      ) : (
-                        ""
-                      )}
-                      {menuItem.label === "CRUD Component" ? (
-                        <ListAltIcon />
-                      ) : (
-                        ""
-                      )}
-                      {menuItem.label === "Subscription Plan" ? (
-                        <ThumbUpAltIcon />
-                      ) : (
-                        ""
-                      )}
+                      {menuItem.label === "Components" ? <GridViewOutlinedIcon /> : ""}
+                      {menuItem.label === "Ecommerce" ? <ShoppingCartCheckoutIcon /> : ""}
+                      {menuItem.label === "Import/Export" ? <ImportExportIcon /> : ""}
+                      {menuItem.label === "CRUD Component" ? <ListAltIcon /> : ""}
+                      {menuItem.label === "Subscription Plan" ? <ThumbUpAltIcon /> : ""}
+                      {menuItem.label === "Drag and Drop" ? <DragIndicatorIcon/> : ""}
                     </ListItemIcon>
                     <ListItemText
                       primary={menuItem.label}

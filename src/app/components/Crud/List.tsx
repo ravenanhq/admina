@@ -1,6 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardContent, Grid, Link, TextField } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import {
+  Card,
+  CardContent,
+  Grid,
+  Link,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+  TextField,
+} from "@mui/material";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
@@ -12,6 +25,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DeleteModal from "./Deletemodal";
 import ButtonComponent from "../BaseComponent/Button";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 const List = () => {
   const [data, setData] = useState([]);
@@ -20,7 +34,11 @@ const List = () => {
   const [filter, setFilter] = useState("");
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage] = useState(5);
+  const [order, setOrder] = useState("asc");
 
+  const [orderBy, setOrderBy] = useState("name");
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -28,43 +46,11 @@ const List = () => {
     setData(dataTable);
   }, []);
 
-  const columns = [
-    { field: "name", headerName: "User Name", width: 150 },
-    { field: "email", headerName: "Email", width: 170 },
-    {
-      field: "address",
-      headerName: "Address",
-      cellClassName: "crudCellName",
-      width: 200,
-      valueGetter: (params) => {
-        const { streetAddress, pinCode, city } = params.row;
-        return `${streetAddress}, ${pinCode}, ${city}`;
-      },
-    },
-    { field: "phone", headerName: "Phone", width: 120 },
-    { field: "role", headerName: "Role", width: 100 },
-    {
-      field: "action",
-      headerName: "Action",
-
-      sortable: false,
-      renderCell: (params) => (
-        <div>
-          <Link href={`/crud/edit/${params.row.id}`}>
-            <IconButton aria-label="edit">
-              <EditIcon />
-            </IconButton>
-          </Link>
-          <IconButton
-            aria-label="delete"
-            onClick={() => handleDelete(params.row.id)}
-          >
-            <DeleteIcon />
-          </IconButton>
-        </div>
-      ),
-    },
-  ];
+  const handleRequestSort = (property) => {
+    const isAsc = orderBy === property && order === "asc";
+    setOrder(isAsc ? "desc" : "asc");
+    setOrderBy(property);
+  };
 
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
@@ -74,14 +60,21 @@ const List = () => {
     return (
       row.name.toLowerCase().includes(filter.toLowerCase()) ||
       row.email.toLowerCase().includes(filter.toLowerCase()) ||
-      row.role.toLowerCase().includes(filter.toLowerCase())
+      row.streetAddress.toLowerCase().includes(filter.toLowerCase()) ||
+      row.city.toLowerCase().includes(filter.toLocaleLowerCase()) ||
+      row.pincode.toLowerCase().includes(filter.toLocaleLowerCase()) ||
+      row.phone.toLowerCase().includes(filter.toLocaleLowerCase())
     );
   });
 
-  const handleDelete = (id: any) => {
+  const handleDelete = (id) => {
     const rowToDelete = data.find((item) => item.id === id);
     setSelectedRow(rowToDelete);
     setDeleteModalOpen(true);
+  };
+
+  const handlePageChange = (event, newPage) => {
+    setPage(newPage);
   };
 
   const handleDeleteModalClose = () => {
@@ -145,9 +138,11 @@ const List = () => {
       <CardContent
         style={{
           padding: "16px 0",
-          border: "1px solid #ccc",
           marginTop: "15px",
           background: "#fff",
+          borderRadius: "7px",
+          border: "1px solid #ccc",
+          boxShadow: "0 4px 8px 0 #ccc",
         }}
       >
         <Grid
@@ -166,15 +161,14 @@ const List = () => {
             onChange={handleFilterChange}
             value={filter}
             InputProps={{
-              endAdornment: (
+              startAdornment: (
                 <div
                   style={{
-                    borderLeft: "1px solid #ccc",
                     paddingLeft: "8px",
                     paddingBottom: "0",
                   }}
                 >
-                  <IconButton edge="end">
+                  <IconButton edge="start">
                     <SearchIcon />
                   </IconButton>
                 </div>
@@ -183,21 +177,232 @@ const List = () => {
             sx={{
               height: "40px",
               padding: "8px",
-
               "& input": { padding: "8px" },
             }}
           />
         </Grid>
-        <DataGrid
-          rows={filteredData}
-          columns={columns}
-          getRowId={(row) => row.id}
-          checkboxSelection
-          autoHeight
-          style={{ border: "none" }}
-          className="crudComponent"
-          disableRowSelectionOnClick={true}
-        />
+        <div>
+          <TableContainer
+            component={Paper}
+            style={{ boxShadow: "none", padding: "0 23px" }}
+          >
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell
+                    onClick={() => handleRequestSort("name")}
+                    align="left"
+                    sx={{
+                      position: "relative",
+                      cursor: "pointer",
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                      color: "#757575",
+                    }}
+                  >
+                    Name
+                    {orderBy === "name" && (
+                      <ArrowDropDownIcon
+                        className={order === "desc" ? "asc" : "desc"}
+                        sx={{
+                          top: "auto",
+                          cursor: "pointer",
+                          position: "absolute",
+                        }}
+                      />
+                    )}
+                  </TableCell>
+                  <TableCell
+                    onClick={() => handleRequestSort("email")}
+                    align="left"
+                    sx={{
+                      position: "relative",
+                      cursor: "pointer",
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                      color: "#757575",
+                    }}
+                  >
+                    Email
+                    {orderBy === "email" && (
+                      <ArrowDropDownIcon
+                        className={order === "desc" ? "asc" : "desc"}
+                        sx={{
+                          top: "auto",
+                          cursor: "pointer",
+                          position: "absolute",
+                        }}
+                      />
+                    )}
+                  </TableCell>
+                  <TableCell
+                    onClick={() => handleRequestSort("streetAddress")}
+                    align="left"
+                    sx={{
+                      position: "relative",
+                      cursor: "pointer",
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                      color: "#757575",
+                    }}
+                  >
+                    Street Address
+                    {orderBy === "streetAddress" && (
+                      <ArrowDropDownIcon
+                        className={order === "desc" ? "asc" : "desc"}
+                        sx={{
+                          top: "auto",
+                          cursor: "pointer",
+                          position: "absolute",
+                        }}
+                      />
+                    )}
+                  </TableCell>
+                  <TableCell
+                    onClick={() => handleRequestSort("city")}
+                    align="left"
+                    sx={{
+                      position: "relative",
+                      cursor: "pointer",
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                      color: "#757575",
+                    }}
+                  >
+                    City
+                    {orderBy === "city" && (
+                      <ArrowDropDownIcon
+                        className={order === "desc" ? "asc" : "desc"}
+                        sx={{
+                          top: "auto",
+                          cursor: "pointer",
+                          position: "absolute",
+                        }}
+                      />
+                    )}
+                  </TableCell>
+                  <TableCell
+                    onClick={() => handleRequestSort("pinCode")}
+                    align="left"
+                    sx={{
+                      position: "relative",
+                      cursor: "pointer",
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                      color: "#757575",
+                    }}
+                  >
+                    Pincode
+                    {orderBy === "pinCode" && (
+                      <ArrowDropDownIcon
+                        className={order === "desc" ? "asc" : "desc"}
+                        sx={{
+                          top: "auto",
+                          cursor: "pointer",
+                          position: "absolute",
+                        }}
+                      />
+                    )}
+                  </TableCell>
+                  <TableCell
+                    onClick={() => handleRequestSort("phone")}
+                    align="left"
+                    sx={{
+                      position: "relative",
+                      cursor: "pointer",
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                      color: "#757575",
+                    }}
+                  >
+                    Phone
+                    {orderBy === "phone" && (
+                      <ArrowDropDownIcon
+                        className={order === "desc" ? "asc" : "desc"}
+                        sx={{
+                          top: "auto",
+                          cursor: "pointer",
+                          position: "absolute",
+                        }}
+                      />
+                    )}
+                  </TableCell>
+                  <TableCell
+                    align="left"
+                    sx={{
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                      color: "#757575",
+                    }}
+                  >
+                    Action
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {filteredData
+                  .sort((a, b) => {
+                    const isAsc = order === "asc";
+                    return (
+                      (a[orderBy] < b[orderBy] ? -1 : 1) * (isAsc ? 1 : -1)
+                    );
+                  })
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row, index) => (
+                    <TableRow
+                      key={row.name}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell align="left" style={{ color: "#757575" }}>
+                        {row.name}
+                      </TableCell>
+                      <TableCell align="left" style={{ color: "#757575" }}>
+                        {row.email}
+                      </TableCell>
+                      <TableCell align="left" style={{ color: "#757575" }}>
+                        {row.streetAddress}
+                      </TableCell>
+                      <TableCell align="left" style={{ color: "#757575" }}>
+                        {row.city}
+                      </TableCell>
+                      <TableCell align="left" style={{ color: "#757575" }}>
+                        {row.pinCode}
+                      </TableCell>
+                      <TableCell align="left" style={{ color: "#757575" }}>
+                        {row.phone}
+                      </TableCell>
+                      <TableCell align="left" style={{ color: "#757575" }}>
+                        <Link href={`/crud/edit/${row.id}`}>
+                          <IconButton
+                            aria-label="edit"
+                            sx={{ "&:hover": { color: "#1b84ff" } }}
+                          >
+                            <EditIcon />
+                          </IconButton>
+                        </Link>
+                        <IconButton
+                          aria-label="delete"
+                          sx={{ "&:hover": { color: "#1b84ff" } }}
+                          onClick={() => handleDelete(row.id)}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+
+          <TablePagination
+            rowsPerPageOptions={[]}
+            component="div"
+            count={filteredData.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handlePageChange}
+          />
+        </div>
         <Snackbar
           open={openSnackbar}
           autoHideDuration={6000}
