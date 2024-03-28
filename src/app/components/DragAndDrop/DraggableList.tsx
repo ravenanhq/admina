@@ -108,20 +108,19 @@ export const DraggableList = () => {
               </Card>
             )
         )}
-        {lists.filter((list) => list.status === status).length === 0 ||
-          (placeholder && (
-            <div
-              onDragOver={(e) => handleDragOver(e)}
-              onDrop={(e) => handleDrop(e, status)}
-              style={{
-                height: "100px",
-                border: "1px dashed #ccc",
-                marginBottom: "10px",
-                marginTop: "15px",
-                borderRadius: "10px",
-              }}
-            ></div>
-          ))}
+        {placeholder && (
+          <div
+            onDragOver={(e) => handleDragOver(e)}
+            onDrop={(e) => handleDrop(e, status)}
+            style={{
+              height: "100px",
+              border: "1px dashed #ccc",
+              marginBottom: "10px",
+              marginTop: "15px",
+              borderRadius: "10px",
+            }}
+          ></div>
+        )}
       </Grid>
     );
   };
