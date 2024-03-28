@@ -49,6 +49,7 @@ import { signOut } from "next-auth/react";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -170,6 +171,7 @@ const Header: React.FC = () => {
     { label: "Import/Export", route: "/import-export-element" },
     { label: "CRUD Component", route: "/crud/list" },
     { label: "Subscription Plan", route: "/subscription-plan" },
+    { label:"Drag and Drop", route:"/drag-and-drop"}
   ];
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -294,9 +296,14 @@ const Header: React.FC = () => {
                   ) : (
                     ""
                   )}
-                  {menuItem.label === "CRUD Component" ? <ListAltIcon /> : ""},
+                  {menuItem.label === "CRUD Component" ? <ListAltIcon /> : ""}
                   {menuItem.label === "Subscription Plan" ? (
                     <ThumbUpAltIcon />
+                  ) : (
+                    ""
+                  )}
+                  {menuItem.label === "Drag and Drop" ? (
+                    <DragIndicatorIcon />
                   ) : (
                     ""
                   )}

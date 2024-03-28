@@ -1,0 +1,27 @@
+[
+    {
+        "id" : "1",
+        "image":"/assets/images/card_1.jpg",
+        "title":"This is a card Title1",
+        "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit consectetur eros at varius."
+    },
+    {
+        "id" : "2",
+        "image":"/assets/images/card_2.jpg",
+        "title":"This is a card Title2",
+        "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit consectetur eros at varius."
+    },
+    {
+        "id" : "3",
+        "image":"/assets/images/card_3.jpg",
+        "title":"This is a card Title3",
+        "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit consectetur eros at varius."
+    },
+    {
+        "id" : "4",
+        "image":"/assets/images/card_4.jpg",
+        "title":"This is a card Title4",
+        "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit consectetur eros at varius."
+    }
+
+]

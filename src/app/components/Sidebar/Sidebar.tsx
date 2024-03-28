@@ -29,10 +29,11 @@ import LoginIcon from "@mui/icons-material/Login";
 import VerticalAlignBottomIcon from "@mui/icons-material/VerticalAlignBottom";
 import ImportExportIcon from "@mui/icons-material/ImportExport";
 import { usePathname } from "next/navigation";
-import ListAltIcon from "@mui/icons-material/ListAlt";
-import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
-import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
 
 const drawerWidth = 240;
@@ -133,6 +134,8 @@ const Sidebar: React.FC = () => {
     { label: "Import/Export", route: "/import-export-element" },
     { label: "CRUD Component", route: "/crud/list" },
     { label: "Subscription Plan", route: "/subscription-plan" },
+    { label:"Drag and Drop", route:"/drag-and-drop"}
+
   ];
   const [open, setOpen] = React.useState(true);
   const [menuOpen, setMenuOpen] = React.useState(true);
@@ -291,31 +294,12 @@ const Sidebar: React.FC = () => {
                       }}
                     >
                       {menuItem.label === "Dashboard" ? <DashboardIcon /> : ""}
-                      {menuItem.label === "Components" ? (
-                        <GridViewOutlinedIcon />
-                      ) : (
-                        ""
-                      )}
-                      {menuItem.label === "Ecommerce" ? (
-                        <ShoppingCartCheckoutIcon />
-                      ) : (
-                        ""
-                      )}
-                      {menuItem.label === "Import/Export" ? (
-                        <ImportExportIcon />
-                      ) : (
-                        ""
-                      )}
-                      {menuItem.label === "CRUD Component" ? (
-                        <ListAltIcon />
-                      ) : (
-                        ""
-                      )}
-                      {menuItem.label === "Subscription Plan" ? (
-                        <ThumbUpAltIcon />
-                      ) : (
-                        ""
-                      )}
+                      {menuItem.label === "Components" ? <GridViewOutlinedIcon /> : ""}
+                      {menuItem.label === "Ecommerce" ? <ShoppingCartCheckoutIcon /> : ""}
+                      {menuItem.label === "Import/Export" ? <ImportExportIcon /> : ""}
+                      {menuItem.label === "CRUD Component" ? <ListAltIcon /> : ""}
+                      {menuItem.label === "Subscription Plan" ? <ThumbUpAltIcon /> : ""}
+                      {menuItem.label === "Drag and Drop" ? <DragIndicatorIcon/> : ""}
                     </ListItemIcon>
                     <ListItemText
                       primary={menuItem.label}
