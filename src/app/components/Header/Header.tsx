@@ -66,7 +66,6 @@ const AppBar = styled(MuiAppBar, {
   }),
   ...(open && {
     marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -197,7 +196,26 @@ const Header: React.FC = () => {
       role="presentation"
       onKeyDown={toggleDrawer(false)}
     >
-      <List sx={{ paddingTop: "0px" }}>
+      <List
+        sx={{
+          paddingTop: "0px",
+          overflowY: "auto",
+          overflowX: "hidden",
+          "&::-webkit-scrollbar": {
+            width: "8px",
+          },
+          "&::-webkit-scrollbar-track": {
+            background: "#f1f1f1",
+          },
+          "&::-webkit-scrollbar-thumb": {
+            background: "#888",
+            borderRadius: "4px",
+          },
+          "&::-webkit-scrollbar-thumb:hover": {
+            background: "#555",
+          },
+        }}
+      >
         <DrawerHeader>
           <ListItemIcon
             sx={{
@@ -230,6 +248,15 @@ const Header: React.FC = () => {
           >
             <Link
               href={menuItem.route}
+              className={
+                menuItem.route === pathName ||
+                (menuItem.submenu &&
+                  menuItem.submenu.some(
+                    (submenu) => submenu.route === pathName
+                  ))
+                  ? "activeMenu"
+                  : "sideMenuLink"
+              }
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <ListItemButton
@@ -322,7 +349,12 @@ const Header: React.FC = () => {
                       <ListItem
                         key={subMenuItem.label}
                         disablePadding
-                        sx={{ display: "block", paddingLeft: 4 }}
+                        sx={{
+                          display: "block",
+                          paddingLeft: 4,
+                          background:
+                            subMenuItem.route === pathName ? "#f4f4f5" : "",
+                        }}
                       >
                         <Link
                           href={subMenuItem.route}
@@ -487,7 +519,12 @@ const Header: React.FC = () => {
                     <ListItem
                       key={subMenuItem.label}
                       disablePadding
-                      sx={{ display: "block", paddingLeft: 4 }}
+                      sx={{
+                        display: "block",
+                        paddingLeft: 4,
+                        background:
+                          subMenuItem.route === pathName ? "#f4f4f5" : "",
+                      }}
                     >
                       <Link
                         href={subMenuItem.route}

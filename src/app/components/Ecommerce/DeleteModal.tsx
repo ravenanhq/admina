@@ -35,7 +35,6 @@ const DeleteModal = ({ open, onClose, onDeleteConfirm, orderId }) => {
               size="small"
               onClick={onDeleteConfirm}
               style={{
-                borderRadius: "10px",
                 backgroundColor: "#1976d2",
                 margin: "15px 0 0 0",
                 padding: "7px 15px",

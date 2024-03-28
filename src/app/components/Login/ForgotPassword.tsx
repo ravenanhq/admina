@@ -3,7 +3,6 @@ import {
   Card,
   CardHeader,
   CardContent,
-  Button,
   TextField,
   Grid,
   Typography,
@@ -13,7 +12,8 @@ import {
   Snackbar,
 } from "@mui/material";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ButtonComponent from "../BaseComponent/Button";
 
 const ForgotPasswordForm = () => {
   const [formData, setFormData] = useState({
@@ -34,7 +34,9 @@ const ForgotPasswordForm = () => {
     if (formData.email.trim() === "") {
       newErrors.email = "Email is required";
       isValid = false;
-    } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)) {
+    } else if (
+      !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email)
+    ) {
       newErrors.email = "Email is not valid";
       isValid = false;
     } else {
@@ -56,7 +58,9 @@ const ForgotPasswordForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      setSuccessMessage("Reset link has been sent to your email. Please check your inbox.");
+      setSuccessMessage(
+        "Reset link has been sent to your email. Please check your inbox."
+      );
       setOpenSnackbar(true);
     }
   };
@@ -67,7 +71,10 @@ const ForgotPasswordForm = () => {
 
   return (
     <>
-      <Card variant="outlined" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 #ccc" }}>
+      <Card
+        variant="outlined"
+        style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 #ccc" }}
+      >
         <CardHeader
           title="Forgot Password"
           titleTypographyProps={{ fontSize: "20px", fontWeight: "bold" }}
@@ -110,15 +117,17 @@ const ForgotPasswordForm = () => {
             justifyContent="right"
             sx={{ padding: "0 0 16px 16px" }}
           >
-            <Button
+            <ButtonComponent
               variant="contained"
               type="submit"
-              onClick={handleSubmit}
               size="small"
-              sx={{ borderRadius: "10px", padding: "5px 10px", background: "#fc9f66" }}
-            >
-              Send
-            </Button>
+              onClick={handleSubmit}
+              style={{
+                padding: "5px 10px",
+                background: "#fc9f66",
+              }}
+              name="Send"
+            ></ButtonComponent>
           </Grid>
         </CardActions>
       </Card>
@@ -137,7 +146,8 @@ const ForgotPasswordForm = () => {
             justifyContent: "end",
             display: "flex",
           }}
-          component="div">
+          component="div"
+        >
           <ArrowBackIcon sx={{ width: "17px" }} />{" "}
           <div style={{ lineHeight: "25px" }}>Back to login</div>
         </Typography>
