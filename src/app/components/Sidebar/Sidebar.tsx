@@ -35,6 +35,7 @@ import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 
+
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
