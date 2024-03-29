@@ -62,7 +62,7 @@ const List = () => {
       row.email.toLowerCase().includes(filter.toLowerCase()) ||
       row.streetAddress.toLowerCase().includes(filter.toLowerCase()) ||
       row.city.toLowerCase().includes(filter.toLocaleLowerCase()) ||
-      row.pincode.toLowerCase().includes(filter.toLocaleLowerCase()) ||
+      row.pinCode.toLowerCase().includes(filter.toLocaleLowerCase()) ||
       row.phone.toLowerCase().includes(filter.toLocaleLowerCase())
     );
   });
@@ -181,7 +181,7 @@ const List = () => {
             }}
           />
         </Grid>
-        <div>
+        <div style={{ overflowX: "auto" }}>
           <TableContainer
             component={Paper}
             style={{ boxShadow: "none", padding: "0 23px" }}

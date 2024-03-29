@@ -94,6 +94,12 @@ const CreateNewData = () => {
     if (formData.password.trim() === "") {
       newErrors.password = "Password is required";
       isValid = false;
+    } else if (
+      !/(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/.test(formData.password)
+    ) {
+      newErrors.password =
+        "Password must contain at least 8 characters, including at least 1 uppercase letter, 1 number, and 1 special character.";
+      isValid = false;
     } else {
       newErrors.password = "";
     }
@@ -189,7 +195,7 @@ const CreateNewData = () => {
                     fontSize: "15px",
                   }}
                 >
-                  User Name
+                  Name<span style={{marginLeft:"5px", color: "red" }}>*</span>
                 </InputLabel>
                 <TextField
                   fullWidth
@@ -203,7 +209,7 @@ const CreateNewData = () => {
                   placeholder="User Name"
                   style={{
                     margin: "7px 0 20px 0",
-                    width: "94%",
+                    width: "100%",
                     color: "#5d596c",
                     fontSize: "15px",
                   }}
@@ -213,6 +219,7 @@ const CreateNewData = () => {
                         style={{ marginRight: "8px", color: "#5d596c" }}
                       />
                     ),
+                    sx: { color: "#5d596c", fontSize: "15px" },
                   }}
                 />
                 <InputLabel
@@ -223,7 +230,7 @@ const CreateNewData = () => {
                     fontSize: "15px",
                   }}
                 >
-                  Password
+                  Password<span style={{marginLeft:"5px", color: "red" }}>*</span>
                 </InputLabel>
                 <TextField
                   fullWidth
@@ -236,7 +243,7 @@ const CreateNewData = () => {
                   error={!!errors.password}
                   helperText={errors.password}
                   size="small"
-                  style={{ margin: "7px 0 20px 0", width: "94%" }}
+                  style={{ margin: "7px 0 20px 0", width: "100%" }}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -253,6 +260,7 @@ const CreateNewData = () => {
                         )}
                       </InputAdornment>
                     ),
+                    sx: { color: "#5d596c", fontSize: "15px" },
                   }}
                 />
                 <InputLabel
@@ -263,7 +271,7 @@ const CreateNewData = () => {
                     fontSize: "15px",
                   }}
                 >
-                  Confirm Password
+                  Confirm Password<span style={{ marginLeft:"5px",color: "red" }}>*</span>
                 </InputLabel>
                 <TextField
                   fullWidth
@@ -276,7 +284,7 @@ const CreateNewData = () => {
                   error={!!errors.confirmPassword}
                   helperText={errors.confirmPassword}
                   size="small"
-                  style={{ margin: "7px 0 20px 0", width: "94%" }}
+                  style={{ margin: "7px 0 20px 0", width: "100%" }}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -293,6 +301,7 @@ const CreateNewData = () => {
                         )}
                       </InputAdornment>
                     ),
+                    sx: { color: "#5d596c", fontSize: "15px" },
                   }}
                 />
 
@@ -304,7 +313,7 @@ const CreateNewData = () => {
                     fontSize: "15px",
                   }}
                 >
-                  Email
+                  Email<span style={{ marginLeft:"5px",color: "red" }}>*</span>
                 </InputLabel>
                 <TextField
                   fullWidth
@@ -317,7 +326,7 @@ const CreateNewData = () => {
                   error={!!errors.email}
                   helperText={errors.email}
                   size="small"
-                  style={{ margin: "7px 0 20px 0", width: "94%" }}
+                  style={{ margin: "7px 0 20px 0", width: "100%" }}
                   InputProps={{
                     startAdornment: (
                       <EmailIcon
@@ -343,7 +352,7 @@ const CreateNewData = () => {
                   2.Personal Information
                 </Typography>
                 <InputLabel
-                  htmlFor="user-name"
+                  htmlFor="street address"
                   style={{
                     fontWeight: "bold",
                     color: "#5d596c",
@@ -362,7 +371,7 @@ const CreateNewData = () => {
                   error={!!errors.streetAddress}
                   helperText={errors.streetAddress}
                   size="small"
-                  style={{ margin: "7px 0 20px 0", width: "94%" }}
+                  style={{ margin: "7px 0 20px 0", width: "100%" }}
                   InputProps={{
                     startAdornment: (
                       <AddLocation
@@ -373,7 +382,7 @@ const CreateNewData = () => {
                   }}
                 />
                 <InputLabel
-                  htmlFor="user-name"
+                  htmlFor="city"
                   style={{
                     fontWeight: "bold",
                     color: "#5d596c",
@@ -393,7 +402,7 @@ const CreateNewData = () => {
                   error={!!errors.city}
                   helperText={errors.city}
                   size="small"
-                  style={{ margin: "7px 0 20px 0", width: "94%" }}
+                  style={{ margin: "7px 0 20px 0", width: "100%" }}
                   InputProps={{
                     startAdornment: (
                       <AddLocation
@@ -404,7 +413,7 @@ const CreateNewData = () => {
                   }}
                 />
                 <InputLabel
-                  htmlFor="user-name"
+                  htmlFor="pin-code"
                   style={{
                     fontWeight: "bold",
                     color: "#5d596c",
@@ -424,7 +433,7 @@ const CreateNewData = () => {
                   error={!!errors.pinCode}
                   helperText={errors.pinCode}
                   size="small"
-                  style={{ margin: "7px 0 20px 0", width: "94%" }}
+                  style={{ margin: "7px 0 20px 0", width: "100%" }}
                   InputProps={{
                     startAdornment: (
                       <PersonPinCircleIcon
@@ -436,14 +445,14 @@ const CreateNewData = () => {
                 />
 
                 <InputLabel
-                  htmlFor="user-name"
+                  htmlFor="phone"
                   style={{
                     fontWeight: "bold",
                     color: "#5d596c",
                     fontSize: "15px",
                   }}
                 >
-                  Phone
+                  Phone<span style={{marginLeft:"5px",color: "red" }}>*</span>
                 </InputLabel>
                 <TextField
                   fullWidth
@@ -456,7 +465,7 @@ const CreateNewData = () => {
                   error={!!errors.phone}
                   helperText={errors.phone}
                   size="small"
-                  style={{ margin: "7px 0 20px 0", width: "94%" }}
+                  style={{ margin: "7px 0 20px 0", width: "100%" }}
                   InputProps={{
                     startAdornment: (
                       <PhoneIcon
