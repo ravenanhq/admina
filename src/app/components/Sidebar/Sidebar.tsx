@@ -13,20 +13,11 @@ import { Link, Typography, useMediaQuery } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faA } from "@fortawesome/free-solid-svg-icons";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import EditIcon from "@mui/icons-material/Edit";
-import TableIcon from "@mui/icons-material/TableChart";
-import CreditCardIcon from "@mui/icons-material/CreditCard";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import AutorenewIcon from "@mui/icons-material/Autorenew";
-import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
-import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import LoginIcon from "@mui/icons-material/Login";
-import VerticalAlignBottomIcon from "@mui/icons-material/VerticalAlignBottom";
 import ImportExportIcon from "@mui/icons-material/ImportExport";
 import { usePathname } from "next/navigation";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
@@ -34,7 +25,6 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
-
 
 const drawerWidth = 240;
 
@@ -94,7 +84,6 @@ const Sidebar: React.FC = () => {
     pathName
   );
 
-  const { handleDrawerOpen, handleDrawerClose } = useNavbarContext();
   const menuItems = [
     { label: "Dashboard", route: "/admin" },
     {
@@ -148,6 +137,7 @@ const Sidebar: React.FC = () => {
 
   const handleEcommerceClick = () => {
     setShowEcommerceSubMenu(!showEcommerceSubMenu);
+    setOpen(true);
   };
 
   const handleSubMenuItemClick = (label: string) => {
@@ -156,6 +146,7 @@ const Sidebar: React.FC = () => {
 
   const handleComponentsClick = () => {
     setShowComponentsSubMenu(!showComponentsSubMenu);
+    setOpen(true);
   };
 
   const handleComponentsSubMenuItemClick = (label: string) => {
@@ -175,7 +166,7 @@ const Sidebar: React.FC = () => {
   return (
     <>
       {!isMobile && showHeader ? (
-        <Drawer variant="permanent" open={open} onClose={handleDrawerToggle}>
+        <Drawer variant="permanent" open={open} onClose={handleDrawerToggle} className="sidebarDrawer">
          
             <DrawerHeader>
               <ListItemIcon
@@ -355,7 +346,7 @@ const Sidebar: React.FC = () => {
                             key={subMenuItem.label}
                             disablePadding
                             className= {subMenuItem.route === pathName ? "activemenu" : ""}
-                            sx={{ display: "block", paddingLeft: 4 ,
+                            sx={{ display: "block",
                             background:subMenuItem.route === pathName 
                             ? "#f4f4f5" : "",
                           }}
@@ -388,57 +379,57 @@ const Sidebar: React.FC = () => {
                                 >
                                   {/* Your icon rendering code */}
                                   {subMenuItem.label === "Forms" ? (
-                                    <EditIcon style={{ fontSize: "20px" }} />
+                                    <KeyboardArrowRightIcon style={{ fontSize: "20px" }} />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Charts" ? (
-                                    <BarChartIcon
+                                    <KeyboardArrowRightIcon
                                       style={{ fontSize: "20px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Cards" ? (
-                                    <CreditCardIcon
+                                    <KeyboardArrowRightIcon
                                       style={{ fontSize: "20px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Spinners" ? (
-                                    <AutorenewIcon
+                                    <KeyboardArrowRightIcon
                                       style={{ fontSize: "20px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Breadcrumbs" ? (
-                                    <KeyboardDoubleArrowRightIcon
+                                    <KeyboardArrowRightIcon
                                       style={{ fontSize: "20px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Search" ? (
-                                    <SearchIcon style={{ fontSize: "20px" }} />
+                                    <KeyboardArrowRightIcon style={{ fontSize: "20px" }} />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Signin" ? (
-                                    <LoginIcon style={{ fontSize: "20px" }} />
+                                    <KeyboardArrowRightIcon style={{ fontSize: "20px" }} />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Footers" ? (
-                                    <VerticalAlignBottomIcon
+                                    <KeyboardArrowRightIcon
                                       style={{ fontSize: "20px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Tables" ? (
-                                    <TableIcon style={{ fontSize: "20px" }} />
+                                    <KeyboardArrowRightIcon style={{ fontSize: "20px" }} />
                                   ) : (
                                     ""
                                   )}
@@ -535,7 +526,9 @@ const Sidebar: React.FC = () => {
                         <ListItem
                           key={subMenuItem.label}
                           disablePadding
-                          sx={{ display: "block", paddingLeft: 4 ,
+                          sx={{ display: "block",
+                          background:subMenuItem.route === pathName 
+                          ? "#f4f4f5" : "",
                         }}
                         >
                           <Link

@@ -57,7 +57,7 @@ header {
   color: #fff;
 }
 
-.MuiPaper-elevation {
+.sidebarDrawer .MuiPaper-elevation {
   overflow-x: initial !important;
   overflow-y: initial !important;
 }
