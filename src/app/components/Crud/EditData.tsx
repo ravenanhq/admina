@@ -33,6 +33,7 @@ const EditData = ({ page }: { page: RowData }) => {
   const [successMessageOpen, setSuccessMessageOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isPasswordFieldEnabled, setPasswordFieldEnabled] = useState(false);
   const [message, setMessage] = useState("");
   const router = useRouter();
 
@@ -109,6 +110,12 @@ const EditData = ({ page }: { page: RowData }) => {
     if (formData.password.trim() === "") {
       newErrors.password = "Password is required";
       isValid = false;
+    } else if (
+      !/(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/.test(formData.password)
+    ) {
+      newErrors.password =
+        "Password must contain at least 8 characters, including at least 1 uppercase letter, 1 number, and 1 special character.";
+      isValid = false;
     } else {
       newErrors.password = "";
     }
@@ -160,6 +167,10 @@ const EditData = ({ page }: { page: RowData }) => {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
+  const togglePasswordField = () => {
+    setPasswordFieldEnabled(!isPasswordFieldEnabled);
+  };
+
   return (
     <>
       <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: "15px" }}>
@@ -208,7 +219,7 @@ const EditData = ({ page }: { page: RowData }) => {
                     fontSize: "15px",
                   }}
                 >
-                  User Name
+                  Name<span style={{marginLeft:"5px", color: "red" }}>*</span>
                 </InputLabel>
                 <TextField
                   fullWidth
@@ -222,7 +233,7 @@ const EditData = ({ page }: { page: RowData }) => {
                   placeholder="User Name"
                   style={{
                     margin: "7px 0 20px 0",
-                    width: "94%",
+                    width: "100%",
                     color: "#5d596c",
                     fontSize: "15px",
                   }}
@@ -232,30 +243,51 @@ const EditData = ({ page }: { page: RowData }) => {
                         style={{ marginRight: "8px", color: "#5d596c" }}
                       />
                     ),
+                    sx: { color: "#5d596c", fontSize: "15px" },
                   }}
                 />
-                <InputLabel
-                  htmlFor="user-name"
-                  style={{
-                    fontWeight: "bold",
-                    color: "#5d596c",
-                    fontSize: "15px",
-                  }}
-                >
-                  Password
-                </InputLabel>
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <InputLabel
+                    htmlFor="user-name"
+                    style={{
+                      fontWeight: "bold",
+                      color: "#5d596c",
+                      fontSize: "15px",
+                      flex: "1", 
+                    }}
+                  >
+                    Password<span style={{marginLeft:"5px",  color:  isPasswordFieldEnabled ? "red" : "#fff", }}>*</span>
+                  </InputLabel>
+                  <ButtonComponent
+                    variant="contained"
+                    onClick={togglePasswordField}
+                    style={{
+                      textTransform: "capitalize",
+                      padding:"0px",
+                      boxShadow: "none",
+                      background: "none",
+                      color: isPasswordFieldEnabled ? "#58544D" : "#1d8683",
+                    }}
+                    name={
+                      isPasswordFieldEnabled
+                        ? "cancel"
+                        : "New Password"
+                    }
+                  ></ButtonComponent>
+                </div>
+
                 <TextField
                   fullWidth
                   margin="normal"
                   placeholder="Password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
                   error={!!errors.password}
                   helperText={errors.password}
                   size="small"
-                  style={{ margin: "7px 0 20px 0", width: "94%" }}
+                  style={{ margin: "7px 0 20px 0", width: "100%",backgroundColor: isPasswordFieldEnabled ? "#fff" : "#f2f2f2", }}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
@@ -272,7 +304,9 @@ const EditData = ({ page }: { page: RowData }) => {
                         )}
                       </InputAdornment>
                     ),
+                    sx: { color: "#5d596c", fontSize: "15px" },
                   }}
+                  disabled={!isPasswordFieldEnabled}
                 />
                 <InputLabel
                   htmlFor="user-name"
@@ -282,24 +316,24 @@ const EditData = ({ page }: { page: RowData }) => {
                     fontSize: "15px",
                   }}
                 >
-                  Confirm Password
+                  Confirm Password<span style={{marginLeft:"5px", color:  isPasswordFieldEnabled ? "red" : "#fff",}}>*</span>
                 </InputLabel>
                 <TextField
                   fullWidth
                   margin="normal"
                   placeholder="Confirm Password"
-                  type={showPassword ? "text" : "password"}
+                  type={showConfirmPassword ? "text" : "password"}
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   error={!!errors.confirmPassword}
                   helperText={errors.confirmPassword}
                   size="small"
-                  style={{ margin: "7px 0 20px 0", width: "94%" }}
+                  style={{ margin: "7px 0 20px 0", width: "100%", backgroundColor: isPasswordFieldEnabled ? "#fff" : "#f2f2f2",}}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        {showPassword ? (
+                        {showConfirmPassword ? (
                           <VisibilityOffIcon
                             onClick={toggleConfirmPasswordVisibility}
                             sx={{ cursor: "pointer" }}
@@ -312,7 +346,9 @@ const EditData = ({ page }: { page: RowData }) => {
                         )}
                       </InputAdornment>
                     ),
+                    sx: { color: "#5d596c", fontSize: "15px" },
                   }}
+                  disabled={!isPasswordFieldEnabled}
                 />
 
                 <InputLabel
@@ -323,7 +359,7 @@ const EditData = ({ page }: { page: RowData }) => {
                     fontSize: "15px",
                   }}
                 >
-                  Email
+                  Email<span style={{marginLeft:"5px", color: "red" }}>*</span>
                 </InputLabel>
                 <TextField
                   fullWidth
@@ -336,7 +372,7 @@ const EditData = ({ page }: { page: RowData }) => {
                   error={!!errors.email}
                   helperText={errors.email}
                   size="small"
-                  style={{ margin: "7px 0 20px 0", width: "94%" }}
+                  style={{ margin: "7px 0 20px 0", width: "100%" }}
                   InputProps={{
                     startAdornment: (
                       <EmailIcon
@@ -381,7 +417,7 @@ const EditData = ({ page }: { page: RowData }) => {
                   error={!!errors.streetAddress}
                   helperText={errors.streetAddress}
                   size="small"
-                  style={{ margin: "7px 0 20px 0", width: "94%" }}
+                  style={{ margin: "7px 0 20px 0", width: "100%" }}
                   InputProps={{
                     startAdornment: (
                       <AddLocation
@@ -412,7 +448,7 @@ const EditData = ({ page }: { page: RowData }) => {
                   error={!!errors.city}
                   helperText={errors.city}
                   size="small"
-                  style={{ margin: "7px 0 20px 0", width: "94%" }}
+                  style={{ margin: "7px 0 20px 0", width: "100%" }}
                   InputProps={{
                     startAdornment: (
                       <AddLocation
@@ -443,7 +479,7 @@ const EditData = ({ page }: { page: RowData }) => {
                   error={!!errors.pinCode}
                   helperText={errors.pinCode}
                   size="small"
-                  style={{ margin: "7px 0 20px 0", width: "94%" }}
+                  style={{ margin: "7px 0 20px 0", width: "100%" }}
                   InputProps={{
                     startAdornment: (
                       <PersonPinCircleIcon
@@ -462,7 +498,7 @@ const EditData = ({ page }: { page: RowData }) => {
                     fontSize: "15px",
                   }}
                 >
-                  Phone
+                  Phone<span style={{marginLeft:"5px", color: "red" }}>*</span>
                 </InputLabel>
                 <TextField
                   fullWidth
@@ -475,7 +511,7 @@ const EditData = ({ page }: { page: RowData }) => {
                   error={!!errors.phone}
                   helperText={errors.phone}
                   size="small"
-                  style={{ margin: "7px 0 20px 0", width: "94%" }}
+                  style={{ margin: "7px 0 20px 0", width: "100%" }}
                   InputProps={{
                     startAdornment: (
                       <PhoneIcon
