@@ -26,14 +26,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import MailIcon from "@mui/icons-material/Mail";
 import SettingsIcon from "@mui/icons-material/Settings";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import EditIcon from "@mui/icons-material/Edit";
-import TableIcon from "@mui/icons-material/TableChart";
-import CreditCardIcon from "@mui/icons-material/CreditCard";
 import SearchIcon from "@mui/icons-material/Search";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import AutorenewIcon from "@mui/icons-material/Autorenew";
-import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
-import VerticalAlignBottomIcon from "@mui/icons-material/VerticalAlignBottom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faA } from "@fortawesome/free-solid-svg-icons";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
@@ -41,7 +34,6 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import LoginIcon from "@mui/icons-material/Login";
 import ImportExportIcon from "@mui/icons-material/ImportExport";
 import { usePathname } from "next/navigation";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -382,51 +374,51 @@ const Header: React.FC = () => {
                             >
                               {/* Your icon rendering code */}
                               {subMenuItem.label === "Forms" ? (
-                                <EditIcon style={{ fontSize: "20px" }} />
+                                <KeyboardArrowRightIcon style={{ fontSize: "20px" }} />
                               ) : (
                                 ""
                               )}
                               {subMenuItem.label === "Charts" ? (
-                                <BarChartIcon style={{ fontSize: "20px" }} />
+                                <KeyboardArrowRightIcon style={{ fontSize: "20px" }} />
                               ) : (
                                 ""
                               )}
                               {subMenuItem.label === "Cards" ? (
-                                <CreditCardIcon style={{ fontSize: "20px" }} />
+                                <KeyboardArrowRightIcon style={{ fontSize: "20px" }} />
                               ) : (
                                 ""
                               )}
                               {subMenuItem.label === "Spinners" ? (
-                                <AutorenewIcon style={{ fontSize: "20px" }} />
+                                <KeyboardArrowRightIcon style={{ fontSize: "20px" }} />
                               ) : (
                                 ""
                               )}
                               {subMenuItem.label === "Breadcrumbs" ? (
-                                <KeyboardDoubleArrowRightIcon
+                                <KeyboardArrowRightIcon
                                   style={{ fontSize: "20px" }}
                                 />
                               ) : (
                                 ""
                               )}
                               {subMenuItem.label === "Search" ? (
-                                <SearchIcon style={{ fontSize: "20px" }} />
+                                <KeyboardArrowRightIcon style={{ fontSize: "20px" }} />
                               ) : (
                                 ""
                               )}
                               {subMenuItem.label === "Signin" ? (
-                                <LoginIcon style={{ fontSize: "20px" }} />
+                                <KeyboardArrowRightIcon style={{ fontSize: "20px" }} />
                               ) : (
                                 ""
                               )}
                               {subMenuItem.label === "Footers" ? (
-                                <VerticalAlignBottomIcon
+                                <KeyboardArrowRightIcon
                                   style={{ fontSize: "20px" }}
                                 />
                               ) : (
                                 ""
                               )}
                               {subMenuItem.label === "Tables" ? (
-                                <TableIcon style={{ fontSize: "20px" }} />
+                                <KeyboardArrowRightIcon style={{ fontSize: "20px" }} />
                               ) : (
                                 ""
                               )}
