@@ -154,6 +154,7 @@ const Header: React.FC = () => {
         { label: "Timeline", route: "/uielements/timeline" },
         { label: "Navbar", route: "/uielements/navbar" },
         { label: "General Elements", route: "/uielements/general-elements" },
+        { label: "Date Picker", route: "/uielements/date-picker" },
       ],
     },
 
@@ -479,6 +480,13 @@ const Header: React.FC = () => {
                                 ""
                               )}
                               {subMenuItem.label === "General Elements" ? (
+                                <KeyboardArrowRightIcon
+                                  style={{ fontSize: "20px" }}
+                                />
+                              ) : (
+                                ""
+                              )}
+                              {subMenuItem.label === "Date Picker" ? (
                                 <KeyboardArrowRightIcon
                                   style={{ fontSize: "20px" }}
                                 />
