@@ -65,7 +65,7 @@ const CreateNewData = () => {
     const newErrors = { ...errors };
 
     if (formData.name.trim() === "") {
-      newErrors.name = "User Name is required";
+      newErrors.name = "Name is required";
       isValid = false;
     } else {
       newErrors.name = "";
@@ -206,7 +206,7 @@ const CreateNewData = () => {
                   error={!!errors.name}
                   helperText={errors.name}
                   size="small"
-                  placeholder="User Name"
+                  placeholder="Name"
                   style={{
                     margin: "7px 0 20px 0",
                     width: "100%",

@@ -81,7 +81,7 @@ const EditData = ({ page }: { page: RowData }) => {
     const newErrors = { ...errors };
 
     if (formData.name.trim() === "") {
-      newErrors.name = "user Name is required";
+      newErrors.name = "Name is required";
       isValid = false;
     } else {
       newErrors.name = "";
@@ -230,7 +230,7 @@ const EditData = ({ page }: { page: RowData }) => {
                   error={!!errors.name}
                   helperText={errors.name}
                   size="small"
-                  placeholder="User Name"
+                  placeholder="Name"
                   style={{
                     margin: "7px 0 20px 0",
                     width: "100%",
