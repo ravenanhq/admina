@@ -18,6 +18,7 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import ImportExportIcon from "@mui/icons-material/ImportExport";
 import { usePathname } from "next/navigation";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
@@ -25,6 +26,7 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import { useEffect } from "react";
 
 const drawerWidth = 240;
 
@@ -138,6 +140,7 @@ const Sidebar: React.FC = () => {
 
   const handleEcommerceClick = () => {
     setShowEcommerceSubMenu(!showEcommerceSubMenu);
+    setShowComponentsSubMenu(false);
     setOpen(true);
   };
 
@@ -147,6 +150,7 @@ const Sidebar: React.FC = () => {
 
   const handleComponentsClick = () => {
     setShowComponentsSubMenu(!showComponentsSubMenu);
+    setShowEcommerceSubMenu(false);
     setOpen(true);
   };
 
@@ -163,6 +167,20 @@ const Sidebar: React.FC = () => {
   const handleMenuOpen = () => {
     setOpen(true);
   };
+
+  useEffect(() => {
+    const isEcommerceSubMenuOpen = menuItems
+      .find(item => item.label === 'Ecommerce')
+      ?.submenu?.some(submenu => submenu.route === pathName);
+
+    setShowEcommerceSubMenu(!!isEcommerceSubMenuOpen);
+
+    const isComponentsSubMenuOpen = menuItems
+      .find(item => item.label === 'Components')
+      ?.submenu?.some(submenu => submenu.route === pathName);
+
+    setShowComponentsSubMenu(!!isComponentsSubMenuOpen);
+  }, [pathName]); 
 
   return (
     <>
@@ -374,125 +392,126 @@ const Sidebar: React.FC = () => {
                                 <ListItemIcon
                                   sx={{
                                     minWidth: 0,
-                                    mr: open ? 2 : "auto",
+                                    mr: open ? 3 : "auto",
                                     justifyContent: "center",
+                                    marginLeft:"5px"
                                   }}
                                 >
                                   {/* Your icon rendering code */}
                                   {subMenuItem.label === "Forms" ? (
-                                    <KeyboardArrowRightIcon style={{ fontSize: "20px" }} />
+                                    <RadioButtonUncheckedIcon style={{ fontSize: "14px" }} />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Charts" ? (
-                                    <KeyboardArrowRightIcon
-                                      style={{ fontSize: "20px" }}
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Cards" ? (
-                                    <KeyboardArrowRightIcon
-                                      style={{ fontSize: "20px" }}
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Spinners" ? (
-                                    <KeyboardArrowRightIcon
-                                      style={{ fontSize: "20px" }}
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Breadcrumbs" ? (
-                                    <KeyboardArrowRightIcon
-                                      style={{ fontSize: "20px" }}
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Search" ? (
-                                    <KeyboardArrowRightIcon style={{ fontSize: "20px" }} />
+                                    <RadioButtonUncheckedIcon style={{ fontSize: "14px"}} />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Signin" ? (
-                                    <KeyboardArrowRightIcon style={{ fontSize: "20px" }} />
+                                    <RadioButtonUncheckedIcon style={{ fontSize: "14px" }} />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Footers" ? (
-                                    <KeyboardArrowRightIcon
-                                      style={{ fontSize: "20px" }}
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Tables" ? (
-                                    <KeyboardArrowRightIcon style={{ fontSize: "20px" }} />
+                                    <RadioButtonUncheckedIcon style={{ fontSize: "14px" }} />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Buttons" ? (
-                                    <KeyboardArrowRightIcon
-                                      style={{ fontSize: "20px" }}
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Alerts" ? (
-                                    <KeyboardArrowRightIcon
-                                      style={{ fontSize: "20px" }}
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Tabs" ? (
-                                    <KeyboardArrowRightIcon
-                                      style={{ fontSize: "20px" }}
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Modals" ? (
-                                    <KeyboardArrowRightIcon
-                                      style={{ fontSize: "20px" }}
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Slider" ? (
-                                    <KeyboardArrowRightIcon
-                                      style={{ fontSize: "20px" }}
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Timeline" ? (
-                                    <KeyboardArrowRightIcon
-                                      style={{ fontSize: "20px" }}
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Navbar" ? (
-                                    <KeyboardArrowRightIcon
-                                      style={{ fontSize: "20px" }}
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "General Elements" ? (
-                                    <KeyboardArrowRightIcon
-                                      style={{ fontSize: "20px" }}
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
                                     />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Date Picker" ? (
-                                    <KeyboardArrowRightIcon
-                                      style={{ fontSize: "20px" }}
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
                                     />
                                   ) : (
                                     ""
@@ -503,11 +522,11 @@ const Sidebar: React.FC = () => {
                             </Link>
                           </ListItem>
                           {subMenuItem.label === "Tables" && (
-                            <ListItem sx={{ paddingLeft: 4 }}>
+                            <ListItem sx={{textAlign:"center"}}>
                               <Typography
                                 variant="h6"
                                 sx={{
-                                  fontSize: "15px",
+                                  fontSize: "18px",
                                   fontWeight: "bold",
                                   paddingLeft: 1,
                                   paddingBottom: 1,
@@ -558,45 +577,46 @@ const Sidebar: React.FC = () => {
                                   minWidth: 0,
                                   mr: open ? 3 : "auto",
                                   justifyContent: "center",
+                                  marginLeft:"5px"
                                 }}
                               >
                                 {subMenuItem.label === "Products" ? (
-                                  <KeyboardArrowRightIcon
+                                  <RadioButtonUncheckedIcon
                                     style={{ fontSize: "14px" }}
                                   />
                                 ) : (
                                   ""
                                 )}
                                 {subMenuItem.label === "Product Details" ? (
-                                  <KeyboardArrowRightIcon
+                                  <RadioButtonUncheckedIcon
                                     style={{ fontSize: "14px" }}
                                   />
                                 ) : (
                                   ""
                                 )}
                                 {subMenuItem.label === "Add New Product" ? (
-                                  <KeyboardArrowRightIcon
+                                  <RadioButtonUncheckedIcon
                                     style={{ fontSize: "14px" }}
                                   />
                                 ) : (
                                   ""
                                 )}
                                 {subMenuItem.label === "Orders" ? (
-                                  <KeyboardArrowRightIcon
+                                  <RadioButtonUncheckedIcon
                                     style={{ fontSize: "14px" }}
                                   />
                                 ) : (
                                   ""
                                 )}
                                 {subMenuItem.label === "Product List" ? (
-                                  <KeyboardArrowRightIcon
+                                  <RadioButtonUncheckedIcon
                                     style={{ fontSize: "14px" }}
                                   />
                                 ) : (
                                   ""
                                 )}
                                 {subMenuItem.label === "Wishlist" ? (
-                                  <KeyboardArrowRightIcon
+                                  <RadioButtonUncheckedIcon
                                     style={{ fontSize: "14px" }}
                                   />
                                 ) : (
