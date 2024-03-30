@@ -18,7 +18,7 @@ const DatePickerUIElement = () => {
       >
         Basic Date Picker
       </Typography>
-     
+
       <div style={{ background: "#fff", padding: "20px" }}>
         <label
           htmlFor="datePicker"
@@ -27,7 +27,7 @@ const DatePickerUIElement = () => {
           Select Date:
         </label>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-       <DatePicker sx={{display:"block"}}/>
+          <DatePicker sx={{ display: "block" }} />
         </LocalizationProvider>
       </div>
     </>

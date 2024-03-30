@@ -18,7 +18,14 @@ const MobilDatePicker = () => {
       >
         Mobile View Date Picker
       </Typography>
-      <div style={{ background: "#fff", padding: "20px",display:"flex",flexDirection:"column"}}>
+      <div
+        style={{
+          background: "#fff",
+          padding: "20px",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
         <label
           htmlFor="datePicker"
           style={{ fontSize: "15px", fontWeight: "600" }}
@@ -26,7 +33,7 @@ const MobilDatePicker = () => {
           Select Date:
         </label>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <MobileDatePicker />
+          <MobileDatePicker sx={{ display: "block" }} />
         </LocalizationProvider>
       </div>
     </>
