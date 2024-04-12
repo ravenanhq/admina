@@ -22,7 +22,6 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import Badge from "@mui/material/Badge";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import MailIcon from "@mui/icons-material/Mail";
 import SettingsIcon from "@mui/icons-material/Settings";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -33,7 +32,7 @@ import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
-import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import ImportExportIcon from "@mui/icons-material/ImportExport";
 import { usePathname } from "next/navigation";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -41,9 +40,10 @@ import { signOut } from "next-auth/react";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import { useEffect } from "react";
 import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
+import NotificationButton from "../Notification/Notification";
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -189,18 +189,18 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     const isEcommerceSubMenuOpen = menuItems
-      .find(item => item.label === 'Ecommerce')
-      ?.submenu?.some(submenu => submenu.route === pathName);
+      .find((item) => item.label === "Ecommerce")
+      ?.submenu?.some((submenu) => submenu.route === pathName);
 
     setShowEcommerceSubMenu(!!isEcommerceSubMenuOpen);
 
     const isComponentsSubMenuOpen = menuItems
-      .find(item => item.label === 'Components')
-      ?.submenu?.some(submenu => submenu.route === pathName);
+      .find((item) => item.label === "Components")
+      ?.submenu?.some((submenu) => submenu.route === pathName);
 
     setShowComponentsSubMenu(!!isComponentsSubMenuOpen);
-  }, [pathName]); 
-  
+  }, [pathName]);
+
   const list = () => (
     <Box
       sx={{ width: 250 }}
@@ -392,22 +392,30 @@ const Header: React.FC = () => {
                             >
                               {/* Your icon rendering code */}
                               {subMenuItem.label === "Forms" ? (
-                                <RadioButtonUncheckedIcon style={{ fontSize: "15px" }} />
+                                <RadioButtonUncheckedIcon
+                                  style={{ fontSize: "15px" }}
+                                />
                               ) : (
                                 ""
                               )}
                               {subMenuItem.label === "Charts" ? (
-                                <RadioButtonUncheckedIcon style={{ fontSize: "15px" }} />
+                                <RadioButtonUncheckedIcon
+                                  style={{ fontSize: "15px" }}
+                                />
                               ) : (
                                 ""
                               )}
                               {subMenuItem.label === "Cards" ? (
-                                <RadioButtonUncheckedIcon style={{ fontSize: "15px" }} />
+                                <RadioButtonUncheckedIcon
+                                  style={{ fontSize: "15px" }}
+                                />
                               ) : (
                                 ""
                               )}
                               {subMenuItem.label === "Spinners" ? (
-                                <RadioButtonUncheckedIcon style={{ fontSize: "15px" }} />
+                                <RadioButtonUncheckedIcon
+                                  style={{ fontSize: "15px" }}
+                                />
                               ) : (
                                 ""
                               )}
@@ -419,12 +427,16 @@ const Header: React.FC = () => {
                                 ""
                               )}
                               {subMenuItem.label === "Search" ? (
-                                <RadioButtonUncheckedIcon style={{ fontSize: "15px" }} />
+                                <RadioButtonUncheckedIcon
+                                  style={{ fontSize: "15px" }}
+                                />
                               ) : (
                                 ""
                               )}
                               {subMenuItem.label === "Signin" ? (
-                                <RadioButtonUncheckedIcon style={{ fontSize: "15px" }} />
+                                <RadioButtonUncheckedIcon
+                                  style={{ fontSize: "15px" }}
+                                />
                               ) : (
                                 ""
                               )}
@@ -436,7 +448,9 @@ const Header: React.FC = () => {
                                 ""
                               )}
                               {subMenuItem.label === "Tables" ? (
-                                <RadioButtonUncheckedIcon style={{ fontSize: "15px" }} />
+                                <RadioButtonUncheckedIcon
+                                  style={{ fontSize: "15px" }}
+                                />
                               ) : (
                                 ""
                               )}
@@ -645,11 +659,7 @@ const Header: React.FC = () => {
             <Box
               sx={{ marginLeft: "auto", display: "flex", alignItems: "center" }}
             >
-              <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
-                <Badge badgeContent={4} color="error">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
+              <NotificationButton />
 
               <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
                 <Badge badgeContent={2} color="error">
