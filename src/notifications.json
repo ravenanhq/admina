@@ -1,0 +1,94 @@
+[
+  {
+    "id": 1,
+    "image": "",
+    "header": "Notification Header 1",
+    "subheading": "Lorem Ipsum is simply",
+    "status": "unread"
+  },
+  {
+    "id": 2,
+    "image": "",
+    "header": "Notification Header 2",
+    "subheading": "Lorem Ipsum is simply",
+    "status": "unread"
+  },
+  {
+    "id": 3,
+    "image": "",
+    "header": "Notification Header 3",
+    "subheading": "Lorem Ipsum is simply",
+    "time": "Tue Apr 09 2024 17:37:48",
+    "status": "unread"
+  },
+  {
+    "id": 4,
+    "image": "",
+    "header": "Notification Header 4",
+    "subheading": "Lorem Ipsum is simply",
+    "time": "Tue Apr 09 2024 17:37:48",
+    "status": "unread"
+  },
+  {
+    "id": 5,
+    "image": "/assets/images/user-image-2.png",
+    "header": "Notification Header 5",
+    "subheading": "Lorem Ipsum is simply",
+    "time": "Tue Apr 08 2024 17:37:48",
+    "status": "read"
+  },
+  {
+    "id": 6,
+    "image": "/assets/images/user-image-1.png",
+    "header": "Notification Header 6",
+    "subheading": "Lorem Ipsum is simply",
+    "time": "Tue Apr 09 2024 7:37:48",
+    "status": "read"
+  },
+  {
+    "id": 7,
+    "image": "",
+    "header": "Notification Header 7",
+    "subheading": "Lorem Ipsum is simply",
+    "status": "read"
+  },
+  {
+    "id": 8,
+    "image": "",
+    "header": "Notification Header 8",
+    "subheading": "Lorem Ipsum is simply",
+    "status": "unread"
+  },
+  {
+    "id": 9,
+    "image": "/assets/images/user-image-2.png",
+    "header": "Notification Header 9",
+    "subheading": "Lorem Ipsum is simply",
+    "time": "Tue Apr 09 2024 17:37:48",
+    "status": "unread"
+  },
+  {
+    "id": 10,
+    "image": "",
+    "header": "Notification Header 10",
+    "subheading": "Lorem Ipsum is simply",
+    "time": "Tue Apr 09 2024 17:37:48",
+    "status": "read"
+  },
+  {
+    "id": 11,
+    "image": "/assets/images/user-image-1.png",
+    "header": "Notification Header 11",
+    "subheading": "Lorem Ipsum is simply",
+    "time": "Tue Apr 09 2024 17:37:48",
+    "status": "unread"
+  },
+  {
+    "id": 12,
+    "image": "",
+    "header": "Notification Header 12",
+    "subheading": "Lorem Ipsum is simply",
+    "time": "Tue Apr 10 2024 6:37:48",
+    "status": "read"
+  }
+]
