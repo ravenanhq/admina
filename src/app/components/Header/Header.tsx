@@ -34,9 +34,11 @@ import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import { useEffect } from "react";
-import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
 import NotificationButton from "../Notification/Notification";
 import ProfileMenu from "../Profile/ProfileMenu";
+
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -160,6 +162,9 @@ const Header: React.FC = () => {
     { label: "Import/Export", route: "/import-export-element" },
     { label: "CRUD Component", route: "/crud/list" },
     { label: "Subscription Plan", route: "/subscription-plan" },
+    { label:"Drag and Drop", route:"/drag-and-drop"},
+    { label:"Calendar", route:"/calendar"},
+    { label:"Kanban Board", route:"/kanban-board"}
     { label: "Drag and Drop", route: "/drag-and-drop" },
     { label: "Kanban Board", route: "/kanban-board" },
   ];
@@ -311,7 +316,8 @@ const Header: React.FC = () => {
                   ) : (
                     ""
                   )}
-                  {menuItem.label === "Kanban Board" ? <ViewKanbanIcon /> : ""}
+                  {menuItem.label === "Calendar" ? <CalendarMonthIcon/> : ""}
+                  {menuItem.label === "Kanban Board" ? <ViewKanbanIcon/> : ""}
                 </ListItemIcon>
                 <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
                 <ListItemIcon
