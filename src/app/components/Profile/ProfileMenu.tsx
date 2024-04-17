@@ -82,7 +82,7 @@ const ProfileMenu = () => {
           </ListItemIcon>
           Profile
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem component="a" href="/accounts" onClick={handleClose}>
           <ListItemIcon>
             <ManageAccountsIcon fontSize="small" />
           </ListItemIcon>
