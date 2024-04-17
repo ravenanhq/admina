@@ -130,7 +130,7 @@ export default function EventCalendar() {
   const getLabelColor = (label) => {
     switch (label) {
       case "Business":
-        return "#ffa045";
+        return "#7367f0";
       case "Family":
         return "#28c76f";
       case "Personal":
@@ -255,63 +255,6 @@ const CustomToolbar = ({ label, onNavigate, onView }) => (
         <ChevronRightIcon />
       </button>
       <span className="rbc-toolbar-label">{label}</span>
-    </div>
-    <div className="rbc-view-buttons">
-      <button
-        type="button"
-        onClick={() => onView("month")}
-        className="rbc-btn"
-        style={{
-          background: "#dedbfb",
-          color: "#7367f0",
-          border: "none",
-          borderRight: "1px solid #ccc",
-          borderRadius: "0px",
-        }}
-      >
-        Month
-      </button>
-      <button
-        type="button"
-        onClick={() => onView("week")}
-        className="rbc-btn"
-        style={{
-          background: "#dedbfb",
-          color: "#7367f0",
-          border: "none",
-          borderRight: "1px solid #ccc",
-          borderRadius: "0px",
-        }}
-      >
-        Week
-      </button>
-      <button
-        type="button"
-        onClick={() => onView("day")}
-        className="rbc-btn"
-        style={{
-          background: "#dedbfb",
-          color: "#7367f0",
-          border: "none",
-          borderRight: "1px solid #ccc",
-          borderRadius: "0px",
-        }}
-      >
-        Day
-      </button>
-      <button
-        type="button"
-        onClick={() => onView("agenda")}
-        className="rbc-btn"
-        style={{
-          background: "#dedbfb",
-          color: "#7367f0",
-          border: "none",
-          borderRadius: "0px",
-        }}
-      >
-        Agenda
-      </button>
     </div>
   </div>
 );
