@@ -641,7 +641,7 @@ const Header: React.FC = () => {
         <AppBar
           position="fixed"
           open={open}
-          sx={{ background: "rgba(255, 255, 255, 1)" }}
+          sx={{ background: "rgba(255, 255, 255, 1)",zIndex:"0" }}
         >
           <Toolbar>
             {isMobile ? (

@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Grid, CardContent, Typography, Drawer } from "@mui/material";
-import { Card } from "react-bootstrap";
+import { Grid, CardContent, Typography, Drawer,Card } from "@mui/material";
 import List from "../../../drag-and-drop-list.json";
 import MoreVertSharpIcon from "@mui/icons-material/MoreVertSharp";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
@@ -48,6 +47,7 @@ export const KanbanBoard = () => {
     assignee: "",
   });
   const [showAddItem, setShowAddItem] = useState(false);
+  const [deletedStatuses, setDeletedStatuses] = useState([]);
 
   useEffect(() => {
     setLists(List);
@@ -66,23 +66,16 @@ export const KanbanBoard = () => {
     e.preventDefault();
     const updatedLists = [...lists];
     const draggedList = updatedLists[draggedIndex];
-
     updatedLists.splice(draggedIndex, 1);
-
+  
     draggedList.status = targetStatus;
 
-    let targetIndex = updatedLists.findIndex(
-      (list) => list.status === targetStatus
-    );
-    if (targetIndex === -1) {
-      targetIndex = updatedLists.length;
-    }
-
-    updatedLists.splice(targetIndex, 0, draggedList);
-
+    updatedLists.push(draggedList);
+  
     setLists(updatedLists);
     setPlaceholder(false);
   };
+  
 
   const handleTouchStart = (index) => {
     setDraggedIndex(index);
@@ -127,8 +120,10 @@ export const KanbanBoard = () => {
 
   const handleDelete = (statusToDelete) => {
     setMenuOpen(false);
-    const updatedLists = lists.filter((list) => list.status !== statusToDelete);
-    setLists(updatedLists);
+    setDeletedStatuses((prevDeletedStatuses) => [
+      ...prevDeletedStatuses,
+      statusToDelete,
+    ]);
   };
 
   const handleAddItem = () => {
@@ -193,6 +188,12 @@ export const KanbanBoard = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const renderListSection = (status) => {
+    const statusLists = lists.filter((list) => list.status === status);
+
+    // Check if the status has been deleted
+    if (deletedStatuses.includes(status)) {
+      return null;
+    }
     return (
       <Grid item xs={12} sm={4} md={4} lg={4}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -281,11 +282,19 @@ export const KanbanBoard = () => {
                   <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    <Typography gutterBottom variant="h5" component="div" 
-                    style={{fontSize: isMobile ? "18px" : ""}}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                      style={{ fontSize: isMobile ? "18px" : "" }}
+                    >
                       {list.taskId}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" style={{lineHeight: isMobile ? "22px" : "30px"}}>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      style={{ lineHeight: isMobile ? "22px" : "30px" }}
+                    >
                       {list.dueDate}
                     </Typography>
                   </div>
@@ -358,12 +367,13 @@ export const KanbanBoard = () => {
         Kanban Board
       </Typography>
       <Grid container spacing={3} style={{ display: "flex" }}>
-        {StatusOption.map((status) =>
-          Array.from(new Set(lists.map((list) => list.status)))
-            .filter((uniqueStatus) => uniqueStatus === status)
-            .map((uniqueStatus) => renderListSection(uniqueStatus))
-        )}
+        {StatusOption.map((status) => (
+          <React.Fragment key={status}>
+            {renderListSection(status)}
+          </React.Fragment>
+        ))}
       </Grid>
+
       <AddTask
         open={showAddItem}
         onCancel={handleCancel}
@@ -377,11 +387,6 @@ export const KanbanBoard = () => {
         open={openDrawer}
         onClose={(event, reason) => {
           setOpenDrawer(false);
-        }}
-        sx={{
-          "& .MuiDrawer-paperAnchorRight": {
-            top: "64px",
-          },
         }}
       >
         <UpdateTask
