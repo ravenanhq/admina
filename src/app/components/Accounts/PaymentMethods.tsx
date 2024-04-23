@@ -150,7 +150,9 @@ const PaymentMethods = () => {
                 <Grid item xs={12}>
                   <TextField
                     fullWidth
-                    label="Card Number"
+                    label={
+                      <span>Card Number<span style={{ color: "#d32f2f",marginLeft:"3px" }}>*</span>
+                       </span>}
                     name="cardNumber"
                     value={formData.cardNumber}
                     onChange={handleChange}
@@ -163,7 +165,9 @@ const PaymentMethods = () => {
                 <Grid item xs={12}>
                   <TextField
                     fullWidth
-                    label="Card Holder"
+                    label={
+                      <span>Card Holder<span style={{ color: "#d32f2f",marginLeft:"3px" }}>*</span>
+                       </span>}
                     name="cardHolder"
                     value={formData.cardHolder}
                     onChange={handleChange}
@@ -176,7 +180,9 @@ const PaymentMethods = () => {
                 <Grid item xs={6}>
                   <TextField
                     fullWidth
-                    label="Expiry Date (MM/YY)"
+                    label={
+                      <span>Expiry Date (MM/YY)<span style={{ color: "#d32f2f",marginLeft:"3px" }}>*</span>
+                       </span>}
                     name="expiryDate"
                     value={formData.expiryDate}
                     onChange={handleChange}
@@ -191,7 +197,9 @@ const PaymentMethods = () => {
                 <Grid item xs={6}>
                   <TextField
                     fullWidth
-                    label="CVV"
+                    label={
+                      <span>CVV<span style={{ color: "#d32f2f",marginLeft:"3px" }}>*</span>
+                       </span>}
                     name="cvv"
                     value={formData.cvv}
                     onChange={handleChange}

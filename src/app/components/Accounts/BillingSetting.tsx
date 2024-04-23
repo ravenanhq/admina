@@ -95,7 +95,7 @@ const BillingSetting = () => {
     e.preventDefault();
     if (validateForm()) {
       setSuccessMessageOpen(true);
-      router.push("/crud/list", { scroll: false });
+      setFormData({ ... initialFormData })
     }
   };
 
@@ -134,13 +134,16 @@ const BillingSetting = () => {
                 error={!!errors.companyName}
                 helperText={errors.companyName}
                 size="small"
+                
               />
             </Grid>
             <Grid item xs={12} sm={6} style={{ paddingTop: isMobile ? 0 : "" }}>
               <TextField
                 fullWidth
                 margin="normal"
-                label="Billing Email"
+                label={
+                  <span>Billing Email<span style={{ color: "#d32f2f",marginLeft:"3px" }}>*</span>
+                   </span>}
                 type="text"
                 name="email"
                 value={formData.email}
@@ -186,7 +189,9 @@ const BillingSetting = () => {
               <TextField
                 fullWidth
                 margin="normal"
-                label="Phone"
+                label={
+                  <span>Phone<span style={{ color: "#d32f2f",marginLeft:"3px" }}>*</span>
+                   </span>}
                 type="text"
                 name="phone"
                 value={formData.phone}

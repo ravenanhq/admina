@@ -105,7 +105,7 @@ const PasswordSetting = () => {
     e.preventDefault();
     if (validateForm()) {
       setSuccessMessageOpen(true);
-      router.push("/crud/list", { scroll: false });
+      setFormData({...initialFormData })
     }
   };
 
@@ -142,7 +142,9 @@ const PasswordSetting = () => {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                label="Current Password"
+                label={
+                  <span>Current Password<span style={{ color: "#d32f2f",marginLeft:"3px" }}>*</span>
+                   </span>}
                 margin="normal"
                 type={formData.showCurrentPassword ? "text" : "password"}
                 variant="outlined"
@@ -174,7 +176,9 @@ const PasswordSetting = () => {
                 }}
               />
               <TextField
-                label="New Password"
+                label={
+                  <span>New Password<span style={{ color: "#d32f2f",marginLeft:"3px" }}>*</span>
+                   </span>}
                 margin="normal"
                 type={formData.showNewPassword ? "text" : "password"}
                 variant="outlined"
@@ -206,7 +210,9 @@ const PasswordSetting = () => {
                 }}
               />
               <TextField
-                label="Confirm Password"
+                label={
+                  <span>Confirm Password<span style={{ color: "#d32f2f",marginLeft:"3px" }}>*</span>
+                   </span>}
                 margin="normal"
                 type={formData.showConfirmPassword ? "text" : "password"}
                 variant="outlined"
