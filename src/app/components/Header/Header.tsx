@@ -14,6 +14,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Divider, Link, Typography, useMediaQuery } from "@mui/material";
+import { Divider, Link, Typography, useMediaQuery } from "@mui/material";
 import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -34,6 +35,7 @@ import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import { useEffect } from "react";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
 import NotificationButton from "../Notification/Notification";
@@ -163,6 +165,8 @@ const Header: React.FC = () => {
     { label: "CRUD Component", route: "/crud/list" },
     { label: "Subscription Plan", route: "/subscription-plan" },
     { label:"Drag and Drop", route:"/drag-and-drop"},
+    { label:"Calendar", route:"/calendar"},
+    { label:"Kanban Board", route:"/kanban-board"},
     { label:"Calendar", route:"/calendar"},
     { label:"Kanban Board", route:"/kanban-board"},
   ];
@@ -314,6 +318,7 @@ const Header: React.FC = () => {
                   ) : (
                     ""
                   )}
+                  {menuItem.label === "Calendar" ? <CalendarMonthIcon/> : ""}
                   {menuItem.label === "Calendar" ? <CalendarMonthIcon/> : ""}
                   {menuItem.label === "Kanban Board" ? <ViewKanbanIcon/> : ""}
                 </ListItemIcon>
@@ -672,6 +677,7 @@ const Header: React.FC = () => {
                 <SearchIcon />
               </IconButton>
 
+              <ProfileMenu />
               <ProfileMenu />
             </Box>
 
