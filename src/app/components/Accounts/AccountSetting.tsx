@@ -63,6 +63,7 @@ const AccountSettings = () => {
     country: "",
     language: "",
     currency: "",
+    fileType: "",
   });
 
   const validateForm = () => {
@@ -112,7 +113,7 @@ const AccountSettings = () => {
     e.preventDefault();
     if (validateForm()) {
       setSuccessMessageOpen(true);
-      router.push("/crud/list", { scroll: false });
+      setFormData({ ...initialFormData });
     }
   };
 
@@ -131,12 +132,22 @@ const AccountSettings = () => {
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        const result = reader.result as string;
-        setUploadedImage(result);
-      };
-      reader.readAsDataURL(file);
+      const allowedTypes = ["image/jpeg", "image/png"];
+      if (allowedTypes.includes(file.type)) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          const result = reader.result as string;
+          setUploadedImage(result);
+        };
+        reader.readAsDataURL(file);
+        setErrors({ ...errors, fileType: "" });
+      } else {
+        setErrors({
+          ...errors,
+          fileType: "Please upload a JPEG or PNG image.",
+        });
+        setUploadedImage("/assets/images/avatar-1.png");
+      }
     }
   };
 
@@ -208,6 +219,11 @@ const AccountSettings = () => {
               >
                 Allowed JPG, or PNG.
               </Typography>
+              {errors.fileType && (
+                <Typography variant="body2" style={{ color: "#d32f2f" }}>
+                  {errors.fileType}
+                </Typography>
+              )}
             </Grid>
           </Grid>
           <Divider style={{ marginTop: "1rem" }} />
@@ -216,7 +232,11 @@ const AccountSettings = () => {
               <TextField
                 fullWidth
                 margin="normal"
-                label="First Name"
+                label={
+                  <span>
+                    First Name<span style={{ color: "#d32f2f",marginLeft:"3px" }}>*</span>
+                  </span>
+                }
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
@@ -245,7 +265,9 @@ const AccountSettings = () => {
               <TextField
                 fullWidth
                 margin="normal"
-                label="Email"
+                label={
+                <span>Email<span style={{ color: "#d32f2f",marginLeft:"3px" }}>*</span>
+                 </span>}
                 type="text"
                 name="email"
                 value={formData.email}
@@ -284,7 +306,9 @@ const AccountSettings = () => {
               <TextField
                 fullWidth
                 margin="normal"
-                label="Phone"
+                label={
+                  <span>Phone<span style={{ color: "#d32f2f",marginLeft:"3px" }}>*</span>
+                   </span>}
                 type="text"
                 name="phone"
                 value={formData.phone}

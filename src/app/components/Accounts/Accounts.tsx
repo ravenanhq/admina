@@ -50,13 +50,13 @@ const Accounts = () => {
               iconPosition="start"
             />
           </Tabs>
-          <TabPanel value="0" sx={{ pl: 0 }}>
+          <TabPanel value="0" sx={{ p:"24px 0" }}>
             <AccountSettings />
           </TabPanel>
-          <TabPanel value="1" sx={{ pl: 0 }}>
+          <TabPanel value="1" sx={{ p:"24px 0" }}>
             <PasswordSetting />
           </TabPanel>
-          <TabPanel value="2" sx={{ pl: 0 }}>
+          <TabPanel value="2" sx={{ p:"24px 0" }}>
             <BillingSetting />
             <PaymentMethods />
           </TabPanel>
