@@ -38,7 +38,6 @@ const NotificationItem = ({
     <ListItem
       key={notification.id}
       button
-      onClick={() => handleItemClick(notification.id)}
       divider
       style={{ justifyContent: "space-between" }}
     >
@@ -53,7 +52,7 @@ const NotificationItem = ({
           <NotificationsActiveIcon />
         )}
       </Avatar>
-      <div className="flex">
+      <div className="flex" onClick={() => handleItemClick(notification.id)}>
         <ListItemText
           primary={
             <>
