@@ -28,13 +28,50 @@ header {
   font-size: 16px;
 }
 
-.crudComponent .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight)>.crudCellName
-{
-  white-space:normal;
+.crudComponent
+  .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight)
+  > .crudCellName {
+  white-space: normal;
   line-height: 23px;
 }
+
 .iconTab .MuiTabs-indicator {
   background-color: transparent;
+}
+
+.sideMenuLink {
+  color: #000;
+}
+
+.activeMenu {
+  background-color: #007bff;
+  color: #fff;
+  display: block;
+}
+
+.activeMenu .MuiListItemIcon-root {
+  color: #fff;
+}
+
+.activeMenu span {
+  color: #fff;
+}
+
+.sidebarDrawer .MuiPaper-elevation {
+  overflow-x: initial !important;
+  overflow-y: initial !important;
+}
+
+.loginbtn:hover{
+  background: "#282a35",
+}
+
+.headerLogo span{
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+  /* line-height: 12px; */
 }
 
 @media only screen and (max-width: 1024px) and (min-width: 600px) {
@@ -56,13 +93,13 @@ header {
 
 @media (max-width: 568px) {
   .wishList .MuiTableCell-root {
-    padding:12px
+    padding: 12px;
   }
 }
 
 @media (max-width: 540px) {
   .wishList .MuiTableCell-root {
-    padding:10px
+    padding: 10px;
   }
 }
 
@@ -70,13 +107,14 @@ header {
   .importExportButton .MuiButtonBase-root {
     text-transform: capitalize;
   }
-  
-  .crudComponentList .crudList{flex-basis: 73%;}
+
+  .crudComponentList .crudList {
+    flex-basis: 73%;
+  }
 
   .iconTab .MuiTab-labelIcon {
     padding: 12px;
   }
-
 }
 
 @media (max-width: 450px) {
@@ -116,30 +154,31 @@ header {
   }
 }
 
-@media (max-width: 320px){
-.wishList .MuiTableCell-root {
+@media (max-width: 320px) {
+  .wishList .MuiTableCell-root {
     border-bottom: transparent;
     padding: 2px;
-}
-.wishList .wishlishBtn .MuiButtonBase-root {
-  text-transform: capitalize;
-  min-width: 146px;
-  margin-top: 10px;
-}
-.loginPage{
-  justify-content: center;
-}
-.loginPage .rememberMe label{
-margin-left: 0;
-}
-.loginPage .forgotPassword{
-  margin-bottom: 10px;
-}
-.loginPage .forgotPassword a{
-  margin-right: 0;
-}
-.crudComponentList .crudList{
-  flex-basis: 69%;}
+  }
+  .wishList .wishlishBtn .MuiButtonBase-root {
+    text-transform: capitalize;
+    min-width: 146px;
+    margin-top: 10px;
+  }
+  .loginPage {
+    justify-content: center;
+  }
+  .loginPage .rememberMe label {
+    margin-left: 0;
+  }
+  .loginPage .forgotPassword {
+    margin-bottom: 10px;
+  }
+  .loginPage .forgotPassword a {
+    margin-right: 0;
+  }
+  .crudComponentList .crudList {
+    flex-basis: 69%;
+  }
 }
 
 @media (max-width: 300px) {
@@ -154,5 +193,4 @@ margin-left: 0;
   .tabElement .Mui-selected {
     border-bottom: 2px solid #1976d2;
   }
-
 }

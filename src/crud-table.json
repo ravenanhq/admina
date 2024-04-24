@@ -1,6 +1,6 @@
 [
-    { "id": 1, "name": "John Doe","streetAddress": "No: 211, Greams Lane","email": "john@example.com", "role": "Admin","city": "India","pinCode":"044625001","phone":"700042"},
-    { "id": 2, "name": "Jane Doe", "streetAddress": "No: 21, Greams Lane","email": "jane@example.com", "role": "User" ,"city": "India","pinCode":"625001","phone":"700042"},
-    { "id": 3, "name": "Bob Smith","streetAddress": "No: 21, Greams Lane", "email": "bob@example.com", "role": "Moderator","city": "India","pinCode":"625001","phone":"700042" },
-    { "id": 4, "name": "Alice Johnson","streetAddress": "No: 21, Greams Lane", "email": "alice@example.com", "role": "User","city": "India","pinCode":"625001","phone":"700042"}
+    { "id": 1, "name": "John Doe","firstName":"john","password":"Test@123","confirmPassword":"Test@123","streetAddress": "No: 211, Greams Lane","email": "john@example.com", "role": "Admin","city": "India","pinCode":"044625001","phone":"700042"},
+    { "id": 2, "name": "Jane Doe", "firstName":"john","password":"Test@123","confirmPassword":"Test@123","streetAddress": "No: 23, Greams Lane","email": "jane@example.com", "role": "User" ,"city": "Aus","pinCode":"625002","phone":"700043"},
+    { "id": 3, "name": "Bob Smith","firstName":"john","password":"Test@123","confirmPassword":"Test@123","streetAddress": "No: 25, Greams Lane", "email": "bob@example.com", "role": "Moderator","city": "Us","pinCode":"625003","phone":"700044" },
+    { "id": 4, "name": "Alice Johnson","firstName":"john","password":"Test@123","confirmPassword":"Test@123","streetAddress": "No: 27, Greams Lane", "email": "alice@example.com", "role": "User","city": "Uk","pinCode":"625004","phone":"700045"}
 ]

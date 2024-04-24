@@ -3,7 +3,6 @@ import {
   Card,
   CardHeader,
   CardContent,
-  Button,
   TextField,
   Grid,
   CardActions,
@@ -19,6 +18,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import PersonIcon from "@mui/icons-material/Person";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import ButtonComponent from "../BaseComponent/Button";
 
 const SignupForm = () => {
   const initialFormData = {
@@ -121,7 +121,10 @@ const SignupForm = () => {
 
   return (
     <>
-      <Card variant="outlined" style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 #ccc" }}>
+      <Card
+        variant="outlined"
+        style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 #ccc" }}
+      >
         <CardHeader
           title="SIGNUP"
           titleTypographyProps={{ fontSize: "20px", fontWeight: "bold" }}
@@ -259,28 +262,30 @@ const SignupForm = () => {
             justifyContent="right"
             sx={{ padding: "0 0 16px 10px" }}
           >
-            <Button
+            <ButtonComponent
               variant="contained"
               type="submit"
-              onClick={handleSubmit}
               size="small"
-              sx={{ borderRadius: "10px", padding: "5px 10px", background: "#2b9b8e" }}
-            >
-              Submit
-            </Button>
-            <Button
+              onClick={handleSubmit}
+              style={{
+                padding: "5px 10px",
+                background: "#2b9b8e",
+              }}
+              name="Submit"
+            ></ButtonComponent>
+            <ButtonComponent
               variant="contained"
+              type="submit"
               size="small"
               onClick={handleCancel}
-              sx={{
+              style={{
                 marginLeft: "10px",
-                borderRadius: "10px",
+
                 padding: "5px 10px",
-                background: "#fc9f66"
+                background: "#fc9f66",
               }}
-            >
-              Cancel
-            </Button>
+              name="Cancel"
+            ></ButtonComponent>
           </Grid>
         </CardActions>
       </Card>

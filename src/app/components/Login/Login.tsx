@@ -3,7 +3,6 @@ import {
   Card,
   CardHeader,
   CardContent,
-  Button,
   TextField,
   Grid,
   Typography,
@@ -25,6 +24,7 @@ import { useRouter } from "next/navigation";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import ButtonComponent from "../BaseComponent/Button";
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -142,24 +142,25 @@ const LoginForm = () => {
               type and scrambled it to make a type specimen book
             </div>
           </Typography>
-          <Button
-            variant="contained"
-            color="success"
-            type="submit"
-            onClick={handleSignUpClick}
-            size="small"
-            sx={{
-              padding: "5px 20px",
-              marginTop: "10px",
-              background: "#fc9f66",
-              borderRadius: "10px",
-              "&:hover": {
-                background: "#282a35",
-              },
-            }}
+          <Link
+            href="/signup/"
+            color="inherit"
+            underline="hover"
+            style={{ color: "#fff" }}
           >
-            Signup
-          </Button>
+            <ButtonComponent
+              variant="contained"
+              type="submit"
+              size="small"
+              prefix={<LoginIcon />}
+              style={{
+                padding: "0 13px",
+                marginTop: "10px",
+                background: "#fc9f66",
+              }}
+              name="Signup"
+            ></ButtonComponent>
+          </Link>
         </Grid>
 
         <Grid
@@ -298,22 +299,20 @@ const LoginForm = () => {
             </CardActions>
 
             <Grid container justifyContent="center">
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                onClick={handleSubmit}
-                size="small"
-                startIcon={<LoginIcon />}
-                sx={{
-                  width: "94%",
-                  padding: "10px 0",
+            <ButtonComponent
+              variant="contained"
+              type="submit"
+              size="small"
+              onClick={handleSubmit}
+              prefix={<LoginIcon />}
+              style={{
+                width: "94%",
+                  padding: "0",
                   background: "#fc9f66",
-                  borderRadius: "10px",
-                }}
-              >
-                Log In
-              </Button>
+              }}
+              name="Login"
+            ></ButtonComponent>
+              
             </Grid>
 
             <Divider
