@@ -158,9 +158,9 @@ export default function EventCalendar() {
           events={filteredEvents}
           startAccessor="start"
           endAccessor="end"
+          selectable
+          popup
           style={{ height: "100%", background: "#fff", padding: "20px" }}
-          views={["month", "week", "day", "agenda"]}
-          date={date}
           onNavigate={(newDate, view) => setDate(newDate)}
           toolbar={true}
           onSelectEvent={(event) => toggleDrawer(event, true)}
@@ -171,8 +171,6 @@ export default function EventCalendar() {
               <CustomToolbar {...props} onView={handleViewChange} />
             ),
           }}
-          selectable
-          popup
         />
       </div>
       <div style={{display:"flex"}}>
@@ -201,7 +199,6 @@ export default function EventCalendar() {
         onClose={() => setOpenDrawer(false)}
         sx={{
           "& .MuiDrawer-paperAnchorRight": {
-            top: "64px",
           },
         }}
       >
@@ -218,12 +215,11 @@ export default function EventCalendar() {
         onClose={handleCloseAddEventDrawer}
         sx={{
           "& .MuiDrawer-paperAnchorRight": {
-            top: "64px",
           },
         }}
       >
         <AddEvent
-          onClose={() => setOpenDrawer(false)}
+          onClose={() => setOpenAddEventDrawer(false)}
           onSave={handleSaveAddEventData}
           selectedDate={selectedDate}
         />

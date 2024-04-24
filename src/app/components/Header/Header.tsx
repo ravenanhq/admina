@@ -164,9 +164,7 @@ const Header: React.FC = () => {
     { label: "Subscription Plan", route: "/subscription-plan" },
     { label:"Drag and Drop", route:"/drag-and-drop"},
     { label:"Calendar", route:"/calendar"},
-    { label:"Kanban Board", route:"/kanban-board"}
-    { label: "Drag and Drop", route: "/drag-and-drop" },
-    { label: "Kanban Board", route: "/kanban-board" },
+    { label:"Kanban Board", route:"/kanban-board"},
   ];
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -640,7 +638,7 @@ const Header: React.FC = () => {
         <AppBar
           position="fixed"
           open={open}
-          sx={{ background: "rgba(255, 255, 255, 1)" }}
+          sx={{ background: "rgba(255, 255, 255, 1)",zIndex:"1000" }}
         >
           <Toolbar>
             {isMobile ? (
