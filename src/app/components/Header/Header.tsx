@@ -13,14 +13,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import {
-  Divider,
-  Link,
-  Menu,
-  MenuItem,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Divider, Link, Typography, useMediaQuery } from "@mui/material";
 import Badge from "@mui/material/Badge";
 import MailIcon from "@mui/icons-material/Mail";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -35,15 +28,17 @@ import Collapse from "@mui/material/Collapse";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import ImportExportIcon from "@mui/icons-material/ImportExport";
 import { usePathname } from "next/navigation";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { signOut } from "next-auth/react";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import { useEffect } from "react";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
 import NotificationButton from "../Notification/Notification";
+import ProfileMenu from "../Profile/ProfileMenu";
+
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -168,7 +163,8 @@ const Header: React.FC = () => {
     { label: "CRUD Component", route: "/crud/list" },
     { label: "Subscription Plan", route: "/subscription-plan" },
     { label:"Drag and Drop", route:"/drag-and-drop"},
-    { label:"Kanban Board", route:"/kanban-board"}
+    { label:"Calendar", route:"/calendar"},
+    { label:"Kanban Board", route:"/kanban-board"},
   ];
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -318,6 +314,7 @@ const Header: React.FC = () => {
                   ) : (
                     ""
                   )}
+                  {menuItem.label === "Calendar" ? <CalendarMonthIcon/> : ""}
                   {menuItem.label === "Kanban Board" ? <ViewKanbanIcon/> : ""}
                 </ListItemIcon>
                 <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
@@ -641,7 +638,7 @@ const Header: React.FC = () => {
         <AppBar
           position="fixed"
           open={open}
-          sx={{ background: "rgba(255, 255, 255, 1)",zIndex:"0" }}
+          sx={{ background: "rgba(255, 255, 255, 1)",zIndex:"1000" }}
         >
           <Toolbar>
             {isMobile ? (
@@ -675,29 +672,7 @@ const Header: React.FC = () => {
                 <SearchIcon />
               </IconButton>
 
-              <IconButton
-                color="inherit"
-                onClick={handleOpenMenu}
-                sx={{ color: "rgba(0,0,0,.5)" }}
-              >
-                <AccountCircleIcon />
-              </IconButton>
-
-              <Menu
-                anchorOrigin={{ vertical: "top", horizontal: "right" }}
-                transformOrigin={{ vertical: "top", horizontal: "right" }}
-                id="profile-menu"
-                anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
-                onClose={handleCloseMenu}
-              >
-                <MenuItem>
-                  <Typography variant="body1" sx={{ color: "rgba(0,0,0,.5)" }}>
-                    Welcome, User
-                  </Typography>
-                </MenuItem>
-                <MenuItem onClick={handleSignout}>Logout</MenuItem>
-              </Menu>
+              <ProfileMenu />
             </Box>
 
             {isMobile && state.left ? (

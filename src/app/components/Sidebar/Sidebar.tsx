@@ -27,6 +27,7 @@ import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import { useEffect } from "react";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
 
 const drawerWidth = 240;
@@ -128,6 +129,7 @@ const Sidebar: React.FC = () => {
     { label: "CRUD Component", route: "/crud/list" },
     { label: "Subscription Plan", route: "/subscription-plan" },
     { label:"Drag and Drop", route:"/drag-and-drop"},
+    { label:"Calendar", route:"/calendar"},
     { label:"Kanban Board", route:"/kanban-board"}
   ];
   const [open, setOpen] = React.useState(true);
@@ -308,6 +310,7 @@ const Sidebar: React.FC = () => {
                       {menuItem.label === "CRUD Component" ? <ListAltIcon /> : ""}
                       {menuItem.label === "Subscription Plan" ? <ThumbUpAltIcon /> : ""}
                       {menuItem.label === "Drag and Drop" ? <DragIndicatorIcon/> : ""}
+                      {menuItem.label === "Calendar" ? <CalendarMonthIcon/> : ""}
                       {menuItem.label === "Kanban Board" ? <ViewKanbanIcon/> : ""}
                     </ListItemIcon>
                     <ListItemText

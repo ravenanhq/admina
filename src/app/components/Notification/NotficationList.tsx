@@ -4,6 +4,8 @@ import {
   ListItemIcon,
   ListItemText,
   Popover,
+  useMediaQuery,
+   useTheme
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import notificationData from "../../../notifications.json";
@@ -18,6 +20,9 @@ enum NotificationStatus {
 const NotificationList = ({ anchorEl, handleClose, onNotificationChange }) => {
   const [notifications, setNotifications] = useState([]);
   const [showAllNotifications, setShowAllNotifications] = useState(false);
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
     setNotifications(notificationData);
@@ -36,6 +41,11 @@ const NotificationList = ({ anchorEl, handleClose, onNotificationChange }) => {
   const handleViewAllNotifications = () => {
     setShowAllNotifications(true);
   };
+
+  const handleClearAll = () => {
+    setNotifications([])
+    onNotificationChange(0);
+  }
 
   const handleItemClick = (id: number) => {
     const clickedNotification = notifications.find(
@@ -113,18 +123,24 @@ const NotificationList = ({ anchorEl, handleClose, onNotificationChange }) => {
                       handleItemClose={handleItemClose}
                     />
                   ))}
-            {!showAllNotifications && notifications.length !== 0 && (
+           
               <ListItem
                 button
-                onClick={handleViewAllNotifications}
                 alignItems="center"
-              >
+              > {!showAllNotifications && notifications.length !== 0 && (
                 <ListItemText
                   primary="View All Notifications"
-                  primaryTypographyProps={{ align: "center", color: "#1976d2" }}
+                  onClick={handleViewAllNotifications}
+                  primaryTypographyProps={{ align: "center", color: "#1976d2",fontSize: isMobile ? "15px" : "16px"}}
                 />
+                 )}
+                <ListItemText
+                primary="Clear All"
+                onClick={handleClearAll}
+                primaryTypographyProps={{ align: "center", color: "#1976d2",fontSize: isMobile ? "15px" : "16px" }}
+              />
               </ListItem>
-            )}
+           
           </>
         )}
       </List>
