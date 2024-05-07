@@ -194,68 +194,7 @@ export const KanbanBoard = () => {
 
   const renderListSection = (status) => {
     return (
-      <Grid item xs={12} sm={4} md={4} lg={4}>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography
-            gutterBottom
-            variant="h6"
-            component="div"
-            style={{
-              color: "#000",
-              textAlign: "left",
-              padding: "7px",
-              borderRadius: "7px",
-            }}
-          >
-            {status}
-          </Typography>
-          <MoreVertSharpIcon
-            style={{ marginTop: "10px", cursor: "pointer" }}
-            onClick={(e) => handleMenuClick(status, e)}
-          />
-          {menuOpen && (
-            <div
-              style={{
-                position: "absolute",
-                background: "#fff",
-                top: menuPosition.y,
-                left: menuPosition.x,
-                border: "1px solid #ccc",
-                borderRadius: "5px",
-                padding: "14px 33px",
-                transform: "translate(0px, 25px)",
-              }}
-            >
-              <div
-                onClick={handleAddItem}
-                style={{
-                  color: "#5d596c",
-                  lineHeight: "30px",
-                  cursor: "pointer",
-                }}
-              >
-                <AddOutlinedIcon
-                  style={{ position: "relative", top: "6px", right: "10px" }}
-                />
-                Add Item
-              </div>
-              <div
-                onClick={() => handleDelete(selectedStatus)}
-                style={{
-                  color: "#5d596c",
-                  lineHeight: "30px",
-                  cursor: "pointer",
-                }}
-              >
-                <DeleteOutlineOutlinedIcon
-                  style={{ position: "relative", top: "6px", right: "10px" }}
-                />
-                Delete
-              </div>
-            </div>
-          )}
-        </div>
-
+      <>
         {lists.map(
           (list, index) =>
             list.status === status && (
@@ -281,11 +220,19 @@ export const KanbanBoard = () => {
                   <div
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    <Typography gutterBottom variant="h5" component="div" 
-                    style={{fontSize: isMobile ? "18px" : ""}}>
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                      style={{ fontSize: isMobile ? "18px" : "" }}
+                    >
                       {list.taskId}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" style={{lineHeight: isMobile ? "22px" : "30px"}}>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      style={{ lineHeight: isMobile ? "22px" : "30px" }}
+                    >
                       {list.dueDate}
                     </Typography>
                   </div>
@@ -345,7 +292,7 @@ export const KanbanBoard = () => {
             }}
           ></div>
         )}
-      </Grid>
+      </>
     );
   };
 
@@ -357,12 +304,83 @@ export const KanbanBoard = () => {
       >
         Kanban Board
       </Typography>
+      
       <Grid container spacing={3} style={{ display: "flex" }}>
-        {StatusOption.map((status) =>
-          Array.from(new Set(lists.map((list) => list.status)))
-            .filter((uniqueStatus) => uniqueStatus === status)
-            .map((uniqueStatus) => renderListSection(uniqueStatus))
-        )}
+        {StatusOption.map((status) => {
+          return (
+            <Grid item xs={12} sm={4} md={4} lg={4} key={status}>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <Typography
+                  gutterBottom
+                  variant="h6"
+                  component="div"
+                  style={{
+                    color: "#000",
+                    textAlign: "left",
+                    padding: "7px",
+                    borderRadius: "7px",
+                  }}
+                >
+                  {status}
+                </Typography>
+                <MoreVertSharpIcon
+                  style={{ marginTop: "10px", cursor: "pointer" }}
+                  onClick={(e) => handleMenuClick(status, e)}
+                />
+                {menuOpen && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      background: "#fff",
+                      top: menuPosition.y,
+                      left: menuPosition.x,
+                      border: "1px solid #ccc",
+                      borderRadius: "5px",
+                      padding: "14px 33px",
+                      transform: "translate(0px, 25px)",
+                    }}
+                  >
+                    <div
+                      onClick={handleAddItem}
+                      style={{
+                        color: "#5d596c",
+                        lineHeight: "30px",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <AddOutlinedIcon
+                        style={{
+                          position: "relative",
+                          top: "6px",
+                          right: "10px",
+                        }}
+                      />
+                      Add Item
+                    </div>
+                    <div
+                      onClick={() => handleDelete(selectedStatus)}
+                      style={{
+                        color: "#5d596c",
+                        lineHeight: "30px",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <DeleteOutlineOutlinedIcon
+                        style={{
+                          position: "relative",
+                          top: "6px",
+                          right: "10px",
+                        }}
+                      />
+                      Delete
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div key={status}>{renderListSection(status)}</div>
+            </Grid>
+          );
+        })}
       </Grid>
       <AddTask
         open={showAddItem}
