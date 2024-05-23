@@ -8,7 +8,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { useNavbarContext } from "@/contexts/NavbarContext";
 import { Link, Typography, useMediaQuery } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faA } from "@fortawesome/free-solid-svg-icons";
@@ -29,6 +28,11 @@ import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import { useEffect } from "react";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
+
+interface SidebarProps {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 const drawerWidth = 240;
 
@@ -82,7 +86,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
-const Sidebar: React.FC = () => {
+const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
   const pathName = usePathname();
   const showHeader = !["/login", "/signup", "/forgot-password"].includes(
     pathName
@@ -130,9 +134,10 @@ const Sidebar: React.FC = () => {
     { label: "Subscription Plan", route: "/subscription-plan" },
     { label:"Drag and Drop", route:"/drag-and-drop"},
     { label:"Calendar", route:"/calendar"},
-    { label:"Kanban Board", route:"/kanban-board"}
+    { label:"Kanban Board", route:"/kanban-board"},
+    { label:"Advanced Kanban", route:"/advanced-kanban-board"},
   ];
-  const [open, setOpen] = React.useState(true);
+
   const isMobile = useMediaQuery("(max-width:1023px)");
   const [showEcommerceSubMenu, setShowEcommerceSubMenu] = React.useState(false);
   const [showComponentsSubMenu, setShowComponentsSubMenu] =
@@ -312,6 +317,7 @@ const Sidebar: React.FC = () => {
                       {menuItem.label === "Drag and Drop" ? <DragIndicatorIcon/> : ""}
                       {menuItem.label === "Calendar" ? <CalendarMonthIcon/> : ""}
                       {menuItem.label === "Kanban Board" ? <ViewKanbanIcon/> : ""}
+                      {menuItem.label === "Advanced Kanban" ? <ViewKanbanIcon/> : ""}
                     </ListItemIcon>
                     <ListItemText
                       primary={menuItem.label}
