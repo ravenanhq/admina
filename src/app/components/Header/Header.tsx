@@ -162,9 +162,10 @@ const Header: React.FC = () => {
     { label: "Import/Export", route: "/import-export-element" },
     { label: "CRUD Component", route: "/crud/list" },
     { label: "Subscription Plan", route: "/subscription-plan" },
-    { label: "Drag and Drop", route: "/drag-and-drop" },
-    { label: "Calendar", route: "/calendar" },
-    { label: "Kanban Board", route: "/kanban-board" },
+    { label:"Drag and Drop", route:"/drag-and-drop"},
+    { label:"Calendar", route:"/calendar"},
+    { label:"Kanban Board", route:"/kanban-board"},
+    { label:"Advance Kanban", route:"/advanced-kanban-board"},
   ];
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -314,8 +315,9 @@ const Header: React.FC = () => {
                   ) : (
                     ""
                   )}
-                  {menuItem.label === "Calendar" ? <CalendarMonthIcon /> : ""}
-                  {menuItem.label === "Kanban Board" ? <ViewKanbanIcon /> : ""}
+                  {menuItem.label === "Calendar" ? <CalendarMonthIcon/> : ""}
+                  {menuItem.label === "Kanban Board" ? <ViewKanbanIcon/> : ""}
+                  {menuItem.label === "Advance Kanban" ? <ViewKanbanIcon/> : ""}
                 </ListItemIcon>
                 <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
                 <ListItemIcon

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "column-1",
+    "title": "To do",
+    "order": 1,
+    "taskIds": ["7", "17", "22", "64", "74"]
+  },
+  {
+    "id": "column-2",
+    "title": "In progress",
+    "order": 2,
+    "taskIds": ["34", "43"]
+  },
+  {
+    "id": "column-3",
+    "title": "In Review",
+    "order": 3,
+    "taskIds": ["37"]
+  },
+  {
+    "id": "column-4",
+    "title": "Pending Deployment",
+    "order": 4,
+    "taskIds": ["57"]
+  },
+  {
+    "id": "column-5",
+    "title": "Ready for Test",
+    "order": 5,
+    "taskIds": ["87"]
+  },
+  {
+    "id": "column-6",
+    "title": "Done",
+    "order": 6,
+    "taskIds": ["54"]
+  }
+]
