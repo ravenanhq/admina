@@ -34,11 +34,10 @@ import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import { useEffect } from "react";
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
 import NotificationButton from "../Notification/Notification";
 import ProfileMenu from "../Profile/ProfileMenu";
-
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -145,6 +144,7 @@ const Header: React.FC = () => {
         { label: "Navbar", route: "/uielements/navbar" },
         { label: "General Elements", route: "/uielements/general-elements" },
         { label: "Date Picker", route: "/uielements/date-picker" },
+        { label: "Scroll Bar", route: "/uielements/scrollBar" },
       ],
     },
 
@@ -162,9 +162,9 @@ const Header: React.FC = () => {
     { label: "Import/Export", route: "/import-export-element" },
     { label: "CRUD Component", route: "/crud/list" },
     { label: "Subscription Plan", route: "/subscription-plan" },
-    { label:"Drag and Drop", route:"/drag-and-drop"},
-    { label:"Calendar", route:"/calendar"},
-    { label:"Kanban Board", route:"/kanban-board"},
+    { label: "Drag and Drop", route: "/drag-and-drop" },
+    { label: "Calendar", route: "/calendar" },
+    { label: "Kanban Board", route: "/kanban-board" },
   ];
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -314,8 +314,8 @@ const Header: React.FC = () => {
                   ) : (
                     ""
                   )}
-                  {menuItem.label === "Calendar" ? <CalendarMonthIcon/> : ""}
-                  {menuItem.label === "Kanban Board" ? <ViewKanbanIcon/> : ""}
+                  {menuItem.label === "Calendar" ? <CalendarMonthIcon /> : ""}
+                  {menuItem.label === "Kanban Board" ? <ViewKanbanIcon /> : ""}
                 </ListItemIcon>
                 <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
                 <ListItemIcon
@@ -514,6 +514,13 @@ const Header: React.FC = () => {
                               ) : (
                                 ""
                               )}
+                              {subMenuItem.label === "Scroll Bar" ? (
+                                <RadioButtonUncheckedIcon
+                                  style={{ fontSize: "14px" }}
+                                />
+                              ) : (
+                                ""
+                              )}
                             </ListItemIcon>
                             <ListItemText primary={subMenuItem.label} />
                           </ListItemButton>
@@ -638,7 +645,7 @@ const Header: React.FC = () => {
         <AppBar
           position="fixed"
           open={open}
-          sx={{ background: "rgba(255, 255, 255, 1)",zIndex:"1000" }}
+          sx={{ background: "rgba(255, 255, 255, 1)", zIndex: "1000" }}
         >
           <Toolbar>
             {isMobile ? (
