@@ -17,6 +17,7 @@
     "@fullcalendar/core": "^6.1.11",
     "@fullcalendar/daygrid": "^6.1.11",
     "@fullcalendar/react": "^6.1.11",
+    "@hello-pangea/dnd": "^16.6.0",
     "@mui/icons-material": "^5.14.14",
     "@mui/lab": "5.0.0-alpha.169",
     "@mui/material": "^5.14.14",
