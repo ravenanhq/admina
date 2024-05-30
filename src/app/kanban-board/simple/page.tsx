@@ -1,10 +1,10 @@
 import React from "react";
-import AdvancedKanbanBoard from "../components/AdvancedKanbanBoard/AdvancedKanbanBoard";
+import { KanbanBoard } from "../../components/KanbanBoard/KanbanBoard";
 
 const KanbanBoardPage = () => {
   return (
     <>
-    <AdvancedKanbanBoard />   
+      <KanbanBoard></KanbanBoard>
     </>
   );
 };

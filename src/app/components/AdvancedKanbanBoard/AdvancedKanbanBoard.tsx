@@ -280,7 +280,7 @@ const AdvancedKanbanBoard: React.FC = () => {
         variant="h4"
         sx={{ fontSize: "20px", fontWeight: "700", margin: "10px 0" }}
       >
-        Advanced Kanban Board
+        Kanban Board with Collapse
       </Typography>
       <div
         style={{
