@@ -17,17 +17,17 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import ImportExportIcon from "@mui/icons-material/ImportExport";
 import { usePathname } from "next/navigation";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import ListAltIcon from '@mui/icons-material/ListAlt';
-import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
-import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import { useEffect } from "react";
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
 
 interface SidebarProps {
   open: boolean;
@@ -69,12 +69,10 @@ const Drawer = styled(MuiDrawer, {
   ...(open && {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
-    
   }),
   ...(!open && {
     ...closedMixin(theme),
     "& .MuiDrawer-paper": closedMixin(theme),
-
   }),
 }));
 
@@ -115,6 +113,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
         { label: "Navbar", route: "/uielements/navbar" },
         { label: "General Elements", route: "/uielements/general-elements" },
         { label: "Date Picker", route: "/uielements/date-picker" },
+        { label: "Avatar", route: "/uielements/avatar" },
       ],
     },
 
@@ -132,10 +131,10 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
     { label: "Import/Export", route: "/import-export-element" },
     { label: "CRUD Component", route: "/crud/list" },
     { label: "Subscription Plan", route: "/subscription-plan" },
-    { label:"Drag and Drop", route:"/drag-and-drop"},
-    { label:"Calendar", route:"/calendar"},
-    { label:"Kanban Board", route:"/kanban-board"},
-    { label:"Advanced Kanban", route:"/advanced-kanban-board"},
+    { label: "Drag and Drop", route: "/drag-and-drop" },
+    { label: "Calendar", route: "/calendar" },
+    { label: "Kanban Board", route: "/kanban-board" },
+    { label: "Advanced Kanban", route: "/advanced-kanban-board" },
   ];
 
   const isMobile = useMediaQuery("(max-width:1023px)");
@@ -179,80 +178,90 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
 
   useEffect(() => {
     const isEcommerceSubMenuOpen = menuItems
-      .find(item => item.label === 'Ecommerce')
-      ?.submenu?.some(submenu => submenu.route === pathName);
+      .find((item) => item.label === "Ecommerce")
+      ?.submenu?.some((submenu) => submenu.route === pathName);
 
     setShowEcommerceSubMenu(!!isEcommerceSubMenuOpen);
 
     const isComponentsSubMenuOpen = menuItems
-      .find(item => item.label === 'Components')
-      ?.submenu?.some(submenu => submenu.route === pathName);
+      .find((item) => item.label === "Components")
+      ?.submenu?.some((submenu) => submenu.route === pathName);
 
     setShowComponentsSubMenu(!!isComponentsSubMenuOpen);
-  }, [pathName]); 
+  }, [pathName]);
 
   return (
     <>
       {!isMobile && showHeader ? (
-        <Drawer variant="permanent" open={open} onClose={handleDrawerToggle} className="sidebarDrawer">
-         
-            <DrawerHeader>
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
+        <Drawer
+          variant="permanent"
+          open={open}
+          onClose={handleDrawerToggle}
+          className="sidebarDrawer"
+        >
+          <DrawerHeader>
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : "auto",
+                justifyContent: "center",
+              }}
+            >
+              <FontAwesomeIcon
+                icon={faA}
+                size="lg"
+                style={{
+                  fontSize: "24px",
+                  marginLeft: "15px",
+                  paddingTop: "0px",
+                  color: "#007bff",
+                  marginTop: "-3px",
                 }}
-              >
-                <FontAwesomeIcon
-                  icon={faA}
-                  size="lg"
-                  style={{fontSize:"24px",marginLeft: "15px", paddingTop: "0px", color:"#007bff",marginTop:"-3px"}}
+              />
+            </ListItemIcon>
+            <ListItemText
+              sx={{
+                opacity: open ? 1 : 0,
+                marginLeft: "1px",
+              }}
+              className="headerLogo"
+            >
+              Admina
+            </ListItemText>
+            <div style={{ cursor: "pointer" }}>
+              {open ? (
+                <KeyboardArrowLeftIcon
+                  onClick={handleMenuHide}
+                  style={{
+                    background: "#000",
+                    color: "#fff",
+                    borderRadius: "25px",
+                    position: "relative",
+                    right: "-18px",
+                    fontSize: "20px",
+                  }}
                 />
-              </ListItemIcon>
-              <ListItemText
-                sx={{
-                  opacity: open ? 1 : 0,
-                  marginLeft: "1px",
-                }}
-                className="headerLogo"
-              >
-                Admina
-              </ListItemText>
-              <div style={{ cursor: "pointer" }}>
-                {open ? (
-                  <KeyboardArrowLeftIcon
-                    onClick={handleMenuHide}
-                    style={{
-                      background: "#000",
-                      color: "#fff",
-                      borderRadius: "25px",
-                      position: "relative",
-                      right: "-18px",
-                      fontSize:"20px"
-                    }}
-                  />
-                ) : (
-                  <KeyboardArrowRightIcon
-                    style={{
-                      background: "#000",
-                      color: "#fff",
-                      borderRadius: "25px",
-                      position: "relative",
-                      left: "14px",
-                      fontSize:"20px"
-                    }}
-                    onClick={handleMenuOpen}
-                  />
-                )}
-              </div>
-            </DrawerHeader>
-            <Divider />
-            <List
+              ) : (
+                <KeyboardArrowRightIcon
+                  style={{
+                    background: "#000",
+                    color: "#fff",
+                    borderRadius: "25px",
+                    position: "relative",
+                    left: "14px",
+                    fontSize: "20px",
+                  }}
+                  onClick={handleMenuOpen}
+                />
+              )}
+            </div>
+          </DrawerHeader>
+          <Divider />
+          <List
             sx={{
               paddingTop: "0px",
-              overflowY:"auto",
-              overflowX:"hidden",
+              overflowY: "auto",
+              overflowX: "hidden",
               "&::-webkit-scrollbar": {
                 width: "8px",
               },
@@ -272,18 +281,20 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
               <ListItem
                 key={menuItem.label}
                 disablePadding
-                sx={{ display: "block",
-         }}
+                sx={{ display: "block" }}
               >
                 <Link
                   href={menuItem.route}
                   className={
                     menuItem.route === pathName ||
-                    (menuItem.submenu && menuItem.submenu.some(submenu => submenu.route === pathName))
+                    (menuItem.submenu &&
+                      menuItem.submenu.some(
+                        (submenu) => submenu.route === pathName
+                      ))
                       ? "activeMenu"
                       : "sideMenuLink"
                   }
-                  style={{ textDecoration: "none",  }}
+                  style={{ textDecoration: "none" }}
                 >
                   <ListItemButton
                     sx={{
@@ -305,19 +316,55 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
                         minWidth: 0,
                         mr: open ? 3 : "auto",
                         justifyContent: "center",
-                        color:menuItem.route === pathName ? "#fff" : ""
+                        color: menuItem.route === pathName ? "#fff" : "",
                       }}
                     >
                       {menuItem.label === "Dashboard" ? <DashboardIcon /> : ""}
-                      {menuItem.label === "Components" ? <GridViewOutlinedIcon /> : ""}
-                      {menuItem.label === "Ecommerce" ? <ShoppingCartCheckoutIcon /> : ""}
-                      {menuItem.label === "Import/Export" ? <ImportExportIcon /> : ""}
-                      {menuItem.label === "CRUD Component" ? <ListAltIcon /> : ""}
-                      {menuItem.label === "Subscription Plan" ? <ThumbUpAltIcon /> : ""}
-                      {menuItem.label === "Drag and Drop" ? <DragIndicatorIcon/> : ""}
-                      {menuItem.label === "Calendar" ? <CalendarMonthIcon/> : ""}
-                      {menuItem.label === "Kanban Board" ? <ViewKanbanIcon/> : ""}
-                      {menuItem.label === "Advanced Kanban" ? <ViewKanbanIcon/> : ""}
+                      {menuItem.label === "Components" ? (
+                        <GridViewOutlinedIcon />
+                      ) : (
+                        ""
+                      )}
+                      {menuItem.label === "Ecommerce" ? (
+                        <ShoppingCartCheckoutIcon />
+                      ) : (
+                        ""
+                      )}
+                      {menuItem.label === "Import/Export" ? (
+                        <ImportExportIcon />
+                      ) : (
+                        ""
+                      )}
+                      {menuItem.label === "CRUD Component" ? (
+                        <ListAltIcon />
+                      ) : (
+                        ""
+                      )}
+                      {menuItem.label === "Subscription Plan" ? (
+                        <ThumbUpAltIcon />
+                      ) : (
+                        ""
+                      )}
+                      {menuItem.label === "Drag and Drop" ? (
+                        <DragIndicatorIcon />
+                      ) : (
+                        ""
+                      )}
+                      {menuItem.label === "Calendar" ? (
+                        <CalendarMonthIcon />
+                      ) : (
+                        ""
+                      )}
+                      {menuItem.label === "Kanban Board" ? (
+                        <ViewKanbanIcon />
+                      ) : (
+                        ""
+                      )}
+                      {menuItem.label === "Advanced Kanban" ? (
+                        <ViewKanbanIcon />
+                      ) : (
+                        ""
+                      )}
                     </ListItemIcon>
                     <ListItemText
                       primary={menuItem.label}
@@ -332,13 +379,17 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
                     >
                       {menuItem.label === "Ecommerce" ? (
                         showEcommerceSubMenu ? (
-                          <ExpandLess sx={{
-                            display: !open ? "none"  : "visiable"
-                          }}/>
+                          <ExpandLess
+                            sx={{
+                              display: !open ? "none" : "visiable",
+                            }}
+                          />
                         ) : (
-                          <ExpandMore sx={{
-                            display: !open ? "none"  : "visiable"
-                          }}/>
+                          <ExpandMore
+                            sx={{
+                              display: !open ? "none" : "visiable",
+                            }}
+                          />
                         )
                       ) : null}
                     </ListItemIcon>
@@ -351,13 +402,17 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
                     >
                       {menuItem.label === "Components" ? (
                         showComponentsSubMenu ? (
-                          <ExpandLess sx={{
-                            display: !open ? "none"  : "visiable"
-                          }}/>
+                          <ExpandLess
+                            sx={{
+                              display: !open ? "none" : "visiable",
+                            }}
+                          />
                         ) : (
-                          <ExpandMore sx={{
-                            display: !open ? "none"  : "visiable"
-                          }}/>
+                          <ExpandMore
+                            sx={{
+                              display: !open ? "none" : "visiable",
+                            }}
+                          />
                         )
                       ) : null}
                     </ListItemIcon>
@@ -376,11 +431,14 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
                           <ListItem
                             key={subMenuItem.label}
                             disablePadding
-                            className= {subMenuItem.route === pathName ? "activemenu" : ""}
-                            sx={{ display: "block",
-                            background:subMenuItem.route === pathName 
-                            ? "#f4f4f5" : "",
-                          }}
+                            className={
+                              subMenuItem.route === pathName ? "activemenu" : ""
+                            }
+                            sx={{
+                              display: "block",
+                              background:
+                                subMenuItem.route === pathName ? "#f4f4f5" : "",
+                            }}
                           >
                             <Link
                               href={subMenuItem.route}
@@ -406,12 +464,14 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
                                     minWidth: 0,
                                     mr: open ? 3 : "auto",
                                     justifyContent: "center",
-                                    marginLeft:"5px"
+                                    marginLeft: "5px",
                                   }}
                                 >
                                   {/* Your icon rendering code */}
                                   {subMenuItem.label === "Forms" ? (
-                                    <RadioButtonUncheckedIcon style={{ fontSize: "14px" }} />
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
+                                    />
                                   ) : (
                                     ""
                                   )}
@@ -444,12 +504,16 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
                                     ""
                                   )}
                                   {subMenuItem.label === "Search" ? (
-                                    <RadioButtonUncheckedIcon style={{ fontSize: "14px"}} />
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
+                                    />
                                   ) : (
                                     ""
                                   )}
                                   {subMenuItem.label === "Signin" ? (
-                                    <RadioButtonUncheckedIcon style={{ fontSize: "14px" }} />
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
+                                    />
                                   ) : (
                                     ""
                                   )}
@@ -461,7 +525,9 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
                                     ""
                                   )}
                                   {subMenuItem.label === "Tables" ? (
-                                    <RadioButtonUncheckedIcon style={{ fontSize: "14px" }} />
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
+                                    />
                                   ) : (
                                     ""
                                   )}
@@ -528,13 +594,20 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
                                   ) : (
                                     ""
                                   )}
+                                  {subMenuItem.label === "Avatar" ? (
+                                    <RadioButtonUncheckedIcon
+                                      style={{ fontSize: "14px" }}
+                                    />
+                                  ) : (
+                                    ""
+                                  )}
                                 </ListItemIcon>
                                 <ListItemText primary={subMenuItem.label} />
                               </ListItemButton>
                             </Link>
                           </ListItem>
                           {subMenuItem.label === "Tables" && (
-                            <ListItem sx={{textAlign:"center"}}>
+                            <ListItem sx={{ textAlign: "center" }}>
                               <Typography
                                 variant="h6"
                                 sx={{
@@ -565,10 +638,11 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
                         <ListItem
                           key={subMenuItem.label}
                           disablePadding
-                          sx={{ display: "block",
-                          background:subMenuItem.route === pathName 
-                          ? "#f4f4f5" : "",
-                        }}
+                          sx={{
+                            display: "block",
+                            background:
+                              subMenuItem.route === pathName ? "#f4f4f5" : "",
+                          }}
                         >
                           <Link
                             href={subMenuItem.route}
@@ -589,7 +663,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
                                   minWidth: 0,
                                   mr: open ? 3 : "auto",
                                   justifyContent: "center",
-                                  marginLeft:"5px"
+                                  marginLeft: "5px",
                                 }}
                               >
                                 {subMenuItem.label === "Products" ? (

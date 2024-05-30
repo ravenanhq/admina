@@ -1,0 +1,16 @@
+.avatar-group {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.avatar {
+  transition: transform 0.2s ease, top 0.2s ease;
+  cursor: pointer;
+}
+
+.avatar:hover {
+  transform: scale(1.2);
+  top: -5px;
+  position: relative;
+  z-index: 20000;
+}
