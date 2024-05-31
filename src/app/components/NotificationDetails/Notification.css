@@ -1,0 +1,21 @@
+.notificationDataTable {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
+  .notificationDataTable {
+    width: 735px;
+  }
+}
+
+@media only screen and (width: 1180px) {
+  .notificationDataTable {
+    width: 888px;
+  }
+}
+
+@media only screen and (width: 1280px) {
+  .notificationDataTable {
+    width: 1000px;
+  }
+}

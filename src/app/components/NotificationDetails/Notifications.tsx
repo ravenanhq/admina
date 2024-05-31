@@ -47,7 +47,7 @@ const Notifications = () => {
     {
       field: "type",
       headerName: "Events",
-      width: 250,
+      width: 150,
       renderCell: (params) => (
         <div style={{ display: "flex", alignItems: "center" }}>
           <Badge
@@ -167,7 +167,10 @@ const Notifications = () => {
             }
           />
         </div>
-        <div style={{ width: "100%", backgroundColor: "#fff" }}>
+        <div
+          style={{ backgroundColor: "#fff" }}
+          className="notificationDataTable"
+        >
           <DataGrid
             rows={filteredRows}
             columns={columns}
