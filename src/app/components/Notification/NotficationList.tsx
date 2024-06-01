@@ -1,11 +1,12 @@
 import {
+  Link,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Popover,
   useMediaQuery,
-   useTheme
+  useTheme,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import notificationData from "../../../notifications.json";
@@ -19,8 +20,6 @@ enum NotificationStatus {
 
 const NotificationList = ({ anchorEl, handleClose, onNotificationChange }) => {
   const [notifications, setNotifications] = useState([]);
-  const [showAllNotifications, setShowAllNotifications] = useState(false);
-
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -38,14 +37,10 @@ const NotificationList = ({ anchorEl, handleClose, onNotificationChange }) => {
 
   const open = Boolean(anchorEl);
 
-  const handleViewAllNotifications = () => {
-    setShowAllNotifications(true);
-  };
-
   const handleClearAll = () => {
-    setNotifications([])
+    setNotifications([]);
     onNotificationChange(0);
-  }
+  };
 
   const handleItemClick = (id: number) => {
     const clickedNotification = notifications.find(
@@ -100,47 +95,42 @@ const NotificationList = ({ anchorEl, handleClose, onNotificationChange }) => {
           </ListItem>
         ) : (
           <>
-            {showAllNotifications
-              ? notifications
-                  .slice()
-                  .reverse()
-                  .map((notification) => (
-                    <NotificationItem
-                      key={notification.id}
-                      notification={notification}
-                      handleItemClick={handleItemClick}
-                      handleItemClose={handleItemClose}
-                    />
-                  ))
-              : notifications
-                  .slice(-4)
-                  .reverse()
-                  .map((notification) => (
-                    <NotificationItem
-                      key={notification.id}
-                      notification={notification}
-                      handleItemClick={handleItemClick}
-                      handleItemClose={handleItemClose}
-                    />
-                  ))}
-           
-              <ListItem
-                button
-                alignItems="center"
-              > {!showAllNotifications && notifications.length !== 0 && (
-                <ListItemText
-                  primary="View All Notifications"
-                  onClick={handleViewAllNotifications}
-                  primaryTypographyProps={{ align: "center", color: "#1976d2",fontSize: isMobile ? "15px" : "16px"}}
+            {notifications
+              .slice(-4)
+              .reverse()
+              .map((notification) => (
+                <NotificationItem
+                  key={notification.id}
+                  notification={notification}
+                  handleItemClick={handleItemClick}
+                  handleItemClose={handleItemClose}
                 />
-                 )}
-                <ListItemText
+              ))}
+
+            <ListItem button alignItems="center">
+              {" "}
+              {notifications.length !== 0 && (
+                <Link href="/notifications" style={{ textDecoration: "none" }}>
+                  <ListItemText
+                    primary="View All Notifications"
+                    primaryTypographyProps={{
+                      align: "center",
+                      color: "#1976d2",
+                      fontSize: isMobile ? "15px" : "16px",
+                    }}
+                  />
+                </Link>
+              )}
+              <ListItemText
                 primary="Clear All"
                 onClick={handleClearAll}
-                primaryTypographyProps={{ align: "center", color: "#1976d2",fontSize: isMobile ? "15px" : "16px" }}
+                primaryTypographyProps={{
+                  align: "center",
+                  color: "#1976d2",
+                  fontSize: isMobile ? "15px" : "16px",
+                }}
               />
-              </ListItem>
-           
+            </ListItem>
           </>
         )}
       </List>

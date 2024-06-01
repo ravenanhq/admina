@@ -34,11 +34,10 @@ import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import { useEffect } from "react";
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
 import NotificationButton from "../Notification/Notification";
 import ProfileMenu from "../Profile/ProfileMenu";
-
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -84,6 +83,7 @@ const Header: React.FC = () => {
   const [showEcommerceSubMenu, setShowEcommerceSubMenu] = React.useState(false);
   const [showComponentsSubMenu, setShowComponentsSubMenu] =
     React.useState(false);
+  const [showKanbanBoardSubMenu,setShowKanbanBoardSubMenu] = React.useState(false);
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -107,6 +107,7 @@ const Header: React.FC = () => {
   const handleEcommerceClick = () => {
     setShowEcommerceSubMenu(!showEcommerceSubMenu);
     setShowComponentsSubMenu(false);
+    setShowKanbanBoardSubMenu(false)
   };
 
   const handleSubMenuItemClick = (label: string) => {
@@ -116,6 +117,13 @@ const Header: React.FC = () => {
   const handleComponentsClick = () => {
     setShowComponentsSubMenu(!showComponentsSubMenu);
     setShowEcommerceSubMenu(false);
+    setShowKanbanBoardSubMenu(false);
+  };
+
+  const handleKanbanBoardClick = () => {
+    setShowKanbanBoardSubMenu(!showKanbanBoardSubMenu);
+    setShowEcommerceSubMenu(false);
+    setShowComponentsSubMenu(false);
   };
 
   const handleComponentsSubMenuItemClick = (label: string) => {
@@ -145,6 +153,7 @@ const Header: React.FC = () => {
         { label: "Navbar", route: "/uielements/navbar" },
         { label: "General Elements", route: "/uielements/general-elements" },
         { label: "Date Picker", route: "/uielements/date-picker" },
+        { label: "Avatar", route: "/uielements/avatar" },
       ],
     },
 
@@ -164,7 +173,14 @@ const Header: React.FC = () => {
     { label: "Subscription Plan", route: "/subscription-plan" },
     { label:"Drag and Drop", route:"/drag-and-drop"},
     { label:"Calendar", route:"/calendar"},
-    { label:"Kanban Board", route:"/kanban-board"},
+    {
+      label: "Kanban Boards",
+      submenu: [
+        { label: "Simple", route: "/kanban-board/simple" },
+        { label: "With Collapse", route: "/kanban-board/with-collapse" },
+        { label: "With Swimlane", route: "/kanban-board/with-swimlane" },
+      ],
+    },
   ];
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -195,6 +211,12 @@ const Header: React.FC = () => {
       ?.submenu?.some((submenu) => submenu.route === pathName);
 
     setShowComponentsSubMenu(!!isComponentsSubMenuOpen);
+
+    const isKanbanBoardSubMenuOpen = menuItems
+      .find((item) => item.label === "Kanban Boards")
+      ?.submenu?.some((submenu) => submenu.route === pathName);
+
+      setShowKanbanBoardSubMenu(!!isKanbanBoardSubMenuOpen);
   }, [pathName]);
 
   const list = () => (
@@ -277,6 +299,8 @@ const Header: React.FC = () => {
                     handleEcommerceClick();
                   } else if (menuItem.label === "Components") {
                     handleComponentsClick();
+                  } else if (menuItem.label === "Kanban Boards"){
+                    handleKanbanBoardClick();
                   }
                 }}
               >
@@ -315,7 +339,11 @@ const Header: React.FC = () => {
                     ""
                   )}
                   {menuItem.label === "Calendar" ? <CalendarMonthIcon/> : ""}
-                  {menuItem.label === "Kanban Board" ? <ViewKanbanIcon/> : ""}
+                  {menuItem.label === "Kanban Boards" ? (
+                    <ViewKanbanIcon />
+                  ) : (
+                    ""
+                  )}
                 </ListItemIcon>
                 <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
                 <ListItemIcon
@@ -342,6 +370,21 @@ const Header: React.FC = () => {
                 >
                   {menuItem.label === "Components" ? (
                     showComponentsSubMenu ? (
+                      <ExpandLess />
+                    ) : (
+                      <ExpandMore />
+                    )
+                  ) : null}
+                </ListItemIcon>
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    ml: "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {menuItem.label === "Kanban Boards" ? (
+                    showKanbanBoardSubMenu ? (
                       <ExpandLess />
                     ) : (
                       <ExpandMore />
@@ -514,6 +557,13 @@ const Header: React.FC = () => {
                               ) : (
                                 ""
                               )}
+                              {subMenuItem.label === "Avatar" ? (
+                                <RadioButtonUncheckedIcon
+                                  style={{ fontSize: "14px" }}
+                                />
+                              ) : (
+                                ""
+                              )}
                             </ListItemIcon>
                             <ListItemText primary={subMenuItem.label} />
                           </ListItemButton>
@@ -626,6 +676,71 @@ const Header: React.FC = () => {
                 </List>
               </Collapse>
             )}
+             {/* Nested List for Kanban Board Submenu */}
+             {menuItem.label === "Kanban Boards" && (
+              <Collapse in={showKanbanBoardSubMenu} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  {menuItem.submenu.map((subMenuItem) => (
+                    <ListItem
+                      key={subMenuItem.label}
+                      disablePadding
+                      sx={{
+                        display: "block",
+                        background:
+                          subMenuItem.route === pathName ? "#f4f4f5" : "",
+                      }}
+                    >
+                      <Link
+                        href={subMenuItem.route}
+                        style={{ textDecoration: "none", color: "inherit" }}
+                      >
+                        <ListItemButton
+                          sx={{
+                            minHeight: 48,
+                            justifyContent: open ? "initial" : "center",
+                            px: 2.5,
+                          }}
+                          onClick={() =>
+                            handleSubMenuItemClick(subMenuItem.label)
+                          }
+                        >
+                          <ListItemIcon
+                            sx={{
+                              minWidth: 0,
+                              mr: open ? 3 : "auto",
+                              justifyContent: "center",
+                            }}
+                          >
+                            {subMenuItem.label === "Simple" ? (
+                              <RadioButtonUncheckedIcon
+                                style={{ fontSize: "14px" }}
+                              />
+                            ) : (
+                              ""
+                            )}
+                            {subMenuItem.label === "With Collapse" ? (
+                              <RadioButtonUncheckedIcon
+                                style={{ fontSize: "14px" }}
+                              />
+                            ) : (
+                              ""
+                            )}
+                            {subMenuItem.label === "With Swimlane" ? (
+                              <RadioButtonUncheckedIcon
+                                style={{ fontSize: "14px" }}
+                              />
+                            ) : (
+                              ""
+                            )}
+                          </ListItemIcon>
+                          <ListItemText primary={subMenuItem.label} />
+                        </ListItemButton>
+                      </Link>
+                    </ListItem>
+                  ))}
+                </List>
+              </Collapse>
+            )}
           </ListItem>
         ))}
       </List>
@@ -638,7 +753,7 @@ const Header: React.FC = () => {
         <AppBar
           position="fixed"
           open={open}
-          sx={{ background: "rgba(255, 255, 255, 1)",zIndex:"1000" }}
+          sx={{ background: "rgba(255, 255, 255, 1)", zIndex: "1000" }}
         >
           <Toolbar>
             {isMobile ? (
