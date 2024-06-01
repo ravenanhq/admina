@@ -34,8 +34,8 @@ import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import { useEffect } from "react";
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
 import NotificationButton from "../Notification/Notification";
 import ProfileMenu from "../Profile/ProfileMenu";
 
@@ -153,6 +153,7 @@ const Header: React.FC = () => {
         { label: "Navbar", route: "/uielements/navbar" },
         { label: "General Elements", route: "/uielements/general-elements" },
         { label: "Date Picker", route: "/uielements/date-picker" },
+        { label: "Avatar", route: "/uielements/avatar" },
       ],
     },
 
@@ -556,6 +557,13 @@ const Header: React.FC = () => {
                               ) : (
                                 ""
                               )}
+                              {subMenuItem.label === "Avatar" ? (
+                                <RadioButtonUncheckedIcon
+                                  style={{ fontSize: "14px" }}
+                                />
+                              ) : (
+                                ""
+                              )}
                             </ListItemIcon>
                             <ListItemText primary={subMenuItem.label} />
                           </ListItemButton>
@@ -745,7 +753,7 @@ const Header: React.FC = () => {
         <AppBar
           position="fixed"
           open={open}
-          sx={{ background: "rgba(255, 255, 255, 1)",zIndex:"1000" }}
+          sx={{ background: "rgba(255, 255, 255, 1)", zIndex: "1000" }}
         >
           <Toolbar>
             {isMobile ? (
