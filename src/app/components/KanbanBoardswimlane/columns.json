@@ -1,0 +1,32 @@
+[
+  {
+    "id": "column1",
+    "title": "To do",
+    "order": 1
+  },
+  {
+    "id": "column2",
+    "title": "In progress",
+    "order": 2
+  },
+  {
+    "id": "column3",
+    "title": "In Review",
+    "order": 3
+  },
+  {
+    "id": "column4",
+    "title": "Pending Deployment",
+    "order": 4
+  },
+  {
+    "id": "column5",
+    "title": "Ready for Test",
+    "order": 5
+  },
+  {
+    "id": "column6",
+    "title": "Done",
+    "order": 6
+  }
+]

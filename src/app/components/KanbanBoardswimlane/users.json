@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "name": "Person 1",
+    "avatar": "/assets/images/avatar-1.png"
+  },
+  {
+    "id": "2",
+    "name": "Person 2",
+    "avatar": "/assets/images/avatar-2.png"
+  },
+  {
+    "id": "3",
+    "name": "Person 3",
+    "avatar": "/assets/images/avatar-3.png"
+  },
+  {
+    "id": "4",
+    "name": "Person 4",
+    "avatar": ""
+  }
+]
