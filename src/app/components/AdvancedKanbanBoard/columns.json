@@ -1,38 +1,32 @@
 [
   {
-    "id": "column-1",
+    "id": "column1",
     "title": "To do",
-    "order": 1,
-    "taskIds": ["7", "17", "22", "64", "74"]
+    "order": 1
   },
   {
-    "id": "column-2",
+    "id": "column2",
     "title": "In progress",
-    "order": 2,
-    "taskIds": ["34", "43"]
+    "order": 2
   },
   {
-    "id": "column-3",
+    "id": "column3",
     "title": "In Review",
-    "order": 3,
-    "taskIds": ["37"]
+    "order": 3
   },
   {
-    "id": "column-4",
+    "id": "column4",
     "title": "Pending Deployment",
-    "order": 4,
-    "taskIds": ["57"]
+    "order": 4
   },
   {
-    "id": "column-5",
+    "id": "column5",
     "title": "Ready for Test",
-    "order": 5,
-    "taskIds": ["87"]
+    "order": 5
   },
   {
-    "id": "column-6",
+    "id": "column6",
     "title": "Done",
-    "order": 6,
-    "taskIds": ["54"]
+    "order": 6
   }
 ]

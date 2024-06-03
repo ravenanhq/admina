@@ -55,7 +55,8 @@ const transformData = (
   const filteredTasks = tasks.filter(
     (task) =>
       task.title.toLowerCase().includes(query.toLowerCase()) ||
-      task.content.toLowerCase().includes(query.toLowerCase())
+      task.content.toLowerCase().includes(query.toLowerCase()) ||
+      task.id.toLowerCase().includes(query.toLowerCase())
   );
 
   filteredTasks.forEach((task) => {
@@ -94,7 +95,6 @@ const KanbanBoardWithSwimlane: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [newColumnDialogOpen, setNewColumnDialogOpen] = useState(false);
   const [newTaskDialogOpen, setNewTaskDialogOpen] = useState(false);
-  const [newTaskDetails, setNewTaskDetails] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [currentTask, setCurrentTask] = useState<Task | null>(null);
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -129,8 +129,7 @@ const KanbanBoardWithSwimlane: React.FC = () => {
     handleCloseNewColumnDialog();
   };
 
-  const handleOpenNewTaskDialog = (columnId: string) => {
-    setNewTaskDetails(columnId);
+  const handleOpenNewTaskDialog = () => {
     setNewTaskDialogOpen(true);
   };
 
@@ -240,12 +239,10 @@ const KanbanBoardWithSwimlane: React.FC = () => {
         (task) => task.id === updatedTask.id
       );
       if (taskIndex !== -1) {
-        // Update existing task
         const newTasks = [...prevTasks];
         newTasks[taskIndex] = updatedTask;
         return newTasks;
       } else {
-        // Add new task
         return [...prevTasks, updatedTask];
       }
     });
@@ -335,7 +332,7 @@ const KanbanBoardWithSwimlane: React.FC = () => {
             width: "100%",
             overflow: "auto",
             height: "auto",
-            maxHeight: "73vh",
+            maxHeight: "calc(100% - 120px)",
             backgroundColor: "#fff",
             marginTop: "10px",
           }}
@@ -379,7 +376,6 @@ const KanbanBoardWithSwimlane: React.FC = () => {
         open={newTaskDialogOpen}
         onClose={handleCloseNewTaskDialog}
         onSave={handleAddNewTask}
-        columnId={newTaskDetails}
         columns={columns}
         swimlanes={swimlanes}
       />

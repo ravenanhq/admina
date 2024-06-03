@@ -50,16 +50,19 @@ const EditTask: React.FC<EditTaskProps> = ({
   statuses,
 }) => {
   const [localTask, setLocalTask] = useState<Task | null>(task);
+  const [selectedAssignees, setSelectedAssignees] = useState<string[]>([]);
   const [errors, setErrors] = useState({
     title: "",
     content: "",
     status: "",
     priority: "",
-    assignees: "",
   });
 
   useEffect(() => {
-    setLocalTask(task);
+    if (task) {
+      setLocalTask(task);
+      setSelectedAssignees(task.assignees || []);
+    }
   }, [task]);
 
   const handleInputChange = (
@@ -74,9 +77,20 @@ const EditTask: React.FC<EditTaskProps> = ({
     }
   };
 
-  const handleAssigneeChange = (event: SelectChangeEvent<string[]>) => {
+  const handleAssigneeChange = (
+    event: SelectChangeEvent<string | string[]>
+  ) => {
+    const selectedValues = event.target.value || [];
+    setSelectedAssignees(
+      Array.isArray(selectedValues) ? selectedValues : [selectedValues]
+    );
     if (localTask) {
-      setLocalTask({ ...localTask, assignees: event.target.value as string[] });
+      setLocalTask({
+        ...localTask,
+        assignees: Array.isArray(selectedValues)
+          ? selectedValues
+          : [selectedValues],
+      });
     }
   };
 
@@ -93,9 +107,6 @@ const EditTask: React.FC<EditTaskProps> = ({
       content: localTask?.content ? "" : "Content is required",
       status: localTask?.status ? "" : "Status is required",
       priority: localTask?.priority ? "" : "Priority is required",
-      assignees: localTask?.assignees.length
-        ? ""
-        : "At least one assignee is required",
     };
     setErrors(newErrors);
     return !Object.values(newErrors).some((error) => error);
@@ -107,8 +118,26 @@ const EditTask: React.FC<EditTaskProps> = ({
     }
   };
 
+  const handleClose = () => {
+    setErrors({
+      title: "",
+      content: "",
+      status: "",
+      priority: "",
+    });
+    onClose();
+  };
+
+  const handleChipDelete = (value: string) => {
+    const updatedAssignees = selectedAssignees.filter((item) => item !== value);
+    setSelectedAssignees(updatedAssignees);
+    if (localTask) {
+      setLocalTask({ ...localTask, assignees: updatedAssignees });
+    }
+  };
+
   return (
-    <Drawer anchor="right" open={open} onClose={onClose}>
+    <Drawer anchor="right" open={open} onClose={handleClose}>
       <div style={{ width: 300, padding: 20 }}>
         <h2>Edit Task</h2>
         {localTask && (
@@ -132,6 +161,9 @@ const EditTask: React.FC<EditTaskProps> = ({
               onChange={handleInputChange}
               error={!!errors.content}
               helperText={errors.content}
+              multiline
+              rows={4}
+              maxRows={Infinity}
             />
             <FormControl fullWidth margin="normal" error={!!errors.status}>
               <InputLabel>Status</InputLabel>
@@ -141,9 +173,6 @@ const EditTask: React.FC<EditTaskProps> = ({
                 value={localTask.status}
                 onChange={handleSelectChange}
               >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
                 {statuses.map((status) => (
                   <MenuItem key={status.id} value={status.id}>
                     {status.title}
@@ -161,31 +190,39 @@ const EditTask: React.FC<EditTaskProps> = ({
                 value={localTask.priority}
                 onChange={handleSelectChange}
               >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
                 <MenuItem value="Low">Low</MenuItem>
                 <MenuItem value="Medium">Medium</MenuItem>
                 <MenuItem value="High">High</MenuItem>
+                <MenuItem value="Highest">Highest</MenuItem>
               </Select>
               <FormHelperText>{errors.priority}</FormHelperText>
             </FormControl>
-            <FormControl fullWidth margin="normal" error={!!errors.assignees}>
+            <FormControl fullWidth margin="normal">
               <InputLabel>Assignees</InputLabel>
               <Select
                 label="Assignees"
                 name="assignees"
                 multiple
-                value={localTask.assignees || []}
+                value={selectedAssignees || []}
                 onChange={handleAssigneeChange}
                 renderValue={(selected) => (
-                  <div>
+                  <div
+                    onClick={(e) => e.stopPropagation()}
+                    style={{ display: "flex", flexWrap: "wrap" }}
+                  >
                     {(selected as string[]).map((value) => (
                       <Chip
                         key={value}
+                        onDelete={(event) => {
+                          event.preventDefault();
+                          handleChipDelete(value);
+                        }}
                         label={
                           users.find((user) => user.id === value)?.name || value
                         }
+                        onMouseDown={(event) => {
+                          event.stopPropagation();
+                        }}
                       />
                     ))}
                   </div>
@@ -197,10 +234,9 @@ const EditTask: React.FC<EditTaskProps> = ({
                   </MenuItem>
                 ))}
               </Select>
-              <FormHelperText>{errors.assignees}</FormHelperText>
             </FormControl>
             <Button
-              onClick={onClose}
+              onClick={handleClose}
               style={{ marginTop: 20, marginRight: 10 }}
             >
               Cancel

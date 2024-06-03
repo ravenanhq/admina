@@ -174,43 +174,47 @@ const Task: React.FC<TaskProps> = ({ task, index, onDelete, onEdit }) => {
               <div
                 style={{ display: "flex", gap: "4px", alignItems: "center" }}
               >
-                <AvatarGroup>
-                  {task.assignees.map((assigneeId, index) => {
-                    const assignee = getAssigneeInfo(assigneeId);
-                    if (assignee) {
-                      return assignee.avatar ? (
-                        <Avatar
-                          key={index}
-                          alt={assignee.name}
-                          src={assignee.avatar}
-                          sx={{ width: 32, height: 32 }}
-                        />
-                      ) : (
-                        <Avatar
-                          key={index}
-                          alt={assignee.name}
-                          sx={{
-                            bgcolor: blue[500],
-                            width: 32,
-                            height: 32,
-                            fontSize: "16px",
-                          }}
-                        >
-                          {getAssigneeInitials(assignee.name)}
-                        </Avatar>
-                      );
-                    } else {
-                      return (
-                        <Avatar
-                          key={index}
-                          sx={{ bgcolor: blue[500], width: 32, height: 32 }}
-                        >
-                          ?
-                        </Avatar>
-                      );
-                    }
-                  })}
-                </AvatarGroup>
+                {task.assignees.length > 0 ? (
+                  <AvatarGroup>
+                    {task.assignees.map((assigneeId, index) => {
+                      const assignee = getAssigneeInfo(assigneeId);
+                      if (assignee) {
+                        return assignee.avatar ? (
+                          <Avatar
+                            key={index}
+                            alt={assignee.name}
+                            src={assignee.avatar}
+                            sx={{ width: 32, height: 32 }}
+                          />
+                        ) : (
+                          <Avatar
+                            key={index}
+                            alt={assignee.name}
+                            sx={{
+                              bgcolor: blue[500],
+                              width: 32,
+                              height: 32,
+                              fontSize: "16px",
+                            }}
+                          >
+                            {getAssigneeInitials(assignee.name)}
+                          </Avatar>
+                        );
+                      } else {
+                        return (
+                          <Avatar
+                            key={index}
+                            sx={{ bgcolor: blue[500], width: 32, height: 32 }}
+                          >
+                            ?
+                          </Avatar>
+                        );
+                      }
+                    })}
+                  </AvatarGroup>
+                ) : (
+                  <Chip label="Unassigned" variant="outlined" />
+                )}
               </div>
             </CardContent>
           </Card>

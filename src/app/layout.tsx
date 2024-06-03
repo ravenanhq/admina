@@ -1,6 +1,6 @@
 import * as React from "react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import "./globals.css";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/authOptions";
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: "MVP Theme",
 };
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export default async function RootLayout({
   children,
@@ -24,7 +24,7 @@ export default async function RootLayout({
 
   return (
     <html>
-      <body suppressHydrationWarning={true} className={inter.className} style={{backgroundColor:"#f5f5f5"}}>
+      <body suppressHydrationWarning={true} style={{backgroundColor:"#f5f5f5"}}>
         <Provider session={session}>
           <Dashboard children={children} />
         </Provider>

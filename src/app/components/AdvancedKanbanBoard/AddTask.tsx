@@ -28,6 +28,12 @@ interface Task {
   priority: string;
 }
 
+interface Column {
+  id: string;
+  title: string;
+  order: number;
+}
+
 interface Assignee {
   id: string;
   name: string;
@@ -36,7 +42,6 @@ interface Assignee {
 
 interface TaskError {
   content: string;
-  assignees: string;
   title: string;
   status: string;
   priority: string;
@@ -46,7 +51,7 @@ interface AddTaskProps {
   open: boolean;
   onClose: () => void;
   onSubmit: (task: Task) => void;
-  statuses: string[];
+  statuses: Column[];
 }
 
 const AddTask: React.FC<AddTaskProps> = ({
@@ -60,17 +65,17 @@ const AddTask: React.FC<AddTaskProps> = ({
     content: "",
     assignees: [],
     title: "",
-    status: statuses[0],
+    status: "column1",
     priority: "Low",
   };
 
   const [task, setTask] = useState<Task>(initialTaskState);
   const [assignees, setAssignees] = useState<Assignee[]>([]);
+  const [selectedAssignees, setSelectedAssignees] = useState<string[]>([]);
   const [errors, setErrors] = useState<TaskError>({
     title: "",
     content: "",
     status: "",
-    assignees: "",
     priority: "",
   });
 
@@ -84,7 +89,6 @@ const AddTask: React.FC<AddTaskProps> = ({
         title: "",
         content: "",
         status: "",
-        assignees: "",
         priority: "",
       });
     }
@@ -106,8 +110,6 @@ const AddTask: React.FC<AddTaskProps> = ({
     if (!task.title) validationErrors.title = "Title is required";
     if (!task.content) validationErrors.content = "Content is required";
     if (!task.status) validationErrors.status = "Status is required";
-    if (!task.assignees || task.assignees.length === 0)
-      validationErrors.assignees = "At least one assignee is required";
     if (!task.priority) validationErrors.priority = "Priority is required";
 
     if (Object.keys(validationErrors).length > 0) {
@@ -117,26 +119,39 @@ const AddTask: React.FC<AddTaskProps> = ({
 
     onSubmit(task);
     setTask(initialTaskState);
+    setSelectedAssignees([]);
     onClose();
   };
 
-  const handleAssigneeChange = (event: SelectChangeEvent<string[]>) => {
-    setTask((prevTask) => ({
-      ...prevTask,
-      assignees:
-        typeof event.target.value === "string"
-          ? event.target.value.split(",")
-          : (event.target.value as string[]),
-    }));
-
-    setErrors((prevErrors) => ({ ...prevErrors, assignees: "" }));
+  const handleAssigneeChange = (
+    event: SelectChangeEvent<string | string[]>
+  ) => {
+    const selectedValues = event.target.value || [];
+    setSelectedAssignees(
+      Array.isArray(selectedValues) ? selectedValues : [selectedValues]
+    );
+    if (task) {
+      setTask({
+        ...task,
+        assignees: Array.isArray(selectedValues)
+          ? selectedValues
+          : [selectedValues],
+      });
+    }
   };
 
   const handleSelectChange = (event: SelectChangeEvent<string>) => {
     const { name, value } = event.target;
     setTask((prevTask) => ({ ...prevTask, [name]: value }));
-
     setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
+  };
+
+  const handleChipDelete = (value: string) => {
+    const updatedAssignees = selectedAssignees.filter((item) => item !== value);
+    setSelectedAssignees(updatedAssignees);
+    if (task) {
+      setTask({ ...task, assignees: updatedAssignees });
+    }
   };
 
   return (
@@ -178,6 +193,9 @@ const AddTask: React.FC<AddTaskProps> = ({
           onChange={handleInputChange}
           error={!!errors.content}
           helperText={errors.content}
+          multiline
+          rows={6}
+          maxRows={10}
         />
         <FormControl fullWidth error={!!errors.status} margin="normal">
           <InputLabel id="demo-simple-select-label">Status</InputLabel>
@@ -188,12 +206,9 @@ const AddTask: React.FC<AddTaskProps> = ({
             value={task.status}
             onChange={handleSelectChange}
           >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
             {statuses.map((status) => (
-              <MenuItem key={status} value={status}>
-                {status}
+              <MenuItem key={status.id} value={status.id}>
+                {status.title}
               </MenuItem>
             ))}
           </Select>
@@ -208,46 +223,50 @@ const AddTask: React.FC<AddTaskProps> = ({
             value={task.priority}
             onChange={handleSelectChange}
           >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
             <MenuItem value="Low">Low</MenuItem>
             <MenuItem value="Medium">Medium</MenuItem>
             <MenuItem value="High">High</MenuItem>
+            <MenuItem value="Highest">Highest</MenuItem>
           </Select>
           <FormHelperText>{errors.priority}</FormHelperText>
         </FormControl>
-        <FormControl fullWidth error={!!errors.assignees} margin="normal">
-          <InputLabel id="Assignees">Assignees</InputLabel>
+        <FormControl fullWidth margin="normal">
+          <InputLabel>Assignees</InputLabel>
           <Select
-            multiple
             label="Assignees"
             name="assignees"
-            value={task.assignees}
+            multiple
+            value={selectedAssignees || []}
             onChange={handleAssigneeChange}
             renderValue={(selected) => (
-              <div>
+              <div
+                onClick={(e) => e.stopPropagation()}
+                style={{ display: "flex", flexWrap: "wrap" }}
+              >
                 {(selected as string[]).map((value) => (
                   <Chip
                     key={value}
+                    onDelete={(event) => {
+                      event.preventDefault();
+                      handleChipDelete(value);
+                    }}
                     label={
                       assignees.find((user) => user.id === value)?.name || value
                     }
+                    onMouseDown={(event) => {
+                      event.stopPropagation();
+                    }}
                   />
                 ))}
               </div>
             )}
           >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            {assignees.map((assignee) => (
-              <MenuItem key={assignee.id} value={assignee.id}>
-                {assignee.name}
+            {assignees.map((user) => (
+              <MenuItem key={user.id} value={user.id}>
+                {user.name}
               </MenuItem>
             ))}
           </Select>
-          <FormHelperText>{errors.assignees}</FormHelperText>
         </FormControl>
       </DialogContent>
       <DialogActions>
