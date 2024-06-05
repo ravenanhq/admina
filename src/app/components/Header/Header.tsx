@@ -40,11 +40,12 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
 import NotificationButton from "../Notification/Notification";
 import ProfileMenu from "../Profile/ProfileMenu";
+import CloseIcon from "@mui/icons-material/Close";
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -757,6 +758,17 @@ const Header: React.FC = () => {
     </Box>
   );
   const isMobile = useMediaQuery("(max-width:1023px)");
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState("");
+
+  const toggleSearch = () => {
+    setSearchOpen(!searchOpen);
+  };
+
+  const handleClose = () => {
+    setSearchOpen(false);
+    setQuery("");
+  };
   return (
     <>
       {showHeader && (
@@ -787,11 +799,63 @@ const Header: React.FC = () => {
                   flexGrow: 1,
                   left: "10px",
                   position: "relative",
+                  border: "none",
                 }}
               >
-                <IconButton>
-                  <SearchIcon sx={{ color: "rgba(0,0,0,.5)" }} />
-                </IconButton>
+                {!searchOpen && (
+                  <IconButton onClick={toggleSearch}>
+                    <SearchIcon
+                      sx={{
+                        color: "rgba(0,0,0,.5)",
+                        transition: "transform 0.3s",
+                      }}
+                      style={{ transform: open ? "scale(0)" : "scale(1)" }}
+                    />
+                  </IconButton>
+                )}
+                {searchOpen && (
+                  <TextField
+                    autoFocus={open}
+                    variant="outlined"
+                    placeholder="Search..."
+                    size="small"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <SearchIcon sx={{ color: "rgba(0,0,0,.5)" }} />
+                        </InputAdornment>
+                      ),
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          {searchOpen && (
+                            <IconButton onClick={handleClose}>
+                              <CloseIcon />
+                            </IconButton>
+                          )}
+                        </InputAdornment>
+                      ),
+                      style: {
+                        borderRadius: "20px",
+                        backgroundColor: "#FFF",
+                        transition: "width 0.3s",
+                      },
+                    }}
+                    sx={{
+                      width: searchOpen ? "80vw" : 0,
+                      marginLeft: 1,
+                      overflow: "hidden",
+                      transition: "width 0.3s",
+                      "& .MuiOutlinedInput-root": {
+                        "& fieldset": {
+                          border: "none", // Ensures no border is shown
+                        },
+                      },
+                    }}
+                    onBlur={() => setSearchOpen(false)} // Close the text box on blur
+                  />
+                )}
               </Box>
             ) : (
               <Box
@@ -830,21 +894,23 @@ const Header: React.FC = () => {
             )}
 
             {/* Box for the rest of the icons, aligned to the right */}
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <NotificationButton />
+            {!searchOpen && (
+              <Box sx={{ display: "flex", alignItems: "center" }}>
+                <NotificationButton />
 
-              <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
-                <Badge badgeContent={2} color="error">
-                  <MailOutlineIcon />
-                </Badge>
-              </IconButton>
+                <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
+                  <Badge badgeContent={2} color="error">
+                    <MailOutlineIcon />
+                  </Badge>
+                </IconButton>
 
-              <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
-                <SettingsOutlinedIcon />
-              </IconButton>
+                <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
+                  <SettingsOutlinedIcon />
+                </IconButton>
 
-              <ProfileMenu />
-            </Box>
+                <ProfileMenu />
+              </Box>
+            )}
 
             {isMobile && state.left ? (
               <SwipeableDrawer
