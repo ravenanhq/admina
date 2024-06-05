@@ -13,10 +13,17 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { Divider, Link, Typography, useMediaQuery } from "@mui/material";
+import {
+  Divider,
+  InputAdornment,
+  Link,
+  TextField,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import Badge from "@mui/material/Badge";
-import MailIcon from "@mui/icons-material/Mail";
-import SettingsIcon from "@mui/icons-material/Settings";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import SearchIcon from "@mui/icons-material/Search";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -52,6 +59,8 @@ const AppBar = styled(MuiAppBar, {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
+  boxShadow: "none",
+  borderBottom: "1px solid #ccc",
   ...(open && {
     marginLeft: drawerWidth,
     transition: theme.transitions.create(["width", "margin"], {
@@ -83,7 +92,8 @@ const Header: React.FC = () => {
   const [showEcommerceSubMenu, setShowEcommerceSubMenu] = React.useState(false);
   const [showComponentsSubMenu, setShowComponentsSubMenu] =
     React.useState(false);
-  const [showKanbanBoardSubMenu,setShowKanbanBoardSubMenu] = React.useState(false);
+  const [showKanbanBoardSubMenu, setShowKanbanBoardSubMenu] =
+    React.useState(false);
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -107,7 +117,7 @@ const Header: React.FC = () => {
   const handleEcommerceClick = () => {
     setShowEcommerceSubMenu(!showEcommerceSubMenu);
     setShowComponentsSubMenu(false);
-    setShowKanbanBoardSubMenu(false)
+    setShowKanbanBoardSubMenu(false);
   };
 
   const handleSubMenuItemClick = (label: string) => {
@@ -171,8 +181,8 @@ const Header: React.FC = () => {
     { label: "Import/Export", route: "/import-export-element" },
     { label: "CRUD Component", route: "/crud/list" },
     { label: "Subscription Plan", route: "/subscription-plan" },
-    { label:"Drag and Drop", route:"/drag-and-drop"},
-    { label:"Calendar", route:"/calendar"},
+    { label: "Drag and Drop", route: "/drag-and-drop" },
+    { label: "Calendar", route: "/calendar" },
     {
       label: "Kanban Boards",
       submenu: [
@@ -216,7 +226,7 @@ const Header: React.FC = () => {
       .find((item) => item.label === "Kanban Boards")
       ?.submenu?.some((submenu) => submenu.route === pathName);
 
-      setShowKanbanBoardSubMenu(!!isKanbanBoardSubMenuOpen);
+    setShowKanbanBoardSubMenu(!!isKanbanBoardSubMenuOpen);
   }, [pathName]);
 
   const list = () => (
@@ -299,7 +309,7 @@ const Header: React.FC = () => {
                     handleEcommerceClick();
                   } else if (menuItem.label === "Components") {
                     handleComponentsClick();
-                  } else if (menuItem.label === "Kanban Boards"){
+                  } else if (menuItem.label === "Kanban Boards") {
                     handleKanbanBoardClick();
                   }
                 }}
@@ -338,12 +348,8 @@ const Header: React.FC = () => {
                   ) : (
                     ""
                   )}
-                  {menuItem.label === "Calendar" ? <CalendarMonthIcon/> : ""}
-                  {menuItem.label === "Kanban Boards" ? (
-                    <ViewKanbanIcon />
-                  ) : (
-                    ""
-                  )}
+                  {menuItem.label === "Calendar" ? <CalendarMonthIcon /> : ""}
+                  {menuItem.label === "Kanban Boards" ? <ViewKanbanIcon /> : ""}
                 </ListItemIcon>
                 <ListItemText primary={menuItem.label} sx={{ ml: 2 }} />
                 <ListItemIcon
@@ -676,9 +682,13 @@ const Header: React.FC = () => {
                 </List>
               </Collapse>
             )}
-             {/* Nested List for Kanban Board Submenu */}
-             {menuItem.label === "Kanban Boards" && (
-              <Collapse in={showKanbanBoardSubMenu} timeout="auto" unmountOnExit>
+            {/* Nested List for Kanban Board Submenu */}
+            {menuItem.label === "Kanban Boards" && (
+              <Collapse
+                in={showKanbanBoardSubMenu}
+                timeout="auto"
+                unmountOnExit
+              >
                 <List component="div" disablePadding>
                   {menuItem.submenu.map((subMenuItem) => (
                     <ListItem
@@ -768,23 +778,69 @@ const Header: React.FC = () => {
               </>
             ) : null}
 
-            <Box
-              sx={{ marginLeft: "auto", display: "flex", alignItems: "center" }}
-            >
+            {/* Box for the search input with icon, aligned to the left */}
+            {isMobile ? (
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  flexGrow: 1,
+                  left: "10px",
+                  position: "relative",
+                }}
+              >
+                <IconButton>
+                  <SearchIcon sx={{ color: "rgba(0,0,0,.5)" }} />
+                </IconButton>
+              </Box>
+            ) : (
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  flexGrow: 1,
+                  left: "235px",
+                  position: "relative",
+                }}
+              >
+                <TextField
+                  variant="outlined"
+                  placeholder="Ctrl + K"
+                  size="small"
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon
+                          sx={{
+                            color: "rgba(0,0,0,.5)",
+                            width: "20px",
+                            height: "20px",
+                          }}
+                        />
+                      </InputAdornment>
+                    ),
+                    style: { borderRadius: "8px", backgroundColor: "#fff" },
+                  }}
+                  inputProps={{
+                    style: { padding: "6px 0", fontSize: "14px" }, // Reducing padding and font size
+                  }}
+                  sx={{ width: 200, marginLeft: 1 }}
+                />
+              </Box>
+            )}
+
+            {/* Box for the rest of the icons, aligned to the right */}
+            <Box sx={{ display: "flex", alignItems: "center" }}>
               <NotificationButton />
 
               <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
                 <Badge badgeContent={2} color="error">
-                  <MailIcon />
+                  <MailOutlineIcon />
                 </Badge>
               </IconButton>
 
               <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
-                <SettingsIcon />
-              </IconButton>
-
-              <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
-                <SearchIcon />
+                <SettingsOutlinedIcon />
               </IconButton>
 
               <ProfileMenu />
