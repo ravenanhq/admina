@@ -66,6 +66,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
   const handleDrawerToggle = () => {
     setOpen(false);
   };
+  
   const handleDraweropenToggle = () => {
     setOpen(true);
   };
