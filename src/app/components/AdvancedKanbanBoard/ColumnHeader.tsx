@@ -4,7 +4,7 @@ import {
   KeyboardArrowLeft as KeyboardArrowLeftIcon,
   KeyboardArrowRight as KeyboardArrowRightIcon,
 } from "@mui/icons-material";
-import { useKanbanContext } from "./KanbanContext";
+import { useKanbanContext } from "../KanbanBoardswimlane/KanbanContext";
 
 interface Column {
   id: string;
@@ -13,7 +13,7 @@ interface Column {
 }
 interface ColumnProps {
   columns: Column[];
-  onAddTask: () => void;
+  onAddTask: (columnId: string) => void;
 }
 
 const ColumnHeader: React.FC<ColumnProps> = ({ columns, onAddTask }) => {
@@ -87,7 +87,7 @@ const ColumnHeader: React.FC<ColumnProps> = ({ columns, onAddTask }) => {
                   padding: "4px",
                   display: selectedColumn ? "none" : "",
                 }}
-                onClick={() => onAddTask()}
+                onClick={() => onAddTask(column.id)}
               >
                 <AddIcon />
               </IconButton>

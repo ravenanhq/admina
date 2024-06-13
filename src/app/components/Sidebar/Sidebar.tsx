@@ -185,6 +185,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
     setOpen(false);
     setShowComponentsSubMenu(false);
     setShowEcommerceSubMenu(false);
+    setShowKanbanBoardSubMenu(false);
   };
 
   const handleMenuOpen = () => {
