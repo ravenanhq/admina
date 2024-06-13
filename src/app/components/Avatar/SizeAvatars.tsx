@@ -36,21 +36,25 @@ export default function SizeAvatars() {
               alt="Remy Sharp"
               sx={{ width: 40, height: 40 }}
               src="/assets/images/avatar-2.png"
+              className="avatarCircle"
             />
             <Avatar
               alt="Remy Sharp"
               src="/assets/images/avatar-2.png"
               sx={{ width: 50, height: 50 }}
+              className="avatarCircle"
             />
             <Avatar
               alt="Remy Sharp"
               src="/assets/images/avatar-2.png"
               sx={{ width: 60, height: 60 }}
+              className="avatarCircle"
             />
             <Avatar
               alt="Remy Sharp"
               src="/assets/images/avatar-2.png"
               sx={{ width: 70, height: 70 }}
+              className="avatarCircle"
             />
           </Stack>
         </CardContent>

@@ -16,10 +16,10 @@ export default function Avatar() {
       <h4 style={{ paddingTop: 30 }}>UI Elements / Avatar</h4>
       <div style={{ paddingTop: 10 }}>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
-          <Grid item xs={12} sm={6} md={6}>
+          <Grid item xs={12} sm={6} md={6} className="sizeAvatar">
             <SizeAvatars />
           </Grid>
-          <Grid item xs={12} sm={6} md={6}>
+          <Grid item xs={12} sm={6} md={6} className="sizeAvatar">
             <InitialAvatars />
           </Grid>
         </Grid>
