@@ -41,9 +41,7 @@ interface Assignee {
 
 const Task: React.FC<TaskProps> = ({ task, index, onDelete, onEdit }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [assignees, setAssignees] = useState<
-    { id: string; name: string; avatar: string }[]
-  >([]);
+  const [assignees, setAssignees] = useState<Assignee[]>([]);
 
   useEffect(() => {
     setAssignees(assigneesData);

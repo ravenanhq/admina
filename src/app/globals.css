@@ -198,3 +198,11 @@ header {
 .sidebar-open .advance-kanbanboard {
   max-width: 80vw;
 }
+
+.kanbanBoardAccordion .MuiAccordionSummary-content {
+  margin: 8px 0;
+}
+
+.kanbanBoardAccordion .MuiAccordionSummary-root.Mui-expanded {
+  min-height: 40px;
+}

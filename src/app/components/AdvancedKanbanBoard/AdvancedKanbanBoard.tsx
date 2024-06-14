@@ -1,14 +1,25 @@
 "use client";
 import Tasks from "./tasks.json";
 import Columns from "./columns.json";
-import { DragDropContext, DropResult } from "@hello-pangea/dnd";
+import { DragDropContext, DropResult, Droppable } from "@hello-pangea/dnd";
 import { useEffect, useState } from "react";
 import Column from "./Column";
-import { TextField, Button, Typography } from "@mui/material";
+import {
+  TextField,
+  Button,
+  Typography,
+  Box,
+  Snackbar,
+  IconButton,
+} from "@mui/material";
 import { generateRandomNumber } from "@/app/utils/KanbanBoardUtils";
 import NewColumn from "./AddColumn";
 import AddTask from "./AddTask";
 import EditTask from "./EditTask";
+import ColumnHeader from "./ColumnHeader";
+import Task from "./Task";
+import { useKanbanContext } from "../KanbanBoardswimlane/KanbanContext";
+import CloseIcon from "@mui/icons-material/Close";
 
 interface Task {
   id: string;
@@ -20,73 +31,69 @@ interface Task {
   project: string;
 }
 
-interface ColumnType {
+interface Column {
   id: string;
   title: string;
-  taskIds: string[];
+  order: number;
 }
 
-interface Data {
-  tasks: {
-    [key: string]: Task;
-  };
-  columns: {
-    [key: string]: ColumnType;
-  };
-  columnOrder: string[];
+interface TasksByColumn {
+  [key: string]: Task[];
 }
 
-const AdvancedKanbanBoard: React.FC = () => {
-  const [data, setData] = useState<Data>({
-    tasks: {},
-    columns: {},
-    columnOrder: [],
+const groupAndFilterTasksByColumn = (
+  tasks: Task[],
+  columns: Column[],
+  query: string
+): TasksByColumn => {
+  const tasksByColumn: TasksByColumn = {};
+
+  columns.forEach((column) => {
+    tasksByColumn[column.id] = [];
   });
 
+  tasks
+    .filter(
+      (task) =>
+        !query ||
+        task.title.toLowerCase().includes(query.toLowerCase()) ||
+        task.content.toLowerCase().includes(query.toLowerCase()) ||
+        task.id.toLowerCase().includes(query.toLowerCase())
+    )
+    .forEach((task) => {
+      if (tasksByColumn[task.status]) {
+        tasksByColumn[task.status].push(task);
+      } else {
+        console.error(
+          `Task with ID ${task.id} has invalid status: ${task.status}`
+        );
+      }
+    });
+
+  return tasksByColumn;
+};
+
+const AdvancedKanbanBoard: React.FC = () => {
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [columns, setColumns] = useState<Column[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [currentTask, setCurrentTask] = useState<Task | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [newColumnDialogOpen, setNewColumnDialogOpen] = useState(false);
   const [taskFormOpen, setTaskFormOpen] = useState(false);
+  const [taskData, setTaskData] = useState<TasksByColumn>({});
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const { highlightedColumns } = useKanbanContext();
 
   useEffect(() => {
-    const fetchTasks = async () => {
-      try {
-        const jsonData = Tasks;
-        const tasks = jsonData.reduce((acc, task) => {
-          acc[task.id] = task;
-          return acc;
-        }, {});
-        setData((prevState) => ({
-          ...prevState,
-          tasks,
-        }));
-      } catch (error) {
-        console.error("Error fetching tasks:", error);
-      }
-    };
-
-    const fetchColumns = async () => {
-      try {
-        const jsonData = Columns;
-        const columns = jsonData.reduce((acc, column) => {
-          acc[column.id] = column;
-          return acc;
-        }, {});
-        const columnOrder = jsonData.map((column) => column.id);
-        setData((prevState) => ({
-          ...prevState,
-          columns,
-          columnOrder,
-        }));
-      } catch (error) {
-        console.error("Error fetching columns:", error);
-      }
-    };
-
-    fetchTasks();
-    fetchColumns();
+    setTasks(Tasks);
+    setColumns(Columns);
   }, []);
+
+  useEffect(() => {
+    setTaskData(groupAndFilterTasksByColumn(tasks, columns, searchQuery));
+  }, [tasks, columns, searchQuery]);
 
   const onDragEnd = (result: DropResult) => {
     const { destination, source, draggableId } = result;
@@ -100,95 +107,46 @@ const AdvancedKanbanBoard: React.FC = () => {
     ) {
       return;
     }
-    const start = data.columns[source.droppableId];
-    const finish = data.columns[destination.droppableId];
-    if (start === finish) {
-      const newTaskIds = Array.from(start.taskIds);
+
+    const startColumn = taskData[source.droppableId];
+    const finishColumn = taskData[destination.droppableId];
+    const movedTask = startColumn[source.index];
+
+    if (startColumn === finishColumn) {
+      const newTaskIds = Array.from(startColumn);
       newTaskIds.splice(source.index, 1);
-      newTaskIds.splice(destination.index, 0, draggableId);
+      newTaskIds.splice(destination.index, 0, movedTask);
 
-      const newColumn = {
-        ...start,
-        taskIds: newTaskIds,
+      const newTaskData = {
+        ...taskData,
+        [source.droppableId]: newTaskIds,
       };
 
-      const newState = {
-        ...data,
-        columns: {
-          ...data.columns,
-          [newColumn.id]: newColumn,
-        },
+      setTaskData(newTaskData);
+    } else {
+      const startTaskIds = Array.from(startColumn);
+      startTaskIds.splice(source.index, 1);
+
+      const finishTaskIds = Array.from(finishColumn);
+      finishTaskIds.splice(destination.index, 0, movedTask);
+
+      const newTaskData = {
+        ...taskData,
+        [source.droppableId]: startTaskIds,
+        [destination.droppableId]: finishTaskIds,
       };
-      setData(newState);
-      return;
+
+      setTaskData(newTaskData);
+
+      const updatedTasks = tasks.map((task) => {
+        if (task.id === draggableId) {
+          return { ...task, status: destination.droppableId };
+        }
+        return task;
+      });
+
+      setTasks(updatedTasks);
     }
-    const startTaskIds = Array.from(start.taskIds);
-    startTaskIds.splice(source.index, 1);
-    const newStart = {
-      ...start,
-      taskIds: startTaskIds,
-    };
-    const finishTaskIds = Array.from(finish.taskIds);
-    finishTaskIds.splice(destination.index, 0, draggableId);
-    const newFinish = {
-      ...finish,
-      taskIds: finishTaskIds,
-    };
-    const newState = {
-      ...data,
-      columns: {
-        ...data.columns,
-        [newStart.id]: newStart,
-        [newFinish.id]: newFinish,
-      },
-    };
-
-    setData(newState);
-  };
-
-  const addColumn = (title: string) => {
-    const newColumnId = String(generateRandomNumber());
-    const newColumn: ColumnType = {
-      id: newColumnId,
-      title,
-      taskIds: [],
-    };
-    const newState = {
-      ...data,
-      columns: {
-        ...data.columns,
-        [newColumnId]: newColumn,
-      },
-      columnOrder: [...data.columnOrder, newColumnId],
-    };
-
-    setData(newState);
-  };
-
-  const handleDeleteTask = (taskId: string) => {
-    const updatedTasks = { ...data.tasks };
-    delete updatedTasks[taskId];
-
-    const updatedColumns = { ...data.columns };
-    for (const columnId in updatedColumns) {
-      updatedColumns[columnId].taskIds = updatedColumns[
-        columnId
-      ].taskIds.filter((id) => id !== taskId);
-    }
-
-    const newState = {
-      ...data,
-      tasks: updatedTasks,
-      columns: updatedColumns,
-    };
-
-    setData(newState);
-  };
-
-  const handleEditTask = (taskId: string) => {
-    const taskToEdit = data.tasks[taskId];
-    setCurrentTask(taskToEdit);
-    setDrawerOpen(true);
   };
 
   const handleInputChange = (
@@ -202,43 +160,9 @@ const AdvancedKanbanBoard: React.FC = () => {
     }
   };
 
-  const onAddTask = (newTask: Task) => {
-    const targetColumnId = Object.keys(data.columns).find(
-      (columnId) => data.columns[columnId].title === newTask.status
-    );
-
-    if (targetColumnId) {
-      const updatedTasks = { ...data.tasks, [newTask.id]: newTask };
-      const updatedColumns = { ...data.columns };
-      updatedColumns[targetColumnId].taskIds.push(newTask.id);
-
-      const newState = {
-        ...data,
-        tasks: updatedTasks,
-        columns: updatedColumns,
-      };
-
-      setData(newState);
-    } else {
-      console.error("No matching column found for status:", newTask.status);
-    }
-  };
-
   const handleDrawerClose = () => {
     setDrawerOpen(false);
     setCurrentTask(null);
-  };
-
-  const handleSaveTask = (updatedTask: Task) => {
-    const updatedTasks = {
-      ...data.tasks,
-      [updatedTask.id]: updatedTask,
-    };
-    setData((prevState) => ({
-      ...prevState,
-      tasks: updatedTasks,
-    }));
-    handleDrawerClose();
   };
 
   const handleOpenNewColumnDialog = () => {
@@ -250,7 +174,12 @@ const AdvancedKanbanBoard: React.FC = () => {
   };
 
   const handleSaveNewColumn = (title: string) => {
-    addColumn(title);
+    const newColumn: Column = {
+      id: `column${columns.length + 1}`,
+      title,
+      order: columns.length,
+    };
+    setColumns([...columns, newColumn]);
     handleCloseNewColumnDialog();
   };
 
@@ -263,8 +192,32 @@ const AdvancedKanbanBoard: React.FC = () => {
   };
 
   const handleTaskFormSubmit = (newTask: Task) => {
-    onAddTask(newTask);
+    newTask.id = generateRandomNumber().toString();
+    setTasks([...tasks, newTask]);
     handleTaskFormClose();
+  };
+
+  const handleSaveTask = (editedTask: Task) => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === editedTask.id ? editedTask : task
+    );
+    setTasks(updatedTasks);
+    handleDrawerClose();
+  };
+
+  const handleEditTask = (taskId: string) => {
+    const taskToEdit = tasks.find((task) => task.id === taskId);
+    if (taskToEdit) {
+      setCurrentTask(taskToEdit);
+      setDrawerOpen(true);
+    }
+  };
+
+  const handleDeleteTask = (taskId: string) => {
+    const updatedTasks = tasks.filter((task) => task.id !== taskId);
+    setTasks(updatedTasks);
+    setSuccessMessage("Deleted successfully!");
+    setOpenSnackbar(true);
   };
 
   return (
@@ -280,7 +233,7 @@ const AdvancedKanbanBoard: React.FC = () => {
         variant="h4"
         sx={{ fontSize: "20px", fontWeight: "700", margin: "10px 0" }}
       >
-        Advanced Kanban Board
+        Kanban Board with Collapse
       </Typography>
       <div
         style={{
@@ -309,55 +262,122 @@ const AdvancedKanbanBoard: React.FC = () => {
           Add Status
         </Button>
       </div>
-      <div style={{ width: "100%", overflow: "hidden" }}>
-        <DragDropContext onDragEnd={onDragEnd}>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          gridTemplateColumns: "10fr",
+          alignItems: "flex-start",
+          columnGap: "1rem",
+          display: "grid",
+          marginTop: "1px",
+          overflow: "hidden",
+          rowGap: "1rem",
+        }}
+      >
+        <Box
+          overflow="auto"
+          style={{
+            width: "100%",
+            overflow: "auto",
+            height: "auto",
+            maxHeight: "calc(100% - 120px)",
+            backgroundColor: "#fff",
+            marginTop: "10px",
+          }}
+        >
+          <ColumnHeader columns={columns} onAddTask={handleAddTask} />
           <div
-            className="advance-kanbanboard"
             style={{
-              display: "flex",
-              width: "88vw",
-              overflow: "auto",
-              height: "auto",
-              maxHeight: "75vh",
-              margin: "auto",
+              borderRadius: "4px",
+              transition: "all .1s linear",
+              height: "100%",
+              gap: "10px",
+              boxShadow: "none",
+              backgroundColor: "#fff",
             }}
           >
-            {data.columnOrder.map((columnId) => {
-              const column = data.columns[columnId];
-              const tasks = column.taskIds.map((taskId) => data.tasks[taskId]);
-
-              const filteredTasks = tasks.filter(
-                (task) =>
-                  task.content
-                    .toLowerCase()
-                    .includes(searchQuery.toLowerCase()) ||
-                  task.assignees.some((assignee) =>
-                    assignee.toLowerCase().includes(searchQuery.toLowerCase())
-                  ) ||
-                  task.id.toLowerCase().includes(searchQuery.toLowerCase())
-              );
-
-              return (
-                <Column
-                  key={column.id}
-                  column={column}
-                  tasks={filteredTasks}
-                  onDeleteTask={handleDeleteTask}
-                  onEditTask={handleEditTask}
-                  handleAddTask={handleAddTask}
-                />
-              );
-            })}
+            <DragDropContext onDragEnd={onDragEnd}>
+              <div style={{ display: "flex", gap: "10px", padding: "0 8px" }}>
+                {columns.map((column, index) => {
+                  const tasksForColumn = taskData[column.id] || [];
+                  const selectedColumn = highlightedColumns.includes(column.id);
+                  return (
+                    <Droppable droppableId={column.id} key={column.id}>
+                      {(provided) => (
+                        <div
+                          {...provided.droppableProps}
+                          ref={provided.innerRef}
+                          style={{
+                            margin: "0 0 8px 0",
+                            border: "1px solid lightgrey",
+                            borderRadius: "4px",
+                            width: selectedColumn ? "50px" : "292px",
+                            minWidth: selectedColumn ? "50px" : "250px",
+                            padding: "8px 16px",
+                            minHeight: "400px",
+                            backgroundColor: "#d8dee9",
+                            flexBasis: selectedColumn ? "50px" : "292px",
+                            flexGrow: 0,
+                            flexShrink: 0,
+                            maxWidth: "292px",
+                            transition: "all .1s linear",
+                          }}
+                        >
+                          <div
+                            style={{
+                              display: selectedColumn ? "flex" : "none",
+                              textTransform: "uppercase",
+                              width: "100%",
+                              writingMode: "vertical-rl",
+                              padding: selectedColumn ? "8px 0" : "16px",
+                              position: "sticky",
+                              top: "0",
+                              zIndex: "1",
+                              alignItems: "center",
+                            }}
+                          >
+                            <Typography
+                              variant="h3"
+                              style={{ fontSize: "14px", padding: "16px" }}
+                            >
+                              {column.title}
+                            </Typography>
+                          </div>
+                          <div
+                            style={{
+                              listStyleType: "none",
+                              padding: 0,
+                              display: selectedColumn ? "none" : "",
+                            }}
+                          >
+                            {tasksForColumn.map((task, index) => (
+                              <Task
+                                key={task.id}
+                                task={task}
+                                index={index}
+                                onDelete={() => handleDeleteTask(task.id)}
+                                onEdit={() => handleEditTask(task.id)}
+                              />
+                            ))}
+                            {provided.placeholder}
+                          </div>
+                        </div>
+                      )}
+                    </Droppable>
+                  );
+                })}
+              </div>
+            </DragDropContext>
           </div>
-        </DragDropContext>
+        </Box>
       </div>
+
       <AddTask
         open={taskFormOpen}
         onClose={handleTaskFormClose}
         onSubmit={handleTaskFormSubmit}
-        statuses={Object.keys(data.columns).map(
-          (key) => data.columns[key].title
-        )}
+        statuses={columns}
       />
       <EditTask
         open={drawerOpen}
@@ -365,15 +385,31 @@ const AdvancedKanbanBoard: React.FC = () => {
         onClose={handleDrawerClose}
         onSave={handleSaveTask}
         onChange={handleInputChange}
-        statuses={Object.keys(data.columns).map((key) => ({
-          id: key,
-          title: data.columns[key].title,
+        statuses={columns.map((column) => ({
+          id: column.id,
+          title: column.title,
         }))}
       />
       <NewColumn
         open={newColumnDialogOpen}
         onClose={handleCloseNewColumnDialog}
         onSave={handleSaveNewColumn}
+      />
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={() => setOpenSnackbar(false)}
+        message={successMessage}
+        action={
+          <IconButton
+            size="small"
+            aria-label="close"
+            color="inherit"
+            onClick={() => setOpenSnackbar(false)}
+          >
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        }
       />
     </div>
   );

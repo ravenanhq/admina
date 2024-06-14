@@ -1,5 +1,5 @@
 import React from "react";
-import { KanbanBoard } from "../components/KanbanBoard/KanbanBoard";
+import { KanbanBoard } from "../../components/KanbanBoard/KanbanBoard";
 
 const KanbanBoardPage = () => {
   return (

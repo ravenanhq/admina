@@ -1,31 +1,33 @@
-import React, { useEffect, useState } from "react";
 import {
-  TextField,
   Button,
+  Chip,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
+  FormControl,
+  FormHelperText,
+  IconButton,
+  InputLabel,
   MenuItem,
   Select,
-  FormControl,
-  InputLabel,
-  Chip,
-  IconButton,
   SelectChangeEvent,
-  FormHelperText,
+  TextField,
 } from "@mui/material";
-import { generateRandomNumber } from "@/app/utils/KanbanBoardUtils";
+import { useEffect, useState } from "react";
 import assigneesData from "./users.json";
 import CloseIcon from "@mui/icons-material/Close";
+import { generateRandomNumber } from "@/app/utils/KanbanBoardUtils";
 
-interface Task {
+interface TaskDetails {
   id: string;
   content: string;
   assignees: string[];
   title: string;
   status: string;
+  swimlane: string;
   priority: string;
+  project: string;
 }
 
 interface Column {
@@ -34,42 +36,52 @@ interface Column {
   order: number;
 }
 
+interface ColumnTasks {
+  [columnId: string]: TaskDetails[];
+}
+
+interface Swimlane {
+  [swimlane: string]: ColumnTasks[];
+}
+
+interface AddTaskDialogProps {
+  open: boolean;
+  onClose: () => void;
+  onSave: (task: TaskDetails) => void;
+  columns: Column[];
+  swimlanes: Swimlane[];
+}
 interface Assignee {
   id: string;
   name: string;
   avatar: string;
 }
-
 interface TaskError {
   content: string;
   title: string;
   status: string;
   priority: string;
+  swimlane: string;
 }
-
-interface AddTaskProps {
-  open: boolean;
-  onClose: () => void;
-  onSubmit: (task: Task) => void;
-  statuses: Column[];
-}
-
-const AddTask: React.FC<AddTaskProps> = ({
+const AddTask: React.FC<AddTaskDialogProps> = ({
   open,
   onClose,
-  onSubmit,
-  statuses,
+  onSave,
+  columns,
+  swimlanes,
 }) => {
-  const initialTaskState: Task = {
+  const initialTaskState: TaskDetails = {
     id: String(generateRandomNumber()),
     content: "",
     assignees: [],
     title: "",
     status: "column1",
     priority: "Low",
+    swimlane: "",
+    project: "",
   };
 
-  const [task, setTask] = useState<Task>(initialTaskState);
+  const [task, setTask] = useState<TaskDetails>(initialTaskState);
   const [assignees, setAssignees] = useState<Assignee[]>([]);
   const [selectedAssignees, setSelectedAssignees] = useState<string[]>([]);
   const [errors, setErrors] = useState<TaskError>({
@@ -77,6 +89,7 @@ const AddTask: React.FC<AddTaskProps> = ({
     content: "",
     status: "",
     priority: "",
+    swimlane: "",
   });
 
   useEffect(() => {
@@ -90,6 +103,7 @@ const AddTask: React.FC<AddTaskProps> = ({
         content: "",
         status: "",
         priority: "",
+        swimlane: "",
       });
     }
   }, [open]);
@@ -111,13 +125,14 @@ const AddTask: React.FC<AddTaskProps> = ({
     if (!task.content) validationErrors.content = "Content is required";
     if (!task.status) validationErrors.status = "Status is required";
     if (!task.priority) validationErrors.priority = "Priority is required";
+    if (!task.swimlane) validationErrors.swimlane = "Swimlane is required";
 
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors as TaskError);
       return;
     }
 
-    onSubmit(task);
+    onSave(task);
     setTask(initialTaskState);
     setSelectedAssignees([]);
     onClose();
@@ -143,6 +158,7 @@ const AddTask: React.FC<AddTaskProps> = ({
   const handleSelectChange = (event: SelectChangeEvent<string>) => {
     const { name, value } = event.target;
     setTask((prevTask) => ({ ...prevTask, [name]: value }));
+
     setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
 
@@ -153,9 +169,8 @@ const AddTask: React.FC<AddTaskProps> = ({
       setTask({ ...task, assignees: updatedAssignees });
     }
   };
-
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
+    <Dialog open={open} onClose={onClose}>
       <DialogTitle>Add New Task</DialogTitle>
       <IconButton
         aria-label="close"
@@ -172,64 +187,30 @@ const AddTask: React.FC<AddTaskProps> = ({
       <DialogContent>
         <TextField
           autoFocus
-          margin="normal"
-          fullWidth
-          value={task.title}
+          margin="dense"
           name="title"
           label="Title"
+          fullWidth
+          value={task.title}
+          onChange={handleInputChange}
           error={!!errors.title}
           placeholder="Title"
           helperText={errors.title}
-          onChange={handleInputChange}
         />
         <TextField
-          autoFocus
+          margin="dense"
           label="Content"
           name="content"
           fullWidth
-          margin="normal"
-          placeholder="Content"
           value={task.content}
           onChange={handleInputChange}
           error={!!errors.content}
+          placeholder="Content"
           helperText={errors.content}
           multiline
           rows={6}
           maxRows={10}
         />
-        <FormControl fullWidth error={!!errors.status} margin="normal">
-          <InputLabel id="demo-simple-select-label">Status</InputLabel>
-          <Select
-            label="Status"
-            name="status"
-            fullWidth
-            value={task.status}
-            onChange={handleSelectChange}
-          >
-            {statuses.map((status) => (
-              <MenuItem key={status.id} value={status.id}>
-                {status.title}
-              </MenuItem>
-            ))}
-          </Select>
-          <FormHelperText>{errors.status}</FormHelperText>
-        </FormControl>
-        <FormControl fullWidth error={!!errors.priority} margin="normal">
-          <InputLabel id="Priority">Priority</InputLabel>
-          <Select
-            label="Priority"
-            name="priority"
-            fullWidth
-            value={task.priority}
-            onChange={handleSelectChange}
-          >
-            <MenuItem value="Low">Low</MenuItem>
-            <MenuItem value="Medium">Medium</MenuItem>
-            <MenuItem value="High">High</MenuItem>
-            <MenuItem value="Highest">Highest</MenuItem>
-          </Select>
-          <FormHelperText>{errors.priority}</FormHelperText>
-        </FormControl>
         <FormControl fullWidth margin="normal">
           <InputLabel>Assignees</InputLabel>
           <Select
@@ -268,9 +249,64 @@ const AddTask: React.FC<AddTaskProps> = ({
             ))}
           </Select>
         </FormControl>
+        <FormControl fullWidth error={!!errors.priority} margin="normal">
+          <InputLabel id="Priority">Priority</InputLabel>
+          <Select
+            label="Priority"
+            name="priority"
+            fullWidth
+            value={task.priority}
+            onChange={handleSelectChange}
+          >
+            <MenuItem value="Low">Low</MenuItem>
+            <MenuItem value="Medium">Medium</MenuItem>
+            <MenuItem value="High">High</MenuItem>
+            <MenuItem value="Highest">Highest</MenuItem>
+          </Select>
+          <FormHelperText>{errors.priority}</FormHelperText>
+        </FormControl>
+        <FormControl fullWidth error={!!errors.status} margin="normal">
+          <InputLabel id="demo-simple-select-label">Status</InputLabel>
+          <Select
+            label="Status"
+            name="status"
+            fullWidth
+            value={task.status}
+            onChange={handleSelectChange}
+          >
+            {columns.map((column) => (
+              <MenuItem key={column.id} value={column.id}>
+                {column.title}
+              </MenuItem>
+            ))}
+          </Select>
+          <FormHelperText>{errors.status}</FormHelperText>
+        </FormControl>
+        <FormControl fullWidth error={!!errors.swimlane} margin="normal">
+          <InputLabel id="Swimlane-select-label">Swimlane</InputLabel>
+          <Select
+            label="Swimlane"
+            name="swimlane"
+            fullWidth
+            value={task.swimlane}
+            onChange={handleSelectChange}
+          >
+            {swimlanes.map((swimlane, index) => {
+              const swimlaneName = Object.keys(swimlane)[0];
+              return (
+                <MenuItem key={index} value={swimlaneName}>
+                  {swimlaneName}
+                </MenuItem>
+              );
+            })}
+          </Select>
+          <FormHelperText>{errors.swimlane}</FormHelperText>
+        </FormControl>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={onClose} variant="outlined">
+          Cancel
+        </Button>
         <Button onClick={handleSubmit} variant="contained" color="primary">
           Add Task
         </Button>

@@ -161,9 +161,6 @@ const EditTask: React.FC<EditTaskProps> = ({
               onChange={handleInputChange}
               error={!!errors.content}
               helperText={errors.content}
-              multiline
-              rows={4}
-              maxRows={Infinity}
             />
             <FormControl fullWidth margin="normal" error={!!errors.status}>
               <InputLabel>Status</InputLabel>

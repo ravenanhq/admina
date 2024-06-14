@@ -1,22 +1,22 @@
-import React, { useState } from "react";
 import {
+  Button,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
-  TextField,
-  Button,
   IconButton,
+  TextField,
 } from "@mui/material";
+import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 
-interface NewColumnProps {
+interface NewStatusProps {
   open: boolean;
   onClose: () => void;
   onSave: (title: string) => void;
 }
 
-const NewColumn: React.FC<NewColumnProps> = ({ open, onClose, onSave }) => {
+const AddStatus: React.FC<NewStatusProps> = ({ open, onClose, onSave }) => {
   const [title, setTitle] = useState("");
   const [errors, setErrors] = useState<{ title: string }>({ title: "" });
 
@@ -32,6 +32,7 @@ const NewColumn: React.FC<NewColumnProps> = ({ open, onClose, onSave }) => {
     setErrors(errors);
     return isValid;
   };
+
   const handleClose = () => {
     setTitle("");
     setErrors({ title: "" });
@@ -45,7 +46,6 @@ const NewColumn: React.FC<NewColumnProps> = ({ open, onClose, onSave }) => {
       setErrors({ title: "" });
     }
   };
-
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
       <DialogTitle>Add New Status</DialogTitle>
@@ -66,6 +66,7 @@ const NewColumn: React.FC<NewColumnProps> = ({ open, onClose, onSave }) => {
           autoFocus
           margin="dense"
           label="Status Title"
+          name="status"
           fullWidth
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -83,4 +84,4 @@ const NewColumn: React.FC<NewColumnProps> = ({ open, onClose, onSave }) => {
   );
 };
 
-export default NewColumn;
+export default AddStatus;

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "name": "Kent Dodds",
+    "status": "busy",
+    "image": "/assets/images/avatar-1.png"
+  },
+  {
+    "id": "2",
+    "name": "Jed Watson",
+    "status": "offline",
+    "image": "/assets/images/avatar-2.png"
+  },
+  {
+    "id": "3",
+    "name": "Tim Neutkens",
+    "status": "online",
+    "image": "/assets/images/avatar-3.png"
+  },
+  {
+    "id": "4",
+    "name": "Jed Watson",
+    "status": "presentation",
+    "image": "/assets/images/avatar-4.png"
+  },
+  {
+    "id": "5",
+    "name": "Tim Neutkens",
+    "status": "away",
+    "image": "/assets/images/avatar-5.png"
+  }
+]

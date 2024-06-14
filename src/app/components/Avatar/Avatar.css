@@ -1,0 +1,41 @@
+.avatar-group {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.avatar {
+  transition: transform 0.2s ease, top 0.2s ease;
+  cursor: pointer;
+}
+
+.avatar:hover {
+  transform: scale(1.2);
+  top: -5px;
+  position: relative;
+  z-index: 20000;
+}
+
+.avatarCircle:not(:first-child) {
+  margin-left: 0.5rem;
+}
+
+.statusAvatar {
+  margin-left: 14px;
+}
+
+@media only screen and (max-width: 790px) and (min-width: 600px) {
+  .sizeAvatar {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .statusAvatar:last-child {
+    margin-top: 4px;
+  }
+
+  .statusAvatar:not(:first-child) {
+    margin-left: 4px !important;
+  }
+}
