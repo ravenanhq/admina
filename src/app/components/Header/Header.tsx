@@ -6,17 +6,20 @@ import {
   Badge,
   Box,
   IconButton,
+  InputAdornment,
+  TextField,
   Toolbar,
   styled,
   useMediaQuery,
 } from "@mui/material";
-import MailIcon from "@mui/icons-material/Mail";
-import SettingsIcon from "@mui/icons-material/Settings";
 import SearchIcon from "@mui/icons-material/Search";
 import { usePathname } from "next/navigation";
 import NotificationButton from "../Notification/Notification";
 import ProfileMenu from "../Profile/ProfileMenu";
 import CloseIcon from "@mui/icons-material/Close";
+import { useState } from "react";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -59,6 +62,17 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
   };
 
   const isMobile = useMediaQuery("(max-width:1023px)");
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState("");
+
+  const toggleSearch = () => {
+    setSearchOpen(!searchOpen);
+  };
+
+  const handleClose = () => {
+    setSearchOpen(false);
+    setQuery("");
+  };
 
   return (
     <>
@@ -100,13 +114,15 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
                         color: "rgba(0,0,0,.5)",
                         transition: "transform 0.3s",
                       }}
-                      style={{ transform: open ? "scale(0)" : "scale(1)" }}
+                      style={{
+                        transform: sidebarOpen ? "scale(0)" : "scale(1)",
+                      }}
                     />
                   </IconButton>
                 )}
                 {searchOpen && (
                   <TextField
-                    autoFocus={open}
+                    autoFocus={sidebarOpen}
                     variant="outlined"
                     placeholder="Search..."
                     size="small"
@@ -144,7 +160,7 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
                         },
                       },
                     }}
-                    onBlur={() => setSearchOpen(false)} // Close the text box on blur
+                    onBlur={() => setSearchOpen(false)}
                   />
                 )}
               </Box>
@@ -198,6 +214,10 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
                 <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
                   <SettingsOutlinedIcon />
                 </IconButton>
+
+                <ProfileMenu />
+              </Box>
+            )}
           </Toolbar>
         </AppBar>
       )}
