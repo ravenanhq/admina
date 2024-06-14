@@ -1,6 +1,6 @@
 import { Badge, IconButton } from "@mui/material";
 import { useState } from "react";
-import NotificationsIcon from "@mui/icons-material/Notifications";
+import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import NotificationList from "./NotficationList";
 
 const NotificationButton = () => {
@@ -22,7 +22,7 @@ const NotificationButton = () => {
         onClick={handleButtonClick}
       >
         <Badge badgeContent={notificationCount} color="error">
-          <NotificationsIcon />
+          <NotificationsOutlinedIcon />
         </Badge>
       </IconButton>
 
