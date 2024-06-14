@@ -4,7 +4,7 @@
     "content": "Lorem ipsum dolor sit amet",
     "assignees": ["1", "2"],
     "project": "project1",
-    "title": "test-column-1-7",
+    "title": "Lorem ipsum dolor sit amet",
     "swimlane": "Swimlane 1",
     "status": "column1",
     "priority": ""
@@ -15,7 +15,7 @@
     "assignees": ["2"],
     "project": "project2",
     "swimlane": "Swimlane 1",
-    "title": "test-column-2-17",
+    "title": "Lorem ipsum dolor sit amet",
     "status": "column2",
     "priority": ""
   },
@@ -25,7 +25,7 @@
     "assignees": [],
     "project": "project3",
     "swimlane": "Swimlane 1",
-    "title": "test-column-1-22",
+    "title": "Lorem ipsum dolor sit amet",
     "status": "column1",
     "priority": ""
   },
@@ -35,7 +35,7 @@
     "assignees": ["1"],
     "project": "project1",
     "swimlane": "Swimlane 2",
-    "title": "test2-column-2-34",
+    "title": "Lorem ipsum dolor sit amet",
     "status": "column2",
     "priority": ""
   },
@@ -45,7 +45,7 @@
     "assignees": ["3", "2"],
     "project": "project2",
     "swimlane": "Swimlane 1",
-    "title": "test-column-3-37",
+    "title": "Lorem ipsum dolor sit amet",
     "status": "column3",
     "priority": ""
   },
@@ -55,7 +55,7 @@
     "assignees": ["3"],
     "project": "project3",
     "swimlane": "Swimlane 2",
-    "title": "test2-column-2-43",
+    "title": "Lorem ipsum dolor sit amet",
     "status": "column2",
     "priority": ""
   },
@@ -65,7 +65,7 @@
     "assignees": [],
     "project": "project1",
     "swimlane": "Swimlane 1",
-    "title": "test-column-1-54",
+    "title": "Lorem ipsum dolor sit amet",
     "status": "column1",
     "priority": ""
   },
@@ -75,7 +75,7 @@
     "assignees": ["4"],
     "project": "project2",
     "swimlane": "Swimlane 2",
-    "title": "test2-column-5-57",
+    "title": "Lorem ipsum dolor sit amet",
     "status": "column5",
     "priority": ""
   },
@@ -85,7 +85,7 @@
     "assignees": ["2"],
     "project": "project3",
     "swimlane": "Swimlane 1",
-    "title": "test-column-6-64",
+    "title": "Lorem ipsum dolor sit amet",
     "status": "column6",
     "priority": ""
   },
@@ -95,7 +95,7 @@
     "assignees": ["3"],
     "project": "project1",
     "swimlane": "Swimlane 2",
-    "title": "test2-column-4-74",
+    "title": "Lorem ipsum dolor sit amet",
     "status": "column4",
     "priority": ""
   },
@@ -105,7 +105,7 @@
     "assignees": ["4"],
     "project": "project2",
     "swimlane": "Swimlane 2",
-    "title": "test2-column-1-87",
+    "title": "Lorem ipsum dolor sit amet",
     "status": "column1",
     "priority": ""
   }

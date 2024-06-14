@@ -5,7 +5,7 @@
     "assignees": ["1", "2"],
     "project": "project1",
     "title": "Lorem ipsum dolor sit amet",
-    "status": "column-1",
+    "status": "column1",
     "priority": ""
   },
   {
@@ -14,7 +14,7 @@
     "assignees": ["2"],
     "project": "project2",
     "title": "Lorem ipsum dolor sit amet",
-    "status": "column-2",
+    "status": "column2",
     "priority": ""
   },
   {
@@ -23,7 +23,7 @@
     "assignees": [],
     "project": "project3",
     "title": "Lorem ipsum dolor sit amet",
-    "status": "column-1",
+    "status": "column1",
     "priority": ""
   },
   {
@@ -32,7 +32,7 @@
     "assignees": ["1"],
     "project": "project1",
     "title": "Lorem ipsum dolor sit amet",
-    "status": "column-2",
+    "status": "column2",
     "priority": ""
   },
   {
@@ -41,7 +41,7 @@
     "assignees": ["3", "2"],
     "project": "project2",
     "title": "Lorem ipsum dolor sit amet",
-    "status": "column-3",
+    "status": "column3",
     "priority": ""
   },
   {
@@ -50,7 +50,7 @@
     "assignees": ["3"],
     "project": "project3",
     "title": "Lorem ipsum dolor sit amet",
-    "status": "column-2",
+    "status": "column2",
     "priority": ""
   },
   {
@@ -59,7 +59,7 @@
     "assignees": [],
     "project": "project1",
     "title": "Lorem ipsum dolor sit amet",
-    "status": "column-1",
+    "status": "column1",
     "priority": ""
   },
   {
@@ -68,7 +68,7 @@
     "assignees": ["4"],
     "project": "project2",
     "title": "Lorem ipsum dolor sit amet",
-    "status": "column-5",
+    "status": "column5",
     "priority": ""
   },
   {
@@ -77,7 +77,7 @@
     "assignees": ["2"],
     "project": "project3",
     "title": "Lorem ipsum dolor sit amet",
-    "status": "column-6",
+    "status": "column6",
     "priority": ""
   },
   {
@@ -86,7 +86,7 @@
     "assignees": ["3"],
     "project": "project1",
     "title": "Lorem ipsum dolor sit amet",
-    "status": "column-4",
+    "status": "column4",
     "priority": ""
   },
   {
@@ -95,7 +95,7 @@
     "assignees": ["4"],
     "project": "project2",
     "title": "Lorem ipsum dolor sit amet",
-    "status": "column-1",
+    "status": "column1",
     "priority": ""
   }
 ]

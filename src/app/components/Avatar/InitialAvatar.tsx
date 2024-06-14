@@ -57,6 +57,7 @@ const InitialAvatars = () => {
             {avatars.map((avatar, index) => (
               <Avatar
                 key={index}
+                className="avatarCircle"
                 sx={{
                   bgcolor: colors[index % colors.length],
                   width: size[index % size.length],
