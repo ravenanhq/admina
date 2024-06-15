@@ -51,7 +51,6 @@ const ComplexModalForm = ({ open, close }) => {
   };
 
   const handleRemoveFile = () => {
-    console.log("file");
     setSelectedFiles([]);
   };
 
