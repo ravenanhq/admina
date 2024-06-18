@@ -8,7 +8,7 @@ import VerticalAndHorizondalScrollbar from "@/app/components/ScrollBar/VerticalA
 const scrollBar = () => {
   return (
     <>
-      <h4 style={{ paddingTop: 30 }}>UI Elements / Navbar</h4>
+      <h4 style={{ paddingTop: 30 }}>UI Elements / Scroll Bar</h4>
       <div style={{ paddingTop: 10 }}>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
           <Grid item xs={12}>
