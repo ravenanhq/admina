@@ -54,19 +54,24 @@ const CheckboxModalForm = ({ open, close, options, roleOption }) => {
     setRoleState(initialRoleState);
   };
 
+  const handleClose = () => {
+    close();
+    handleClear();
+  };
+
   return (
     <Modal
       open={open}
-      onClose={close}
+      onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Dialog open={open} onClose={close}>
+      <Dialog open={open} onClose={handleClose}>
         <DialogTitle id="modal-modal-title">
           Register Form
           <IconButton
             aria-label="close"
-            onClick={close}
+            onClick={handleClose}
             sx={{
               position: "absolute",
               right: 8,

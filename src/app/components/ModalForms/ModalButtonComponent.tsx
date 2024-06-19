@@ -31,7 +31,7 @@ const ModalButtonComponent = () => {
       </Typography>
       <Divider sx={{ margin: "0 auto", marginY: 2 }} />
       <Grid container spacing={2}>
-        <Grid item sm={12} md={2}>
+        <Grid item xs={12} sm={3} md={3}>
           <ButtonComponent
             variant="contained"
             type="submit"
@@ -45,7 +45,7 @@ const ModalButtonComponent = () => {
             name="Section Form "
           />
         </Grid>
-        <Grid item sm={12} md={2}>
+        <Grid item xs={12} sm={3} md={3}>
           <ButtonComponent
             variant="contained"
             type="submit"
@@ -59,7 +59,7 @@ const ModalButtonComponent = () => {
             onClick={handleCheckboxOpen}
           />
         </Grid>
-        <Grid item sm={12} md={2}>
+        <Grid item xs={12} sm={3} md={3}>
           <ButtonComponent
             variant="contained"
             type="submit"

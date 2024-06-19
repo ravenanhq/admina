@@ -167,7 +167,12 @@ const LeftSideComponent = ({
       <TextField
         fullWidth
         id="message"
-        label="Your Comment"
+        label={
+          <span>
+            Your Comment
+            <span style={{ color: "#d32f2f" }}> *</span>
+          </span>
+        }
         name="message"
         multiline
         rows={4}

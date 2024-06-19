@@ -18,7 +18,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-
 const SectionModalForm = ({ open, close }) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -137,20 +136,25 @@ const SectionModalForm = ({ open, close }) => {
     });
   };
 
+  const handleClose = () => {
+    close();
+    handleClear();
+  };
+
   return (
     <div>
       <Modal
         open={open}
-        onClose={close}
+        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Dialog open={open} onClose={close}>
+        <Dialog open={open} onClose={handleClose}>
           <DialogTitle id="modal-modal-title">
             Register Form
             <IconButton
               aria-label="close"
-              onClick={close}
+              onClick={handleClose}
               sx={{
                 position: "absolute",
                 right: 8,
@@ -196,6 +200,9 @@ const SectionModalForm = ({ open, close }) => {
                         }}
                       >
                         First Name
+                        <span style={{ color: "#d32f2f", marginLeft: "2px" }}>
+                          *
+                        </span>
                       </FormLabel>
                       <TextField
                         fullWidth
@@ -234,6 +241,9 @@ const SectionModalForm = ({ open, close }) => {
                         }}
                       >
                         Last Name
+                        <span style={{ color: "#d32f2f", marginLeft: "2px" }}>
+                          *
+                        </span>
                       </FormLabel>
                       <TextField
                         fullWidth
@@ -272,6 +282,9 @@ const SectionModalForm = ({ open, close }) => {
                         }}
                       >
                         Email
+                        <span style={{ color: "#d32f2f", marginLeft: "2px" }}>
+                          *
+                        </span>
                       </FormLabel>
                       <TextField
                         fullWidth
@@ -321,6 +334,9 @@ const SectionModalForm = ({ open, close }) => {
                         }}
                       >
                         Street Address
+                        <span style={{ color: "#d32f2f", marginLeft: "2px" }}>
+                          *
+                        </span>
                       </FormLabel>
                       <TextField
                         fullWidth
@@ -359,6 +375,9 @@ const SectionModalForm = ({ open, close }) => {
                         }}
                       >
                         City
+                        <span style={{ color: "#d32f2f", marginLeft: "2px" }}>
+                          *
+                        </span>
                       </FormLabel>
                       <TextField
                         fullWidth
@@ -397,6 +416,9 @@ const SectionModalForm = ({ open, close }) => {
                         }}
                       >
                         Pin Code
+                        <span style={{ color: "#d32f2f", marginLeft: "2px" }}>
+                          *
+                        </span>
                       </FormLabel>
                       <TextField
                         fullWidth
@@ -436,6 +458,9 @@ const SectionModalForm = ({ open, close }) => {
                         }}
                       >
                         Phone
+                        <span style={{ color: "#d32f2f", marginLeft: "2px" }}>
+                          *
+                        </span>
                       </FormLabel>
                       <TextField
                         fullWidth
