@@ -10,13 +10,15 @@ import {
   DialogActions,
   Grid,
   IconButton,
-  TextField,
-  FormControl,
-  FormLabel,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import CheckboxModalForm from "./CheckboxModalForm";
+import PersonalDetailsForm from "./PersonalDetailsForm";
+import ContactDetailsForm from "./ContactDetailsForm";
+import { ResourceOption } from "./data";
+import ComplexModalForm from "./ComplexModalForm";
 
 const SectionModalForm = ({ open, close }) => {
   const theme = useTheme();
@@ -30,6 +32,8 @@ const SectionModalForm = ({ open, close }) => {
     city: "",
     phone: "",
     pinCode: "",
+    dateOfBirth: "",
+    resources: {},
   });
 
   const [errors, setErrors] = React.useState({
@@ -40,7 +44,11 @@ const SectionModalForm = ({ open, close }) => {
     city: "",
     phone: "",
     pinCode: "",
+    dateOfBirth: "",
   });
+
+  const [resetState, setResetState] = React.useState(false);
+  const [resetComment, setResetComment] = React.useState(false);
 
   const validateForm = () => {
     let isValid = true;
@@ -107,10 +115,16 @@ const SectionModalForm = ({ open, close }) => {
     });
   };
 
+  const handleSelectionChange = (type, selection) => {
+    setFormData({
+      ...formData,
+      [type]: selection,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Handle form submission logic here
       console.log(formData);
     }
   };
@@ -124,6 +138,8 @@ const SectionModalForm = ({ open, close }) => {
       city: "",
       phone: "",
       pinCode: "",
+      dateOfBirth: "",
+      resources: {},
     });
     setErrors({
       firstName: "",
@@ -133,8 +149,23 @@ const SectionModalForm = ({ open, close }) => {
       city: "",
       phone: "",
       pinCode: "",
+      dateOfBirth: "",
     });
+    setResetState(true);
+    setResetComment(true);
   };
+
+  React.useEffect(() => {
+    if (resetState) {
+      setResetState(false);
+    }
+  }, [resetState]);
+
+  React.useEffect(() => {
+    if (resetComment) {
+      setResetComment(false);
+    }
+  }, [resetComment]);
 
   const handleClose = () => {
     close();
@@ -166,320 +197,25 @@ const SectionModalForm = ({ open, close }) => {
           </DialogTitle>
           <DialogContent>
             <Box sx={{ mt: 1 }}>
-              <Typography
-                id="modal-modal-description"
-                sx={{
-                  fontSize: "14px",
-                  fontWeight: "bold",
-                  paddingBottom: "25px",
-                }}
-              >
-                Personal Details
-              </Typography>
-              <Grid
-                container
-                spacing={2}
-                style={{ marginLeft: "0", paddingRight: "10px" }}
-              >
-                <form onSubmit={handleSubmit} style={{ width: "100%" }}>
-                  <Grid
-                    item
-                    sm={12}
-                    style={{ display: "flex", alignItems: "center" }}
-                  >
-                    <FormControl
-                      fullWidth
-                      style={{ flexDirection: isMobile ? "column" : "row" }}
-                    >
-                      <FormLabel
-                        sx={{
-                          marginRight: "10px",
-                          flexShrink: 0,
-                          minWidth: "100px",
-                          fontSize: "14px",
-                        }}
-                      >
-                        First Name
-                        <span style={{ color: "#d32f2f", marginLeft: "2px" }}>
-                          *
-                        </span>
-                      </FormLabel>
-                      <TextField
-                        fullWidth
-                        placeholder="ex:John"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        error={!!errors.firstName}
-                        helperText={errors.firstName}
-                        size="small"
-                        inputProps={{
-                          style: { fontSize: "14px", padding: "6.5px , 14px" },
-                        }}
-                      />
-                    </FormControl>
-                  </Grid>
-                  <Grid
-                    item
-                    sm={12}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      marginTop: "10px",
-                    }}
-                  >
-                    <FormControl
-                      fullWidth
-                      style={{ flexDirection: isMobile ? "column" : "row" }}
-                    >
-                      <FormLabel
-                        sx={{
-                          marginRight: "10px",
-                          flexShrink: 0,
-                          minWidth: "100px",
-                          fontSize: "14px",
-                        }}
-                      >
-                        Last Name
-                        <span style={{ color: "#d32f2f", marginLeft: "2px" }}>
-                          *
-                        </span>
-                      </FormLabel>
-                      <TextField
-                        fullWidth
-                        placeholder="ex:Doe"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleChange}
-                        error={!!errors.lastName}
-                        helperText={errors.lastName}
-                        size="small"
-                        inputProps={{
-                          style: { fontSize: "14px", padding: "6.5px , 14px" },
-                        }}
-                      />
-                    </FormControl>
-                  </Grid>
-                  <Grid
-                    item
-                    sm={12}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      marginTop: "10px",
-                    }}
-                  >
-                    <FormControl
-                      fullWidth
-                      style={{ flexDirection: isMobile ? "column" : "row" }}
-                    >
-                      <FormLabel
-                        sx={{
-                          marginRight: "10px",
-                          flexShrink: 0,
-                          minWidth: "100px",
-                          fontSize: "14px",
-                        }}
-                      >
-                        Email
-                        <span style={{ color: "#d32f2f", marginLeft: "2px" }}>
-                          *
-                        </span>
-                      </FormLabel>
-                      <TextField
-                        fullWidth
-                        placeholder="ex:john@example.com"
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        error={!!errors.email}
-                        helperText={errors.email}
-                        size="small"
-                        inputProps={{
-                          style: { fontSize: "14px", padding: "6.5px , 14px" },
-                        }}
-                      />
-                    </FormControl>
-                  </Grid>
-                  <Typography
-                    id="modal-modal-description"
-                    sx={{
-                      fontSize: "14px",
-                      fontWeight: "bold",
-                      padding: "20px 0 0px 0",
-                    }}
-                  >
-                    Contact Details
-                  </Typography>
-                  <Grid
-                    item
-                    sm={12}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      marginTop: "10px",
-                    }}
-                  >
-                    <FormControl
-                      fullWidth
-                      style={{ flexDirection: isMobile ? "column" : "row" }}
-                    >
-                      <FormLabel
-                        sx={{
-                          marginRight: "10px",
-                          flexShrink: 0,
-                          minWidth: "100px",
-                          fontSize: "14px",
-                        }}
-                      >
-                        Street Address
-                        <span style={{ color: "#d32f2f", marginLeft: "2px" }}>
-                          *
-                        </span>
-                      </FormLabel>
-                      <TextField
-                        fullWidth
-                        placeholder="ex:Richmond Hill"
-                        name="streetAddress"
-                        value={formData.streetAddress}
-                        onChange={handleChange}
-                        error={!!errors.streetAddress}
-                        helperText={errors.streetAddress}
-                        size="small"
-                        inputProps={{
-                          style: { fontSize: "14px", padding: "6.5px , 14px" },
-                        }}
-                      />
-                    </FormControl>
-                  </Grid>
-                  <Grid
-                    item
-                    sm={12}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      marginTop: "10px",
-                    }}
-                  >
-                    <FormControl
-                      fullWidth
-                      style={{ flexDirection: isMobile ? "column" : "row" }}
-                    >
-                      <FormLabel
-                        sx={{
-                          marginRight: "10px",
-                          flexShrink: 0,
-                          minWidth: "100px",
-                          fontSize: "14px",
-                        }}
-                      >
-                        City
-                        <span style={{ color: "#d32f2f", marginLeft: "2px" }}>
-                          *
-                        </span>
-                      </FormLabel>
-                      <TextField
-                        fullWidth
-                        placeholder="ex:Queensland"
-                        name="city"
-                        value={formData.city}
-                        onChange={handleChange}
-                        error={!!errors.city}
-                        helperText={errors.city}
-                        size="small"
-                        inputProps={{
-                          style: { fontSize: "14px", padding: "6.5px , 14px" },
-                        }}
-                      />
-                    </FormControl>
-                  </Grid>
-                  <Grid
-                    item
-                    sm={12}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      marginTop: "10px",
-                    }}
-                  >
-                    <FormControl
-                      fullWidth
-                      style={{ flexDirection: isMobile ? "column" : "row" }}
-                    >
-                      <FormLabel
-                        sx={{
-                          marginRight: "10px",
-                          flexShrink: 0,
-                          minWidth: "100px",
-                          fontSize: "14px",
-                        }}
-                      >
-                        Pin Code
-                        <span style={{ color: "#d32f2f", marginLeft: "2px" }}>
-                          *
-                        </span>
-                      </FormLabel>
-                      <TextField
-                        fullWidth
-                        placeholder="ex:4820"
-                        type="text"
-                        name="pinCode"
-                        value={formData.pinCode}
-                        onChange={handleChange}
-                        error={!!errors.pinCode}
-                        helperText={errors.pinCode}
-                        size="small"
-                        inputProps={{
-                          style: { fontSize: "14px", padding: "6.5px , 14px" },
-                        }}
-                      />
-                    </FormControl>
-                  </Grid>
-                  <Grid
-                    item
-                    sm={12}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      marginTop: "10px",
-                    }}
-                  >
-                    <FormControl
-                      fullWidth
-                      style={{ flexDirection: isMobile ? "column" : "row" }}
-                    >
-                      <FormLabel
-                        sx={{
-                          marginRight: "10px",
-                          flexShrink: 0,
-                          minWidth: "100px",
-                          fontSize: "14px",
-                        }}
-                      >
-                        Phone
-                        <span style={{ color: "#d32f2f", marginLeft: "2px" }}>
-                          *
-                        </span>
-                      </FormLabel>
-                      <TextField
-                        fullWidth
-                        placeholder="ex:(08) 8723 1434"
-                        type="text"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        error={!!errors.phone}
-                        helperText={errors.phone}
-                        size="small"
-                        inputProps={{
-                          style: { fontSize: "14px", padding: "6.5px , 14px" },
-                        }}
-                      />
-                    </FormControl>
-                  </Grid>
-                </form>
-              </Grid>
+              <PersonalDetailsForm
+                formData={formData}
+                handleChange={handleChange}
+                errors={errors}
+                isMobile={isMobile}
+              />
+
+              <ContactDetailsForm
+                formData={formData}
+                handleChange={handleChange}
+                errors={errors}
+                isMobile={isMobile}
+              />
+              <CheckboxModalForm
+                options={ResourceOption}
+                handleSelectionChange={handleSelectionChange}
+                resetState={resetState}
+              />
+              <ComplexModalForm resetComment={resetComment} />
             </Box>
           </DialogContent>
           <DialogActions>
