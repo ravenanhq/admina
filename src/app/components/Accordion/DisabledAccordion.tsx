@@ -1,8 +1,5 @@
 import * as React from 'react';
-import HomeIcon from '@mui/icons-material/Home';
-import InfoIcon from '@mui/icons-material/Info';
-import ContactMailIcon from '@mui/icons-material/ContactMail';
-import { Accordion, AccordionDetails, AccordionSummary, IconButton, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const DisabledAccordion: React.FC = () => {

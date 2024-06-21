@@ -1,14 +1,16 @@
-import * as React from 'react';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import * as React from "react";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import Typography from "@mui/material/Typography";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const CustomExpandAccordian: React.FC = () => {
-  const [expandedPanel, setExpandedPanel] = React.useState<string | false>(false);
+  const [expandedPanel, setExpandedPanel] = React.useState<string | false>(
+    false
+  );
 
   const handleChange = (panel: string) => {
     setExpandedPanel((prevPanel) => (prevPanel === panel ? false : panel));
@@ -18,20 +20,23 @@ const CustomExpandAccordian: React.FC = () => {
     {
       panel: "panel1",
       title: "Accordion 1",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.",
-      icon: <ArrowDownwardIcon />
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.",
+      icon: <ArrowDownwardIcon />,
     },
     {
       panel: "panel2",
       title: "Accordion 2",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.",
-      icon: <ArrowDropDownIcon />
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.",
+      icon: <ArrowDropDownIcon />,
     },
     {
       panel: "panel3",
       title: "Accordion 3",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.",
-      icon: <ArrowForwardIcon />
+      content:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.",
+      icon: <ArrowForwardIcon />,
     },
   ];
 

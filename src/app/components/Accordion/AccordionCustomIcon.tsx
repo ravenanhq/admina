@@ -57,7 +57,7 @@ const AccordionCustomIcon: React.FC = () => {
             aria-controls={`${panel}-content`}
             id={`${panel}-header`}
           >
-            <IconButton sx={{ mr: 1 }}>{icon}</IconButton>
+            <IconButton sx={{ mr: 1, p: "0 8px" }}>{icon}</IconButton>
             <Typography>{title}</Typography>
           </AccordionSummary>
           <AccordionDetails>
