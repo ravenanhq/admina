@@ -28,7 +28,7 @@ import ThumbsGallery from "@/app/components/Carosel/ThumbsGallery";
 
 export default function Carosels() {
   return (
-    <Box style={{ overflow: "hidden" }}>
+    <Box style={{ overflow: "hidden" }} className="carouselBox">
       <h4 style={{ paddingTop: 30 }}>UI Elements / Carousel</h4>
       <Grid container spacing={3} style={{ paddingTop: 10 }}>
         <Grid item xs={12} sm={6} md={6}>
