@@ -8,8 +8,10 @@ import {
   FormControl,
   MenuItem,
   Select,
+  IconButton,
 } from "@mui/material";
 import ButtonComponent from "../BaseComponent/Button";
+import CloseIcon from "@mui/icons-material/Close";
 
 const AddTask = ({
   open,
@@ -94,9 +96,32 @@ const AddTask = ({
     return isValid;
   };
 
+  const handleClose = () => {
+    setFormData({ task: "", status: "", assignee: "", priority: "" });
+    setErrors({
+      task: "",
+      status: "",
+      assignee: "",
+      priority: "",
+    });
+    onCancel();
+  };
+
   return (
-    <Dialog open={open} onClose={onCancel} maxWidth="sm" fullWidth>
+    <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
       <DialogTitle>Add New Item</DialogTitle>
+      <IconButton
+        aria-label="close"
+        onClick={handleClose}
+        sx={{
+          position: "absolute",
+          right: 8,
+          top: 8,
+          color: (theme) => theme.palette.grey[500],
+        }}
+      >
+        <CloseIcon />
+      </IconButton>
       <DialogContent>
         <FormControl fullWidth style={{ marginBottom: "10px" }}>
           <label htmlFor="status" style={{ marginBottom: "10px" }}>
@@ -229,7 +254,7 @@ const AddTask = ({
         <ButtonComponent
           variant="contained"
           type="button"
-          onClick={onCancel}
+          onClick={handleClose}
           style={{
             background: "#eaeaea",
             padding: "5px 15px",

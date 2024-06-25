@@ -154,12 +154,24 @@ const AddTask: React.FC<AddTaskProps> = ({
     }
   };
 
+  const handleClose = () => {
+    setErrors({
+      title: "",
+      content: "",
+      status: "",
+      priority: "",
+    });
+    setTask(initialTaskState);
+    setSelectedAssignees([]);
+    onClose();
+  };
+
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
+    <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
       <DialogTitle>Add New Task</DialogTitle>
       <IconButton
         aria-label="close"
-        onClick={onClose}
+        onClick={handleClose}
         sx={{
           position: "absolute",
           right: 8,
@@ -270,7 +282,7 @@ const AddTask: React.FC<AddTaskProps> = ({
         </FormControl>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={handleClose}>Cancel</Button>
         <Button onClick={handleSubmit} variant="contained" color="primary">
           Add Task
         </Button>
