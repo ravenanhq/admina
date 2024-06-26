@@ -16,12 +16,11 @@ import EditIcon from "@mui/icons-material/Edit";
 import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
 
 const LeftSideComponent = ({
-  selectedMembers,
-  handleRemoveMember,
   selectedDate,
   handleRemoveDate,
   selectedFiles,
   handleRemoveFile,
+  resetComment,
 }) => {
   const [comment, setComment] = React.useState("");
   const [savedComments, setSavedComments] = React.useState([]);
@@ -29,9 +28,12 @@ const LeftSideComponent = ({
   const [error, setError] = React.useState("");
 
   useEffect(() => {
+    if (resetComment) {
+      setComment("");
+    }
     localStorage.removeItem("comments");
     setSavedComments([]);
-  }, []);
+  }, [resetComment]);
 
   const handleComment = () => {
     if (comment.trim() === "") {
@@ -66,32 +68,16 @@ const LeftSideComponent = ({
 
   return (
     <Grid item md={8}>
-      {selectedMembers.length > 0 && (
-        <List sx={{ flexDirection: "column" }}>
-          <Typography variant="h6">Members</Typography>
-          {selectedMembers.map((member) => (
-            <ListItem
-              key={member.id}
-              sx={{
-                padding: "0 10px",
-                background: "#58544d",
-                color: "#fff",
-                marginBottom: "10px",
-              }}
-            >
-              <ListItemText primary={member.name} />
-              <IconButton
-                edge="end"
-                aria-label="delete"
-                onClick={() => handleRemoveMember(member)}
-                sx={{ color: "#fff" }}
-              >
-                <CloseIcon />
-              </IconButton>
-            </ListItem>
-          ))}
-        </List>
-      )}
+      <Typography
+        id="modal-modal-description"
+        sx={{
+          fontSize: "14px",
+          fontWeight: "bold",
+          padding: "20px 0 0px 0",
+        }}
+      >
+        Upload Details
+      </Typography>
       {selectedDate && (
         <>
           <Typography variant="h6">Date:</Typography>
@@ -164,10 +150,19 @@ const LeftSideComponent = ({
           ))}
         </List>
       )}
+      <Typography
+        sx={{
+          fontSize: "14px",
+          fontWeight: "normal",
+          padding: "10px 0 0 0",
+        }}
+      >
+        Comments <span style={{ color: "#d32f2f" }}> *</span>
+      </Typography>
       <TextField
         fullWidth
         id="message"
-        label="Your Comment"
+        label="Your comments"
         name="message"
         multiline
         rows={4}

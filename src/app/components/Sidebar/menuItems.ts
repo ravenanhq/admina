@@ -34,6 +34,7 @@ const menuItems = [
       { label: "Date Picker", route: "/uielements/date-picker" },
       { label: "Avatar", route: "/uielements/avatar" },
       { label: "Pagination", route: "/uielements/pagination" },
+      { label: "Scroll Bar", route: "/uielements/scroll-bar" },
     ],
   },
   {
