@@ -19,7 +19,7 @@ const VerticalAndHorizondalScrollbar = () => {
         <Card>
           <CardContent>
             <Typography gutterBottom variant="h6" component="div">
-              Vertical and Horizontal Scrollbar
+              Vertical and Horizontal Scroll Bar
             </Typography>
             <div className="vertical-horizontal-scroll scrollable">
               <div className="scroll-content">
