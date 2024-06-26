@@ -35,6 +35,7 @@ const menuItems = [
       { label: "Avatar", route: "/uielements/avatar" },
       { label: "ScrollBar", route: "/uielements/scrollBar" },
       { label: "Carousel", route: "/uielements/carousel" },
+      { label: "Pagination", route: "/uielements/pagination" },
     ],
   },
   {

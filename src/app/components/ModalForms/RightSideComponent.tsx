@@ -9,44 +9,27 @@ import AddDate from "./AddDate";
 import AddFile from "./AddFiles";
 
 const RightSideComponent = ({
-  anchorElMembers,
-  setAnchorElMembers,
   anchorElDate,
   setAnchorElDate,
   handlePopoverOpen,
   handlePopoverClose,
-  handleMembersSelected,
   handleDateSelected,
   anchorElFile,
   setAnchorElFile,
   handleFilesSelected,
 }) => {
   return (
-    <Grid item md={4} sx={{ flexDirection: "column" }}>
-      <Typography sx={{ marginBottom: "10px" }}>Add to cart</Typography>
-      <ButtonComponent
-        variant="contained"
-        type="submit"
-        size="small"
-        prefix={<PersonOutlineIcon sx={{ marginTop: "-4px" }} />}
-        style={{
-          textTransform: "capitalize",
-          background: "#e4e6ea",
-          padding: "5px 15px",
-          marginBottom: "10px",
-          width: "100%",
-          color: "#000",
-          justifyContent: "start",
-        }}
-        name="Members"
-        onClick={(event) => handlePopoverOpen(event, setAnchorElMembers)}
-      />
-      <AddMember
-        anchorEl={anchorElMembers}
-        close={() => handlePopoverClose(setAnchorElMembers)}
-        onMembersSelected={handleMembersSelected}
-      />
-
+    <Grid
+      item
+      md={4}
+      style={{
+        flexDirection: "column",
+        paddingTop: "30px",
+      }}
+    >
+      <Typography
+        sx={{ marginBottom: "10px", fontSize: "14px", fontWeight: "bold" }}
+      ></Typography>
       <ButtonComponent
         variant="contained"
         type="submit"

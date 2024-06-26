@@ -8,7 +8,7 @@ const HorizontalScrollBar = () => {
         <Card>
           <CardContent>
             <Typography gutterBottom variant="h6" component="div">
-              Horizontal Scrollbar
+              Horizontal Scroll Bar
             </Typography>
             <div className="horizontal-scroll scrollable-content scrollable">
               <Typography variant="body2" color="text.secondary">

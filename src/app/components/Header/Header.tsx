@@ -63,15 +63,15 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
 
   const isMobile = useMediaQuery("(max-width:1023px)");
   const [searchOpen, setSearchOpen] = useState(false);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
 
   const toggleSearch = () => {
     setSearchOpen(!searchOpen);
   };
 
   const handleClose = () => {
+    setQuery('');
     setSearchOpen(false);
-    setQuery("");
   };
 
   return (
@@ -160,7 +160,7 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
                         },
                       },
                     }}
-                    onBlur={() => setSearchOpen(false)}
+                    onBlur={handleClose}
                   />
                 )}
               </Box>
@@ -176,7 +176,7 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
               >
                 <TextField
                   variant="outlined"
-                  placeholder="Ctrl + K"
+                  placeholder="Search"
                   size="small"
                   InputProps={{
                     startAdornment: (
