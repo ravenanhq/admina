@@ -1,0 +1,11 @@
+[
+    { "id": 0, "text": "List 1", "avatar": "/assets/images/avatar-6.png" },
+    { "id": 1, "text": "List 2", "avatar": "/assets/images/avatar-7.png" },
+    { "id": 2, "text": "List 3", "avatar": "/assets/images/avatar-4.png" },
+    { "id": 3, "text": "List 4", "avatar": "/assets/images/avatar-5.png" },
+    { "id": 4, "text": "List 5", "avatar": "/assets/images/avatar-3.png" },
+    { "id": 5, "text": "List 6", "avatar": "/assets/images/avatar-2.png" },
+    { "id": 6, "text": "List 7", "avatar": "/assets/images/avatar-1.png" },
+    { "id": 7, "text": "List 8", "avatar": "/assets/images/avatar-8.png" }
+  ]
+  
