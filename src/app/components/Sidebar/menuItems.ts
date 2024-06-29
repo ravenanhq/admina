@@ -36,6 +36,7 @@ const menuItems = [
       { label: "ScrollBar", route: "/uielements/scroll-bar" },
       { label: "Carousel", route: "/uielements/carousel" },
       { label: "Pagination", route: "/uielements/pagination" },
+      { label: "Transfer List", route: "/uielements/transfer-list" },
       { label: "Accordian", route: "/uielements/accordion" },
     ],
   },
