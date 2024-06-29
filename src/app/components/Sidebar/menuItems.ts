@@ -33,9 +33,10 @@ const menuItems = [
       { label: "General Elements", route: "/uielements/general-elements" },
       { label: "Date Picker", route: "/uielements/date-picker" },
       { label: "Avatar", route: "/uielements/avatar" },
-      { label: "ScrollBar", route: "/uielements/scrollBar" },
+      { label: "ScrollBar", route: "/uielements/scroll-bar" },
       { label: "Carousel", route: "/uielements/carousel" },
       { label: "Pagination", route: "/uielements/pagination" },
+      { label: "Accordian", route: "/uielements/accordion" },
     ],
   },
   {
