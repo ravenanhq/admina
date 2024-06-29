@@ -8,7 +8,7 @@ const VerticalScrollBar = () => {
         <Card>
           <CardContent>
             <Typography gutterBottom variant="h6" component="div">
-              Vertical Scrollbar
+              Vertical Scroll Bar
             </Typography>
             <div className="vertical-scroll scrollable-content scrollable">
               <Typography variant="body2" color="text.secondary">
@@ -40,7 +40,7 @@ const VerticalScrollBar = () => {
         <Card>
           <CardContent>
             <Typography gutterBottom variant="h6" component="div">
-              Vertical Image Scrollbar
+              Vertical Image Scroll Bar
             </Typography>
             <div className="vertical-scroll scrollable-content scrollable">
               <CardMedia

@@ -180,7 +180,7 @@ const Notifications = () => {
             overflow: "hidden",
             rowGap: "1rem",
           }}
-          className="notificationDataTable11"
+          className="notificationDataTable"
         >
           <DataGrid
             rows={filteredRows}
