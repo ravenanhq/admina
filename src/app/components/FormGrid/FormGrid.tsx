@@ -137,7 +137,14 @@ const FormGrid = () => {
                 <TextField
                   fullWidth
                   margin="normal"
-                  label="User Name"
+                  label={
+                    <span>
+                      User Name
+                      <span style={{ color: "#d32f2f", marginLeft: "3px" }}>
+                        *
+                      </span>
+                    </span>
+                  }
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
@@ -148,7 +155,14 @@ const FormGrid = () => {
                 <TextField
                   fullWidth
                   margin="normal"
-                  label="Email"
+                  label={
+                    <span>
+                      Email{" "}
+                      <span style={{ color: "#d32f2f", marginLeft: "3px" }}>
+                        *
+                      </span>
+                    </span>
+                  }
                   type="text"
                   name="email"
                   value={formData.email}
@@ -182,7 +196,14 @@ const FormGrid = () => {
                 <TextField
                   fullWidth
                   margin="normal"
-                  label="Phone"
+                  label={
+                    <span>
+                      Phone{" "}
+                      <span style={{ color: "#d32f2f", marginLeft: "3px" }}>
+                        *
+                      </span>
+                    </span>
+                  }
                   type="text"
                   name="phone"
                   value={formData.phone}

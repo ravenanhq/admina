@@ -1,34 +1,25 @@
 "use client";
-import { Grid, CardMedia, CardContent, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { Grid, CardMedia, CardContent, Typography } from "@mui/material";
 import { Card } from "react-bootstrap";
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
 import CardList from "../../../drag-and-drop.json";
 
 const DraggableCard = () => {
   const [lists, setLists] = useState([]);
-  const [draggedCard, setDraggedCard] = useState(null);
 
   useEffect(() => {
     setLists(CardList);
   }, []);
 
-  const handleDragStart = (
-    e: React.DragEvent<HTMLDivElement>,
-    index: number
-  ) => {
-    setDraggedCard(lists[index]);
-  };
+  const handleDragEnd = (result) => {
+    if (!result.destination) return;
 
-  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-  };
+    const items = Array.from(lists);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
 
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>, index: number) => {
-    const updatedCards = [...lists];
-    const draggedCardIndex = updatedCards.indexOf(draggedCard);
-    updatedCards.splice(draggedCardIndex, 1);
-    updatedCards.splice(index, 0, draggedCard);
-    setLists(updatedCards);
+    setLists(items);
   };
 
   return (
@@ -39,38 +30,58 @@ const DraggableCard = () => {
       >
         Draggable Card
       </Typography>
-      <Grid container spacing={3}>
-        {lists.map((list, index) => (
-          <Grid
-            item
-            xs={12}
-            sm={4}
-            md={3}
-            lg={3}
-            key={list.id}
-            draggable
-            onDragStart={(e) => handleDragStart(e, index)}
-            onDragOver={(e) => handleDragOver(e)}
-            onDrop={(e) => handleDrop(e, index)}
-          >
-            <Card style={{ background: "#fff", border: "1px solid #ccc" }}>
-              <CardMedia
-                sx={{ height: 120 }}
-                image={list.image}
-                title="green iguana"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {list.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {list.content}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <Droppable droppableId="cards" direction="horizontal">
+          {(provided) => (
+            <Grid
+              container
+              spacing={3}
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+            >
+              {lists.map((list, index) => (
+                <Draggable
+                  key={list.id}
+                  draggableId={list.id.toString()}
+                  index={index}
+                >
+                  {(provided) => (
+                    <Grid
+                      item
+                      xs={12}
+                      sm={4}
+                      md={3}
+                      lg={3}
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      <Card
+                        style={{ background: "#fff", border: "1px solid #ccc" }}
+                      >
+                        <CardMedia
+                          sx={{ height: 120 }}
+                          image={list.image}
+                          title={list.title}
+                        />
+                        <CardContent>
+                          <Typography gutterBottom variant="h5" component="div">
+                            {list.title}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {list.content}
+                          </Typography>
+                        </CardContent>
+                      </Card>
+                    </Grid>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </Grid>
+          )}
+        </Droppable>
+      </DragDropContext>
     </>
   );
 };
