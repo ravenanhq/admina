@@ -78,7 +78,12 @@ const VerticalForm = () => {
           <TextField
             fullWidth
             margin="normal"
-            label="Name"
+            label={
+              <span>
+                Name{" "}
+                <span style={{ color: "#d32f2f", marginLeft: "3px" }}>*</span>
+              </span>
+            }
             name="name"
             value={formData.name}
             onChange={handleChange}
@@ -89,7 +94,12 @@ const VerticalForm = () => {
           <TextField
             fullWidth
             margin="normal"
-            label="Email"
+            label={
+              <span>
+                Email{" "}
+                <span style={{ color: "#d32f2f", marginLeft: "3px" }}>*</span>
+              </span>
+            }
             type="email"
             name="email"
             value={formData.email}
@@ -101,7 +111,12 @@ const VerticalForm = () => {
           <TextField
             fullWidth
             margin="normal"
-            label="Message"
+            label={
+              <span>
+                Message{" "}
+                <span style={{ color: "#d32f2f", marginLeft: "3px" }}>*</span>
+              </span>
+            }
             multiline
             rows={4}
             name="message"
