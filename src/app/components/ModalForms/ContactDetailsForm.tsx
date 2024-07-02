@@ -37,7 +37,13 @@ const ContactDetailsForm = ({ formData, handleChange, errors, isMobile }) => {
             paddingTop: "30px",
           }}
         >
-          <FormControl style={{ flexDirection: "column" }}>
+          <FormControl
+            style={{
+              flexDirection: "column",
+              width: "100%",
+              marginBottom: isMobile ? "10px" : "0",
+            }}
+          >
             <FormLabel
               sx={{
                 marginRight: "10px",
@@ -64,7 +70,13 @@ const ContactDetailsForm = ({ formData, handleChange, errors, isMobile }) => {
             />
           </FormControl>
 
-          <FormControl style={{ flexDirection: "column" }}>
+          <FormControl
+            style={{
+              flexDirection: "column",
+              width: "100%",
+              marginLeft: isMobile ? "0" : "10px",
+            }}
+          >
             <FormLabel
               sx={{
                 marginRight: "10px",
@@ -103,7 +115,13 @@ const ContactDetailsForm = ({ formData, handleChange, errors, isMobile }) => {
             paddingTop: "5px",
           }}
         >
-          <FormControl style={{ flexDirection: "column" }}>
+          <FormControl
+            style={{
+              flexDirection: "column",
+              width: "100%",
+              marginBottom: isMobile ? "10px" : "0",
+            }}
+          >
             <FormLabel
               sx={{
                 marginRight: "10px",
@@ -131,7 +149,13 @@ const ContactDetailsForm = ({ formData, handleChange, errors, isMobile }) => {
             />
           </FormControl>
 
-          <FormControl style={{ flexDirection: "column" }}>
+          <FormControl
+            style={{
+              flexDirection: "column",
+              width: "100%",
+              marginLeft: isMobile ? "0" : "10px",
+            }}
+          >
             <FormLabel
               sx={{
                 marginRight: "10px",
