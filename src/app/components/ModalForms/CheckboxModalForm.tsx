@@ -57,7 +57,8 @@ const CheckboxModalForm = ({ options, handleSelectionChange, resetState }) => {
           {options.map((option) => (
             <Grid
               item
-              sm={12}
+              xs={12}
+              sm={4}
               md={4}
               style={{ paddingTop: "0px" }}
               key={option.value}

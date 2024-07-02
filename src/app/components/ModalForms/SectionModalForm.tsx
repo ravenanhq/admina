@@ -71,6 +71,9 @@ const SectionModalForm = ({ open, close }) => {
     if (formData.email.trim() === "") {
       newErrors.email = "Email is required";
       isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+      isValid = false;
     } else {
       newErrors.email = "";
     }
@@ -89,15 +92,23 @@ const SectionModalForm = ({ open, close }) => {
       newErrors.city = "";
     }
 
-    if (formData.phone.trim() === "") {
-      newErrors.phone = "Phone number is required";
+    if (!formData.phone) {
+      newErrors.phone = "Phone Number is required";
+      isValid = false;
+    } else if (!/^\d+$/.test(formData.phone)) {
+      newErrors.phone = "Phone Number must contain only numbers";
       isValid = false;
     } else {
       newErrors.phone = "";
     }
 
+    const pinCodePattern = /^[0-9]{6}$/;
+
     if (formData.pinCode.trim() === "") {
       newErrors.pinCode = "Pin code is required";
+      isValid = false;
+    } else if (!pinCodePattern.test(formData.pinCode.trim())) {
+      newErrors.pinCode = "Invalid pin code. It should be a 6-digit number";
       isValid = false;
     } else {
       newErrors.pinCode = "";
