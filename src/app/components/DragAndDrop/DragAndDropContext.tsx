@@ -11,15 +11,41 @@ export const DragDropContextProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [lists, setLists] = useState(List);
 
-  const handleDragEnd = (result: any) => {
+  const handleDragEnd = (result) => {
     if (!result.destination) return;
 
-    const updatedLists = Array.from(lists);
-    const [movedItem] = updatedLists.splice(result.source.index, 1);
-    movedItem.status = result.destination.droppableId;
-    updatedLists.splice(result.destination.index, 0, movedItem);
+    const { source, destination } = result;
 
-    setLists(updatedLists);
+    const updatedLists = Array.from(lists);
+    const sourceIndex = updatedLists.findIndex(
+      (item) => item.id === source.droppableId
+    );
+    const destinationIndex = updatedLists.findIndex(
+      (item) => item.id === destination.droppableId
+    );
+
+    const sourceList = updatedLists.filter(
+      (item) => item.status === source.droppableId
+    );
+    const destList = updatedLists.filter(
+      (item) => item.status === destination.droppableId
+    );
+
+    const [movedItem] = sourceList.splice(source.index, 1);
+    movedItem.status = destination.droppableId;
+    destList.splice(destination.index, 0, movedItem);
+
+    const newList = updatedLists.map((item) => {
+      if (item.id === source.droppableId) {
+        return { ...item, tasks: sourceList };
+      } else if (item.id === destination.droppableId) {
+        return { ...item, tasks: destList };
+      } else {
+        return item;
+      }
+    });
+
+    setLists(newList);
   };
 
   return (

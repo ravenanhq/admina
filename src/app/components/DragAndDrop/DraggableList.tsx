@@ -8,7 +8,7 @@ import { useDragDropContext } from "./DragAndDropContext";
 const DraggableList = () => {
   const { lists, handleDragEnd } = useDragDropContext();
 
-  const renderListSection = (status: string) => (
+  const renderListSection = (status) => (
     <Droppable droppableId={status} key={status}>
       {(provided) => (
         <Grid
@@ -48,42 +48,44 @@ const DraggableList = () => {
                 index={index}
               >
                 {(provided) => (
-                  <Card
+                  <div
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     style={{
+                      ...provided.draggableProps.style,
                       background: "#fff",
                       border: "1px solid #ccc",
                       marginBottom: "15px",
                       borderRadius: "10px",
-                      ...provided.draggableProps.style,
                     }}
                   >
-                    <CardContent
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      <div>
-                        <Typography gutterBottom variant="h5" component="div">
-                          {list.taskId}
+                    <Card>
+                      <CardContent
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <div>
+                          <Typography gutterBottom variant="h5" component="div">
+                            {list.taskId}
+                          </Typography>
+                          <Typography
+                            gutterBottom
+                            variant="h5"
+                            component="div"
+                            sx={{ fontSize: "14px" }}
+                          >
+                            {list.title}
+                          </Typography>
+                        </div>
+                        <Typography variant="body2" color="text.secondary">
+                          {list.date}
                         </Typography>
-                        <Typography
-                          gutterBottom
-                          variant="h5"
-                          component="div"
-                          sx={{ fontSize: "14px" }}
-                        >
-                          {list.title}
-                        </Typography>
-                      </div>
-                      <Typography variant="body2" color="text.secondary">
-                        {list.date}
-                      </Typography>
-                    </CardContent>
-                  </Card>
+                      </CardContent>
+                    </Card>
+                  </div>
                 )}
               </Draggable>
             ))}
