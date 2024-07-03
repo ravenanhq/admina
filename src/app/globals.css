@@ -62,11 +62,11 @@ header {
   overflow-y: initial !important;
 }
 
-.loginbtn:hover{
-  background: "#282a35",
+.loginbtn:hover {
+  background: "#282a35";
 }
 
-.headerLogo span{
+.headerLogo span {
   font-size: 25px;
   text-transform: uppercase;
   font-weight: bold;
@@ -89,18 +89,16 @@ header {
     margin: 20px;
     padding-left: 20px;
   }
-
 }
 
 @media only screen and (width: 1366px) {
-  .carouselBox .MuiGrid-root{
+  .carouselBox .MuiGrid-root {
     width: 1100px;
   }
 }
 
-
 @media only screen and (width: 1024px) {
-  .carouselBox .MuiGrid-root{
+  .carouselBox .MuiGrid-root {
     width: 780px;
   }
 }
@@ -108,6 +106,10 @@ header {
 @media (max-width: 568px) {
   .wishList .MuiTableCell-root {
     padding: 12px;
+  }
+
+  .carouselContainer .MuiGrid-item {
+    padding-left: 0;
   }
 }
 
@@ -228,6 +230,10 @@ header {
   margin: 0 auto;
 }
 
+.carouselContainer .MuiGrid-item:first-child {
+  padding-left: 0;
+}
+
 .swiper {
   width: 100%;
   height: 100%;
@@ -312,17 +318,17 @@ header {
 }
 
 .autoplay-progress {
-    position: absolute;
-    right: 16px;
-    bottom: 16px;
-    z-index: 10;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: #fff;
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
 }
 
 .autoplay-progress svg {
@@ -341,6 +347,6 @@ header {
   transform: rotate(-90deg);
 }
 
-.notificationDataTable .MuiDataGrid-main .MuiDataGrid-virtualScroller{
+.notificationDataTable .MuiDataGrid-main .MuiDataGrid-virtualScroller {
   min-height: 50px;
 }

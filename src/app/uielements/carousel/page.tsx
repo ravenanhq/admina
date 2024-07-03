@@ -30,21 +30,31 @@ export default function Carosels() {
   return (
     <Box style={{ overflow: "hidden" }} className="carouselBox">
       <h4 style={{ paddingTop: 30 }}>UI Elements / Carousel</h4>
-      <Grid container spacing={3} style={{ paddingTop: 10 }}>
+      <Grid
+        container
+        className="carouselContainer"
+        spacing={3}
+        style={{ paddingTop: 10, width: "100%", margin: "0 auto" }}
+      >
         <Grid item xs={12} sm={6} md={6}>
           <h4 style={{ paddingTop: 10, paddingBottom: 20 }}>Simple Carousel</h4>
           <div className="carousel">
             <Carousel />
           </div>
         </Grid>
-        <Grid item xs={12} sm={6} md={6}>
+        <Grid item xs={12} sm={6} md={6} style={{ paddingRight: "5px" }}>
           <h4 style={{ paddingTop: 10, paddingBottom: 20 }}>Navigation</h4>
           <div className="carousel">
             <NavigationCarousel />
           </div>
         </Grid>
       </Grid>
-      <Grid container spacing={3} style={{ paddingTop: 10 }}>
+      <Grid
+        container
+        spacing={3}
+        className="carouselContainer"
+        style={{ paddingTop: 10, width: "100%", margin: "0 auto" }}
+      >
         <Grid item xs={12} sm={6} md={6}>
           <h4 style={{ paddingTop: 10, paddingBottom: 20 }}>Pagination</h4>
           <div className="carousel" style={{ height: "100%" }}>
@@ -61,7 +71,12 @@ export default function Carosels() {
           </div>
         </Grid>
       </Grid>
-      <Grid container spacing={3} style={{ paddingTop: 10 }}>
+      <Grid
+        container
+        spacing={3}
+        className="carouselContainer"
+        style={{ paddingTop: 10, width: "100%", margin: "0 auto" }}
+      >
         <Grid item xs={12} sm={6} md={6}>
           <h4 style={{ paddingTop: 10, paddingBottom: 20 }}>
             Vertical Carousel
@@ -77,7 +92,12 @@ export default function Carosels() {
           </div>
         </Grid>
       </Grid>
-      <Grid container spacing={3} style={{ paddingTop: 10 }}>
+      <Grid
+        container
+        spacing={3}
+        className="carouselContainer"
+        style={{ paddingTop: 10, width: "100%", margin: "0 auto" }}
+      >
         <Grid item xs={12} sm={6} md={6}>
           <h4 style={{ paddingTop: 10, paddingBottom: 20 }}>3D Fade effect</h4>
           <div className="carousel">
@@ -91,7 +111,12 @@ export default function Carosels() {
           </div>
         </Grid>
       </Grid>
-      <Grid container spacing={3} style={{ paddingTop: 10 }}>
+      <Grid
+        container
+        spacing={3}
+        className="carouselContainer"
+        style={{ paddingTop: 10, width: "100%", margin: "0 auto" }}
+      >
         <Grid item xs={12} sm={6} md={6}>
           <h4 style={{ paddingTop: 10, paddingBottom: 20 }}>3D Flip Effect</h4>
           <div className="carousel">
@@ -105,7 +130,12 @@ export default function Carosels() {
           </div>
         </Grid>
       </Grid>
-      <Grid container spacing={3} style={{ paddingTop: 10 }}>
+      <Grid
+        container
+        spacing={3}
+        className="carouselContainer"
+        style={{ paddingTop: 10, width: "100%", margin: "0 auto" }}
+      >
         <Grid item xs={12} sm={12} md={12}>
           <h4 style={{ paddingTop: 10, paddingBottom: 20 }}>
             3D CoverFlow Effect
@@ -115,16 +145,29 @@ export default function Carosels() {
           </div>
         </Grid>
       </Grid>
-      <Grid container spacing={3} style={{ paddingTop: 10 }}>
+      <Grid
+        container
+        spacing={3}
+        className="carouselContainer"
+        style={{ paddingTop: 10, width: "100%", margin: "0 auto" }}
+      >
         <Grid item xs={12} sm={12} md={12}>
           <h4 style={{ paddingTop: 10, paddingBottom: 20 }}>Multiple slides</h4>
-          <div className="carousel" style={{ maxWidth: "1200px" }}>
+          <div
+            className="carousel multipleSlidesCarousel"
+            style={{ maxWidth: "1200px" }}
+          >
             <MultiSlidesCarousel />
           </div>
         </Grid>
       </Grid>
-      <Grid container spacing={3} style={{ paddingTop: 10 }}>
-        <Grid item xs={12} sm={12} md={6}>
+      <Grid
+        container
+        spacing={3}
+        className="carouselContainer"
+        style={{ paddingTop: 10, width: "100%", margin: "0 auto" }}
+      >
+        <Grid item xs={12} sm={6} md={6}>
           <h4 style={{ paddingTop: 10, paddingBottom: 20 }}>
             MouseWheel Controller
           </h4>
@@ -132,7 +175,7 @@ export default function Carosels() {
             <MouseWheelCarousel />
           </div>
         </Grid>
-        <Grid item xs={12} sm={12} md={6}>
+        <Grid item xs={12} sm={6} md={6}>
           <h4 style={{ paddingTop: 10, paddingBottom: 20 }}>
             Autoplay progress
           </h4>
@@ -141,7 +184,12 @@ export default function Carosels() {
           </div>
         </Grid>
       </Grid>
-      <Grid container spacing={3} style={{ paddingTop: 10 }}>
+      <Grid
+        container
+        spacing={3}
+        className="carouselContainer"
+        style={{ paddingTop: 10, width: "100%", margin: "0 auto" }}
+      >
         <Grid item xs={12} sm={12} md={12}>
           <h4 style={{ paddingTop: 10, paddingBottom: 20 }}>Thumbs Gallery</h4>
           <div className="carousel" style={{ maxWidth: "1200px" }}>
