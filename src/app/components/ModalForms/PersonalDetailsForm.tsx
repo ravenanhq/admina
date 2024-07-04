@@ -36,7 +36,13 @@ const PersonalDetailsForm = ({ formData, handleChange, errors, isMobile }) => {
             paddingTop: "1px",
           }}
         >
-          <FormControl style={{ flexDirection: "column" }}>
+          <FormControl
+            style={{
+              flexDirection: "column",
+              width: "100%",
+              marginBottom: isMobile ? "10px" : "",
+            }}
+          >
             <FormLabel
               sx={{
                 marginRight: "10px",
@@ -62,7 +68,13 @@ const PersonalDetailsForm = ({ formData, handleChange, errors, isMobile }) => {
               }}
             />
           </FormControl>
-          <FormControl style={{ flexDirection: "column" }}>
+          <FormControl
+            style={{
+              flexDirection: "column",
+              width: "100%",
+              marginLeft: isMobile ? "0" : "10px",
+            }}
+          >
             <FormLabel
               sx={{
                 marginRight: "10px",
@@ -100,7 +112,10 @@ const PersonalDetailsForm = ({ formData, handleChange, errors, isMobile }) => {
             paddingTop: "5px",
           }}
         >
-          <FormControl style={{ flexDirection: "column" }}>
+          <FormControl
+            style={{ flexDirection: "column", width: "100%" }}
+            className="modalFormControl"
+          >
             <FormLabel
               sx={{
                 marginRight: "10px",
@@ -129,7 +144,15 @@ const PersonalDetailsForm = ({ formData, handleChange, errors, isMobile }) => {
             />
           </FormControl>
 
-          <FormControl style={{ flexDirection: "column", marginTop: "10px" }}>
+          <FormControl
+            style={{
+              flexDirection: "column",
+              marginTop: "10px",
+              width: "100%",
+              marginLeft: isMobile ? "0" : "10px",
+            }}
+            className="modalFormControl"
+          >
             <FormLabel
               sx={{
                 marginRight: "10px",
@@ -157,7 +180,6 @@ const PersonalDetailsForm = ({ formData, handleChange, errors, isMobile }) => {
                 style: {
                   fontSize: "14px",
                   padding: "8.5px 14px",
-                  width: "180px",
                 },
               }}
             />

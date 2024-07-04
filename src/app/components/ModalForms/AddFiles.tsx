@@ -4,12 +4,20 @@ import AttachFileIcon from "@mui/icons-material/AttachFile";
 
 const AddFile = ({ anchorEl, close, onFilesSelected }) => {
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const [error, setError] = useState("");
 
   const handleFileChange = (event) => {
     const files = event.target.files;
     const imagesArray = [];
+    const validImageTypes = ["image/jpeg", "image/png", "image/gif"];
+
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
+      if (!validImageTypes.includes(file.type)) {
+        setError("Only image files are allowed.");
+        return;
+      }
+      setError(""); // Clear any previous error
       const reader = new FileReader();
       reader.onload = (e) => {
         imagesArray.push(e.target.result);
@@ -58,6 +66,15 @@ const AddFile = ({ anchorEl, close, onFilesSelected }) => {
             Choose Files
           </Button>
         </label>
+        {error && (
+          <Typography
+            color="error"
+            variant="body2"
+            style={{ marginTop: "10px" }}
+          >
+            {error}
+          </Typography>
+        )}
       </Box>
     </Popover>
   );
