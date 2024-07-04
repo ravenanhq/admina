@@ -82,7 +82,12 @@ export default function AddProductModal({
       <DialogTitle>Add New Product</DialogTitle>
       <DialogContent>
         <TextField
-          label="Product Name"
+          label={
+            <span>
+              Product Name
+              <span style={{ color: "#d32f2f", marginLeft: "3px" }}>*</span>
+            </span>
+          }
           fullWidth
           margin="normal"
           value={productName}
@@ -91,7 +96,12 @@ export default function AddProductModal({
           helperText={errors.productName}
         />
         <TextField
-          label="Price"
+          label={
+            <span>
+              Price
+              <span style={{ color: "#d32f2f", marginLeft: "3px" }}>*</span>
+            </span>
+          }
           fullWidth
           margin="normal"
           type="number"
@@ -101,7 +111,12 @@ export default function AddProductModal({
           helperText={errors.price}
         />
         <TextField
-          label="Status"
+          label={
+            <span>
+              Status
+              <span style={{ color: "#d32f2f", marginLeft: "3px" }}>*</span>
+            </span>
+          }
           fullWidth
           margin="normal"
           type="text"

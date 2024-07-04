@@ -102,7 +102,7 @@ const HorizontalFormWithIcon = () => {
             }}
           >
             <label htmlFor="name" style={{ marginTop: "5px" }}>
-              Name
+              Name <span style={{ color: "#d32f2f" }}>*</span>
             </label>
             <TextField
               fullWidth
@@ -137,7 +137,7 @@ const HorizontalFormWithIcon = () => {
             }}
           >
             <label htmlFor="email" style={{ marginTop: "5px" }}>
-              Email
+              Email <span style={{ color: "#d32f2f" }}>*</span>
             </label>
             <TextField
               fullWidth
@@ -172,7 +172,7 @@ const HorizontalFormWithIcon = () => {
             }}
           >
             <label htmlFor="password" style={{ marginTop: "5px" }}>
-              Password
+              Password <span style={{ color: "#d32f2f" }}>*</span>
             </label>
             <TextField
               fullWidth

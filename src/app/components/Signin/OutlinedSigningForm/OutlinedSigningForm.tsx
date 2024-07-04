@@ -138,12 +138,18 @@ const OutlinedSigningForm = () => {
               style={{ padding: isMobile ? "4px" : "" }}
             />
           }
-          label={<Typography variant="body2">Remember me</Typography>}
+          label={
+            <Typography variant="body2" style={{ whiteSpace: "nowrap" }}>
+              Remember me
+            </Typography>
+          }
           labelPlacement="start"
           sx={{
             fontSize: "14px",
             width: isMobile ? "auto" : "183px",
-            whiteSpace: isMobile ? "nowrap" : "normal",
+            whiteSpace: "nowrap",
+            display: "flex",
+            alignItems: "center",
           }}
         />
         <Grid container justifyContent="flex-end">
@@ -164,9 +170,12 @@ const OutlinedSigningForm = () => {
 
       <CardActions sx={{ marginLeft: "16px" }}>
         <Typography sx={{ fontSize: "14px", width: "60%" }}>
-          Forgot your password?
-          <Link href="#" color="inherit" style={{ color: "#311ccf" }}>
-            Click here
+          <Link
+            href="#"
+            color="inherit"
+            style={{ color: "#000", textDecoration: "none" }}
+          >
+            Forgot your password?
           </Link>
         </Typography>
         <Grid container justifyContent="flex-end">

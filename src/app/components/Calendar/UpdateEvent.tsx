@@ -169,6 +169,7 @@ const UpdateEvent: React.FC<EditModalProps> = ({
           >
             <label htmlFor="title" style={{ marginTop: "5px" }}>
               Title
+              <span style={{ color: "#d32f2f", marginLeft: "3px" }}>*</span>
             </label>
             <TextField
               name="title"
@@ -192,6 +193,7 @@ const UpdateEvent: React.FC<EditModalProps> = ({
           <FormControl fullWidth error={!!errors.label}>
             <label htmlFor="status" style={{ marginBottom: "10px" }}>
               Label
+              <span style={{ color: "#d32f2f", marginLeft: "3px" }}>*</span>
             </label>
             <Select
               value={editedData.label || ""}
