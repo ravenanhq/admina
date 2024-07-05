@@ -1,7 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-import { Box } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 
 const MultiSlidesCarousel: React.FC = () => {
   const carouselItems = [
@@ -26,6 +26,9 @@ const MultiSlidesCarousel: React.FC = () => {
       imgPath: "/assets/images/carousel-img-5.jpg",
     },
   ];
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Box sx={{ textAlign: "center", py: 4 }}>
@@ -57,7 +60,11 @@ const MultiSlidesCarousel: React.FC = () => {
             <img
               src={item.imgPath}
               alt={item.label}
-              style={{ width: "300px", height: "300px", objectFit: "contain" }}
+              style={{
+                width: isMobile ? "100%" : "300px",
+                height: "300px",
+                objectFit: "contain",
+              }}
             />
           </SwiperSlide>
         ))}

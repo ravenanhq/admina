@@ -25,6 +25,10 @@ const CoverflowEffect: React.FC = () => {
       label: "lorem ipsum",
       imgPath: "/assets/images/carousel-img-15.jpg",
     },
+    {
+      label: "lorem ipsum",
+      imgPath: "/assets/images/carousel-img-13.jpg",
+    },
   ];
 
   return (
