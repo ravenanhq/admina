@@ -61,6 +61,7 @@ const SubscriptionPlanTable = () => {
                   padding: "14.8px",
                   borderBottom: "1px solid #ccc",
                 }}
+                key={feature.id}
               >
                 {feature.name}
               </Typography>

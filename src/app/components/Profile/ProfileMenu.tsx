@@ -38,7 +38,10 @@ const ProfileMenu = () => {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
         >
-          <Avatar sx={{ width: 32, height: 32 }}>U</Avatar>
+          <Avatar
+            sx={{ width: 32, height: 32 }}
+            src="/assets/images/avatar-2.png"
+          ></Avatar>
         </IconButton>
       </Tooltip>
       <Menu

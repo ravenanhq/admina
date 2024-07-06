@@ -168,7 +168,18 @@ const Notifications = () => {
           />
         </div>
         <div
-          style={{ backgroundColor: "#fff" }}
+          style={{
+            backgroundColor: "#fff",
+            width: "100%",
+            height: "100%",
+            gridTemplateColumns: "10fr",
+            alignItems: "flex-start",
+            columnGap: "1rem",
+            display: "grid",
+            marginTop: "1px",
+            overflow: "hidden",
+            rowGap: "1rem",
+          }}
           className="notificationDataTable"
         >
           <DataGrid

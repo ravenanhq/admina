@@ -48,7 +48,8 @@ const getStatusColor = (status) => {
     case "away":
       return "orange";
     case "busy":
-      return "#D1051A";
+    case "presentation":
+      return "#C50F1F"; // Red color for DND
     default:
       return "gray";
   }
@@ -73,7 +74,7 @@ const StatusIndicatorAvatars = () => {
             spacing={2}
             sx={{
               alignItems: "center",
-              justifyContent: "space-around",
+              justifyContent: "start",
               flexWrap: "wrap",
               padding: "16px 0",
             }}
@@ -84,7 +85,9 @@ const StatusIndicatorAvatars = () => {
                 style={{
                   position: "relative",
                   display: "inline-block",
+                  marginLeft: index === 0 ? "0" : "14px",
                 }}
+                className="statusAvatar"
               >
                 <Avatar {...stringAvatar(avatar.name)} />
                 <Tooltip
@@ -97,13 +100,37 @@ const StatusIndicatorAvatars = () => {
                       position: "absolute",
                       bottom: 0,
                       right: 0,
-                      width: "13px",
-                      height: "13px",
+                      width: "15px",
+                      height: "15px",
                       borderRadius: "50%",
-                      backgroundColor: getStatusColor(avatar.status),
-                      border: "2px solid white",
+                      backgroundColor:
+                        avatar.status === "presentation"
+                          ? getStatusColor(avatar.status)
+                          : "white",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
                     }}
-                  />
+                  >
+                    {avatar.status === "presentation" ? (
+                      <div
+                        style={{
+                          width: "8px",
+                          height: "2px",
+                          backgroundColor: "white",
+                        }}
+                      />
+                    ) : (
+                      <div
+                        style={{
+                          width: "8px",
+                          height: "8px",
+                          borderRadius: "50%",
+                          backgroundColor: getStatusColor(avatar.status),
+                        }}
+                      />
+                    )}
+                  </div>
                 </Tooltip>
               </div>
             ))}

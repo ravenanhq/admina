@@ -48,7 +48,6 @@ interface AddTaskDialogProps {
   open: boolean;
   onClose: () => void;
   onSave: (task: TaskDetails) => void;
-  columnId: string;
   columns: Column[];
   swimlanes: Swimlane[];
 }
@@ -59,7 +58,6 @@ interface Assignee {
 }
 interface TaskError {
   content: string;
-  assignees: string;
   title: string;
   status: string;
   priority: string;
@@ -69,7 +67,6 @@ const AddTask: React.FC<AddTaskDialogProps> = ({
   open,
   onClose,
   onSave,
-  columnId,
   columns,
   swimlanes,
 }) => {
@@ -78,7 +75,7 @@ const AddTask: React.FC<AddTaskDialogProps> = ({
     content: "",
     assignees: [],
     title: "",
-    status: columnId,
+    status: "column1",
     priority: "Low",
     swimlane: "",
     project: "",
@@ -86,11 +83,11 @@ const AddTask: React.FC<AddTaskDialogProps> = ({
 
   const [task, setTask] = useState<TaskDetails>(initialTaskState);
   const [assignees, setAssignees] = useState<Assignee[]>([]);
+  const [selectedAssignees, setSelectedAssignees] = useState<string[]>([]);
   const [errors, setErrors] = useState<TaskError>({
     title: "",
     content: "",
     status: "",
-    assignees: "",
     priority: "",
     swimlane: "",
   });
@@ -105,7 +102,6 @@ const AddTask: React.FC<AddTaskDialogProps> = ({
         title: "",
         content: "",
         status: "",
-        assignees: "",
         priority: "",
         swimlane: "",
       });
@@ -128,8 +124,6 @@ const AddTask: React.FC<AddTaskDialogProps> = ({
     if (!task.title) validationErrors.title = "Title is required";
     if (!task.content) validationErrors.content = "Content is required";
     if (!task.status) validationErrors.status = "Status is required";
-    if (!task.assignees || task.assignees.length === 0)
-      validationErrors.assignees = "At least one assignee is required";
     if (!task.priority) validationErrors.priority = "Priority is required";
     if (!task.swimlane) validationErrors.swimlane = "Swimlane is required";
 
@@ -140,19 +134,25 @@ const AddTask: React.FC<AddTaskDialogProps> = ({
 
     onSave(task);
     setTask(initialTaskState);
+    setSelectedAssignees([]);
     onClose();
   };
 
-  const handleAssigneeChange = (event: SelectChangeEvent<string[]>) => {
-    setTask((prevTask) => ({
-      ...prevTask,
-      assignees:
-        typeof event.target.value === "string"
-          ? event.target.value.split(",")
-          : (event.target.value as string[]),
-    }));
-
-    setErrors((prevErrors) => ({ ...prevErrors, assignees: "" }));
+  const handleAssigneeChange = (
+    event: SelectChangeEvent<string | string[]>
+  ) => {
+    const selectedValues = event.target.value || [];
+    setSelectedAssignees(
+      Array.isArray(selectedValues) ? selectedValues : [selectedValues]
+    );
+    if (task) {
+      setTask({
+        ...task,
+        assignees: Array.isArray(selectedValues)
+          ? selectedValues
+          : [selectedValues],
+      });
+    }
   };
 
   const handleSelectChange = (event: SelectChangeEvent<string>) => {
@@ -162,12 +162,33 @@ const AddTask: React.FC<AddTaskDialogProps> = ({
     setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
 
+  const handleChipDelete = (value: string) => {
+    const updatedAssignees = selectedAssignees.filter((item) => item !== value);
+    setSelectedAssignees(updatedAssignees);
+    if (task) {
+      setTask({ ...task, assignees: updatedAssignees });
+    }
+  };
+
+  const handleClose = () => {
+    setErrors({
+      title: "",
+      content: "",
+      status: "",
+      priority: "",
+      swimlane: "",
+    });
+    setTask(initialTaskState);
+    setSelectedAssignees([]);
+    onClose();
+  };
+
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={open} onClose={handleClose}>
       <DialogTitle>Add New Task</DialogTitle>
       <IconButton
         aria-label="close"
-        onClick={onClose}
+        onClick={handleClose}
         sx={{
           position: "absolute",
           right: 8,
@@ -182,7 +203,7 @@ const AddTask: React.FC<AddTaskDialogProps> = ({
           autoFocus
           margin="dense"
           name="title"
-          label="Task Title"
+          label="Title"
           fullWidth
           value={task.title}
           onChange={handleInputChange}
@@ -192,43 +213,55 @@ const AddTask: React.FC<AddTaskDialogProps> = ({
         />
         <TextField
           margin="dense"
-          label="Task Content"
+          label="Content"
           name="content"
           fullWidth
           value={task.content}
           onChange={handleInputChange}
-          error={!!errors.title}
-          placeholder="Task Content"
-          helperText={errors.title}
+          error={!!errors.content}
+          placeholder="Content"
+          helperText={errors.content}
+          multiline
+          rows={6}
+          maxRows={10}
         />
-        <FormControl fullWidth error={!!errors.assignees} margin="normal">
-          <InputLabel id="Assignees">Assignees</InputLabel>
+        <FormControl fullWidth margin="normal">
+          <InputLabel>Assignees</InputLabel>
           <Select
-            multiple
             label="Assignees"
             name="assignees"
-            value={task.assignees}
+            multiple
+            value={selectedAssignees || []}
             onChange={handleAssigneeChange}
             renderValue={(selected) => (
-              <div>
+              <div
+                onClick={(e) => e.stopPropagation()}
+                style={{ display: "flex", flexWrap: "wrap" }}
+              >
                 {(selected as string[]).map((value) => (
                   <Chip
                     key={value}
+                    onDelete={(event) => {
+                      event.preventDefault();
+                      handleChipDelete(value);
+                    }}
                     label={
                       assignees.find((user) => user.id === value)?.name || value
                     }
+                    onMouseDown={(event) => {
+                      event.stopPropagation();
+                    }}
                   />
                 ))}
               </div>
             )}
           >
-            {assignees.map((assignee) => (
-              <MenuItem key={assignee.id} value={assignee.id}>
-                {assignee.name}
+            {assignees.map((user) => (
+              <MenuItem key={user.id} value={user.id}>
+                {user.name}
               </MenuItem>
             ))}
           </Select>
-          <FormHelperText>{errors.assignees}</FormHelperText>
         </FormControl>
         <FormControl fullWidth error={!!errors.priority} margin="normal">
           <InputLabel id="Priority">Priority</InputLabel>
@@ -242,6 +275,7 @@ const AddTask: React.FC<AddTaskDialogProps> = ({
             <MenuItem value="Low">Low</MenuItem>
             <MenuItem value="Medium">Medium</MenuItem>
             <MenuItem value="High">High</MenuItem>
+            <MenuItem value="Highest">Highest</MenuItem>
           </Select>
           <FormHelperText>{errors.priority}</FormHelperText>
         </FormControl>
@@ -251,7 +285,7 @@ const AddTask: React.FC<AddTaskDialogProps> = ({
             label="Status"
             name="status"
             fullWidth
-            value={task.status == "" ? columnId : task.status}
+            value={task.status}
             onChange={handleSelectChange}
           >
             {columns.map((column) => (
@@ -263,7 +297,7 @@ const AddTask: React.FC<AddTaskDialogProps> = ({
           <FormHelperText>{errors.status}</FormHelperText>
         </FormControl>
         <FormControl fullWidth error={!!errors.swimlane} margin="normal">
-          <InputLabel id="demo-simple-select-label">Swimlane</InputLabel>
+          <InputLabel id="Swimlane-select-label">Swimlane</InputLabel>
           <Select
             label="Swimlane"
             name="swimlane"
@@ -284,8 +318,12 @@ const AddTask: React.FC<AddTaskDialogProps> = ({
         </FormControl>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} variant="outlined">Cancel</Button>
-        <Button onClick={handleSubmit} variant="contained" color="primary">Add</Button>
+        <Button onClick={handleClose} variant="outlined">
+          Cancel
+        </Button>
+        <Button onClick={handleSubmit} variant="contained" color="primary">
+          Add Task
+        </Button>
       </DialogActions>
     </Dialog>
   );

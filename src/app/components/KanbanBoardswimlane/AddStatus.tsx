@@ -51,7 +51,7 @@ const AddStatus: React.FC<NewStatusProps> = ({ open, onClose, onSave }) => {
       <DialogTitle>Add New Status</DialogTitle>
       <IconButton
         aria-label="close"
-        onClick={onClose}
+        onClick={handleClose}
         sx={{
           position: "absolute",
           right: 8,

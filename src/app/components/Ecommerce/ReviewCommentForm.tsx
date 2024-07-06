@@ -62,7 +62,12 @@ const ReviewCommentForm = () => {
           <TextField
             fullWidth
             id="message"
-            label="Your Comment"
+            label={
+              <span>
+                Your Comment
+                <span style={{ color: "#d32f2f", marginLeft: "3px" }}>*</span>
+              </span>
+            }
             name="message"
             value={formData.message}
             onChange={handleChange}
@@ -76,7 +81,12 @@ const ReviewCommentForm = () => {
           <TextField
             fullWidth
             id="name"
-            label="Your Name"
+            label={
+              <span>
+                Your Name
+                <span style={{ color: "#d32f2f", marginLeft: "3px" }}>*</span>
+              </span>
+            }
             name="name"
             value={formData.name}
             onChange={handleChange}

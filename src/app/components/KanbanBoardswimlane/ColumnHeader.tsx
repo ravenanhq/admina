@@ -13,7 +13,7 @@ interface Column {
 }
 interface ColumnProps {
   columns: Column[];
-  onAddTask: (columnId: string) => void;
+  onAddTask: () => void;
 }
 
 const ColumnHeader: React.FC<ColumnProps> = ({ columns, onAddTask }) => {
@@ -87,7 +87,7 @@ const ColumnHeader: React.FC<ColumnProps> = ({ columns, onAddTask }) => {
                   padding: "4px",
                   display: selectedColumn ? "none" : "",
                 }}
-                onClick={() => onAddTask(column.id)}
+                onClick={() => onAddTask()}
               >
                 <AddIcon />
               </IconButton>
