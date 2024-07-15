@@ -239,7 +239,7 @@ const AddTask = ({
           )}
         </FormControl>
       </DialogContent>
-      <DialogActions>
+      <DialogActions style={{ paddingBottom: "15px" }}>
         <ButtonComponent
           variant="contained"
           type="button"
@@ -247,6 +247,7 @@ const AddTask = ({
           style={{
             background: "#1976d2",
             padding: "5px 15px",
+            borderRadius: "4px",
             color: "#fff",
           }}
           name="submit"
@@ -259,6 +260,7 @@ const AddTask = ({
             background: "#eaeaea",
             padding: "5px 15px",
             color: "#555",
+            borderRadius: "4px",
           }}
           name="cancel"
         ></ButtonComponent>

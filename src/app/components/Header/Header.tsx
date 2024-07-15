@@ -63,14 +63,14 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
 
   const isMobile = useMediaQuery("(max-width:1023px)");
   const [searchOpen, setSearchOpen] = useState(false);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
 
   const toggleSearch = () => {
     setSearchOpen(!searchOpen);
   };
 
   const handleClose = () => {
-    setQuery('');
+    setQuery("");
     setSearchOpen(false);
   };
 
@@ -170,7 +170,7 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
                   display: "flex",
                   alignItems: "center",
                   flexGrow: 1,
-                  left: "235px",
+                  left: "297px",
                   position: "relative",
                 }}
               >

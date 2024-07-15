@@ -149,11 +149,13 @@ const UpdateTask: React.FC<EditModalProps> = ({
         role="presentation"
       >
         <form>
-          <div style={{ display: "flex", marginBottom:"10px"}}>
-            <label htmlFor="title" style={{fontWeight:"bold"}} >
-              TaskId : 
+          <div style={{ display: "flex", marginBottom: "10px" }}>
+            <label htmlFor="title" style={{ fontWeight: "bold" }}>
+              TaskId :
             </label>
-            <Typography style={{marginLeft:"15px"}}>{data?.taskId}</Typography>
+            <Typography style={{ marginLeft: "15px" }}>
+              {data?.taskId}
+            </Typography>
           </div>
           <FormControl
             style={{
@@ -272,7 +274,18 @@ const UpdateTask: React.FC<EditModalProps> = ({
               ))}
             </TextField>
           </FormControl>
-          <CardActions>
+          <CardActions style={{ padding: "8px 8px 8px 4px" }}>
+            <ButtonComponent
+              variant="text"
+              type="button"
+              onClick={handleDelete}
+              style={{
+                padding: "0px 9px 0 0",
+                color: "rgb(25, 118, 210)",
+                borderRadius: "4px",
+              }}
+              name="delete"
+            ></ButtonComponent>
             <ButtonComponent
               variant="contained"
               type="button"
@@ -280,19 +293,9 @@ const UpdateTask: React.FC<EditModalProps> = ({
               style={{
                 background: "#1976d2",
                 padding: "5px 15px",
+                borderRadius: "4px",
               }}
               name="Update"
-            ></ButtonComponent>
-            <ButtonComponent
-              variant="contained"
-              type="button"
-              onClick={handleDelete}
-              style={{
-                background: "#eaeaea",
-                padding: "5px 15px",
-                color: "#555",
-              }}
-              name="delete"
             ></ButtonComponent>
           </CardActions>
         </form>
