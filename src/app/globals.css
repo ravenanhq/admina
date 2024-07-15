@@ -217,8 +217,20 @@ header {
   }
 
   .tabElement .Mui-selected {
-    border-bottom: 2px solid #1976d2;
+    border-bottom: 2px solid hsl(210, 79%, 46%);
   }
+}
+
+.richTextEditor .ql-snow .ql-editing {
+  left: 10px !important;
+}
+
+.richTextEditor .ql-snow:nth-child(2) {
+  display: none;
+}
+
+.richTextEditor img {
+  width: 50%;
 }
 
 .sidebar-open .advance-kanbanboard {
