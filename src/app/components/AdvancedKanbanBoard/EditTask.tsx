@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
-  Drawer,
+  Modal,
   TextField,
   Button,
   FormControl,
@@ -10,9 +10,15 @@ import {
   Chip,
   SelectChangeEvent,
   FormHelperText,
+  Box,
+  Typography,
+  IconButton,
+  Grid,
 } from "@mui/material";
+import SaveIcon from "@mui/icons-material/Save";
+import CloseIcon from "@mui/icons-material/Close";
 import users from "./users.json";
-import { Task } from "@mui/icons-material";
+import CommentSection from "./CommentSection";
 
 interface Task {
   id: string;
@@ -21,6 +27,7 @@ interface Task {
   title: string;
   status: string;
   priority: string;
+  sprint: string;
 }
 
 interface Status {
@@ -56,7 +63,10 @@ const EditTask: React.FC<EditTaskProps> = ({
     content: "",
     status: "",
     priority: "",
+    sprint: "",
   });
+  const [isTitleEditMode, setIsTitleEditMode] = useState(false);
+  const [isContentEditMode, setIsContentEditMode] = useState(false);
 
   useEffect(() => {
     if (task) {
@@ -107,6 +117,7 @@ const EditTask: React.FC<EditTaskProps> = ({
       content: localTask?.content ? "" : "Content is required",
       status: localTask?.status ? "" : "Status is required",
       priority: localTask?.priority ? "" : "Priority is required",
+      sprint: localTask?.sprint ? "" : "Sprint is required",
     };
     setErrors(newErrors);
     return !Object.values(newErrors).some((error) => error);
@@ -124,6 +135,7 @@ const EditTask: React.FC<EditTaskProps> = ({
       content: "",
       status: "",
       priority: "",
+      sprint: "",
     });
     onClose();
   };
@@ -136,123 +148,243 @@ const EditTask: React.FC<EditTaskProps> = ({
     }
   };
 
+  const toggleTitleEditMode = () => {
+    setIsTitleEditMode(!isTitleEditMode);
+  };
+
+  const toggleContentEditMode = () => {
+    setIsContentEditMode(!isContentEditMode);
+  };
+
+  const saveTitle = () => {
+    setIsTitleEditMode(false);
+  };
+
+  const saveContent = () => {
+    setIsContentEditMode(false);
+  };
+
+  const cancelEditTitle = () => {
+    setIsTitleEditMode(false);
+    if (task) {
+      setLocalTask({ ...localTask, title: task.title });
+    }
+  };
+
+  const cancelEditContent = () => {
+    setIsContentEditMode(false);
+    if (task) {
+      setLocalTask({ ...localTask, content: task.content });
+    }
+  };
+
   return (
-    <Drawer anchor="right" open={open} onClose={handleClose}>
-      <div style={{ width: 300, padding: 20 }}>
-        <h2>Edit Task</h2>
-        {localTask && (
-          <>
-            <TextField
-              label="Title"
-              name="title"
-              value={localTask.title}
-              fullWidth
-              margin="normal"
-              onChange={handleInputChange}
-              error={!!errors.title}
-              helperText={errors.title}
-            />
-            <TextField
-              label="Content"
-              name="content"
-              value={localTask.content}
-              fullWidth
-              margin="normal"
-              onChange={handleInputChange}
-              error={!!errors.content}
-              helperText={errors.content}
-              multiline
-              rows={4}
-              maxRows={Infinity}
-            />
-            <FormControl fullWidth margin="normal" error={!!errors.status}>
-              <InputLabel>Status</InputLabel>
-              <Select
-                label="Status"
-                name="status"
-                value={localTask.status}
-                onChange={handleSelectChange}
-              >
-                {statuses.map((status) => (
-                  <MenuItem key={status.id} value={status.id}>
-                    {status.title}
-                  </MenuItem>
-                ))}
-              </Select>
-              <FormHelperText>{errors.status}</FormHelperText>
-            </FormControl>
-            <FormControl fullWidth margin="normal" error={!!errors.priority}>
-              <InputLabel id="Priority">Priority</InputLabel>
-              <Select
-                label="Priority"
-                name="priority"
-                fullWidth
-                value={localTask.priority}
-                onChange={handleSelectChange}
-              >
-                <MenuItem value="Low">Low</MenuItem>
-                <MenuItem value="Medium">Medium</MenuItem>
-                <MenuItem value="High">High</MenuItem>
-                <MenuItem value="Highest">Highest</MenuItem>
-              </Select>
-              <FormHelperText>{errors.priority}</FormHelperText>
-            </FormControl>
-            <FormControl fullWidth margin="normal">
-              <InputLabel>Assignees</InputLabel>
-              <Select
-                label="Assignees"
-                name="assignees"
-                multiple
-                value={selectedAssignees || []}
-                onChange={handleAssigneeChange}
-                renderValue={(selected) => (
-                  <div
-                    onClick={(e) => e.stopPropagation()}
-                    style={{ display: "flex", flexWrap: "wrap" }}
+    <Modal open={open} onClose={handleClose}>
+      <Box
+        sx={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "90%",
+          maxWidth: "1000px",
+          bgcolor: "background.paper",
+          border: "2px solid #000",
+          boxShadow: 24,
+          p: 3,
+          maxHeight: "90vh",
+          overflowY: "auto",
+        }}
+      >
+        <Grid container spacing={3}>
+          {localTask && (
+            <>
+              <Grid item xs={12} sm={7}>
+                {isTitleEditMode ? (
+                  <Box display="flex" alignItems="center">
+                    <TextField
+                      name="title"
+                      value={localTask.title}
+                      fullWidth
+                      margin="normal"
+                      onChange={handleInputChange}
+                      error={!!errors.title}
+                      helperText={errors.title}
+                    />
+                    <IconButton onClick={saveTitle}>
+                      <SaveIcon />
+                    </IconButton>
+                    <IconButton onClick={cancelEditTitle}>
+                      <CloseIcon />
+                    </IconButton>
+                  </Box>
+                ) : (
+                  <Box
+                    display="flex"
+                    alignItems="center"
+                    onClick={toggleTitleEditMode}
                   >
-                    {(selected as string[]).map((value) => (
-                      <Chip
-                        key={value}
-                        onDelete={(event) => {
-                          event.preventDefault();
-                          handleChipDelete(value);
-                        }}
-                        label={
-                          users.find((user) => user.id === value)?.name || value
-                        }
-                        onMouseDown={(event) => {
-                          event.stopPropagation();
-                        }}
-                      />
-                    ))}
-                  </div>
+                    <Typography variant="h6">
+                      <span style={{ color: "#003d7f", fontWeight: "700" }}>
+                        #{localTask.id}{" "}
+                      </span>{" "}
+                      {localTask.title}
+                    </Typography>
+                  </Box>
                 )}
-              >
-                {users.map((user) => (
-                  <MenuItem key={user.id} value={user.id}>
-                    {user.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-            <Button
-              onClick={handleClose}
-              style={{ marginTop: 20, marginRight: 10 }}
-            >
-              Cancel
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleSave}
-              style={{ marginTop: 20 }}
-            >
-              Save
-            </Button>
-          </>
-        )}
-      </div>
-    </Drawer>
+                {isContentEditMode ? (
+                  <Box display="flex" alignItems="center">
+                    <TextField
+                      label="Content"
+                      name="content"
+                      value={localTask.content}
+                      fullWidth
+                      margin="normal"
+                      onChange={handleInputChange}
+                      error={!!errors.content}
+                      helperText={errors.content}
+                      multiline
+                      rows={4}
+                      maxRows={Infinity}
+                    />
+                    <IconButton onClick={saveContent}>
+                      <SaveIcon />
+                    </IconButton>
+                    <IconButton onClick={cancelEditContent}>
+                      <CloseIcon />
+                    </IconButton>
+                  </Box>
+                ) : (
+                  <Box
+                    display="flex"
+                    alignItems="center"
+                    onClick={toggleContentEditMode}
+                    style={{ padding: "10px 0" }}
+                  >
+                    <Typography variant="body1">{localTask.content}</Typography>
+                  </Box>
+                )}
+                <CommentSection />
+              </Grid>
+              <Grid item xs={12} sm={5}>
+                <Box sx={{ border: "1px solid #ccc", p: 2 }}>
+                  <Typography variant="h5" style={{ paddingBottom: "10px" }}>
+                    Details
+                  </Typography>
+
+                  <FormControl
+                    variant="standard"
+                    fullWidth
+                    margin="normal"
+                    error={!!errors.status}
+                  >
+                    <InputLabel>Status</InputLabel>
+                    <Select
+                      name="status"
+                      value={localTask.status}
+                      onChange={handleSelectChange}
+                      fullWidth
+                    >
+                      {statuses.map((status) => (
+                        <MenuItem key={status.id} value={status.id}>
+                          {status.title}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                    <FormHelperText>{errors.status}</FormHelperText>
+                  </FormControl>
+
+                  <FormControl
+                    variant="standard"
+                    fullWidth
+                    margin="normal"
+                    error={!!errors.priority}
+                  >
+                    <InputLabel>Priority</InputLabel>
+                    <Select
+                      name="priority"
+                      value={localTask.priority}
+                      onChange={handleSelectChange}
+                      fullWidth
+                    >
+                      <MenuItem value="Low">Low</MenuItem>
+                      <MenuItem value="Medium">Medium</MenuItem>
+                      <MenuItem value="High">High</MenuItem>
+                      <MenuItem value="Highest">Highest</MenuItem>
+                    </Select>
+                    <FormHelperText>{errors.priority}</FormHelperText>
+                  </FormControl>
+
+                  <FormControl variant="standard" fullWidth margin="normal">
+                    <InputLabel>Assignees</InputLabel>
+                    <Select
+                      name="assignees"
+                      multiple
+                      value={selectedAssignees || []}
+                      onChange={handleAssigneeChange}
+                      renderValue={(selected) => (
+                        <div style={{ display: "flex", flexWrap: "wrap" }}>
+                          {(selected as string[]).map((value) => (
+                            <Chip
+                              key={value}
+                              onDelete={(event) => {
+                                event.preventDefault();
+                                handleChipDelete(value);
+                              }}
+                              label={
+                                users.find((user) => user.id === value)?.name ||
+                                value
+                              }
+                            />
+                          ))}
+                        </div>
+                      )}
+                    >
+                      {users.map((user) => (
+                        <MenuItem key={user.id} value={user.id}>
+                          {user.name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                  <FormControl variant="standard" fullWidth margin="normal">
+                    <TextField
+                      label="Sprint"
+                      name="sprint"
+                      placeholder="sprint"
+                      variant="standard"
+                      value={localTask.sprint}
+                      fullWidth
+                      onChange={handleInputChange}
+                      error={!!errors.sprint}
+                      helperText={errors.sprint}
+                      InputLabelProps={{ shrink: true }}
+                    />
+                  </FormControl>
+
+                  <Grid
+                    item
+                    xs={12}
+                    style={{ textAlign: "right", marginTop: "10px" }}
+                  >
+                    <Button onClick={handleClose} style={{ marginRight: 10 }}>
+                      Cancel
+                    </Button>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={handleSave}
+                    >
+                      Save
+                    </Button>
+                  </Grid>
+                </Box>
+              </Grid>
+            </>
+          )}
+        </Grid>
+      </Box>
+    </Modal>
   );
 };
 
