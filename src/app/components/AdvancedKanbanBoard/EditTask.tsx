@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css"; // Import Quill styles
 import {
   Modal,
   TextField,
@@ -19,6 +21,10 @@ import SaveIcon from "@mui/icons-material/Save";
 import CloseIcon from "@mui/icons-material/Close";
 import users from "./users.json";
 import CommentSection from "./CommentSection";
+import Quill from "quill"; // Import Quill
+import "quill/dist/quill.core.css";
+import "quill/dist/quill.snow.css";
+import DOMPurify from "dompurify"; // Import DOMPurify for sanitization
 
 interface Task {
   id: string;
@@ -111,6 +117,12 @@ const EditTask: React.FC<EditTaskProps> = ({
     }
   };
 
+  const handleContentChange = (value: string) => {
+    if (localTask) {
+      setLocalTask({ ...localTask, content: value });
+    }
+  };
+
   const validateFields = () => {
     const newErrors = {
       title: localTask?.title ? "" : "Title is required",
@@ -178,6 +190,50 @@ const EditTask: React.FC<EditTaskProps> = ({
     }
   };
 
+  const modules = {
+    toolbar: {
+      container: [
+        [{ font: [] }],
+        [{ size: ["small", false, "large", "huge"] }],
+        ["bold", "italic", "underline"],
+        [{ color: [] }, { background: [] }],
+        [{ script: "sub" }, { script: "super" }],
+        [{ header: "1" }, { header: "2" }, "blockquote"],
+        [
+          { list: "ordered" },
+          { list: "bullet" },
+          { indent: "-1" },
+          { indent: "+1" },
+        ],
+        ["direction", { align: [] }],
+        ["link", "image", "video"],
+        ["clean"],
+      ],
+    },
+  };
+  const formats = [
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "color",
+    "background",
+    "script",
+    "header",
+    "blockquote",
+    "code-block",
+    "indent",
+    "list",
+    "direction",
+    "align",
+    "link",
+    "image",
+    "video",
+    "formula",
+  ];
+
   return (
     <Modal open={open} onClose={handleClose}>
       <Box
@@ -225,7 +281,7 @@ const EditTask: React.FC<EditTaskProps> = ({
                     onClick={toggleTitleEditMode}
                   >
                     <Typography variant="h6">
-                      <span style={{ color: "#003d7f", fontWeight: "700" }}>
+                      <span style={{ color: "#003d7f", fontWeight: 700 }}>
                         #{localTask.id}{" "}
                       </span>{" "}
                       {localTask.title}
@@ -233,26 +289,21 @@ const EditTask: React.FC<EditTaskProps> = ({
                   </Box>
                 )}
                 {isContentEditMode ? (
-                  <Box display="flex" alignItems="center">
-                    <TextField
-                      label="Content"
-                      name="content"
+                  <Box>
+                    <ReactQuill
                       value={localTask.content}
-                      fullWidth
-                      margin="normal"
-                      onChange={handleInputChange}
-                      error={!!errors.content}
-                      helperText={errors.content}
-                      multiline
-                      rows={4}
-                      maxRows={Infinity}
+                      onChange={handleContentChange}
+                      modules={modules}
+                      formats={formats}
                     />
-                    <IconButton onClick={saveContent}>
-                      <SaveIcon />
-                    </IconButton>
-                    <IconButton onClick={cancelEditContent}>
-                      <CloseIcon />
-                    </IconButton>
+                    <Box display="flex" alignItems="center">
+                      <IconButton onClick={saveContent}>
+                        <SaveIcon />
+                      </IconButton>
+                      <IconButton onClick={cancelEditContent}>
+                        <CloseIcon />
+                      </IconButton>
+                    </Box>
                   </Box>
                 ) : (
                   <Box
@@ -261,7 +312,14 @@ const EditTask: React.FC<EditTaskProps> = ({
                     onClick={toggleContentEditMode}
                     style={{ padding: "10px 0" }}
                   >
-                    <Typography variant="body1">{localTask.content}</Typography>
+                    <Typography>
+                      {/* Sanitize and display content using dompurify */}
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: DOMPurify.sanitize(localTask.content || ""),
+                        }}
+                      />
+                    </Typography>
                   </Box>
                 )}
                 <CommentSection />

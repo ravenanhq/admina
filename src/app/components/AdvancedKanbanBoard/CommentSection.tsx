@@ -11,9 +11,8 @@ import {
 } from "@mui/material";
 import Quill from "quill";
 import "quill/dist/quill.core.css";
-import "quill/dist/quill.snow.css"; 
+import "quill/dist/quill.snow.css";
 import DOMPurify from "dompurify";
-
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SaveIcon from "@mui/icons-material/Save";
@@ -45,6 +44,7 @@ const CommentSection = () => {
               { font: [] },
             ],
             ["bold", "italic", "underline", "strike", "blockquote"],
+            [{ color: [] }, { background: [] }],
             [{ list: "ordered" }, { list: "bullet" }],
             ["link", "image", "video"],
             ["clean"],
@@ -79,7 +79,7 @@ const CommentSection = () => {
       updatedComments[editingIndex] = {
         content: editingContent,
         dateTime: formattedDateTime,
-        author: "John", // Replace with actual author name or identifier
+        author: "John",
       };
       setComments(updatedComments);
       setEditingIndex(null);
@@ -90,17 +90,17 @@ const CommentSection = () => {
         ...comments,
       ]);
       setContent("");
-      quillRef.current?.setContents([]); // Clear Quill editor content
+      quillRef.current?.setContents([]);
     }
 
-    setError(""); // Clear error message after successful save
+    setError("");
   };
 
   const handleEditClick = (index: number) => {
     setEditingIndex(index);
     setEditingContent(
       DOMPurify.sanitize(comments[index].content, { ALLOWED_TAGS: [] })
-    ); // Strip HTML tags
+    );
   };
 
   const handleDeleteClick = (index: number) => {
@@ -111,7 +111,7 @@ const CommentSection = () => {
   const handleCancelEdit = () => {
     setEditingIndex(null);
     setEditingContent("");
-    setError(""); // Clear error message on cancel
+    setError("");
   };
 
   return (
@@ -191,7 +191,7 @@ const CommentSection = () => {
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                   <Avatar
                     alt="Avatar"
-                    src="/static/images/avatar/1.jpg" // Replace with actual avatar image source
+                    src="/static/images/avatar/1.jpg"
                     sx={{ width: 32, height: 32, marginRight: 1 }}
                   />
                   <Typography variant="caption" color="textSecondary">
