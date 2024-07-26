@@ -7,24 +7,34 @@ import {
   Divider,
   Grid,
   Typography,
+  Alert,
 } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
-const MultipleFileUpload = () => {
-  const [selectedFiles, setSelectedFiles] = useState([]);
+const ImageFileUpload = () => {
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleFileChange = (event) => {
-    const files = Array.from(event.target.files);
-    setSelectedFiles((prevFiles) => [...prevFiles, ...files]);
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(event.target.files || []);
+    const imageFiles = files.filter((file) => file.type.startsWith("image/"));
+    const invalidFiles = files.length !== imageFiles.length;
+
+    if (invalidFiles) {
+      setError("Please upload only image files.");
+    } else {
+      setError(null);
+      setSelectedFiles((prevFiles) => [...prevFiles, ...imageFiles]);
+    }
   };
 
-  const removeFile = (fileIndex) => {
+  const removeFile = (fileIndex: number) => {
     setSelectedFiles((prevFiles) =>
       prevFiles.filter((_, index) => index !== fileIndex)
     );
   };
 
-  const formatFileSize = (size) => {
+  const formatFileSize = (size: number) => {
     if (size < 1024) return `${size} B`;
     else if (size < 1048576) return `${(size / 1024).toFixed(2)} KB`;
     else return `${(size / 1048576).toFixed(2)} MB`;
@@ -33,11 +43,16 @@ const MultipleFileUpload = () => {
   return (
     <Card sx={{ marginTop: 2 }}>
       <CardHeader
-        title="Multiple File Upload"
+        title="Image File Upload"
         sx={{ bgcolor: "#1d8683", color: "white" }}
         titleTypographyProps={{ fontSize: "16px" }}
       />
       <Box sx={{ padding: "10px", margin: "20px", border: "2px dotted #ccc" }}>
+        {error && (
+          <Alert severity="error" sx={{ marginBottom: 2 }}>
+            {error}
+          </Alert>
+        )}
         {selectedFiles.length > 0 && (
           <Grid
             container
@@ -93,8 +108,10 @@ const MultipleFileUpload = () => {
                       <div style={{ margin: "10px 0" }}>
                         <Typography
                           style={{
-                            fontSize: "15px",
-                            color: "#444050",
+                            fontSize: "13px",
+                            lineHeight: "14x",
+                            marginBottom: "5px",
+                            color: "#5B5A58",
                           }}
                         >
                           {file.name}
@@ -138,7 +155,7 @@ const MultipleFileUpload = () => {
             style={{ display: "block", textAlign: "center" }}
           >
             <input
-              accept="*/*"
+              accept="image/*"
               style={{ display: "none" }}
               id="multiple-file-upload"
               multiple
@@ -160,4 +177,4 @@ const MultipleFileUpload = () => {
   );
 };
 
-export default MultipleFileUpload;
+export default ImageFileUpload;
