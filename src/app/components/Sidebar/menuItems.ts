@@ -38,6 +38,7 @@ const menuItems = [
       { label: "Pagination", route: "/uielements/pagination" },
       { label: "Transfer List", route: "/uielements/transfer-list" },
       { label: "Accordian", route: "/uielements/accordion" },
+      { label: "File Upload", route: "/uielements/file-upload" },
     ],
   },
   {
