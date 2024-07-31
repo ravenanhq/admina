@@ -21,10 +21,9 @@ import SaveIcon from "@mui/icons-material/Save";
 import CloseIcon from "@mui/icons-material/Close";
 import users from "./users.json";
 import CommentSection from "./CommentSection";
-import Quill from "quill"; // Import Quill
 import "quill/dist/quill.core.css";
 import "quill/dist/quill.snow.css";
-import DOMPurify from "dompurify"; // Import DOMPurify for sanitization
+import DOMPurify from "dompurify";
 
 interface Task {
   id: string;
@@ -33,7 +32,7 @@ interface Task {
   title: string;
   status: string;
   priority: string;
-  sprint: string;
+  sprint?: string;
 }
 
 interface Status {
