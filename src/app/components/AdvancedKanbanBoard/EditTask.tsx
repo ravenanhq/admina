@@ -295,13 +295,27 @@ const EditTask: React.FC<EditTaskProps> = ({
                       modules={modules}
                       formats={formats}
                     />
-                    <Box display="flex" alignItems="center">
-                      <IconButton onClick={saveContent}>
-                        <SaveIcon />
-                      </IconButton>
-                      <IconButton onClick={cancelEditContent}>
-                        <CloseIcon />
-                      </IconButton>
+                    <Box
+                      display="flex"
+                      alignItems="center"
+                      style={{ justifyContent: "right", marginTop: "13px" }}
+                    >
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={saveContent}
+                      >
+                        update
+                      </Button>
+
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={cancelEditContent}
+                        sx={{ ml: 2 }}
+                      >
+                        Cancel
+                      </Button>
                     </Box>
                   </Box>
                 ) : (
@@ -312,7 +326,6 @@ const EditTask: React.FC<EditTaskProps> = ({
                     style={{ padding: "10px 0" }}
                   >
                     <Typography>
-                      {/* Sanitize and display content using dompurify */}
                       <div
                         dangerouslySetInnerHTML={{
                           __html: DOMPurify.sanitize(localTask.content || ""),

@@ -13,6 +13,8 @@ import "quill/dist/quill.core.css";
 import "quill/dist/quill.snow.css";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import DOMPurify from "dompurify";
+import parse from "html-react-parser";
 
 const CommentSection = () => {
   const [content, setContent] = useState("");
@@ -161,7 +163,7 @@ const CommentSection = () => {
       <input
         type="file"
         ref={fileInputRef}
-        accept="image/*" 
+        accept="image/*"
         style={{ display: "none" }}
         onChange={handleFileChange}
       />
@@ -224,10 +226,9 @@ const CommentSection = () => {
               </IconButton>
             </Box>
           </Box>
-          <Typography
-            variant="body1"
-            dangerouslySetInnerHTML={{ __html: comment.content }}
-          />
+          <Typography variant="body1">
+            {parse(DOMPurify.sanitize(comment.content))}
+          </Typography>
         </Paper>
       ))}
     </Box>
