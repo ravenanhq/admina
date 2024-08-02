@@ -222,7 +222,7 @@ export const KanbanBoard = () => {
                     gutterBottom
                     variant="h5"
                     component="div"
-                    sx={{ fontSize: "14px" }}
+                    sx={{ fontSize: "1rem" }}
                   >
                     {list.title}
                   </Typography>
@@ -284,7 +284,7 @@ export const KanbanBoard = () => {
         variant="h4"
         sx={{ fontSize: "20px", fontWeight: "700", margin: "20px 0" }}
       >
-        Kanban Board
+        Simple Kanban Board
       </Typography>
 
       <Grid

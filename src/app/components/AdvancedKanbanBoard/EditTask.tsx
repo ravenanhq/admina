@@ -27,7 +27,7 @@ interface Task {
   title: string;
   status: string;
   priority: string;
-  sprint: string;
+  sprint?: string;
 }
 
 interface Status {

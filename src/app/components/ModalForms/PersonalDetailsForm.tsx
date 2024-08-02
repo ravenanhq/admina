@@ -23,7 +23,7 @@ const PersonalDetailsForm = ({ formData, handleChange, errors, isMobile }) => {
       <Grid
         container
         spacing={3}
-        style={{ marginLeft: "0", paddingRight: "10px" }}
+        style={{ marginLeft: "0", paddingRight: "20px" }}
       >
         <Grid
           item
