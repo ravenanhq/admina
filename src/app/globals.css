@@ -225,10 +225,6 @@ header {
   left: 10px !important;
 }
 
-.richTextEditor .ql-snow:nth-child(2) {
-  display: none;
-}
-
 .richTextEditor img {
   width: 50%;
 }
