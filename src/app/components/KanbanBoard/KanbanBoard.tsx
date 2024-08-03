@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Grid, CardContent, Typography, Drawer } from "@mui/material";
-import { Card } from "react-bootstrap";
+import { Grid, CardContent, Typography, Drawer,Card } from "@mui/material";
 import List from "../../../drag-and-drop-list.json";
 import MoreVertSharpIcon from "@mui/icons-material/MoreVertSharp";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
@@ -48,6 +47,7 @@ export const KanbanBoard = () => {
     assignee: "",
   });
   const [showAddItem, setShowAddItem] = useState(false);
+  const [deletedStatuses, setDeletedStatuses] = useState([]);
 
   useEffect(() => {
     setLists(List);
@@ -66,23 +66,16 @@ export const KanbanBoard = () => {
     e.preventDefault();
     const updatedLists = [...lists];
     const draggedList = updatedLists[draggedIndex];
-
     updatedLists.splice(draggedIndex, 1);
-
+  
     draggedList.status = targetStatus;
 
-    let targetIndex = updatedLists.findIndex(
-      (list) => list.status === targetStatus
-    );
-    if (targetIndex === -1) {
-      targetIndex = updatedLists.length;
-    }
-
-    updatedLists.splice(targetIndex, 0, draggedList);
-
+    updatedLists.push(draggedList);
+  
     setLists(updatedLists);
     setPlaceholder(false);
   };
+  
 
   const handleTouchStart = (index) => {
     setDraggedIndex(index);
@@ -127,8 +120,10 @@ export const KanbanBoard = () => {
 
   const handleDelete = (statusToDelete) => {
     setMenuOpen(false);
-    const updatedLists = lists.filter((list) => list.status !== statusToDelete);
-    setLists(updatedLists);
+    setDeletedStatuses((prevDeletedStatuses) => [
+      ...prevDeletedStatuses,
+      statusToDelete,
+    ]);
   };
 
   const handleAddItem = () => {
@@ -193,6 +188,12 @@ export const KanbanBoard = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   const renderListSection = (status) => {
+    const statusLists = lists.filter((list) => list.status === status);
+
+    // Check if the status has been deleted
+    if (deletedStatuses.includes(status)) {
+      return null;
+    }
     return (
       <>
         {lists.map(
@@ -410,6 +411,7 @@ export const KanbanBoard = () => {
           );
         })}
       </Grid>
+
       <AddTask
         open={showAddItem}
         onCancel={handleCancel}

@@ -119,7 +119,7 @@ const UpdateTask: React.FC<EditModalProps> = ({
         <Typography
           variant="h5"
           sx={{
-            margin: "20px 0 0 10px",
+            margin: "20px 0 0 18px",
             letterSpacing: "2px",
             fontSize: "20px",
             color: "#555",
