@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -8,13 +8,13 @@ import {
   Avatar,
   Alert,
 } from "@mui/material";
-import Quill from "quill";
-import "quill/dist/quill.core.css";
-import "quill/dist/quill.snow.css";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DOMPurify from "dompurify";
 import parse from "html-react-parser";
+import "react-quill/dist/quill.snow.css";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const CommentSection = () => {
   const [content, setContent] = useState("");
@@ -24,83 +24,17 @@ const CommentSection = () => {
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [error, setError] = useState<string>("");
 
-  const editorRef = useRef<HTMLDivElement | null>(null);
-  const quillRef = useRef<Quill | null>(null);
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    if (editorRef.current && !quillRef.current) {
-      const icons = Quill.import("ui/icons");
-      icons["attachFile"] =
-        '<svg viewBox="0 0 18 18"><path d="M10.5 4.5V11h-3V4.5H5l4-4 4 4h-2.5zM3 16v-3h12v3H3z" /></svg>';
-
-      quillRef.current = new Quill(editorRef.current, {
-        theme: "snow",
-        modules: {
-          toolbar: {
-            container: [
-              [
-                { header: "1" },
-                { header: "2" },
-                { header: [3, 4, 5, 6, false] },
-                { paragraph: "p" },
-                { font: [] },
-              ],
-              ["bold", "italic", "underline", "strike", "blockquote"],
-              [{ color: [] }, { background: [] }],
-              [{ script: "sub" }, { script: "super" }],
-              [{ list: "ordered" }, { list: "bullet" }],
-              ["link", "video"],
-              ["clean"],
-              ["attachFile"],
-            ],
-            handlers: {
-              attachFile: () => {
-                fileInputRef.current?.click();
-              },
-            },
-          },
-        },
-      });
-
-      quillRef.current.on("text-change", () => {
-        setContent(quillRef.current?.root.innerHTML || "");
-      });
-    }
-
-    return () => {
-      if (quillRef.current) {
-        quillRef.current.off("text-change");
-        quillRef.current = null;
-      }
-    };
-  }, []);
-
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file && file.type.startsWith("image/")) {
-      const reader = new FileReader();
-      reader.onload = async () => {
-        const url = reader.result as string;
-        const fileName = file.name;
-
-        const range = quillRef.current?.getSelection(true);
-        if (range) {
-          quillRef.current?.clipboard.dangerouslyPasteHTML(
-            range.index,
-            `<img src="${url}" alt="${fileName}" style="max-width: 100%;" />`
-          );
-        }
-      };
-      reader.readAsDataURL(file);
-    } else {
-      setError("Only image files are allowed.");
-    }
-  };
-
   const handleSaveClick = () => {
-    if (!content.trim()) {
-      setError("Comment content cannot be empty.");
+    const sanitizedContent = DOMPurify.sanitize(content || "");
+    const contentWithoutTags = sanitizedContent
+      .replace(/<[^>]*>?/gm, "")
+      .trim();
+    const containsImage = /<img[^>]*src=["'][^"']*["'][^>]*>/gm.test(
+      sanitizedContent
+    );
+
+    if (!contentWithoutTags.trim() && !containsImage) {
+      setError("Comment cannot be empty.");
       return;
     }
 
@@ -110,7 +44,7 @@ const CommentSection = () => {
     if (editingIndex !== null) {
       const updatedComments = [...comments];
       updatedComments[editingIndex] = {
-        content,
+        content: sanitizedContent,
         dateTime: formattedDateTime,
         author: "John",
       };
@@ -118,20 +52,22 @@ const CommentSection = () => {
       setEditingIndex(null);
     } else {
       setComments([
-        { content, dateTime: formattedDateTime, author: "John" },
+        {
+          content: sanitizedContent,
+          dateTime: formattedDateTime,
+          author: "John",
+        },
         ...comments,
       ]);
     }
 
     setContent("");
-    quillRef.current?.setContents([]);
     setError("");
   };
 
   const handleEditClick = (index: number) => {
     setEditingIndex(index);
     const commentToEdit = comments[index];
-    quillRef.current?.clipboard.dangerouslyPasteHTML(commentToEdit.content);
     setContent(commentToEdit.content);
   };
 
@@ -143,29 +79,64 @@ const CommentSection = () => {
   const handleCancelEdit = () => {
     setEditingIndex(null);
     setContent("");
-    quillRef.current?.setContents([]);
     setError("");
   };
+
+  const modules = {
+    toolbar: {
+      container: [
+        [{ font: [] }],
+        [{ size: ["small", false, "large", "huge"] }],
+        ["bold", "italic", "underline"],
+        [{ color: [] }, { background: [] }],
+        [{ script: "sub" }, { script: "super" }],
+        [{ header: "1" }, { header: "2" }, "blockquote"],
+        [
+          { list: "ordered" },
+          { list: "bullet" },
+          { indent: "-1" },
+          { indent: "+1" },
+        ],
+        ["direction", { align: [] }],
+        ["link", "image", "video"],
+        ["clean"],
+      ],
+    },
+  };
+
+  const formats = [
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "color",
+    "background",
+    "script",
+    "header",
+    "blockquote",
+    "code-block",
+    "indent",
+    "list",
+    "direction",
+    "align",
+    "link",
+    "image",
+    "video",
+    "formula",
+  ];
 
   return (
     <Box sx={{ minHeight: "200px" }} className="richTextEditor">
       <Typography variant="h5" style={{ padding: "10px 0" }}>
         Comments
       </Typography>
-      <div
-        ref={editorRef}
-        style={{
-          minHeight: "100px",
-          border: "1px solid #ccc",
-          padding: "8px",
-        }}
-      />
-      <input
-        type="file"
-        ref={fileInputRef}
-        accept="image/*"
-        style={{ display: "none" }}
-        onChange={handleFileChange}
+      <ReactQuill
+        value={content}
+        onChange={setContent}
+        modules={modules}
+        formats={formats}
       />
       {error && (
         <Alert severity="error" sx={{ marginBottom: "16px" }}>
@@ -173,19 +144,21 @@ const CommentSection = () => {
         </Alert>
       )}
       <Box sx={{ marginTop: "16px", textAlign: "right" }}>
-        <Button variant="contained" color="primary" onClick={handleSaveClick}>
+        <Button
+          variant="text"
+          onClick={handleCancelEdit}
+          sx={{ color: "#1f7ad3" }}
+        >
+          Cancel
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleSaveClick}
+          sx={{ ml: 2 }}
+        >
           {editingIndex === null ? "Save" : "Update"}
         </Button>
-        {editingIndex !== null && (
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={handleCancelEdit}
-            sx={{ ml: 2 }}
-          >
-            Cancel
-          </Button>
-        )}
       </Box>
       {comments.map((comment, index) => (
         <Paper
@@ -226,7 +199,7 @@ const CommentSection = () => {
               </IconButton>
             </Box>
           </Box>
-          <Typography variant="body1">
+          <Typography variant="body1" className="commentBox">
             {parse(DOMPurify.sanitize(comment.content))}
           </Typography>
         </Paper>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css"; // Import Quill styles
+import "react-quill/dist/quill.snow.css"; 
 import {
   Modal,
   TextField,
@@ -16,6 +16,7 @@ import {
   Typography,
   IconButton,
   Grid,
+  Alert,
 } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import CloseIcon from "@mui/icons-material/Close";
@@ -119,17 +120,28 @@ const EditTask: React.FC<EditTaskProps> = ({
   const handleContentChange = (value: string) => {
     if (localTask) {
       setLocalTask({ ...localTask, content: value });
+      console.log("Content Changed: ", value);
     }
   };
 
   const validateFields = () => {
     const newErrors = {
       title: localTask?.title ? "" : "Title is required",
-      content: localTask?.content ? "" : "Content is required",
       status: localTask?.status ? "" : "Status is required",
       priority: localTask?.priority ? "" : "Priority is required",
       sprint: localTask?.sprint ? "" : "Sprint is required",
+      content: localTask?.content ? "" : "Content is required",
     };
+
+    const sanitizedContent = DOMPurify.sanitize(localTask?.content || "");
+    const contentWithoutTags = sanitizedContent
+      .replace(/<[^>]*>?/gm, "")
+      .trim();
+
+    if (!contentWithoutTags) {
+      newErrors.content = "Content is required";
+    }
+
     setErrors(newErrors);
     return !Object.values(newErrors).some((error) => error);
   };
@@ -168,11 +180,32 @@ const EditTask: React.FC<EditTaskProps> = ({
   };
 
   const saveTitle = () => {
-    setIsTitleEditMode(false);
+    if (localTask?.title.trim()) {
+      console.log("test2");
+      setIsTitleEditMode(false);
+      setErrors({ ...errors, title: "" });
+    } else {
+      console.log("test1");
+      setErrors({ ...errors, title: "Title is required" });
+    }
   };
 
   const saveContent = () => {
-    setIsContentEditMode(false);
+    const sanitizedContent = DOMPurify.sanitize(localTask?.content || "");
+
+    const contentWithoutTags = sanitizedContent
+      .replace(/<[^>]*>?/gm, "")
+      .trim();
+    const containsImage = /<img[^>]*src=["'][^"']*["'][^>]*>/gm.test(
+      sanitizedContent
+    );
+
+    if (contentWithoutTags || containsImage) {
+      setIsContentEditMode(false);
+      setErrors({ ...errors, content: "" });
+    } else {
+      setErrors({ ...errors, content: "Content cannot be empty." });
+    }
   };
 
   const cancelEditTitle = () => {
@@ -295,26 +328,31 @@ const EditTask: React.FC<EditTaskProps> = ({
                       modules={modules}
                       formats={formats}
                     />
+                    {errors.content && (
+                      <Alert severity="error" sx={{ marginBottom: "16px" }}>
+                        {errors.content}
+                      </Alert>
+                    )}
                     <Box
                       display="flex"
                       alignItems="center"
                       style={{ justifyContent: "right", marginTop: "13px" }}
                     >
                       <Button
+                        variant="text"
+                        color="secondary"
+                        onClick={cancelEditContent}
+                        sx={{ color: "#1f7ad3" }}
+                      >
+                        Cancel
+                      </Button>
+                      <Button
                         variant="contained"
                         color="primary"
                         onClick={saveContent}
-                      >
-                        update
-                      </Button>
-
-                      <Button
-                        variant="contained"
-                        color="secondary"
-                        onClick={cancelEditContent}
                         sx={{ ml: 2 }}
                       >
-                        Cancel
+                        Update
                       </Button>
                     </Box>
                   </Box>
@@ -324,6 +362,7 @@ const EditTask: React.FC<EditTaskProps> = ({
                     alignItems="center"
                     onClick={toggleContentEditMode}
                     style={{ padding: "10px 0" }}
+                    className="taskContent"
                   >
                     <Typography>
                       <div
