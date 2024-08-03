@@ -212,36 +212,18 @@ export const KanbanBoard = () => {
                 style={{
                   background: "#fff",
                   border: "1px solid #ccc",
-                  marginBottom: "15px",
-                  borderRadius: "10px",
+                  marginBottom: "10px",
+                  borderRadius: "4px",
                   cursor: "pointer",
+                  boxShadow: "1px 6px 3px -2px #ccc",
                 }}
               >
-                <CardContent>
-                  <div
-                    style={{ display: "flex", justifyContent: "space-between" }}
-                  >
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="div"
-                      style={{ fontSize: isMobile ? "18px" : "" }}
-                    >
-                      {list.taskId}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      style={{ lineHeight: isMobile ? "22px" : "30px" }}
-                    >
-                      {list.dueDate}
-                    </Typography>
-                  </div>
+                <CardContent style={{ paddingBottom: "10px" }}>
                   <Typography
                     gutterBottom
                     variant="h5"
                     component="div"
-                    sx={{ fontSize: "14px" }}
+                    sx={{ fontSize: "1rem" }}
                   >
                     {list.title}
                   </Typography>
@@ -303,14 +285,46 @@ export const KanbanBoard = () => {
         variant="h4"
         sx={{ fontSize: "20px", fontWeight: "700", margin: "20px 0" }}
       >
-        Kanban Board
+        Simple Kanban Board
       </Typography>
-      
-      <Grid container spacing={3} style={{ display: "flex" }}>
-        {StatusOption.map((status) => {
+
+      <Grid
+        container
+        spacing={3}
+        style={{
+          display: "flex",
+          background: "#fff",
+          padding: "0 10px",
+          margin: "0",
+        }}
+      >
+        {StatusOption.map((status, index) => {
+          const isLastItem = index === StatusOption.length - 1;
           return (
-            <Grid item xs={12} sm={4} md={4} lg={4} key={status}>
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <Grid
+              item
+              xs={12}
+              sm={4}
+              md={4}
+              lg={4}
+              key={status}
+              style={{
+                padding: "0 10px 10px 0",
+                marginTop: "10px",
+                paddingRight: isLastItem ? "0px" : "10px",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "100%",
+                  background: "#d8dee9",
+                  padding: "0px 10px",
+                  borderRadius: "4px",
+                  marginBottom: "10px",
+                }}
+              >
                 <Typography
                   gutterBottom
                   variant="h6"
@@ -318,14 +332,19 @@ export const KanbanBoard = () => {
                   style={{
                     color: "#000",
                     textAlign: "left",
-                    padding: "7px",
-                    borderRadius: "7px",
+                    fontSize: "14px",
+                    fontWeight: "500",
+                    marginTop: "6px",
                   }}
                 >
                   {status}
                 </Typography>
                 <MoreVertSharpIcon
-                  style={{ marginTop: "10px", cursor: "pointer" }}
+                  style={{
+                    marginTop: "5px",
+                    cursor: "pointer",
+                    color: "#6b6e73",
+                  }}
                   onClick={(e) => handleMenuClick(status, e)}
                 />
                 {menuOpen && (
@@ -378,7 +397,16 @@ export const KanbanBoard = () => {
                   </div>
                 )}
               </div>
-              <div key={status}>{renderListSection(status)}</div>
+              <div
+                style={{
+                  background: "#d8dee9",
+                  padding: "10px 10px 10px 10px",
+                  minHeight: isMobile ? "250px" : "100vh",
+                }}
+                key={status}
+              >
+                {renderListSection(status)}
+              </div>
             </Grid>
           );
         })}
@@ -397,6 +425,11 @@ export const KanbanBoard = () => {
         open={openDrawer}
         onClose={(event, reason) => {
           setOpenDrawer(false);
+        }}
+        sx={{
+          "& .MuiDrawer-paperAnchorRight": {
+            top: "0px",
+          },
         }}
       >
         <UpdateTask

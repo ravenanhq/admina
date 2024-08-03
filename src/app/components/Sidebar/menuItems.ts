@@ -38,6 +38,7 @@ const menuItems = [
       { label: "Pagination", route: "/uielements/pagination" },
       { label: "Transfer List", route: "/uielements/transfer-list" },
       { label: "Accordian", route: "/uielements/accordion" },
+      { label: "File Upload", route: "/uielements/file-upload" },
     ],
   },
   {
@@ -66,12 +67,15 @@ const menuItems = [
   { label: "Drag and Drop", route: "/drag-and-drop", icon: DragIndicatorIcon },
   { label: "Calendar", route: "/calendar", icon: CalendarMonthIcon },
   {
-    label: "Kanban Boards",
+    label: "Project Management Tool",
     icon: ViewKanbanIcon,
     submenu: [
-      { label: "Simple", route: "/kanban-board/simple" },
-      { label: "With Collapse", route: "/kanban-board/with-collapse" },
-      { label: "With Swimlane", route: "/kanban-board/with-swimlane" },
+      { label: "Simple Kanban Board", route: "/kanban-board/simple" },
+      { label: "Advanced Kanban Board", route: "/kanban-board/with-collapse" },
+      {
+        label: "Kanban Board with Swimlane",
+        route: "/kanban-board/with-swimlane",
+      },
     ],
   },
 ];

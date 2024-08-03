@@ -28,9 +28,7 @@ header {
   font-size: 16px;
 }
 
-.crudComponent
-  .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight)
-  > .crudCellName {
+.crudComponent .MuiDataGrid-row:not(.MuiDataGrid-row--dynamicHeight)>.crudCellName {
   white-space: normal;
   line-height: 23px;
 }
@@ -185,23 +183,29 @@ header {
     border-bottom: transparent;
     padding: 2px;
   }
+
   .wishList .wishlishBtn .MuiButtonBase-root {
     text-transform: capitalize;
     min-width: 146px;
     margin-top: 10px;
   }
+
   .loginPage {
     justify-content: center;
   }
+
   .loginPage .rememberMe label {
     margin-left: 0;
   }
+
   .loginPage .forgotPassword {
     margin-bottom: 10px;
   }
+
   .loginPage .forgotPassword a {
     margin-right: 0;
   }
+
   .crudComponentList .crudList {
     flex-basis: 69%;
   }
@@ -217,8 +221,30 @@ header {
   }
 
   .tabElement .Mui-selected {
-    border-bottom: 2px solid #1976d2;
+    border-bottom: 2px solid hsl(210, 79%, 46%);
   }
+}
+
+.richTextEditor .ql-snow .ql-editing {
+  left: 10px !important;
+}
+
+.richTextEditor img {
+  width: 50%;
+}
+
+.taskContent img {
+  width: 50%;
+}
+
+.taskContent ol,
+.taskContent ul {
+  padding-left: 23px;
+}
+
+.commentBox ol,
+.commentBox ul {
+  padding-left: 23px;
 }
 
 .sidebar-open .advance-kanbanboard {
