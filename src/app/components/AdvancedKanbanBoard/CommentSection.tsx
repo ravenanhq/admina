@@ -22,6 +22,7 @@ const CommentSection = () => {
     { content: string; dateTime: string; author: string }[]
   >([]);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
+  const [editedContent, setEditedContent] = useState("");
   const [error, setError] = useState<string>("");
 
   const handleSaveClick = () => {
@@ -41,25 +42,14 @@ const CommentSection = () => {
     const now = new Date();
     const formattedDateTime = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
 
-    if (editingIndex !== null) {
-      const updatedComments = [...comments];
-      updatedComments[editingIndex] = {
+    setComments([
+      {
         content: sanitizedContent,
         dateTime: formattedDateTime,
         author: "John",
-      };
-      setComments(updatedComments);
-      setEditingIndex(null);
-    } else {
-      setComments([
-        {
-          content: sanitizedContent,
-          dateTime: formattedDateTime,
-          author: "John",
-        },
-        ...comments,
-      ]);
-    }
+      },
+      ...comments,
+    ]);
 
     setContent("");
     setError("");
@@ -68,7 +58,7 @@ const CommentSection = () => {
   const handleEditClick = (index: number) => {
     setEditingIndex(index);
     const commentToEdit = comments[index];
-    setContent(commentToEdit.content);
+    setEditedContent(commentToEdit.content);
   };
 
   const handleDeleteClick = (index: number) => {
@@ -78,7 +68,36 @@ const CommentSection = () => {
 
   const handleCancelEdit = () => {
     setEditingIndex(null);
-    setContent("");
+    setEditedContent("");
+    setError("");
+  };
+
+  const handleUpdateClick = () => {
+    const sanitizedContent = DOMPurify.sanitize(editedContent || "");
+    const contentWithoutTags = sanitizedContent
+      .replace(/<[^>]*>?/gm, "")
+      .trim();
+    const containsImage = /<img[^>]*src=["'][^"']*["'][^>]*>/gm.test(
+      sanitizedContent
+    );
+
+    if (!contentWithoutTags.trim() && !containsImage) {
+      setError("Comment cannot be empty.");
+      return;
+    }
+
+    const now = new Date();
+    const formattedDateTime = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+
+    const updatedComments = [...comments];
+    updatedComments[editingIndex!] = {
+      content: sanitizedContent,
+      dateTime: formattedDateTime,
+      author: "John",
+    };
+    setComments(updatedComments);
+    setEditingIndex(null);
+    setEditedContent("");
     setError("");
   };
 
@@ -157,7 +176,7 @@ const CommentSection = () => {
           onClick={handleSaveClick}
           sx={{ ml: 2 }}
         >
-          {editingIndex === null ? "Save" : "Update"}
+          Save
         </Button>
       </Box>
       {comments.map((comment, index) => (
@@ -167,7 +186,6 @@ const CommentSection = () => {
             position: "relative",
             boxShadow: "none",
             marginBottom: "8px",
-            padding: "8px",
           }}
         >
           <Box
@@ -199,9 +217,42 @@ const CommentSection = () => {
               </IconButton>
             </Box>
           </Box>
-          <Typography variant="body1" className="commentBox">
-            {parse(DOMPurify.sanitize(comment.content))}
-          </Typography>
+          {editingIndex === index ? (
+            <Box>
+              <ReactQuill
+                value={editedContent}
+                onChange={setEditedContent}
+                modules={modules}
+                formats={formats}
+              />
+              {error && (
+                <Alert severity="error" sx={{ marginBottom: "16px" }}>
+                  {error}
+                </Alert>
+              )}
+              <Box sx={{ marginTop: "8px", textAlign: "right" }}>
+                <Button
+                  variant="text"
+                  onClick={handleCancelEdit}
+                  sx={{ color: "#1f7ad3" }}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleUpdateClick}
+                  sx={{ ml: 2 }}
+                >
+                  Update
+                </Button>
+              </Box>
+            </Box>
+          ) : (
+            <Typography variant="body1" className="commentBox">
+              {parse(DOMPurify.sanitize(comment.content))}
+            </Typography>
+          )}
         </Paper>
       ))}
     </Box>
