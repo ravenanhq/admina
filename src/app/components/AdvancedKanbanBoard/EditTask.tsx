@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css"; 
+import "react-quill/dist/quill.snow.css";
 import {
   Modal,
   TextField,
@@ -444,6 +444,9 @@ const EditTask: React.FC<EditTaskProps> = ({
                                 users.find((user) => user.id === value)?.name ||
                                 value
                               }
+                              onMouseDown={(event) => {
+                                event.stopPropagation();
+                              }}
                             />
                           ))}
                         </div>
