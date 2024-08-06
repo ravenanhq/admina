@@ -7,6 +7,7 @@ import {
   IconButton,
   Avatar,
   Alert,
+  TextField,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -24,6 +25,7 @@ const CommentSection = () => {
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [editedContent, setEditedContent] = useState("");
   const [error, setError] = useState<string>("");
+  const [showRichTextEditor, setShowRichTextEditor] = useState(false);
 
   const handleSaveClick = () => {
     const sanitizedContent = DOMPurify.sanitize(content || "");
@@ -52,6 +54,7 @@ const CommentSection = () => {
     ]);
 
     setContent("");
+    setShowRichTextEditor(false);
     setError("");
   };
 
@@ -59,6 +62,7 @@ const CommentSection = () => {
     setEditingIndex(index);
     const commentToEdit = comments[index];
     setEditedContent(commentToEdit.content);
+    setShowRichTextEditor(false);
   };
 
   const handleDeleteClick = (index: number) => {
@@ -69,6 +73,7 @@ const CommentSection = () => {
   const handleCancelEdit = () => {
     setEditingIndex(null);
     setEditedContent("");
+    setShowRichTextEditor(false);
     setError("");
   };
 
@@ -151,34 +156,49 @@ const CommentSection = () => {
       <Typography variant="h5" style={{ padding: "10px 0" }}>
         Comments
       </Typography>
-      <ReactQuill
-        value={content}
-        onChange={setContent}
-        modules={modules}
-        formats={formats}
-      />
-      {error && (
-        <Alert severity="error" sx={{ marginBottom: "16px" }}>
-          {error}
-        </Alert>
+      {showRichTextEditor ? (
+        <>
+          <ReactQuill
+            value={content}
+            onChange={setContent}
+            modules={modules}
+            formats={formats}
+          />
+
+          {error && (
+            <Alert severity="error" sx={{ marginBottom: "16px" }}>
+              {error}
+            </Alert>
+          )}
+          <Box sx={{ marginTop: "16px", textAlign: "right" }}>
+            <Button
+              variant="text"
+              onClick={handleCancelEdit}
+              sx={{ color: "#1f7ad3" }}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleSaveClick}
+              sx={{ ml: 2 }}
+            >
+              Save
+            </Button>
+          </Box>
+        </>
+      ) : (
+        <TextField
+          value={content}
+          onFocus={() => setShowRichTextEditor(true)}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="Add a comment..."
+          fullWidth
+          multiline
+        />
       )}
-      <Box sx={{ marginTop: "16px", textAlign: "right" }}>
-        <Button
-          variant="text"
-          onClick={handleCancelEdit}
-          sx={{ color: "#1f7ad3" }}
-        >
-          Cancel
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleSaveClick}
-          sx={{ ml: 2 }}
-        >
-          Save
-        </Button>
-      </Box>
+
       {comments.map((comment, index) => (
         <Paper
           key={index}
@@ -186,6 +206,7 @@ const CommentSection = () => {
             position: "relative",
             boxShadow: "none",
             marginBottom: "8px",
+            marginTop: "10px",
           }}
         >
           <Box
