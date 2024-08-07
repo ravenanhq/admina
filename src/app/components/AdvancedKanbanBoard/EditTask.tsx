@@ -78,6 +78,8 @@ const EditTask: React.FC<EditTaskProps> = ({
     if (task) {
       setLocalTask(task);
       setSelectedAssignees(task.assignees || []);
+    } else {
+      setLocalTask(null);
     }
   }, [task]);
 
