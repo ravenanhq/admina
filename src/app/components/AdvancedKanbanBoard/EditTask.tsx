@@ -78,6 +78,8 @@ const EditTask: React.FC<EditTaskProps> = ({
     if (task) {
       setLocalTask(task);
       setSelectedAssignees(task.assignees || []);
+    } else {
+      setLocalTask(null);
     }
   }, [task]);
 
@@ -225,26 +227,23 @@ const EditTask: React.FC<EditTaskProps> = ({
   const modules = {
     toolbar: {
       container: [
-        [{ font: [] }],
+        [{ header: ["1", "2", "3", "4", "5", "6"] }],
         [{ size: ["small", false, "large", "huge"] }],
         ["bold", "italic", "underline"],
         [{ color: [] }, { background: [] }],
         [{ script: "sub" }, { script: "super" }],
-        [{ header: "1" }, { header: "2" }, "blockquote"],
         [
           { list: "ordered" },
           { list: "bullet" },
           { indent: "-1" },
           { indent: "+1" },
         ],
-        ["direction", { align: [] }],
-        ["link", "image", "video"],
-        ["clean"],
+        ["link", "image"],
       ],
     },
   };
+
   const formats = [
-    "font",
     "size",
     "bold",
     "italic",
@@ -254,15 +253,11 @@ const EditTask: React.FC<EditTaskProps> = ({
     "background",
     "script",
     "header",
-    "blockquote",
     "code-block",
     "indent",
     "list",
-    "direction",
-    "align",
     "link",
     "image",
-    "video",
     "formula",
   ];
 
