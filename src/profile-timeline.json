@@ -1,0 +1,31 @@
+[
+    {
+      "id": 1,
+      "avatar": "/assets/images/avatar-2.png",
+      "primary": "Lorem ipsum",
+      "secondary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "timestamp": "a day ago"
+    },
+    {
+      "id": 2,
+      "avatar": "/assets/images/avatar-3.png",
+      "primary": "Lorem ipsum",
+      "secondary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "timestamp": "10.00 AM"
+    },
+    {
+      "id": 3,
+      "avatar": "/assets/images/avatar-4.png",
+      "primary": "Lorem ipsum",
+      "secondary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "timestamp": "08.00 PM"
+    },
+    {
+      "id": 4,
+      "avatar": "/assets/images/avatar-5.png",
+      "primary": "Lorem ipsum",
+      "secondary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "timestamp": "few seconds ago"
+    }
+  ]
+  

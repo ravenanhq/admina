@@ -1,0 +1,67 @@
+[
+    {
+        "id": 1,
+        "name": "Product 1",
+        "price": 19.99,
+        "compareAtPrice": "$19.99",
+        "productType":"one",
+        "vendorType":"two",
+        "title":"text",
+        "productTag":"test",
+        "collection":"Dinning Table",
+        "image": "/assets/images/pro1.jpeg",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "rating": 4.5 ,
+        "status" : "shipping",
+        "date" : "June 10, 2020"
+    },
+    {
+        "id": 2,
+        "name": "Product 2",
+        "price": 9.99,
+        "compareAtPrice": "$9.99",
+        "productType":"one",
+        "vendorType":"two",
+        "title":"text",
+        "productTag":"test",
+        "collection":"sofa",
+        "image": "/assets/images/pro2.jpeg",
+        "description": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "rating": 2 ,
+        "status" : "shipping",
+        "date" : "June 10, 2020"
+    },
+    {
+        "id": 3,
+        "name": "Product 3",
+        "price": 39.99,
+        "compareAtPrice": "$19.99",
+        "productType":"one",
+        "vendorType":"two",
+        "title":"text",
+        "productTag":"test",
+        "collection":"chair",
+        "image": "/assets/images/pro3.jpeg",
+        "description": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "rating": 3,
+        "status" : "Delivered",
+        "date" : "June 10, 2020"
+    },
+    {
+        "id": 4,
+        "name": "Product 4",
+        "price": 19.99,
+        "compareAtPrice": "$19.99",
+        "productType":"one",
+        "vendorType":"two",
+        "title":"text",
+        "productTag":"test",
+        "collection":"Dinning Table",
+        "image": "/assets/images/pro1.jpeg",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "rating": 4.5 ,
+        "status" : "Delivered",
+        "date" : "June 10, 2020"
+    }
+    
+]
