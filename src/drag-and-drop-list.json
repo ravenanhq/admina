@@ -1,0 +1,122 @@
+[
+  {
+    "id": "1",
+    "taskId": "Task1",
+    "title": "Forms & Tables section",
+    "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
+    "date": "8 Aug 2024",
+    "priority": "Medium",
+    "status": "In Progress",
+    "dueDate": "18 Aug 2024",
+    "label": "UI",
+    "assignee": "Andrew Fuller"
+  },
+  {
+    "id": "2",
+    "taskId": "Task2",
+    "title": "Review Code",
+    "details": "Lorem Ipsum has been the industry's standard dummy text ever since",
+    "date": "10 Aug 2024",
+    "priority": "Low",
+    "status": "Done",
+    "dueDate": "20 Aug 2024",
+    "label": "Image",
+    "assignee": "Lancy Hamlit"
+  },
+  {
+    "id": "3",
+    "taskId": "Task3",
+    "title": "Home Page UI",
+    "details": "It is a long established fact that a reader will be distracted by the readable",
+    "date": "13 Aug 2024",
+    "priority": "High",
+    "status": "To Do",
+    "dueDate": "27 Aug 2024",
+    "label": "Info",
+    "assignee": "Janet"
+  },
+  {
+    "id": "4",
+    "taskId": "Task4",
+    "title": "Login Page",
+    "details": "Contrary to popular belief, Lorem Ipsum is not simply random text.",
+    "date": "13 Aug 2024",
+    "priority": "Medium",
+    "status": "In Progress",
+    "dueDate": "17 Aug 2024",
+    "label": "Code Review",
+    "assignee": "Steven"
+  },
+  {
+    "id": "5",
+    "taskId": "Task5",
+    "title": "Create CRUD Page",
+    "details": "It has roots in a piece of classical Latin literature from 45 BC, making it. ",
+    "date": "13 Aug 2024",
+    "priority": "High",
+    "status": "To Do",
+    "dueDate": "16 Aug 2024",
+    "label": "App",
+    "assignee": "Andrew Fuller"
+  },
+  {
+    "id": "6",
+    "taskId": "Task5",
+    "title": "Create CRUD Page",
+    "details": "It has roots in a piece of classical Latin literature from 45 BC, making it. ",
+    "date": "13 Aug 2024",
+    "priority": "High",
+    "status": "To Do",
+    "dueDate": "16 Aug 2024",
+    "label": "App",
+    "assignee": "Steven"
+  },
+  {
+    "id": "7",
+    "taskId": "Task7",
+    "title": "Lorem Ipsum is simply dummy",
+    "details": "It has roots in a piece of classical Latin literature from 45 BC, making it. ",
+    "date": "13 Aug 2024",
+    "priority": "High",
+    "status": "In Progress",
+    "dueDate": "16 Aug 2024",
+    "label": "App",
+    "assignee": "Janet"
+  },
+  {
+    "id": "8",
+    "taskId": "Task8",
+    "title": "Lorem Ipsum is simply dummy",
+    "details": "It has roots in a piece of classical Latin literature from 45 BC, making it. ",
+    "date": "13 Aug 2024",
+    "priority": "High",
+    "status": "Done",
+    "dueDate": "16 Aug 2024",
+    "label": "App",
+    "assignee": "Andrew Fuller"
+  },
+  {
+    "id": "9",
+    "taskId": "Task9",
+    "title": "Lorem Ipsum is simply dummy",
+    "details": "It has roots in a piece of classical Latin literature from 45 BC, making it. ",
+    "date": "13 Aug 2024",
+    "priority": "Medium",
+    "status": "To Do",
+    "dueDate": "16 Aug 2024",
+    "label": "App",
+    "assignee": "Andrew Fuller"
+  },
+  {
+    "id": "10",
+    "taskId": "Task10",
+    "title": "Lorem Ipsum is simply dummy",
+    "details": "It has roots in a piece of classical Latin literature from 45 BC, making it. ",
+    "date": "13 Aug 2024",
+    "priority": "High",
+    "status": "Done",
+    "dueDate": "16 Aug 2024",
+    "label": "App",
+    "assignee": "Lancy Hamlit"
+  }
+]
