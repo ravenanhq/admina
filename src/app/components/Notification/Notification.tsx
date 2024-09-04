@@ -21,7 +21,16 @@ const NotificationButton = () => {
         sx={{ color: "rgba(0,0,0,.5)" }}
         onClick={handleButtonClick}
       >
-        <Badge badgeContent={notificationCount} color="error">
+        <Badge
+          badgeContent={notificationCount}
+          color="error"
+          sx={{
+            "& .MuiBadge-badge": {
+              background: "#CE0000",
+              padding: "0",
+            },
+          }}
+        >
           <NotificationsOutlinedIcon />
         </Badge>
       </IconButton>

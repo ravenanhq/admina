@@ -1,11 +1,11 @@
 import React from "react";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faA } from "@fortawesome/free-solid-svg-icons";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import { styled } from "@mui/material/styles";
+import MenuListIcon from "../../../Icons/menu-list-icon.svg";
+import Image from "next/image";
+
+const LogoSymbol = "/assets/images/logo-symbol.png";
+const Logo = "/assets/images/logo.png";
 
 const DrawerHeaderWrapper = styled("div")(({ theme }) => ({
   display: "flex",
@@ -25,7 +25,11 @@ const DrawerHeader: React.FC<DrawerHeaderProps> = ({ open, setOpen }) => {
   const handleMenuOpen = () => setOpen(true);
 
   return (
-    <DrawerHeaderWrapper>
+    <DrawerHeaderWrapper
+      sx={{
+        justifyContent: "center",
+      }}
+    >
       <ListItemIcon
         sx={{
           minWidth: 0,
@@ -33,48 +37,34 @@ const DrawerHeader: React.FC<DrawerHeaderProps> = ({ open, setOpen }) => {
           justifyContent: "center",
         }}
       >
-        <FontAwesomeIcon
-          icon={faA}
-          size="lg"
-          style={{
-            fontSize: "24px",
-            marginLeft: "15px",
-            paddingTop: "0px",
-            color: "#007bff",
-            marginTop: "-3px",
-          }}
+        <Image
+          src={LogoSymbol}
+          alt="customer support"
+          width="32"
+          height="36"
+          style={{ marginLeft: !open ? "20px" : "" }}
         />
       </ListItemIcon>
-      <ListItemText
-        sx={{
-          opacity: open ? 1 : 0,
-          marginLeft: "1px",
-        }}
-        className="headerLogo"
-      >
-        ADMINA
-      </ListItemText>
+      {open && <Image src={Logo} alt="Logo" width="100" height="30" />}
       <div style={{ cursor: "pointer" }}>
         {open ? (
-          <KeyboardArrowLeftIcon
+          <MenuListIcon
             onClick={handleMenuHide}
             style={{
-              background: "#000",
               color: "#fff",
               borderRadius: "25px",
               position: "relative",
-              right: "-18px",
+              right: "-100px",
+              top: "5px",
               fontSize: "20px",
             }}
           />
         ) : (
-          <KeyboardArrowRightIcon
+          <MenuListIcon
             style={{
-              background: "#000",
-              color: "#fff",
-              borderRadius: "25px",
               position: "relative",
-              left: "14px",
+              left: "50px",
+              top: "5px",
               fontSize: "20px",
             }}
             onClick={handleMenuOpen}

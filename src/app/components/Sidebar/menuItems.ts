@@ -1,19 +1,12 @@
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
-import ImportExportIcon from "@mui/icons-material/ImportExport";
-import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
-import ListAltIcon from "@mui/icons-material/ListAlt";
-import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
-import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import ViewKanbanIcon from "@mui/icons-material/ViewKanban";
-import EmailIcon from "@mui/icons-material/Email";
+import Dashboard from "../../../Icons/dashboard.svg";
+import Components from "../../../Icons/Components.svg";
+import DragAndDrop from "../../../Icons/drag-and-drop.svg";
 
 const menuItems = [
-  { label: "Dashboard", route: "/admin", icon: DashboardIcon },
+  { label: "Dashboard", route: "/admin", icon: Dashboard },
   {
     label: "Components",
-    icon: GridViewOutlinedIcon,
+    icon: Components,
     submenu: [
       { label: "Forms", route: "/form" },
       { label: "Charts", route: "/chart" },
@@ -33,7 +26,7 @@ const menuItems = [
       { label: "404 Page", route: "/uielements/error-404" },
     ],
   },
-  { label: "Drag and Drop", route: "/drag-and-drop", icon: DragIndicatorIcon },
+  { label: "Drag and Drop", route: "/drag-and-drop", icon: DragAndDrop },
 ];
 
 export default menuItems;

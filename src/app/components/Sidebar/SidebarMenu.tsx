@@ -151,7 +151,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
               </ListItemIcon>
               <ListItemText
                 primary={menuItem.label}
-                sx={{ opacity: open ? 1 : 0 }}
+                sx={{ opacity: open ? 1 : 0, fontSize: "12px" }}
               />
               {menuItem.submenu && (
                 <ListItemIcon

@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-import MenuIcon from "@mui/icons-material/Menu";
 import {
   Badge,
   Box,
@@ -12,14 +11,14 @@ import {
   styled,
   useMediaQuery,
 } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import { usePathname } from "next/navigation";
 import NotificationButton from "../Notification/Notification";
 import ProfileMenu from "../Profile/ProfileMenu";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import VectorIcon from "../../../Icons/vector.svg";
+import MenuListIcon from "../../../Icons/menu-list-icon.svg";
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -85,17 +84,12 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
           <Toolbar>
             {isMobile ? (
               <>
-                <IconButton
-                  color="inherit"
-                  style={{ backgroundColor: "black" }}
-                  onClick={handleDrawerToggle}
-                >
-                  <MenuIcon />
+                <IconButton color="inherit" onClick={handleDrawerToggle}>
+                  <MenuListIcon />
                 </IconButton>
               </>
             ) : null}
 
-            {/* Box for the search input with icon, aligned to the left */}
             {isMobile ? (
               <Box
                 sx={{
@@ -109,9 +103,9 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
               >
                 {!searchOpen && (
                   <IconButton onClick={toggleSearch}>
-                    <SearchIcon
+                    <VectorIcon
                       sx={{
-                        color: "rgba(0,0,0,.5)",
+                        color: "#565656",
                         transition: "transform 0.3s",
                       }}
                       style={{
@@ -131,7 +125,7 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
-                          <SearchIcon sx={{ color: "rgba(0,0,0,.5)" }} />
+                          <VectorIcon sx={{ color: "#565656" }} />
                         </InputAdornment>
                       ),
                       endAdornment: (
@@ -156,7 +150,7 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
                       transition: "width 0.3s",
                       "& .MuiOutlinedInput-root": {
                         "& fieldset": {
-                          border: "none", // Ensures no border is shown
+                          border: "none",
                         },
                       },
                     }}
@@ -181,38 +175,53 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <SearchIcon
+                        <VectorIcon
                           sx={{
-                            color: "rgba(0,0,0,.5)",
-                            width: "20px",
-                            height: "20px",
+                            color: "#565656",
+                            width: "16px",
+                            height: "16px",
                           }}
                         />
                       </InputAdornment>
                     ),
-                    style: { borderRadius: "8px", backgroundColor: "#fff" },
+                    style: { backgroundColor: "#f5f5f5" },
                   }}
                   inputProps={{
-                    style: { padding: "6px 0", fontSize: "14px" }, // Reducing padding and font size
+                    style: { padding: "9px 2", fontSize: "12px" },
                   }}
-                  sx={{ width: 200, marginLeft: 1 }}
+                  sx={{
+                    width: 259,
+                    height: 30,
+                    ml: "60px",
+                    borderRadius: "5px",
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      border: "none",
+                    },
+                  }}
                 />
               </Box>
             )}
 
-            {/* Box for the rest of the icons, aligned to the right */}
             {!searchOpen && (
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <NotificationButton />
 
-                <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
-                  <Badge badgeContent={2} color="error">
+                <IconButton
+                  color="inherit"
+                  sx={{ color: "rgba(0,0,0,.5)", mx: 2 }}
+                >
+                  <Badge
+                    badgeContent={2}
+                    color="error"
+                    sx={{
+                      "& .MuiBadge-badge": {
+                        background: "#CE0000",
+                        padding: "0",
+                      },
+                    }}
+                  >
                     <MailOutlineIcon />
                   </Badge>
-                </IconButton>
-
-                <IconButton color="inherit" sx={{ color: "rgba(0,0,0,.5)" }}>
-                  <SettingsOutlinedIcon />
                 </IconButton>
 
                 <ProfileMenu />
