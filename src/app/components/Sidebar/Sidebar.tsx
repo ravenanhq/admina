@@ -3,7 +3,7 @@ import * as React from "react";
 import { styled, Theme, CSSObject } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import Divider from "@mui/material/Divider";
-import { Box, SwipeableDrawer, useMediaQuery } from "@mui/material";
+import { SwipeableDrawer, useMediaQuery } from "@mui/material";
 import { usePathname } from "next/navigation";
 import DrawerHeader from "./DrawerHeader";
 import SidebarMenu from "./SidebarMenu";
