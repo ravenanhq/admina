@@ -2,7 +2,6 @@ import * as React from "react";
 import type { Metadata } from "next";
 // import { Inter } from "next/font/google";
 import "./globals.css";
-import "./fonts.css";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/authOptions";
 
