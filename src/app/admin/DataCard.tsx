@@ -1,7 +1,8 @@
-import { AccountCircle, ShoppingCart } from "@mui/icons-material";
+import { AccountCircle } from "@mui/icons-material";
 import { Grid, CardContent, Typography } from "@mui/material";
 import { Card } from "react-bootstrap";
 import VisitorsIcon from "../../Icons/visitors.svg";
+import ShippingCartIcon from "../../Icons/shipping-cart.svg";
 import Image from "next/image";
 
 const CustomerSupport = "/assets/images/customer-support.png";
@@ -58,7 +59,7 @@ const DataCard = () => {
               color: "#565656",
               lineHeight: 1.5,
               position: "relative",
-              top: "-60px",
+              top: "-70px",
             }}
           >
             by Admina
@@ -125,7 +126,7 @@ const DataCard = () => {
               justifyContent: "space-between",
             }}
           >
-            <ShoppingCart
+            <ShippingCartIcon
               fontSize="large"
               sx={{ color: "#007BFF", width: "40px", height: "40px" }}
             />

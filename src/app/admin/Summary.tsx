@@ -13,7 +13,7 @@ const Summary = () => {
     <Card
       style={{
         width: "100%",
-        borderRadius: "5",
+        borderRadius: "5px",
         boxShadow: "0px 1px 2px -2px #000",
       }}
     >
