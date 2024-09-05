@@ -65,7 +65,7 @@ header {
 }
 
 .activeMenu .MuiListItemIcon-root {
-  color: #007bff;
+margin-left: -5px;
 }
 
 .activeMenu span {
