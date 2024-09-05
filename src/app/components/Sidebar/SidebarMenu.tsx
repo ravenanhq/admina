@@ -147,7 +147,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
                   color: menuItem.route === pathName ? "#fff" : "",
                 }}
               >
-                <menuItem.icon />
+                {menuItem.route === pathName ? <menuItem.activeIcon /> : <menuItem.icon />}
               </ListItemIcon>
               <ListItemText
                 primary={menuItem.label}

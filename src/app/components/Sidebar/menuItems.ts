@@ -1,15 +1,13 @@
-import Dashboard from "../../../Icons/dashboard.svg";
-import Components from "../../../Icons/Components.svg";
-import DragAndDrop from "../../../Icons/drag-and-drop.svg";
+import { getIcon } from "@/app/utils/Icons";
 
 const menuItems = [
-  { label: "Dashboard", route: "/admin", icon: Dashboard },
+  { label: "Dashboard", route: "/admin", icon: getIcon("Dashboard"),activeIcon: getIcon("DashboardActive") },
   {
     label: "Components",
-    icon: Components,
+    icon: getIcon("Components") ,
+    activeIcon: getIcon("ChartActive"),
     submenu: [
       { label: "Forms", route: "/form" },
-      { label: "Charts", route: "/chart" },
       { label: "Breadcrumbs", route: "/breadcrumbs" },
       { label: "Search", route: "/search" },
       { label: "Footers", route: "/footer" },
@@ -26,7 +24,8 @@ const menuItems = [
       { label: "404 Page", route: "/uielements/error-404" },
     ],
   },
-  { label: "Drag and Drop", route: "/drag-and-drop", icon: DragAndDrop },
+  { label: "Charts", route: "/chart", icon: getIcon("Chart") ,activeIcon: getIcon("ChartActive") },
+  { label: "Drag and Drop", route: "/drag-and-drop", icon: getIcon("DragAndDrop"),activeIcon: getIcon("DaraAndDropActive")  },
 ];
 
 export default menuItems;
