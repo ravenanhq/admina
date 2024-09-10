@@ -1,7 +1,7 @@
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
-import { Typography, CardContent, Card, Tooltip } from "@mui/material";
+import { CardContent, Card, Tooltip, CardHeader } from "@mui/material";
 import avatars from "./avatar.json";
 
 const stringToColor = (string: string): string => {
@@ -49,7 +49,7 @@ const getStatusColor = (status) => {
       return "orange";
     case "busy":
     case "presentation":
-      return "#C50F1F"; // Red color for DND
+      return "#C50F1F";
     default:
       return "gray";
   }
@@ -58,15 +58,11 @@ const getStatusColor = (status) => {
 const StatusIndicatorAvatars = () => {
   return (
     <>
-      <Typography
-        variant="h6"
-        style={{
-          marginTop: "10px",
-          padding: "10px",
-        }}
-      >
-        Status Indicator
-      </Typography>
+      <CardHeader
+        title="Status Indicator"
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
+      />
       <Card>
         <CardContent>
           <Stack

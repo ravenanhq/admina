@@ -29,10 +29,12 @@ const AccordionWithActions: React.FC = () => {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography>Accordion with Actions</Typography>
+        <Typography sx={{ fontSize: "12px", color: "#565656" }}>
+          Accordion with Actions
+        </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <Typography>
+        <Typography sx={{ fontSize: "12px", color: "#565656" }}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
           malesuada lacus ex, sit amet blandit leo lobortis eget.
         </Typography>

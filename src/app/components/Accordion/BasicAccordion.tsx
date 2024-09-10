@@ -9,10 +9,12 @@ const BasicAccordion: React.FC = () => {
     <div>
       <Accordion>
         <AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
-          <Typography>Accordion 1</Typography>
+          <Typography sx={{ fontSize: "12px", color: "#565656" }}>
+            Accordion 1
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography sx={{ fontSize: "12px", color: "#565656" }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
@@ -20,10 +22,12 @@ const BasicAccordion: React.FC = () => {
       </Accordion>
       <Accordion>
         <AccordionSummary aria-controls="panel2a-content" id="panel2a-header">
-          <Typography>Accordion 2</Typography>
+          <Typography sx={{ fontSize: "12px", color: "#565656" }}>
+            Accordion 2
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography sx={{ fontSize: "12px", color: "#565656" }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>
@@ -31,10 +35,12 @@ const BasicAccordion: React.FC = () => {
       </Accordion>
       <Accordion>
         <AccordionSummary aria-controls="panel3a-content" id="panel3a-header">
-          <Typography>Accordion 3</Typography>
+          <Typography sx={{ fontSize: "12px", color: "#565656" }}>
+            Accordion 3
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography sx={{ fontSize: "12px", color: "#565656" }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
             malesuada lacus ex, sit amet blandit leo lobortis eget.
           </Typography>

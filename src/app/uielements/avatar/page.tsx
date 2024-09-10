@@ -13,7 +13,10 @@ import ShapesAvatars from "@/app/components/Avatar/ShapeAvatar";
 export default function Avatar() {
   return (
     <>
-      <h4 style={{ paddingTop: 30 }}>UI Elements / Avatar</h4>
+       <Typography
+        variant="h2"
+        sx={{ pt: 2, color: "#007BFF", fontSize: "20px", fontWeight: "bold" }}
+      >UI Elements / Avatar</Typography>
       <div style={{ paddingTop: 10 }}>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
           <Grid item xs={12} sm={6} md={6} className="sizeAvatar">

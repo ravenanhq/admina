@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   Card,
   CardContent,
-  Button,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -60,12 +59,16 @@ const ModalSection = ({ title, content, buttonText, color, size }) => {
         fullWidth={fullWidth}
       >
         <DialogTitle
-          sx={{ backgroundColor: getColorBackground(color), color: "#ffffff" }}
+          sx={{
+            backgroundColor: getColorBackground(color),
+            color: "#ffffff",
+            fontSize: "14px",
+          }}
         >
           {title}
         </DialogTitle>
         <DialogContent dividers>
-          <DialogContentText sx={{ paddingTop: "16px" }}>
+          <DialogContentText sx={{ paddingTop: "16px", fontSize: "12px" }}>
             {content}
           </DialogContentText>
         </DialogContent>
@@ -73,7 +76,11 @@ const ModalSection = ({ title, content, buttonText, color, size }) => {
           <ButtonComponent
             variant="text"
             type="button"
-            style={{ fontSize: "13px", color: "#2e7d32" }}
+            style={{
+              fontSize: "12px",
+              color: "#2e7d32",
+              textTransform: "uppercase",
+            }}
             size="small"
             onClick={handleClose}
             name="Save Changes"
@@ -83,7 +90,11 @@ const ModalSection = ({ title, content, buttonText, color, size }) => {
             type="button"
             onClick={handleClose}
             size="small"
-            style={{ fontSize: "13px", color: "#ed6c02" }}
+            style={{
+              fontSize: "12px",
+              color: "#CE0000",
+              textTransform: "uppercase",
+            }}
             name="Close"
           ></ButtonComponent>
         </DialogActions>
@@ -114,8 +125,8 @@ const ModalsElement = () => {
     <Card variant="outlined">
       <CardHeader
         title="Modals"
-        sx={{ bgcolor: "#7D80AB", color: "white" }}
-        titleTypographyProps={{ fontSize: "16px" }}
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
       />
       <CardContent>
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
@@ -162,18 +173,18 @@ const ModalsElement = () => {
             size="medium"
           />
           <ModalSection
-            title="Extra Large Screen Modal"
-            content="This is the content of the Large Modal."
-            buttonText="Extra Large Screen Modal"
-            color="primary"
-            size="large"
-          />
-          <ModalSection
             title="Full Screen Modal"
             content="This is the content of the Success Modal."
             buttonText="Full Screen Modal"
             color="primary"
             size="fullScreen"
+          />
+          <ModalSection
+            title="Extra Large Screen Modal"
+            content="This is the content of the Large Modal."
+            buttonText="Extra Large Screen Modal"
+            color="primary"
+            size="large"
           />
         </Box>
       </CardContent>

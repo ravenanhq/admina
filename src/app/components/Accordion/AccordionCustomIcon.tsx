@@ -58,10 +58,14 @@ const AccordionCustomIcon: React.FC = () => {
             id={`${panel}-header`}
           >
             <IconButton sx={{ mr: 1, p: "0 8px" }}>{icon}</IconButton>
-            <Typography>{title}</Typography>
+            <Typography sx={{ fontSize: "12px", color: "#565656" }}>
+              {title}
+            </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>{content}</Typography>
+            <Typography sx={{ fontSize: "12px", color: "#565656" }}>
+              {content}
+            </Typography>
           </AccordionDetails>
         </Accordion>
       ))}

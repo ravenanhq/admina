@@ -1,20 +1,16 @@
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
-import { Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, CardHeader } from "@mui/material";
 
 const ShapesAvatars = () => {
   return (
     <>
-      <Typography
-        variant="h6"
-        style={{
-          marginTop: "10px",
-          padding: "10px",
-        }}
-      >
-        Shapes Avatar
-      </Typography>
+      <CardHeader
+        title=" Shapes Avatar"
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
+      />
       <Card>
         <CardContent>
           <Stack

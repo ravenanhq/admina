@@ -6,14 +6,18 @@ import { Box, Divider, Typography } from "@mui/material";
 const BasicTab = () => {
   const [tabValue, setTabValue] = React.useState(0);
 
-  const handleTabChange = (event,newValue) => {
-    console.log(newValue)
+  const handleTabChange = (event, newValue) => {
+    console.log(newValue);
     setTabValue(newValue);
   };
 
   return (
     <>
-      <Typography variant="h6" gutterBottom sx={{ marginTop: "10px" }}>
+      <Typography
+        variant="h6"
+        gutterBottom
+        sx={{ fontWeight: "600", fontSize: "14px" }}
+      >
         Basic Tab
       </Typography>
       <Divider sx={{ margin: "0 auto", marginY: 2 }} />
@@ -23,14 +27,27 @@ const BasicTab = () => {
           onChange={handleTabChange}
           indicatorColor="primary"
           textColor="primary"
+          sx={{
+            "& .MuiTouchRipple-root": {
+              borderBottom: "2px solid #565656",
+              width: "50%",
+              left: "26px",
+            },
+            "& .MuiTabs-indicator": {
+              left: "23px",
+              width: "50%",
+            },
+          }}
         >
-          <Tab label="Tab 1" />
-          <Tab label="Tab 2" />
-          <Tab label="Tab 3" />
+          <Tab label="Tab 1" sx={{ fontSize: "12px" }} />
+          <Tab label="Tab 2" sx={{ fontSize: "12px" }} />
+          <Tab label="Tab 3" sx={{ fontSize: "12px" }} />
         </Tabs>
         <Box sx={{ p: "16px" }}>
           {tabValue === 0 && (
-            <div>
+            <div
+              style={{ fontSize: "12px", color: "#565656", lineHeight: "21px" }}
+            >
               There are many variations of passages of Lorem Ipsum available,
               but the majority have suffered alteration in some form, by
               injected humour, or randomised words which don't look even
@@ -45,7 +62,9 @@ const BasicTab = () => {
             </div>
           )}
           {tabValue === 1 && (
-            <div>
+            <div
+              style={{ fontSize: "12px", color: "#565656", lineHeight: "21px" }}
+            >
               Contrary to popular belief, Lorem Ipsum is not simply random text.
               It has roots in a piece of classical Latin literature from 45 BC,
               making it over 2000 years old. Richard McClintock, a Latin
@@ -60,7 +79,9 @@ const BasicTab = () => {
             </div>
           )}
           {tabValue === 2 && (
-            <div>
+            <div
+              style={{ fontSize: "12px", color: "#565656", lineHeight: "21px" }}
+            >
               It is a long established fact that a reader will be distracted by
               the readable content of a page when looking at its layout. The
               point of using Lorem Ipsum is that it has a more-or-less normal

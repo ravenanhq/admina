@@ -9,7 +9,7 @@ import {
   orange,
   pink,
 } from "@mui/material/colors";
-import { Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, CardHeader } from "@mui/material";
 import avatars from "./avatar.json";
 
 const colors = [
@@ -33,15 +33,11 @@ const getInitials = (name: string) => {
 const InitialAvatars = () => {
   return (
     <>
-      <Typography
-        variant="h6"
-        style={{
-          marginTop: "10px",
-          padding: "10px",
-        }}
-      >
-        Initial Avatar
-      </Typography>
+      <CardHeader
+        title=" Initial Avatar"
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
+      />
       <Card>
         <CardContent>
           <Stack

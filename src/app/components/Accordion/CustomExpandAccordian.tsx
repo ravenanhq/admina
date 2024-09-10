@@ -53,10 +53,14 @@ const CustomExpandAccordian: React.FC = () => {
             aria-controls={`${panel}-content`}
             id={`${panel}-header`}
           >
-            <Typography>{title}</Typography>
+            <Typography sx={{ fontSize: "12px", color: "#565656" }}>
+              {title}
+            </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>{content}</Typography>
+            <Typography sx={{ fontSize: "12px", color: "#565656" }}>
+              {content}
+            </Typography>
           </AccordionDetails>
         </Accordion>
       ))}

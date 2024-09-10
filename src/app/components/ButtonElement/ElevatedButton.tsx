@@ -3,7 +3,7 @@ import { Divider, Grid, Typography } from "@mui/material";
 import ButtonComponent from "../BaseComponent/Button";
 import AddIcon from "@mui/icons-material/Add";
 
-const OutlineButtonElement = () => {
+const ElevatedButton = () => {
   return (
     <>
       <Typography
@@ -11,17 +11,22 @@ const OutlineButtonElement = () => {
         gutterBottom
         sx={{ marginTop: "20px", fontSize: "14px", color: "#565656" }}
       >
-        Outline Buttons
+        Elevated Buttons
       </Typography>
       <Divider sx={{ margin: "0 auto", marginY: 2 }} />
       <Grid container spacing={3}>
         <Grid item xs={6} md={3}>
           <ButtonComponent
-            variant="outlined"
+            variant="text"
             color="primary"
             name="Add New User"
             size="large"
-            style={{ width: "100%", padding: "10px" }}
+            style={{
+              width: "100%",
+              padding: "10px",
+              boxShadow: "0px 1px 5px -2px #000",
+              border: "none",
+            }}
           />
         </Grid>
         <Grid item xs={6} md={3}>
@@ -29,7 +34,12 @@ const OutlineButtonElement = () => {
             variant="outlined"
             color="secondary"
             name="Add New User"
-            style={{ width: "100%", padding: "10px" }}
+            style={{
+              width: "100%",
+              padding: "10px",
+              boxShadow: "0px 1px 5px -2px #000",
+              border: "none",
+            }}
           />
         </Grid>
         <Grid item xs={6} md={3}>
@@ -37,7 +47,12 @@ const OutlineButtonElement = () => {
             variant="outlined"
             color="success"
             name="Add New User"
-            style={{ width: "100%", padding: "10px" }}
+            style={{
+              width: "100%",
+              padding: "10px",
+              boxShadow: "0px 1px 5px -2px #000",
+              border: "none",
+            }}
           />
         </Grid>
         <Grid item xs={6} md={3}>
@@ -45,7 +60,12 @@ const OutlineButtonElement = () => {
             variant="outlined"
             color="warning"
             name="Add New User"
-            style={{ width: "100%", padding: "10px" }}
+            style={{
+              width: "100%",
+              padding: "10px",
+              boxShadow: "0px 1px 5px -2px #000",
+              border: "none",
+            }}
           />
         </Grid>
         <Grid item xs={6} md={3}>
@@ -58,6 +78,8 @@ const OutlineButtonElement = () => {
             prefix={<AddIcon sx={{ marginTop: "-4px" }} />}
             style={{
               width: "100%",
+              boxShadow: "0px 1px 5px -2px #000",
+              border: "none",
             }}
           ></ButtonComponent>
         </Grid>
@@ -71,6 +93,8 @@ const OutlineButtonElement = () => {
             prefix={<AddIcon sx={{ marginTop: "-4px" }} />}
             style={{
               width: "100%",
+              boxShadow: "0px 1px 5px -2px #000",
+              border: "none",
             }}
           ></ButtonComponent>
         </Grid>
@@ -84,6 +108,8 @@ const OutlineButtonElement = () => {
             prefix={<AddIcon />}
             style={{
               width: "100%",
+              boxShadow: "0px 1px 5px -2px #000",
+              border: "none",
             }}
           ></ButtonComponent>
         </Grid>
@@ -97,6 +123,8 @@ const OutlineButtonElement = () => {
             prefix={<AddIcon />}
             style={{
               width: "100%",
+              boxShadow: "0px 1px 5px -2px #000",
+              border: "none",
             }}
           ></ButtonComponent>
         </Grid>
@@ -105,4 +133,4 @@ const OutlineButtonElement = () => {
   );
 };
 
-export default OutlineButtonElement;
+export default ElevatedButton;

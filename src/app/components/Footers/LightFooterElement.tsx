@@ -6,8 +6,8 @@ const LightFooterElement = () => {
         <Card variant="outlined">
             <CardHeader
                 title="Light Footer"
-                sx={{ bgcolor: '#182667', color: 'white' }}
-                titleTypographyProps={{ fontSize: '16px' }}
+                sx={{ bgcolor: '#007BFF', color: 'white' }}
+                titleTypographyProps={{ fontSize: '14px' }}
             />
             <CardContent>
                 <Box
@@ -20,7 +20,7 @@ const LightFooterElement = () => {
                     }}
                 >
                     <Container maxWidth="md">
-                        <Typography variant="body2" color="textSecondary">
+                        <Typography variant="subtitle2" color="textSecondary" sx={{fontSize:"12px"}}>
                             &copy; Copyright All rights reserved.
                         </Typography>
                     </Container>

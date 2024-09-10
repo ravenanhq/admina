@@ -8,8 +8,8 @@ const TabsElement = () => {
     <Card variant="outlined">
       <CardHeader
         title="Tabs"
-        sx={{ bgcolor: "#0057e7", color: "white" }}
-        titleTypographyProps={{ fontSize: "16px" }}
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
       />
       <CardContent className="tabElement">
         <BasicTab></BasicTab>
