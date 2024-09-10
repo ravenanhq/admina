@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 import MenuListIcon from "../../../Icons/menu-list-icon.svg";
 import Image from "next/image";
 
-const LogoSymbol = "/assets/images/logo-symbol.png";
+const LogoSymbol = "/assets/images/mobile-logo.png";
 const Logo = "/assets/images/logo.png";
 
 const DrawerHeaderWrapper = styled("div")(({ theme }) => ({
@@ -36,7 +36,10 @@ const DrawerHeader: React.FC<DrawerHeaderProps> = ({ open, setOpen }) => {
           mr: open ? 3 : "auto",
           justifyContent: "center",
         }}
-      >
+      ></ListItemIcon>
+      {open ? (
+        <Image src={Logo} alt="Logo" width="135" height="36" />
+      ) : (
         <Image
           src={LogoSymbol}
           alt="customer support"
@@ -44,8 +47,7 @@ const DrawerHeader: React.FC<DrawerHeaderProps> = ({ open, setOpen }) => {
           height="36"
           style={{ marginLeft: !open ? "20px" : "" }}
         />
-      </ListItemIcon>
-      {open && <Image src={Logo} alt="Logo" width="100" height="30" />}
+      )}
       <div style={{ cursor: "pointer" }}>
         {open ? (
           <MenuListIcon

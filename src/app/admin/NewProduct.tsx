@@ -32,7 +32,8 @@ const NewProduct = () => {
       style={{
         boxShadow: "0px 1px 2px -2px #000",
         width: "100%",
-        borderRadius: "10px",
+        borderRadius: "5px",
+        height: "348px",
       }}
     >
       <CardContent style={{ padding: "0" }}>
@@ -57,6 +58,12 @@ const NewProduct = () => {
             },
             "& .MuiDataGrid-cellContent": {
               fontSize: "12px",
+            },
+            "& .MuiDataGrid-cell": {
+              minHeight: "55px !important",
+            },
+            "& .MuiDataGrid-footerContainer": {
+              paddingTop: "16px",
             },
           }}
         />

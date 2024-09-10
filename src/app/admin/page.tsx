@@ -26,7 +26,7 @@ export default function Admin() {
     <>
       <Typography
         variant="h2"
-        sx={{ pt: 2, color: "#007BFF", fontSize: "18px", fontWeight: "bold" }}
+        sx={{ pt: 2, color: "#007BFF", fontSize: "22px", fontWeight: "bold" }}
       >
         Dashboard
       </Typography>
@@ -54,6 +54,7 @@ export default function Admin() {
                 width: "100%",
                 borderRadius: "5px",
                 boxShadow: "0px 1px 2px -2px #000",
+                paddingBottom: "2px",
               }}
             >
               <CardContent sx={{ p: "30px" }}>
