@@ -1,111 +1,211 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardContent, Button, IconButton } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import {
+  Card,
+  CardContent,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TablePagination,
+  Button,
+  IconButton,
+  Checkbox,
+} from "@mui/material";
 import orderData from "../../orders-data.json";
 import DeleteIcon from "@mui/icons-material/Delete";
-import Edit from "../../Icons/PencilFill.svg";
+import EditIcon from "@mui/icons-material/Edit";
 
 const RecentOrder = () => {
   const [orders, setOrders] = useState([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(4);
 
   useEffect(() => {
-    setOrders(orderData.slice(0, 4));
+    setOrders(orderData);
   }, []);
 
-  const columns = [
-    { field: "order", headerName: "Order#" },
-    { field: "companyName", headerName: "Product Name", width: 130 },
-    {
-      field: "status",
-      headerName: "Status",
-      width: 100,
-      renderCell: (params) => (
-        <Button
-          size="small"
-          style={{
-            color: params.value === "FULFILED" ? "#2196f3" : "#ff9800",
-            width: "68%",
-          }}
-        >
-          {params.value}
-        </Button>
-      ),
-    },
-    { field: "total", headerName: "Total", width: 70 },
-    { field: "date", headerName: "Date", width: 120 },
-    {
-      field: "actions",
-      headerName: "Actions",
-      width: 100,
-      renderCell: (params) => (
-        <div>
-          <IconButton
-            aria-label="delete"
-            sx={{ "&:hover": { color: "#1b84ff" } }}
-          >
-            <Edit sx={{ color: "#565656" }} />
-            <DeleteIcon sx={{ ml: 1, color: "#565656" }} />
-          </IconButton>
-        </div>
-      ),
-      filterable: false,
-      sortable: false,
-      disableColumnMenu: true,
-    },
-  ];
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   return (
     <Card
       style={{
         boxShadow: "0px 1px 2px -2px #000",
         width: "100%",
-        borderRadius: "10px",
+        borderRadius: "5px",
       }}
     >
       <CardContent style={{ padding: "0" }}>
-        <DataGrid
-          key={Math.random()}
-          rows={orders}
-          columns={columns}
-          getRowId={(row) => row.id}
-          checkboxSelection
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 5 },
-            },
-          }}
-          pageSizeOptions={[5, 10]}
-          disableRowSelectionOnClick={true}
+        <TableContainer
           sx={{
-            border: "none",
-            "& .MuiDataGrid-columnHeaderTitle": {
-              color: "#007BFF",
-              fontSize: "12px",
+            maxHeight: 440,
+            "&::-webkit-scrollbar": {
+              width: "8px",
+              height: "8px",
+            },
+            "&::-webkit-scrollbar-track": {
+              backgroundColor: "#f1f1f1",
+              borderRadius: "10px",
             },
             "& .MuiDataGrid-cellContent": {
               fontSize: "12px",
               color:"#565656"
             },
-            "& .MuiDataGrid-virtualScroller": {
-              overflow: "auto",
-              "&::-webkit-scrollbar": {
-                width: "8px",
-                height: "8px",
-              },
-              "&::-webkit-scrollbar-track": {
-                backgroundColor: "#f1f1f1",
-                borderRadius: "10px",
-              },
-              "&::-webkit-scrollbar-thumb": {
-                backgroundColor: "#b0bec5",
-                borderRadius: "10px",
-                border: "2px solid #f1f1f1",
-              },
-              "&::-webkit-scrollbar-thumb:hover": {
-                backgroundColor: "#78909c",
-              },
+            "& .MuiTableCell-root": {
+              color:"#565656"
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "#b0bec5",
+              borderRadius: "10px",
+              border: "2px solid #f1f1f1",
+            },
+            "&::-webkit-scrollbar-thumb:hover": {
+              backgroundColor: "#78909c",
             },
           }}
+        >
+          <Table
+            stickyHeader
+            sx={{ minWidth: 650 }}
+            aria-label="recent orders table"
+          >
+            <TableHead>
+              <TableRow sx={{ height: "36px" }}>
+                <TableCell
+                  sx={{
+                    color: "#007BFF",
+                    fontSize: "12px",
+                    padding: "6px 10px",
+                  }}
+                >
+                  <Checkbox />
+                </TableCell>
+                <TableCell
+                  sx={{
+                    color: "#007BFF",
+                    fontSize: "12px",
+                    padding: "6px 10px",
+                  }}
+                >
+                  Order#
+                </TableCell>
+                <TableCell
+                  sx={{
+                    color: "#007BFF",
+                    fontSize: "12px",
+                    padding: "6px 10px",
+                  }}
+                >
+                  Product Name
+                </TableCell>
+                <TableCell
+                  sx={{
+                    color: "#007BFF",
+                    fontSize: "12px",
+                    padding: "6px 10px",
+                  }}
+                >
+                  Status
+                </TableCell>
+                <TableCell
+                  sx={{
+                    color: "#007BFF",
+                    fontSize: "12px",
+                    padding: "6px 10px",
+                  }}
+                >
+                  Total
+                </TableCell>
+                <TableCell
+                  sx={{
+                    color: "#007BFF",
+                    fontSize: "12px",
+                    padding: "6px 10px",
+                  }}
+                >
+                  Date
+                </TableCell>
+                <TableCell
+                  sx={{
+                    color: "#007BFF",
+                    fontSize: "12px",
+                    padding: "6px 10px",
+                  }}
+                >
+                  Actions
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {orders
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((order) => (
+                  <TableRow key={order.id} sx={{ height: "36px" }}>
+                    {" "}
+                    {/* Adjust row height */}
+                    <TableCell sx={{ fontSize: "12px", padding: "8px" }}>
+                      <Checkbox />
+                    </TableCell>
+                    <TableCell sx={{ fontSize: "12px", padding: "8px" }}>
+                      {order.order}
+                    </TableCell>
+                    <TableCell sx={{ fontSize: "12px", padding: "8px" }}>
+                      {order.companyName}
+                    </TableCell>
+                    <TableCell sx={{ fontSize: "12px", padding: "8px" }}>
+                      <Button
+                        size="small"
+                        style={{
+                          color: "#428A45",
+                          width: "100%",
+                          fontSize: "12px",
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        {order.status}
+                      </Button>
+                    </TableCell>
+                    <TableCell sx={{ fontSize: "12px", padding: "8px" }}>
+                      {order.total}
+                    </TableCell>
+                    <TableCell sx={{ fontSize: "12px", padding: "8px" }}>
+                      {order.date}
+                    </TableCell>
+                    <TableCell sx={{ padding: "8px" }}>
+                      <IconButton
+                        aria-label="edit"
+                        sx={{ "&:hover": { color: "#1b84ff" } }}
+                      >
+                        <EditIcon sx={{ color: "#565656" }} />
+                      </IconButton>
+                      <IconButton
+                        aria-label="delete"
+                        sx={{ "&:hover": { color: "#1b84ff" } }}
+                      >
+                        <DeleteIcon sx={{ color: "#565656" }} />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[4, 8, 12]}
+          component="div"
+          count={orders.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </CardContent>
     </Card>

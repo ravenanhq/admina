@@ -22,7 +22,7 @@ const RecentAcitivty = () => {
       <CardContent sx={{ display: "flex", padding: "0 16px 10px 16px", ml: 1 }}>
         <div>
           <Typography variant="subtitle2" sx={{ color: "#565656", mb: "5px" }}>
-            Renewed Account with BB_10MBPS_2m Plan
+            Renewed with BB_10MBPS_2m Plan
           </Typography>
           <Typography variant="subtitle2" sx={{ color: "#565656" }}>
             28-12-2024 2.03pm
