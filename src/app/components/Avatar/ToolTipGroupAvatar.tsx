@@ -8,13 +8,8 @@ const ToolTipGroupAvatar = () => {
   return (
     <>
       <Typography
-        variant="h6"
-        style={{
-          marginTop: "10px",
-          padding: "10px",
-          fontSize: "14px",
-          color: "#b7b5be ",
-        }}
+        variant="subtitle2"
+        sx={{ fontSize: "12px", color: "#747474" }}
       >
         Pullup with Tooltip
       </Typography>

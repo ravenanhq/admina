@@ -3,7 +3,7 @@ import { Divider, Grid, Typography } from "@mui/material";
 import ButtonComponent from "../BaseComponent/Button";
 import AddIcon from "@mui/icons-material/Add";
 
-const OutlineButtonElement = () => {
+const TextButton = () => {
   return (
     <>
       <Typography
@@ -11,13 +11,13 @@ const OutlineButtonElement = () => {
         gutterBottom
         sx={{ marginTop: "20px", fontSize: "14px", color: "#565656" }}
       >
-        Outline Buttons
+        Text button
       </Typography>
       <Divider sx={{ margin: "0 auto", marginY: 2 }} />
       <Grid container spacing={3}>
         <Grid item xs={6} md={3}>
           <ButtonComponent
-            variant="outlined"
+            variant="text"
             color="primary"
             name="Add New User"
             size="large"
@@ -26,7 +26,7 @@ const OutlineButtonElement = () => {
         </Grid>
         <Grid item xs={6} md={3}>
           <ButtonComponent
-            variant="outlined"
+            variant="text"
             color="secondary"
             name="Add New User"
             style={{ width: "100%", padding: "10px" }}
@@ -34,7 +34,7 @@ const OutlineButtonElement = () => {
         </Grid>
         <Grid item xs={6} md={3}>
           <ButtonComponent
-            variant="outlined"
+            variant="text"
             color="success"
             name="Add New User"
             style={{ width: "100%", padding: "10px" }}
@@ -42,7 +42,7 @@ const OutlineButtonElement = () => {
         </Grid>
         <Grid item xs={6} md={3}>
           <ButtonComponent
-            variant="outlined"
+            variant="text"
             color="warning"
             name="Add New User"
             style={{ width: "100%", padding: "10px" }}
@@ -50,7 +50,7 @@ const OutlineButtonElement = () => {
         </Grid>
         <Grid item xs={6} md={3}>
           <ButtonComponent
-            variant="outlined"
+            variant="text"
             type="submit"
             size="small"
             color="primary"
@@ -63,7 +63,7 @@ const OutlineButtonElement = () => {
         </Grid>
         <Grid item xs={6} md={3}>
           <ButtonComponent
-            variant="outlined"
+            variant="text"
             type="submit"
             size="small"
             color="secondary"
@@ -76,7 +76,7 @@ const OutlineButtonElement = () => {
         </Grid>
         <Grid item xs={6} md={3}>
           <ButtonComponent
-            variant="outlined"
+            variant="text"
             type="submit"
             size="small"
             color="success"
@@ -89,7 +89,7 @@ const OutlineButtonElement = () => {
         </Grid>
         <Grid item xs={6} md={3} sx={{ pt: 1 }}>
           <ButtonComponent
-            variant="outlined"
+            variant="text"
             type="submit"
             size="small"
             color="warning"
@@ -105,4 +105,4 @@ const OutlineButtonElement = () => {
   );
 };
 
-export default OutlineButtonElement;
+export default TextButton;

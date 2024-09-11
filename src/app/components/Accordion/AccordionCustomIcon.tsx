@@ -45,12 +45,19 @@ const AccordionCustomIcon: React.FC = () => {
   ];
 
   return (
-    <div>
+    <div
+      style={{
+        padding: "20px",
+        background: "#fff",
+        border: "1px solid #c0c0c0",
+      }}
+    >
       {accordionData.map(({ panel, title, content, icon }) => (
         <Accordion
           key={panel}
           expanded={expandedPanel === panel}
           onChange={() => handleChange(panel)}
+          sx={{ borderTop: "1px solid #c0c0c0" }}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -58,10 +65,14 @@ const AccordionCustomIcon: React.FC = () => {
             id={`${panel}-header`}
           >
             <IconButton sx={{ mr: 1, p: "0 8px" }}>{icon}</IconButton>
-            <Typography>{title}</Typography>
+            <Typography sx={{ fontSize: "12px", color: "#565656" }}>
+              {title}
+            </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>{content}</Typography>
+            <Typography sx={{ fontSize: "12px", color: "#565656" }}>
+              {content}
+            </Typography>
           </AccordionDetails>
         </Accordion>
       ))}

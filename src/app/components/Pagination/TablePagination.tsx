@@ -1,6 +1,6 @@
 import * as React from "react";
 import TablePagination from "@mui/material/TablePagination";
-import { Card, Divider, Typography } from "@mui/material";
+import { Card, CardHeader, Divider } from "@mui/material";
 
 const TableViewPagination = () => {
   const [page, setPage] = React.useState(2);
@@ -22,17 +22,11 @@ const TableViewPagination = () => {
 
   return (
     <Card>
-      <Typography
-        variant="h6"
-        style={{
-          padding: "10px 0",
-          fontSize: "14px",
-          fontWeight: "bold",
-          marginLeft: "17px",
-        }}
-      >
-        Table Pagination
-      </Typography>
+      <CardHeader
+        title="Table Pagination"
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
+      />
       <Divider sx={{ margin: "0 0 10px 0", padding: "0" }} />
       <TablePagination
         component="div"
@@ -42,6 +36,7 @@ const TableViewPagination = () => {
         rowsPerPage={rowsPerPage}
         onRowsPerPageChange={handleChangeRowsPerPage}
         sx={{
+          p: "22px !important",
           "& .MuiToolbar-root": {
             width: "0",
           },

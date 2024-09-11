@@ -27,7 +27,9 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({
   className,
 }) => {
   const defaultStyle: React.CSSProperties = {
-    borderRadius: "7px",
+    borderRadius: "5px",
+    fontSize: "12px",
+    textTransform: "capitalize",
   };
 
   return (

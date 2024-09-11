@@ -33,10 +33,19 @@ const AlertWithClose = () => {
 
   return (
     <>
-      <Typography variant="h6" gutterBottom sx={{ marginTop: "10px" }}>
+      <Typography
+        variant="h6"
+        gutterBottom
+        sx={{
+          marginTop: "15px",
+          fontSize: "14px",
+          fontWeight: "600",
+          color: "#565656",
+        }}
+      >
         Alerts with Close
       </Typography>
-      <Divider sx={{ margin: "0 auto", marginY: 2 }} />
+      <Divider sx={{ margin: "0 auto", marginY: 2, background: "#C0C0C0" }} />
       <Box
         sx={{
           marginTop: "16px",
@@ -49,9 +58,11 @@ const AlertWithClose = () => {
         {openSuccess && (
           <Alert
             severity="success"
-            sx={{ flex: "1 1 200px", position: "relative" }}
+            sx={{ flex: "1 1 200px", position: "relative", fontSize: "12px" }}
           >
-            <AlertTitle>Success</AlertTitle>
+            <AlertTitle sx={{ fontSize: "14px", fontWeight: "600", mb: 1 }}>
+              Success
+            </AlertTitle>
             This is a success alert!
             <IconButton
               aria-label="close"
@@ -72,9 +83,11 @@ const AlertWithClose = () => {
         {openError && (
           <Alert
             severity="error"
-            sx={{ flex: "1 1 200px", position: "relative" }}
+            sx={{ flex: "1 1 200px", position: "relative", fontSize: "12px" }}
           >
-            <AlertTitle>Error</AlertTitle>
+            <AlertTitle sx={{ fontSize: "14px", fontWeight: "600", mb: 1 }}>
+              Error
+            </AlertTitle>
             This is an error alert!
             <IconButton
               aria-label="close"
@@ -95,9 +108,11 @@ const AlertWithClose = () => {
         {openInfo && (
           <Alert
             severity="info"
-            sx={{ flex: "1 1 200px", position: "relative" }}
+            sx={{ flex: "1 1 200px", position: "relative", fontSize: "12px" }}
           >
-            <AlertTitle>Info</AlertTitle>
+            <AlertTitle sx={{ fontSize: "14px", fontWeight: "600", mb: 1 }}>
+              Info
+            </AlertTitle>
             This is an info alert!
             <IconButton
               aria-label="close"
@@ -118,9 +133,11 @@ const AlertWithClose = () => {
         {openWarning && (
           <Alert
             severity="warning"
-            sx={{ flex: "1 1 200px", position: "relative" }}
+            sx={{ flex: "1 1 200px", position: "relative", fontSize: "12px" }}
           >
-            <AlertTitle>Warning</AlertTitle>
+            <AlertTitle sx={{ fontSize: "14px", fontWeight: "600", mb: 1 }}>
+              Warning
+            </AlertTitle>
             This is a warning alert!
             <IconButton
               aria-label="close"

@@ -8,8 +8,8 @@ const AlertElements = () => {
     <Card variant="outlined">
       <CardHeader
         title="Alerts"
-        sx={{ bgcolor: "#AB361D", color: "white" }}
-        titleTypographyProps={{ fontSize: "16px" }}
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
       />
       <CardContent>
         <BasicAlert></BasicAlert>

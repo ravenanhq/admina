@@ -58,6 +58,7 @@ const NewProduct = () => {
             },
             "& .MuiDataGrid-cellContent": {
               fontSize: "12px",
+              color:"#565656"
             },
             "& .MuiDataGrid-cell": {
               minHeight: "55px !important",
