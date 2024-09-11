@@ -58,81 +58,83 @@ const getStatusColor = (status) => {
 const StatusIndicatorAvatars = () => {
   return (
     <>
-      <CardHeader
-        title="Status Indicator"
-        sx={{ bgcolor: "#007BFF", color: "white" }}
-        titleTypographyProps={{ fontSize: "14px" }}
-      />
-      <Card>
-        <CardContent>
-          <Stack
-            direction="row"
-            spacing={2}
-            sx={{
-              alignItems: "center",
-              justifyContent: "start",
-              flexWrap: "wrap",
-              padding: "16px 0",
-            }}
-          >
-            {avatars.map((avatar, index) => (
-              <div
-                key={index}
-                style={{
-                  position: "relative",
-                  display: "inline-block",
-                  marginLeft: index === 0 ? "0" : "14px",
-                }}
-                className="statusAvatar"
-              >
-                <Avatar {...stringAvatar(avatar.name)} />
-                <Tooltip
-                  title={avatar.status}
-                  enterTouchDelay={0}
-                  leaveTouchDelay={3000}
+      <div style={{ border: "1px solid #c0c0c0" }}>
+        <CardHeader
+          title="Status Indicator"
+          sx={{ bgcolor: "#007BFF", color: "white" }}
+          titleTypographyProps={{ fontSize: "14px" }}
+        />
+        <Card>
+          <CardContent>
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{
+                alignItems: "center",
+                justifyContent: "start",
+                flexWrap: "wrap",
+                padding: "16px 0",
+              }}
+            >
+              {avatars.map((avatar, index) => (
+                <div
+                  key={index}
+                  style={{
+                    position: "relative",
+                    display: "inline-block",
+                    marginLeft: index === 0 ? "0" : "14px",
+                  }}
+                  className="statusAvatar"
                 >
-                  <div
-                    style={{
-                      position: "absolute",
-                      bottom: 0,
-                      right: 0,
-                      width: "15px",
-                      height: "15px",
-                      borderRadius: "50%",
-                      backgroundColor:
-                        avatar.status === "presentation"
-                          ? getStatusColor(avatar.status)
-                          : "white",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
+                  <Avatar {...stringAvatar(avatar.name)} />
+                  <Tooltip
+                    title={avatar.status}
+                    enterTouchDelay={0}
+                    leaveTouchDelay={3000}
                   >
-                    {avatar.status === "presentation" ? (
-                      <div
-                        style={{
-                          width: "8px",
-                          height: "2px",
-                          backgroundColor: "white",
-                        }}
-                      />
-                    ) : (
-                      <div
-                        style={{
-                          width: "8px",
-                          height: "8px",
-                          borderRadius: "50%",
-                          backgroundColor: getStatusColor(avatar.status),
-                        }}
-                      />
-                    )}
-                  </div>
-                </Tooltip>
-              </div>
-            ))}
-          </Stack>
-        </CardContent>
-      </Card>
+                    <div
+                      style={{
+                        position: "absolute",
+                        bottom: 0,
+                        right: 0,
+                        width: "15px",
+                        height: "15px",
+                        borderRadius: "50%",
+                        backgroundColor:
+                          avatar.status === "presentation"
+                            ? getStatusColor(avatar.status)
+                            : "white",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      {avatar.status === "presentation" ? (
+                        <div
+                          style={{
+                            width: "8px",
+                            height: "2px",
+                            backgroundColor: "white",
+                          }}
+                        />
+                      ) : (
+                        <div
+                          style={{
+                            width: "8px",
+                            height: "8px",
+                            borderRadius: "50%",
+                            backgroundColor: getStatusColor(avatar.status),
+                          }}
+                        />
+                      )}
+                    </div>
+                  </Tooltip>
+                </div>
+              ))}
+            </Stack>
+          </CardContent>
+        </Card>
+      </div>
     </>
   );
 };

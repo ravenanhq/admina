@@ -38,12 +38,19 @@ const AccordionWithIcon: React.FC = () => {
   ];
 
   return (
-    <div>
+    <div
+      style={{
+        padding: "20px",
+        background: "#fff",
+        border: "1px solid #c0c0c0",
+      }}
+    >
       {accordionData.map(({ panel, title, content }) => (
         <Accordion
           key={panel}
           expanded={expandedPanel === panel}
           onChange={() => handleChange(panel)}
+          sx={{ borderTop: "1px solid #c0c0c0" }}
         >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}

@@ -20,7 +20,7 @@ const LightFooterElement = () => {
                     }}
                 >
                     <Container maxWidth="md">
-                        <Typography variant="subtitle2" color="textSecondary" sx={{fontSize:"12px"}}>
+                        <Typography variant="subtitle2" color="textSecondary" sx={{fontSize:"12px",color:"#565656"}}>
                             &copy; Copyright All rights reserved.
                         </Typography>
                     </Container>

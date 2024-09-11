@@ -16,7 +16,7 @@ const BasicTab = () => {
       <Typography
         variant="h6"
         gutterBottom
-        sx={{ fontWeight: "600", fontSize: "14px" }}
+        sx={{ fontWeight: "600", fontSize: "14px", color: "#565656" }}
       >
         Basic Tab
       </Typography>
@@ -28,14 +28,20 @@ const BasicTab = () => {
           indicatorColor="primary"
           textColor="primary"
           sx={{
+            "& .MuiButtonBase-root": {
+              paddingBottom: "0",
+            },
             "& .MuiTouchRipple-root": {
               borderBottom: "2px solid #565656",
               width: "50%",
-              left: "26px",
+              left: "22px",
+            },
+            "& .Mui-selected .MuiTouchRipple-root": {
+              color: "#007BFF",
+              borderBottom: "2px solid #007BFF",
             },
             "& .MuiTabs-indicator": {
-              left: "23px",
-              width: "50%",
+              display: "none",
             },
           }}
         >

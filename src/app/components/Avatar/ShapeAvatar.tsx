@@ -6,50 +6,52 @@ import { Card, CardContent, CardHeader } from "@mui/material";
 const ShapesAvatars = () => {
   return (
     <>
-      <CardHeader
-        title=" Shapes Avatar"
-        sx={{ bgcolor: "#007BFF", color: "white" }}
-        titleTypographyProps={{ fontSize: "14px" }}
-      />
-      <Card>
-        <CardContent>
-          <Stack
-            direction="row"
-            spacing={2}
-            sx={{
-              alignItems: "center",
-              justifyContent: "normal",
-              padding: "11px 0",
-            }}
-          >
-            <Avatar
-              alt="name"
+      <div style={{ border: "1px solid #c0c0c0" }}>
+        <CardHeader
+          title=" Shapes Avatar"
+          sx={{ bgcolor: "#007BFF", color: "white" }}
+          titleTypographyProps={{ fontSize: "14px" }}
+        />
+        <Card>
+          <CardContent>
+            <Stack
+              direction="row"
+              spacing={2}
               sx={{
-                background: "#c65c44",
-                borderRadius: "0",
-                width: "50px",
-                height: "50px",
+                alignItems: "center",
+                justifyContent: "normal",
+                padding: "11px 0",
               }}
-              src="/assets/images/avatar-12.png"
-            ></Avatar>
-            <Avatar
-              alt="name"
-              sx={{
-                background: "#c65c44",
-                borderRadius: "10px",
-                width: "50px",
-                height: "50px",
-              }}
-              src="/assets/images/avatar-12.png"
-            ></Avatar>
-            <Avatar
-              alt="name"
-              sx={{ background: "#c65c44", width: "50px", height: "50px" }}
-              src="/assets/images/avatar-12.png"
-            ></Avatar>
-          </Stack>
-        </CardContent>
-      </Card>
+            >
+              <Avatar
+                alt="name"
+                sx={{
+                  background: "#c65c44",
+                  borderRadius: "0",
+                  width: "50px",
+                  height: "50px",
+                }}
+                src="/assets/images/avatar-12.png"
+              ></Avatar>
+              <Avatar
+                alt="name"
+                sx={{
+                  background: "#c65c44",
+                  borderRadius: "10px",
+                  width: "50px",
+                  height: "50px",
+                }}
+                src="/assets/images/avatar-12.png"
+              ></Avatar>
+              <Avatar
+                alt="name"
+                sx={{ background: "#c65c44", width: "50px", height: "50px" }}
+                src="/assets/images/avatar-12.png"
+              ></Avatar>
+            </Stack>
+          </CardContent>
+        </Card>
+      </div>
     </>
   );
 };

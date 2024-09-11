@@ -7,8 +7,8 @@ import {
   DialogContent,
   DialogContentText,
   DialogActions,
-  Box,
   CardHeader,
+  Grid, 
 } from "@mui/material";
 import ButtonComponent from "../BaseComponent/Button";
 
@@ -51,7 +51,15 @@ const ModalSection = ({ title, content, buttonText, color, size }) => {
         name={buttonText}
         color={color}
         onClick={handleOpen}
-      ></ButtonComponent>
+        size="large"
+        style={{
+          width: "100%",
+          height: "40px",
+          fontSize: "12px",
+          padding: "0",
+          textTransform: "uppercase",
+        }}
+      />
       <Dialog
         open={open}
         onClose={handleClose}
@@ -84,7 +92,7 @@ const ModalSection = ({ title, content, buttonText, color, size }) => {
             size="small"
             onClick={handleClose}
             name="Save Changes"
-          ></ButtonComponent>
+          />
           <ButtonComponent
             variant="text"
             type="button"
@@ -96,7 +104,7 @@ const ModalSection = ({ title, content, buttonText, color, size }) => {
               textTransform: "uppercase",
             }}
             name="Close"
-          ></ButtonComponent>
+          />
         </DialogActions>
       </Dialog>
     </div>
@@ -108,9 +116,9 @@ const getColorBackground = (color) => {
     case "primary":
       return "#1976d2";
     case "secondary":
-      return "#9c27b0";
+      return "#004FA5";
     case "info":
-      return "#0288d1";
+      return "#004186";
     case "warning":
       return "#ed6c02";
     case "success":
@@ -129,64 +137,80 @@ const ModalsElement = () => {
         titleTypographyProps={{ fontSize: "14px" }}
       />
       <CardContent>
-        <Box sx={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-          <ModalSection
-            title="Primary Modal Title"
-            content="This is the content of the Primary Modal."
-            buttonText="Open Primary Modal"
-            color="primary"
-            size="small"
-          />
-          <ModalSection
-            title="Secondary Modal Title"
-            content="This is the content of the Secondary Modal."
-            buttonText="Open Secondary Modal"
-            color="secondary"
-            size="small"
-          />
-          <ModalSection
-            title="Info Modal Title"
-            content="This is the content of the Info Modal."
-            buttonText="Open Info Modal"
-            color="info"
-            size="small"
-          />
-          <ModalSection
-            title="Warning Modal Title"
-            content="This is the content of the Warning Modal."
-            buttonText="Open Warning Modal"
-            color="warning"
-            size="small"
-          />
-          <ModalSection
-            title="Success Modal Title"
-            content="This is the content of the Success Modal."
-            buttonText="Open Success Modal"
-            color="success"
-            size="small"
-          />
-          <ModalSection
-            title="Large Screen Modal"
-            content="This is the content of the Large Modal."
-            buttonText="Large Screen Modal"
-            color="primary"
-            size="medium"
-          />
-          <ModalSection
-            title="Full Screen Modal"
-            content="This is the content of the Success Modal."
-            buttonText="Full Screen Modal"
-            color="primary"
-            size="fullScreen"
-          />
-          <ModalSection
-            title="Extra Large Screen Modal"
-            content="This is the content of the Large Modal."
-            buttonText="Extra Large Screen Modal"
-            color="primary"
-            size="large"
-          />
-        </Box>
+        <Grid container spacing={2}>
+          <Grid item xs={6} sm={6} md={3}>
+            <ModalSection
+              title="Primary Modal Title"
+              content="This is the content of the Primary Modal."
+              buttonText="Open Primary Modal"
+              color="primary"
+              size="small"
+            />
+          </Grid>
+          <Grid item xs={6} sm={6} md={3}>
+            <ModalSection
+              title="Secondary Modal Title"
+              content="This is the content of the Secondary Modal."
+              buttonText="Open Secondary Modal"
+              color="secondary"
+              size="small"
+            />
+          </Grid>
+          <Grid item xs={6} sm={6} md={3}>
+            <ModalSection
+              title="Info Modal Title"
+              content="This is the content of the Info Modal."
+              buttonText="Open Info Modal"
+              color="info"
+              size="small"
+            />
+          </Grid>
+          <Grid item xs={6} sm={6} md={3}>
+            <ModalSection
+              title="Warning Modal Title"
+              content="This is the content of the Warning Modal."
+              buttonText="Open Warning Modal"
+              color="warning"
+              size="small"
+            />
+          </Grid>
+          <Grid item xs={6} sm={6} md={3}>
+            <ModalSection
+              title="Success Modal Title"
+              content="This is the content of the Success Modal."
+              buttonText="Open Success Modal"
+              color="success"
+              size="small"
+            />
+          </Grid>
+          <Grid item xs={6} sm={6} md={3}>
+            <ModalSection
+              title="Large Screen Modal"
+              content="This is the content of the Large Modal."
+              buttonText="Large Screen Modal"
+              color="primary"
+              size="medium"
+            />
+          </Grid>
+          <Grid item xs={6} sm={6} md={3}>
+            <ModalSection
+              title="Full Screen Modal"
+              content="This is the content of the Success Modal."
+              buttonText="Full Screen Modal"
+              color="primary"
+              size="fullScreen"
+            />
+          </Grid>
+          <Grid item xs={6} sm={6} md={3}>
+            <ModalSection
+              title="Extra Large Screen Modal"
+              content="This is the content of the Large Modal."
+              buttonText="Extra Large Screen Modal"
+              color="primary"
+              size="large"
+            />
+          </Grid>
+        </Grid>
       </CardContent>
     </Card>
   );

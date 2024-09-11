@@ -6,7 +6,6 @@ import {
   Box,
   FormControl,
   FormControlLabel,
-  FormLabel,
   Switch,
   Grid,
   FormGroup,
@@ -17,7 +16,13 @@ import {
 
 const CustomElements = () => {
   const label = { inputProps: { "aria-label": "Switch demo" } };
-  const [value, setValue] = React.useState<number | null>(2);
+
+  const [controlledValue, setControlledValue] = React.useState<number | null>(
+    2
+  );
+  const [readOnlyValue, setReadOnlyValue] = React.useState<number | null>(2);
+  const [disabledValue, setDisabledValue] = React.useState<number | null>(2);
+  const [noValue, setNoValue] = React.useState<number | null>(null);
 
   return (
     <Card variant="outlined">
@@ -97,7 +102,6 @@ const CustomElements = () => {
             >
               Checkbox Color
             </Typography>
-            <h4></h4>
 
             <Checkbox {...label} defaultChecked />
             <Checkbox {...label} defaultChecked color="secondary" />
@@ -127,23 +131,30 @@ const CustomElements = () => {
               </Typography>
               <Rating
                 name="simple-controlled"
-                value={value}
+                value={controlledValue}
                 onChange={(event, newValue) => {
-                  setValue(newValue);
+                  setControlledValue(newValue);
                 }}
               />
               <Typography component="legend" sx={{ fontSize: "12px" }}>
                 Read only
               </Typography>
-              <Rating name="read-only" value={value} readOnly />
+              <Rating
+                name="read-only"
+                value={readOnlyValue}
+                onChange={(event, newValue) => {
+                  setReadOnlyValue(newValue);
+                }}
+                readOnly
+              />
               <Typography component="legend" sx={{ fontSize: "12px" }}>
                 Disabled
               </Typography>
-              <Rating name="disabled" value={value} disabled />
+              <Rating name="disabled" value={disabledValue} disabled />
               <Typography component="legend" sx={{ fontSize: "12px" }}>
                 No rating given
               </Typography>
-              <Rating name="no-value" value={null} />
+              <Rating name="no-value" value={noValue} />
             </Box>
           </Grid>
         </Grid>

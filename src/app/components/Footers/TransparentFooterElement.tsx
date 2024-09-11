@@ -19,7 +19,7 @@ const TransparentFooterElement = () => {
                     }}
                 >
                     <Container maxWidth="md">
-                        <Typography variant="subtitle2" align="center" sx={{fontSize:"12px"}}>
+                        <Typography variant="subtitle2" align="center" sx={{fontSize:"12px",color:"#565656"}}>
                             &copy; Copyright All rights reserved.
                         </Typography>
                     </Container>

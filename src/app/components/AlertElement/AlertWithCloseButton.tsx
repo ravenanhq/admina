@@ -36,7 +36,12 @@ const AlertWithClose = () => {
       <Typography
         variant="h6"
         gutterBottom
-        sx={{ marginTop: "15px", fontSize: "14px", fontWeight: "600" }}
+        sx={{
+          marginTop: "15px",
+          fontSize: "14px",
+          fontWeight: "600",
+          color: "#565656",
+        }}
       >
         Alerts with Close
       </Typography>

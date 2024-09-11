@@ -2,16 +2,17 @@ import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import avatars from "./avatar.json";
-import { CardHeader } from "@mui/material";
+import { CardHeader, Typography } from "@mui/material";
 
 const GroupsAvatars = () => {
   return (
     <>
-      <CardHeader
-        title="Breadcrumbs With Icons"
-        sx={{ bgcolor: "#007BFF", color: "white" }}
-        titleTypographyProps={{ fontSize: "14px" }}
-      />
+      <Typography
+        variant="subtitle2"
+        sx={{ fontSize: "12px", color: "#747474", marginLeft: "25px" }}
+      >
+        Default
+      </Typography>
       <AvatarGroup
         renderSurplus={(surplus) => <span>+{surplus.toString()[0]}k</span>}
         total={4251}

@@ -7,7 +7,7 @@ const BasicAlert = () => {
       <Typography
         variant="h6"
         gutterBottom
-        sx={{ fontSize: "14px", fontWeight: "600" }}
+        sx={{ fontSize: "14px", fontWeight: "600", color: "#565656" }}
       >
         Basic Alerts
       </Typography>

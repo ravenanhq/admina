@@ -84,6 +84,7 @@ const RecentOrder = () => {
             },
             "& .MuiDataGrid-cellContent": {
               fontSize: "12px",
+              color:"#565656"
             },
             "& .MuiDataGrid-virtualScroller": {
               overflow: "auto",

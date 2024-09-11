@@ -2,16 +2,17 @@ import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import AvatarGroup from "@mui/material/AvatarGroup";
 import avatars from "./avatar.json";
-import { CardHeader, Tooltip } from "@mui/material";
+import { Tooltip, Typography } from "@mui/material";
 
 const ToolTipGroupAvatar = () => {
   return (
     <>
-      <CardHeader
-        title="Pullup with Tooltip"
-        sx={{ bgcolor: "#007BFF", color: "white" }}
-        titleTypographyProps={{ fontSize: "14px" }}
-      />
+      <Typography
+        variant="subtitle2"
+        sx={{ fontSize: "12px", color: "#747474" }}
+      >
+        Pullup with Tooltip
+      </Typography>
       <AvatarGroup className="avatar-group" sx={{ justifyContent: "start" }}>
         {avatars.map((avatar, index) => (
           <Tooltip

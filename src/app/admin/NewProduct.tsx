@@ -57,6 +57,7 @@ const NewProduct = () => {
             },
             "& .MuiDataGrid-cellContent": {
               fontSize: "12px",
+              color:"#565656"
             },
           }}
         />

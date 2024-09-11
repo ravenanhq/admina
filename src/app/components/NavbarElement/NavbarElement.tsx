@@ -115,7 +115,7 @@ const Navbar = () => {
           </Toolbar>
 
           <Drawer anchor="left" open={drawerOpen} onClose={handleDrawerToggle}>
-            <Box sx={{ width: 250 }}>
+            <Box sx={{ padding: "30px" }}>
               <List>
                 {menuItems.map((text) => (
                   <ListItem button key={text} onClick={handleDrawerToggle}>
@@ -137,7 +137,16 @@ const Navbar = () => {
             </Typography>
           </Toolbar>
         </AppBar>
-        <Drawer anchor="right" open={open} onClose={toggleDrawer}>
+        <Drawer
+          anchor="right"
+          open={open}
+          onClose={toggleDrawer}
+          sx={{
+            "& .MuiDrawer-paper": {
+              width: "20%",
+            },
+          }}
+        >
           <List>
             {["Home", "About", "Services", "Contact"].map((text) => (
               <ListItem
@@ -145,7 +154,10 @@ const Navbar = () => {
                 onClick={toggleDrawer}
                 sx={{ fontSize: "12px" }}
               >
-                <ListItemText primary={text} />
+                <ListItemText
+                  primary={text}
+                  sx={{ textAlign: "center", color: "#565656" }}
+                />
               </ListItem>
             ))}
           </List>

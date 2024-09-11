@@ -18,7 +18,12 @@ const TabWithIcon = () => {
       <Typography
         variant="h6"
         gutterBottom
-        sx={{ marginTop: "10px", fontWeight: "600", fontSize: "14px" }}
+        sx={{
+          marginTop: "10px",
+          fontWeight: "600",
+          fontSize: "14px",
+          color: "#565656",
+        }}
       >
         Tab With Icon
       </Typography>
