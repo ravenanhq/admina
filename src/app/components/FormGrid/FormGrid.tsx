@@ -14,6 +14,7 @@ import {
   FormControlLabel,
   Radio,
   FormLabel,
+  Typography,
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { useTheme } from "@mui/material/styles";
@@ -120,10 +121,21 @@ const FormGrid = () => {
         sx={{ marginBottom: "10px" }}
       >
         <Grid item xs={9} sm={6} style={{ textAlign: "left" }}>
-          <h2 style={{ fontSize: "20px" }}>Form Grid</h2>
+          <Typography
+            variant="h2"
+            sx={{
+              py: 1,
+              fontSize: "14px",
+              fontWeight: "600",
+              color: "#747477",
+              letterSpacing: "0.9px",
+            }}
+          >
+            Form Grid
+          </Typography>
         </Grid>
       </Grid>
-      <Card variant="outlined" style={{ borderRadius: "12px" }}>
+      <Card variant="outlined" style={{ borderRadius: "5px", border: "none" }}>
         <Snackbar
           open={successMessageOpen}
           autoHideDuration={3000}
@@ -151,6 +163,21 @@ const FormGrid = () => {
                   error={!!errors.name}
                   helperText={errors.name}
                   size="small"
+                  sx={{
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderCollor: "C0C0C0",
+                    },
+                    "& .MuiInputBase-input": {
+                      fontSize: "12px",
+                      color: "#565656",
+                      padding: "9px 14px",
+                    },
+                    "& .MuiFormLabel-root": {
+                      fontSize: "12px",
+                      color: "#565656",
+                      letterSpacing: "0.7px",
+                    },
+                  }}
                 />
                 <TextField
                   fullWidth
@@ -170,10 +197,32 @@ const FormGrid = () => {
                   error={!!errors.email}
                   helperText={errors.email}
                   size="small"
+                  sx={{
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderCollor: "C0C0C0",
+                    },
+                    "& .MuiInputBase-input": {
+                      fontSize: "12px",
+                      color: "#565656",
+                      padding: "9px 14px",
+                    },
+                    "& .MuiFormLabel-root": {
+                      fontSize: "12px",
+                      color: "#565656",
+                      letterSpacing: "0.7px",
+                    },
+                  }}
                 />
 
                 <FormControl sx={{ mt: 2, minWidth: "100%" }} size="small">
-                  <InputLabel id="demo-simple-select-error-label">
+                  <InputLabel
+                    id="demo-simple-select-error-label"
+                    sx={{
+                      fontSize: "12px",
+                      color: "#565656",
+                      letterSpacing: "0.7px",
+                    }}
+                  >
                     Role
                   </InputLabel>
                   <Select
@@ -184,13 +233,38 @@ const FormGrid = () => {
                     name="role"
                     onChange={handleChange}
                     renderValue={(value) => `${value}`}
+                    sx={{
+                      "& .MuiFormLabel-root": {
+                        fontSize: "12px",
+                        color: "#565656",
+                        letterSpacing: "0.7px",
+                      },
+                    }}
                   >
-                    <MenuItem value="">
+                    <MenuItem
+                      value=""
+                      sx={{ fontSize: "12px", color: "#565656" }}
+                    >
                       <em>None</em>
                     </MenuItem>
-                    <MenuItem value="Admin">Admin</MenuItem>
-                    <MenuItem value="User">User</MenuItem>
-                    <MenuItem value="Moderate">Moderate</MenuItem>
+                    <MenuItem
+                      value="Admin"
+                      sx={{ fontSize: "12px", color: "#565656" }}
+                    >
+                      Admin
+                    </MenuItem>
+                    <MenuItem
+                      value="User"
+                      sx={{ fontSize: "12px", color: "#565656" }}
+                    >
+                      User
+                    </MenuItem>
+                    <MenuItem
+                      value="Moderate"
+                      sx={{ fontSize: "12px", color: "#565656" }}
+                    >
+                      Moderate
+                    </MenuItem>
                   </Select>
                 </FormControl>
                 <TextField
@@ -211,6 +285,21 @@ const FormGrid = () => {
                   error={!!errors.phone}
                   helperText={errors.phone}
                   size="small"
+                  sx={{
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderCollor: "C0C0C0",
+                    },
+                    "& .MuiInputBase-input": {
+                      fontSize: "12px",
+                      color: "#565656",
+                      padding: "9px 14px",
+                    },
+                    "& .MuiFormLabel-root": {
+                      fontSize: "12px",
+                      color: "#565656",
+                      letterSpacing: "0.7px",
+                    },
+                  }}
                 />
               </form>
             </Grid>
@@ -233,6 +322,21 @@ const FormGrid = () => {
                   error={!!errors.streetAddress}
                   helperText={errors.streetAddress}
                   size="small"
+                  sx={{
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderCollor: "C0C0C0",
+                    },
+                    "& .MuiInputBase-input": {
+                      fontSize: "12px",
+                      color: "#565656",
+                      padding: "9px 14px",
+                    },
+                    "& .MuiFormLabel-root": {
+                      fontSize: "12px",
+                      color: "#565656",
+                      letterSpacing: "0.7px",
+                    },
+                  }}
                 />
 
                 <TextField
@@ -246,6 +350,21 @@ const FormGrid = () => {
                   error={!!errors.city}
                   helperText={errors.city}
                   size="small"
+                  sx={{
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderCollor: "C0C0C0",
+                    },
+                    "& .MuiInputBase-input": {
+                      fontSize: "12px",
+                      color: "#565656",
+                      padding: "9px 14px",
+                    },
+                    "& .MuiFormLabel-root": {
+                      fontSize: "12px",
+                      color: "#565656",
+                      letterSpacing: "0.7px",
+                    },
+                  }}
                 />
                 <TextField
                   fullWidth
@@ -258,6 +377,21 @@ const FormGrid = () => {
                   error={!!errors.pinCode}
                   helperText={errors.pinCode}
                   size="small"
+                  sx={{
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderCollor: "C0C0C0",
+                    },
+                    "& .MuiInputBase-input": {
+                      fontSize: "12px",
+                      color: "#565656",
+                      padding: "9px 14px",
+                    },
+                    "& .MuiFormLabel-root": {
+                      fontSize: "12px",
+                      color: "#565656",
+                      letterSpacing: "0.7px",
+                    },
+                  }}
                 />
               </form>
             </Grid>
@@ -273,7 +407,10 @@ const FormGrid = () => {
                 <FormControl
                   style={{ margin: isMobile ? "10px 0 0 4px" : "0 0 0 4px" }}
                 >
-                  <FormLabel id="demo-radio-buttons-group-label">
+                  <FormLabel
+                    id="demo-radio-buttons-group-label"
+                    sx={{ fontSize: "12px", color: "#565656" }}
+                  >
                     Gender
                   </FormLabel>
                   <RadioGroup
@@ -284,18 +421,66 @@ const FormGrid = () => {
                   >
                     <FormControlLabel
                       value="female"
-                      control={<Radio />}
+                      control={
+                        <Radio
+                          size="small"
+                          sx={{
+                            color: "#747474",
+                            "&.Mui-checked": {
+                              color: "#747474",
+                            },
+                          }}
+                        />
+                      }
                       label="Female"
+                      sx={{
+                        "& .MuiTypography-root": {
+                          fontSize: "12px",
+                          color: "#565656",
+                        },
+                      }}
                     />
                     <FormControlLabel
                       value="male"
-                      control={<Radio />}
+                      control={
+                        <Radio
+                          size="small"
+                          sx={{
+                            color: "#747474",
+                            "&.Mui-checked": {
+                              color: "#747474",
+                            },
+                          }}
+                        />
+                      }
                       label="Male"
+                      sx={{
+                        "& .MuiTypography-root": {
+                          fontSize: "12px",
+                          color: "#565656",
+                        },
+                      }}
                     />
                     <FormControlLabel
                       value="other"
-                      control={<Radio />}
+                      control={
+                        <Radio
+                          size="small"
+                          sx={{
+                            color: "#747474",
+                            "&.Mui-checked": {
+                              color: "#747474",
+                            },
+                          }}
+                        />
+                      }
                       label="Other"
+                      sx={{
+                        "& .MuiTypography-root": {
+                          fontSize: "12px",
+                          color: "#565656",
+                        },
+                      }}
                     />
                   </RadioGroup>
                 </FormControl>
@@ -313,8 +498,9 @@ const FormGrid = () => {
             onClick={handleSubmit}
             style={{
               textTransform: "capitalize",
-              background: "#1d8683",
-              padding: "5px 15px",
+              background: "#007BFF",
+              padding: "5px 25px",
+              borderRadius: "0",
             }}
             name="Submit"
           ></ButtonComponent>
@@ -325,8 +511,9 @@ const FormGrid = () => {
             onClick={handleCancel}
             style={{
               textTransform: "capitalize",
-              background: "#58544D",
-              padding: "5px 15px",
+              background: "#75B8FF",
+              padding: "5px 25px",
+              borderRadius: "0",
             }}
             name="Cancel"
           ></ButtonComponent>

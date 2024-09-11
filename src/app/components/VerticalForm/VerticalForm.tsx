@@ -67,11 +67,11 @@ const VerticalForm = () => {
   };
 
   return (
-    <Card variant="outlined" sx={{ borderRadius: "10px" }}>
+    <Card variant="outlined" sx={{ borderRadius: "5px",border:"none" }}>
       <CardHeader
         title="Basic layout"
-        sx={{ bgcolor: "#008744", color: "white" }}
-        titleTypographyProps={{ fontSize: "16px" }}
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
       />
       <CardContent>
         <form onSubmit={handleSubmit}>
@@ -80,7 +80,7 @@ const VerticalForm = () => {
             margin="normal"
             label={
               <span>
-                Name{" "}
+                Name
                 <span style={{ color: "#d32f2f", marginLeft: "3px" }}>*</span>
               </span>
             }
@@ -90,6 +90,20 @@ const VerticalForm = () => {
             error={!!errors.name}
             helperText={errors.name}
             size="small"
+            sx={{
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderCollor: "C0C0C0",
+              },
+              "& .MuiInputBase-input": {
+                fontSize: "12px",
+                color: "#565656",
+              },
+              "& .MuiFormLabel-root": {
+                fontSize: "12px",
+                color: "#565656",
+                letterSpacing: "0.7px",
+              },
+            }}
           />
           <TextField
             fullWidth
@@ -107,13 +121,27 @@ const VerticalForm = () => {
             error={!!errors.email}
             helperText={errors.email}
             size="small"
+            sx={{
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderCollor: "C0C0C0",
+              },
+              "& .MuiInputBase-input": {
+                fontSize: "12px",
+                color: "#565656",
+              },
+              "& .MuiFormLabel-root": {
+                fontSize: "12px",
+                color: "#565656",
+                letterSpacing: "0.7px",
+              },
+            }}
           />
           <TextField
             fullWidth
             margin="normal"
             label={
               <span>
-                Message{" "}
+                Message
                 <span style={{ color: "#d32f2f", marginLeft: "3px" }}>*</span>
               </span>
             }
@@ -125,6 +153,20 @@ const VerticalForm = () => {
             error={!!errors.message}
             helperText={errors.message}
             size="small"
+            sx={{
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderCollor: "C0C0C0",
+              },
+              "& .MuiInputBase-input": {
+                fontSize: "12px",
+                color: "#565656",
+              },
+              "& .MuiFormLabel-root": {
+                fontSize: "12px",
+                color: "#565656",
+                letterSpacing: "0.7px",
+              },
+            }}
           />
         </form>
       </CardContent>
@@ -138,8 +180,9 @@ const VerticalForm = () => {
           onClick={handleSubmit}
           style={{
             textTransform: "capitalize",
-            background: "#2e7d32",
-            padding: "5px 15px",
+            background: "#007BFF",
+            padding: "5px 25px",
+            borderRadius:"0"
           }}
           name="Submit"
         ></ButtonComponent>

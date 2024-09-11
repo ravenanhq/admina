@@ -7,11 +7,11 @@ import {
   TextField,
 } from "@mui/material";
 import React, { useState } from "react";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import PersonIcon from "@mui/icons-material/Person";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ButtonComponent from "../BaseComponent/Button";
+import EmailIcon from "../../../Icons/email.svg";
+import UserIcon from "../../../Icons/user.svg";
+import VisibleIcon from "../../../Icons/password-visible.svg";
+import InvisibleIcon from "../../../Icons/password-invisible.svg";
 
 const BasicWithIcon = () => {
   const [formData, setFormData] = useState({
@@ -82,11 +82,11 @@ const BasicWithIcon = () => {
   };
 
   return (
-    <Card variant="outlined" sx={{ borderRadius: "10px" }}>
+    <Card variant="outlined" sx={{ borderRadius: "5px", border: "none" }}>
       <CardHeader
         title="Basic With Icon"
-        sx={{ bgcolor: "#1d8683", color: "white" }}
-        titleTypographyProps={{ fontSize: "16px" }}
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
       />
       <CardContent>
         <form onSubmit={handleSubmit}>
@@ -103,9 +103,24 @@ const BasicWithIcon = () => {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <MailOutlineIcon />
+                  <EmailIcon />
                 </InputAdornment>
               ),
+            }}
+            sx={{
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderCollor: "C0C0C0",
+              },
+              "& .MuiInputBase-input": {
+                fontSize: "12px",
+                color: "#565656",
+                padding: "9px 14px",
+              },
+              "& .MuiFormLabel-root": {
+                fontSize: "12px",
+                color: "#565656",
+                letterSpacing: "0.7px",
+              },
             }}
           />
           <TextField
@@ -121,9 +136,24 @@ const BasicWithIcon = () => {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <PersonIcon />
+                  <UserIcon />
                 </InputAdornment>
               ),
+            }}
+            sx={{
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderCollor: "C0C0C0",
+              },
+              "& .MuiInputBase-input": {
+                fontSize: "12px",
+                color: "#565656",
+                padding: "9px 14px",
+              },
+              "& .MuiFormLabel-root": {
+                fontSize: "12px",
+                color: "#565656",
+                letterSpacing: "0.7px",
+              },
             }}
           />
           <TextField
@@ -139,9 +169,24 @@ const BasicWithIcon = () => {
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <PersonIcon />
+                  <UserIcon />
                 </InputAdornment>
               ),
+            }}
+            sx={{
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderCollor: "C0C0C0",
+              },
+              "& .MuiInputBase-input": {
+                fontSize: "12px",
+                padding: "9px 14px",
+                color: "#565656",
+              },
+              "& .MuiFormLabel-root": {
+                fontSize: "12px",
+                color: "#565656",
+                letterSpacing: "0.7px",
+              },
             }}
           />
           <TextField
@@ -159,18 +204,33 @@ const BasicWithIcon = () => {
               startAdornment: (
                 <InputAdornment position="start">
                   {showPassword ? (
-                    <VisibilityOffIcon
+                    <InvisibleIcon
                       onClick={togglePasswordVisibility}
                       sx={{ cursor: "pointer" }}
                     />
                   ) : (
-                    <VisibilityIcon
+                    <VisibleIcon
                       onClick={togglePasswordVisibility}
                       sx={{ cursor: "pointer" }}
                     />
                   )}
                 </InputAdornment>
               ),
+            }}
+            sx={{
+              "& .MuiOutlinedInput-notchedOutline": {
+                borderCollor: "C0C0C0",
+              },
+              "& .MuiInputBase-input": {
+                fontSize: "12px",
+                color: "#565656",
+                padding: "9px 14px",
+              },
+              "& .MuiFormLabel-root": {
+                fontSize: "12px",
+                color: "#565656",
+                letterSpacing: "0.7px",
+              },
             }}
           />
         </form>
@@ -185,8 +245,10 @@ const BasicWithIcon = () => {
           onClick={handleSubmit}
           style={{
             textTransform: "capitalize",
-            background: "#1d8683",
-            padding: "5px 15px",
+            background: "#007BFF",
+            padding: "5px 25px",
+            margin: "4px 0",
+            borderRadius: "0",
           }}
           name="Submit"
         ></ButtonComponent>

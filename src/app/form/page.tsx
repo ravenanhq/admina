@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import VerticalForm from "../components/VerticalForm/VerticalForm";
 import HorizontalForm from "../components/HorizontalForm/HorizontalForm";
 import BasicWithIcon from "../components/BasicWithIcon/BasicWithIcon";
@@ -8,8 +8,6 @@ import HorizontalFormWithIcon from "../components/HorizontalFormWithIcon/Horizon
 import FormGrid from "../components/FormGrid/FormGrid";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ButtonComponent from "../components/BaseComponent/Button";
-import ModalButtonComponent from "../components/ModalForms/ModalButtonComponent";
 
 export default function Form() {
   const theme = useTheme();
@@ -17,7 +15,24 @@ export default function Form() {
 
   return (
     <>
-      <h2 style={{ paddingTop: 30, fontSize: "20px" }}>Vertical Layout</h2>
+      <Typography
+        variant="h2"
+        sx={{ pt: 2, color: "#007BFF", fontSize: "20px", fontWeight: "bold" }}
+      >
+        Forms
+      </Typography>
+      <Typography
+        variant="h2"
+        sx={{
+          pt: 2,
+          fontSize: "14px",
+          fontWeight: "600",
+          color: "#747477",
+          letterSpacing: "0.9px",
+        }}
+      >
+        Vertical Layout
+      </Typography>
       <div style={{ paddingTop: 10 }}>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
           <Grid item md={6} sm={12}>
@@ -27,7 +42,18 @@ export default function Form() {
             <BasicWithIcon></BasicWithIcon>
           </Grid>
         </Grid>
-        <h2 style={{ paddingTop: 30, fontSize: "20px" }}>Horizontal Layout</h2>
+        <Typography
+          variant="h2"
+          sx={{
+            pt: 2,
+            fontSize: "14px",
+            fontWeight: "600",
+            color: "#747477",
+            letterSpacing: "0.9px",
+          }}
+        >
+          Horizontal Layout
+        </Typography>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
           <Grid item md={6} sm={12} sx={{ width: isMobile ? "100%" : "" }}>
             <HorizontalForm></HorizontalForm>
@@ -40,12 +66,6 @@ export default function Form() {
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
           <Grid item>
             <FormGrid></FormGrid>
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={3} style={{ paddingTop: 10 }}>
-          <Grid item sm={12}>
-            <ModalButtonComponent />
           </Grid>
         </Grid>
       </div>

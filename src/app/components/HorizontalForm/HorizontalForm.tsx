@@ -75,11 +75,11 @@ const HorizontalForm = () => {
   };
 
   return (
-    <Card variant="outlined" style={{ borderRadius: "10px" }}>
+    <Card variant="outlined" style={{ borderRadius: "5px", border: "none" }}>
       <CardHeader
         title="Basic Layout"
-        sx={{ bgcolor: "#0057e7", color: "white" }}
-        titleTypographyProps={{ fontSize: "16px" }}
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
       />
       <CardContent>
         <form onSubmit={handleSubmit}>
@@ -91,7 +91,10 @@ const HorizontalForm = () => {
               justifyContent: "space-between",
             }}
           >
-            <label htmlFor="name" style={{ marginTop: "5px" }}>
+            <label
+              htmlFor="name"
+              style={{ marginTop: "5px", fontSize: "12px", color: "#565656" }}
+            >
               Name <span style={{ color: "#d32f2f" }}>*</span>
             </label>
             <TextField
@@ -105,9 +108,22 @@ const HorizontalForm = () => {
               helperText={errors.name}
               size="small"
               placeholder="Name"
-              style={{
+              sx={{
                 marginTop: isMobile ? "5px" : "0",
                 width: isMobile ? "100%" : "80%",
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderCollor: "C0C0C0",
+                },
+                "& .MuiInputBase-input": {
+                  fontSize: "12px",
+                  color: "#565656",
+                  padding: "9px 14px",
+                },
+                "& .MuiFormLabel-root": {
+                  fontSize: "12px",
+                  color: "#565656",
+                  letterSpacing: "0.7px",
+                },
               }}
             />
           </FormControl>
@@ -119,7 +135,10 @@ const HorizontalForm = () => {
               justifyContent: "space-between",
             }}
           >
-            <label htmlFor="email" style={{ marginTop: "5px" }}>
+            <label
+              htmlFor="email"
+              style={{ marginTop: "5px", fontSize: "12px", color: "#565656" }}
+            >
               Email <span style={{ color: "#d32f2f" }}>*</span>
             </label>
             <TextField
@@ -133,9 +152,22 @@ const HorizontalForm = () => {
               helperText={errors.email}
               size="small"
               placeholder="Email"
-              style={{
+              sx={{
                 marginTop: isMobile ? "5px" : "0",
                 width: isMobile ? "100%" : "80%",
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderCollor: "C0C0C0",
+                },
+                "& .MuiInputBase-input": {
+                  fontSize: "12px",
+                  color: "#565656",
+                  padding: "9px 14px",
+                },
+                "& .MuiFormLabel-root": {
+                  fontSize: "12px",
+                  color: "#565656",
+                  letterSpacing: "0.7px",
+                },
               }}
             />
           </FormControl>
@@ -147,7 +179,10 @@ const HorizontalForm = () => {
               justifyContent: "space-between",
             }}
           >
-            <label htmlFor="password" style={{ marginTop: "5px" }}>
+            <label
+              htmlFor="password"
+              style={{ marginTop: "5px", fontSize: "12px", color: "#565656" }}
+            >
               Password <span style={{ color: "#d32f2f" }}>*</span>
             </label>
             <TextField
@@ -161,9 +196,22 @@ const HorizontalForm = () => {
               helperText={errors.password}
               size="small"
               placeholder="Password"
-              style={{
+              sx={{
                 marginTop: isMobile ? "5px" : "0",
                 width: isMobile ? "100%" : "80%",
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderCollor: "C0C0C0",
+                },
+                "& .MuiInputBase-input": {
+                  fontSize: "12px",
+                  color: "#565656",
+                  padding: "9px 14px",
+                },
+                "& .MuiFormLabel-root": {
+                  fontSize: "12px",
+                  color: "#565656",
+                  letterSpacing: "0.7px",
+                },
               }}
             />
           </FormControl>
@@ -179,8 +227,9 @@ const HorizontalForm = () => {
           onClick={handleSubmit}
           style={{
             textTransform: "capitalize",
-            background: "#1976d2",
-            padding: "5px 15px",
+            background: "#007BFF",
+            padding: "5px 25px",
+            borderRadius: "0",
           }}
           name="Submit"
         ></ButtonComponent>
