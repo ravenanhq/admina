@@ -7,6 +7,7 @@ import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
+import CircleIcon from "@mui/icons-material/Circle";
 import { Link } from "@mui/material";
 import menuItems from "./menuItems";
 
@@ -59,35 +60,55 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
   const renderSubMenu = (submenu: any[], parentLabel: string) => (
     <Collapse in={openSubMenus[parentLabel]} timeout="auto" unmountOnExit>
       <List component="div" disablePadding>
-        {submenu.map((subMenuItem) => (
-          <Link
-            key={subMenuItem.label}
-            href={subMenuItem.route}
-            underline="none"
-          >
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                background: subMenuItem.route === pathName ? "#f4f4f5" : "",
+        {submenu.map((subMenuItem) => {
+          const isActive = subMenuItem.route === pathName;
+
+          return (
+            <Link
+              key={subMenuItem.label}
+              href={subMenuItem.route}
+              underline="none"
+              style={{
+                textDecoration: "none",
               }}
-              onClick={() => handleSubMenuItemClick(subMenuItem.label)}
             >
-              <ListItemIcon
+              <ListItemButton
                 sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                  marginLeft: "5px",
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
                 }}
+                onClick={() => handleSubMenuItemClick(subMenuItem.label)}
               >
-                <RadioButtonUncheckedIcon style={{ fontSize: "14px" }} />
-              </ListItemIcon>
-              <ListItemText primary={subMenuItem.label} />
-            </ListItemButton>
-          </Link>
-        ))}
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                    marginLeft: "5px",
+                  }}
+                >
+                  {isActive ? (
+                    <CircleIcon
+                      style={{ fontSize: "14px", color: "#007BFF" }}
+                    />
+                  ) : (
+                    <RadioButtonUncheckedIcon
+                      style={{ fontSize: "14px", color: "#565656" }}
+                    />
+                  )}
+                </ListItemIcon>
+                <ListItemText
+                  primary={subMenuItem.label}
+                  primaryTypographyProps={{
+                    color: isActive ? "#007BFF" : "#565656",
+                    fontSize: "14px",
+                  }}
+                />
+              </ListItemButton>
+            </Link>
+          );
+        })}
       </List>
     </Collapse>
   );
@@ -113,62 +134,71 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
         },
       }}
     >
-      {menuItems.map((menuItem) => (
-        <div key={menuItem.label} style={{ display: "block" }}>
-          <Link
-            href={menuItem.route || "#"}
-            underline="none"
-            className={
-              menuItem.route === pathName ||
-              (menuItem.submenu &&
-                menuItem.submenu.some((submenu) => submenu.route === pathName))
-                ? "activeMenu"
-                : "sideMenuLink"
-            }
-          >
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-              onClick={() => {
-                if (menuItem.submenu) {
-                  handleMenuClick(menuItem.label);
-                }
-              }}
-              className="parentMenu"
+      {menuItems.map((menuItem) => {
+        const isActive =
+          menuItem.route === pathName ||
+          (menuItem.submenu &&
+            menuItem.submenu.some((submenu) => submenu.route === pathName));
+
+        return (
+          <div key={menuItem.label} style={{ display: "block" }}>
+            <Link
+              href={menuItem.route || "#"}
+              underline="none"
+              className={isActive ? "activeMenu" : "sideMenuLink"}
             >
-              <ListItemIcon
+              <ListItemButton
                 sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                  color: menuItem.route === pathName ? "#fff" : "",
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
                 }}
+                onClick={() => {
+                  if (menuItem.submenu) {
+                    handleMenuClick(menuItem.label);
+                  }
+                }}
+                className="parentMenu"
               >
-                {menuItem.route === pathName ? <menuItem.activeIcon /> : <menuItem.icon />}
-              </ListItemIcon>
-              <ListItemText
-                primary={menuItem.label}
-                sx={{ opacity: open ? 1 : 0, fontSize: "12px" }}
-              />
-              {menuItem.submenu && (
                 <ListItemIcon
-                  sx={{ minWidth: 0, ml: "auto", justifyContent: "center" }}
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                    color: isActive ? "#007BFF" : "#747474",
+                  }}
                 >
-                  {openSubMenus[menuItem.label] ? (
-                    <ExpandLess sx={{ display: !open ? "none" : "visible" }} />
-                  ) : (
-                    <ExpandMore sx={{ display: !open ? "none" : "visible" }} />
-                  )}
+                  {isActive ? <menuItem.activeIcon /> : <menuItem.icon />}
                 </ListItemIcon>
-              )}
-            </ListItemButton>
-          </Link>
-          {menuItem.submenu && renderSubMenu(menuItem.submenu, menuItem.label)}
-        </div>
-      ))}
+                <ListItemText
+                  primary={menuItem.label}
+                  primaryTypographyProps={{
+                    color: isActive ? "#007BFF" : "#747474",
+                    fontSize: "14px",
+                  }}
+                />
+                {menuItem.submenu && (
+                  <ListItemIcon
+                    sx={{ minWidth: 0, ml: "auto", justifyContent: "center" }}
+                  >
+                    {openSubMenus[menuItem.label] ? (
+                      <ExpandLess
+                        sx={{ display: !open ? "none" : "visible" }}
+                      />
+                    ) : (
+                      <ExpandMore
+                        sx={{ display: !open ? "none" : "visible" }}
+                      />
+                    )}
+                  </ListItemIcon>
+                )}
+              </ListItemButton>
+            </Link>
+            {menuItem.submenu &&
+              renderSubMenu(menuItem.submenu, menuItem.label)}
+          </div>
+        );
+      })}
     </List>
   );
 };
