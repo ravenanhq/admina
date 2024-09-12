@@ -4,7 +4,11 @@ import { Box, Button, ButtonGroup, Divider, Typography } from "@mui/material";
 const GroupButton = () => {
   return (
     <>
-      <Typography variant="h6" gutterBottom sx={{ marginTop: "10px" }}>
+      <Typography
+        variant="h6"
+        gutterBottom
+        sx={{ marginTop: "20px", fontSize: "14px", color: "#565656" }}
+      >
         Group Buttons
       </Typography>
       <Divider sx={{ margin: "0 auto", marginY: 2 }} />

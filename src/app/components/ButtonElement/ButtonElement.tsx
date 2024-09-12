@@ -2,21 +2,23 @@ import React from "react";
 import { Card, CardContent, CardHeader } from "@mui/material";
 import OutlineButtonElement from "./OutlineButtonElement";
 import BasicButtonElement from "./BasicButtonElement";
-import ButtonWithIcon from "./ButtonWithIcon";
+import TextButton from "./TextButton";
 import GroupButton from "./GroupButton";
+import ElevatedButton from "./ElevatedButton";
 
 const ButtonsElements = () => {
   return (
     <Card variant="outlined">
       <CardHeader
         title="Buttons"
-        sx={{ bgcolor: "#008744", color: "white" }}
-        titleTypographyProps={{ fontSize: "16px" }}
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
       />
       <CardContent>
         <BasicButtonElement></BasicButtonElement>
         <OutlineButtonElement></OutlineButtonElement>
-        <ButtonWithIcon></ButtonWithIcon>
+        <TextButton></TextButton>
+        <ElevatedButton></ElevatedButton>
         <GroupButton></GroupButton>
       </CardContent>
     </Card>

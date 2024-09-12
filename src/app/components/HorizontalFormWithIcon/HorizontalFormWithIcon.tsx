@@ -8,13 +8,13 @@ import {
   FormControl,
   InputAdornment,
 } from "@mui/material";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import PersonIcon from "@mui/icons-material/Person";
-import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ButtonComponent from "../BaseComponent/Button";
+import EmailIcon from "../../../Icons/email.svg";
+import UserIcon from "../../../Icons/user.svg";
+import VisibleIcon from "../../../Icons/password-visible.svg";
+import InvisibleIcon from "../../../Icons/password-invisible.svg";
 
 const HorizontalFormWithIcon = () => {
   const [formData, setFormData] = useState({
@@ -85,11 +85,11 @@ const HorizontalFormWithIcon = () => {
   };
 
   return (
-    <Card variant="outlined" style={{ borderRadius: "10px" }}>
+    <Card variant="outlined" style={{ borderRadius: "5px", border: "none" }}>
       <CardHeader
         title="Basic Layout with Icon"
-        sx={{ bgcolor: "#e44d26", color: "white" }}
-        titleTypographyProps={{ fontSize: "16px" }}
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
       />
       <CardContent>
         <form onSubmit={handleSubmit}>
@@ -101,7 +101,10 @@ const HorizontalFormWithIcon = () => {
               justifyContent: "space-between",
             }}
           >
-            <label htmlFor="name" style={{ marginTop: "5px" }}>
+            <label
+              htmlFor="name"
+              style={{ marginTop: "5px", fontSize: "12px", color: "#565656" }}
+            >
               Name <span style={{ color: "#d32f2f" }}>*</span>
             </label>
             <TextField
@@ -115,14 +118,27 @@ const HorizontalFormWithIcon = () => {
               helperText={errors.name}
               size="small"
               placeholder="Name"
-              style={{
+              sx={{
                 marginTop: isMobile ? "5px" : "0",
                 width: isMobile ? "100%" : "80%",
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderCollor: "C0C0C0",
+                },
+                "& .MuiInputBase-input": {
+                  fontSize: "12px",
+                  color: "#565656",
+                  padding: "9px 14px",
+                },
+                "& .MuiFormLabel-root": {
+                  fontSize: "12px",
+                  color: "#565656",
+                  letterSpacing: "0.7px",
+                },
               }}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <PersonIcon />
+                    <UserIcon />
                   </InputAdornment>
                 ),
               }}
@@ -136,7 +152,10 @@ const HorizontalFormWithIcon = () => {
               justifyContent: "space-between",
             }}
           >
-            <label htmlFor="email" style={{ marginTop: "5px" }}>
+            <label
+              htmlFor="email"
+              style={{ marginTop: "5px", fontSize: "12px", color: "#565656" }}
+            >
               Email <span style={{ color: "#d32f2f" }}>*</span>
             </label>
             <TextField
@@ -153,13 +172,26 @@ const HorizontalFormWithIcon = () => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    <MailOutlineIcon />
+                    <EmailIcon />
                   </InputAdornment>
                 ),
               }}
-              style={{
+              sx={{
                 marginTop: isMobile ? "5px" : "0",
                 width: isMobile ? "100%" : "80%",
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderCollor: "C0C0C0",
+                },
+                "& .MuiInputBase-input": {
+                  fontSize: "12px",
+                  color: "#565656",
+                  padding: "9px 14px",
+                },
+                "& .MuiFormLabel-root": {
+                  fontSize: "12px",
+                  color: "#565656",
+                  letterSpacing: "0.7px",
+                },
               }}
             />
           </FormControl>
@@ -171,7 +203,10 @@ const HorizontalFormWithIcon = () => {
               justifyContent: "space-between",
             }}
           >
-            <label htmlFor="password" style={{ marginTop: "5px" }}>
+            <label
+              htmlFor="password"
+              style={{ marginTop: "5px", fontSize: "12px", color: "#565656" }}
+            >
               Password <span style={{ color: "#d32f2f" }}>*</span>
             </label>
             <TextField
@@ -190,12 +225,12 @@ const HorizontalFormWithIcon = () => {
                 startAdornment: (
                   <InputAdornment position="start">
                     {showPassword ? (
-                      <VisibilityOffIcon
+                      <InvisibleIcon
                         onClick={togglePasswordVisibility}
                         sx={{ cursor: "pointer" }}
                       />
                     ) : (
-                      <VisibilityIcon
+                      <VisibleIcon
                         onClick={togglePasswordVisibility}
                         sx={{ cursor: "pointer" }}
                       />
@@ -203,9 +238,22 @@ const HorizontalFormWithIcon = () => {
                   </InputAdornment>
                 ),
               }}
-              style={{
+              sx={{
                 marginTop: isMobile ? "5px" : "0",
                 width: isMobile ? "100%" : "80%",
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderCollor: "C0C0C0",
+                },
+                "& .MuiInputBase-input": {
+                  fontSize: "12px",
+                  color: "#565656",
+                  padding: "9px 14px",
+                },
+                "& .MuiFormLabel-root": {
+                  fontSize: "12px",
+                  color: "#565656",
+                  letterSpacing: "0.7px",
+                },
               }}
             />
           </FormControl>
@@ -221,8 +269,9 @@ const HorizontalFormWithIcon = () => {
           onClick={handleSubmit}
           style={{
             textTransform: "capitalize",
-            background: "#e44d26",
-            padding: "5px 15px",
+            background: "#007BFF",
+            padding: "6px 25px 5px",
+            borderRadius: "0",
           }}
           name="Submit"
         ></ButtonComponent>
