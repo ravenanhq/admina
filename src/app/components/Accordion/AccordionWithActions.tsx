@@ -54,6 +54,9 @@ const AccordionWithActions: React.FC = () => {
             size="small"
             color="primary"
             onClick={handleAgree}
+            style={{
+              padding: "5px 10px 3px",
+            }}
           >
             Agree
           </Button>

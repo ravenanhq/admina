@@ -1,13 +1,17 @@
 import { getIcon } from "@/app/utils/Icons";
 
 const menuItems = [
-  { label: "Dashboard", route: "/admin", icon: getIcon("Dashboard"),activeIcon: getIcon("DashboardActive") },
+  {
+    label: "Dashboard",
+    route: "/admin",
+    icon: getIcon("Dashboard"),
+    activeIcon: getIcon("DashboardActive"),
+  },
   {
     label: "Components",
-    icon: getIcon("Components") ,
+    icon: getIcon("Components"),
     activeIcon: getIcon("ChartActive"),
     submenu: [
-      { label: "Forms", route: "/form" },
       { label: "Breadcrumbs", route: "/uielements/breadcrumbs" },
       { label: "Search", route: "/uielements/search" },
       { label: "Footers", route: "/uielements/footer" },
@@ -25,8 +29,24 @@ const menuItems = [
       { label: "404 Page", route: "/uielements/error-404" },
     ],
   },
-  { label: "Charts", route: "/chart", icon: getIcon("Chart") ,activeIcon: getIcon("ChartActive") },
-  { label: "Drag and Drop", route: "/drag-and-drop", icon: getIcon("DragAndDrop"),activeIcon: getIcon("DaraAndDropActive")  },
+  {
+    label: "Charts",
+    route: "/chart",
+    icon: getIcon("Chart"),
+    activeIcon: getIcon("ChartActive"),
+  },
+  {
+    label: "Forms",
+    route: "/form",
+    icon: getIcon("Form"),
+    activeIcon: getIcon("FormActive"),
+  },
+  {
+    label: "Drag and Drop",
+    route: "/drag-and-drop",
+    icon: getIcon("DragAndDrop"),
+    activeIcon: getIcon("DaraAndDropActive"),
+  },
 ];
 
 export default menuItems;
