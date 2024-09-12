@@ -1,26 +1,25 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, Box, Container, Typography } from '@mui/material';
 
-const DarkFooterElement = () => {
+const TransparentFooterElement = () => {
     return (
         <Card variant="outlined">
             <CardHeader
-                title="Dark Footer"
-                sx={{ bgcolor: '#E44D26', color: 'white' }}
-                titleTypographyProps={{ fontSize: '16px' }}
+                title="Transparent Footer"
+                sx={{ bgcolor: '#007BFF', color: 'white' }}
+                titleTypographyProps={{ fontSize: '14px' }}
             />
             <CardContent>
                 <Box
                     component="footer"
                     sx={{
-                        backgroundColor: '#333',
-                        color: '#fff',
+                        backgroundColor: 'rgba(255, 255, 255, 0.7)',
                         padding: '20px 0',
                         marginTop: 'auto',
                     }}
                 >
                     <Container maxWidth="md">
-                        <Typography variant="body2" align="center">
+                        <Typography variant="subtitle2" align="center" sx={{fontSize:"12px",color:"#565656"}}>
                             &copy; Copyright All rights reserved.
                         </Typography>
                     </Container>
@@ -29,4 +28,4 @@ const DarkFooterElement = () => {
         </Card>
     );
 };
-export default DarkFooterElement;
+export default TransparentFooterElement;

@@ -1,26 +1,26 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, Box, Container, Typography } from '@mui/material';
 
-const LightFooterElement = () => {
+const DarkFooterElement = () => {
     return (
         <Card variant="outlined">
             <CardHeader
-                title="Light Footer"
-                sx={{ bgcolor: '#182667', color: 'white' }}
-                titleTypographyProps={{ fontSize: '16px' }}
+                title="Dark Footer"
+                sx={{ bgcolor: "#007BFF", color: 'white' }}
+                titleTypographyProps={{ fontSize: '14px' }}
             />
             <CardContent>
                 <Box
                     component="footer"
                     sx={{
-                        backgroundColor: '#f5f5f5',
+                        backgroundColor: '#333',
+                        color: '#fff',
                         padding: '20px 0',
                         marginTop: 'auto',
-                        textAlign: 'center',
                     }}
                 >
                     <Container maxWidth="md">
-                        <Typography variant="body2" color="textSecondary">
+                        <Typography variant="subtitle2" align="center" sx={{fontSize:"12px"}}>
                             &copy; Copyright All rights reserved.
                         </Typography>
                     </Container>
@@ -29,4 +29,4 @@ const LightFooterElement = () => {
         </Card>
     );
 };
-export default LightFooterElement;
+export default DarkFooterElement;

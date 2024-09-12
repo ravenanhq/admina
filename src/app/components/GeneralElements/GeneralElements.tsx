@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Card,
   CardHeader,
   CardContent,
   TextField,
-  Button,
-  Box,
   MenuItem,
   FormControl,
   InputLabel,
@@ -18,6 +16,7 @@ import {
   Grid,
   FormGroup,
   Checkbox,
+  Typography,
 } from "@mui/material";
 
 const GeneralElements = () => {
@@ -27,31 +26,52 @@ const GeneralElements = () => {
     <Card variant="outlined">
       <CardHeader
         title="General Elements"
-        sx={{ bgcolor: "#008744", color: "white" }}
-        titleTypographyProps={{ fontSize: "16px" }}
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
       />
       <CardContent>
-          <h4>Text Field Color</h4>
-          <TextField label="Outlined secondary" color="secondary" focused style={{ marginLeft: '15px', marginTop: '15px' }} />
-          <TextField
-            label="Filled success"
-            variant="filled"
-            color="success"
-            focused
-            size="small"
-            style={{ marginLeft: '15px', marginTop: '15px'  }}
-          />
-          <TextField
-            label="Standard warning"
-            variant="standard"
-            color="warning"
-            size="small"
-            focused
-            style={{ marginLeft: '15px', marginTop: '15px', marginBottom: '15px' }}
-          />
+        <Typography
+          variant="h6"
+          gutterBottom
+          sx={{ fontSize: "14px", color: "#565656" }}
+        >
+          Text Field Color
+        </Typography>
+        <TextField
+          label="Outlined secondary"
+          color="secondary"
+          focused
+          style={{ marginLeft: "15px", marginTop: "15px" }}
+        />
+        <TextField
+          label="Filled success"
+          variant="filled"
+          color="success"
+          focused
+          size="small"
+          style={{ marginLeft: "15px", marginTop: "15px" }}
+        />
+        <TextField
+          label="Standard warning"
+          variant="standard"
+          color="warning"
+          size="small"
+          focused
+          style={{
+            marginLeft: "15px",
+            marginTop: "15px",
+            marginBottom: "15px",
+          }}
+        />
 
         <div>
-          <h4>Select</h4>
+          <Typography
+            variant="h6"
+            gutterBottom
+            sx={{ marginTop: "10px", fontSize: "14px", color: "#565656" }}
+          >
+            Select
+          </Typography>
           <FormControl sx={{ m: 1, minWidth: 120 }} size="small" disabled>
             <InputLabel id="demo-simple-select-disabled-label">Age</InputLabel>
             <Select
@@ -124,52 +144,110 @@ const GeneralElements = () => {
           </FormControl>
           <Grid container spacing={2}>
             <Grid item xs={6}>
-              <h4>
-                Radio <Button></Button>
-              </h4>
+              <Typography
+                variant="h6"
+                gutterBottom
+                sx={{
+                  marginTop: "10px",
+                  fontWeight: "600",
+                  fontSize: "14px",
+                  color: "#565656",
+                }}
+              >
+                Radio
+              </Typography>
               <FormControl>
-                <FormLabel id="demo-radio-buttons-group-label">
+                <FormLabel
+                  id="demo-radio-buttons-group-label"
+                  sx={{ fontSize: "12px" }}
+                >
                   Gender
                 </FormLabel>
                 <RadioGroup
                   aria-labelledby="demo-radio-buttons-group-label"
                   defaultValue="female"
                   name="radio-buttons-group"
+                  sx={{
+                    "& .MuiTypography-root": {
+                      fontSize: "12px",
+                    },
+                  }}
                 >
                   <FormControlLabel
                     value="female"
                     control={<Radio />}
                     label="Female"
+                    sx={{
+                      "& .MuiTypography-root": {
+                        fontSize: "12px",
+                      },
+                    }}
                   />
                   <FormControlLabel
                     value="male"
                     control={<Radio />}
                     label="Male"
+                    sx={{
+                      "& .MuiTypography-root": {
+                        fontSize: "12px",
+                      },
+                    }}
                   />
                   <FormControlLabel
                     value="other"
                     control={<Radio />}
                     label="Other"
+                    sx={{
+                      "& .MuiTypography-root": {
+                        fontSize: "12px",
+                      },
+                    }}
                   />
                 </RadioGroup>
               </FormControl>
             </Grid>
             <Grid item xs={6}>
-              <h4>Checkbox</h4>
+              <Typography
+                variant="h6"
+                gutterBottom
+                sx={{
+                  marginTop: "10px",
+                  fontWeight: "600",
+                  fontSize: "14px",
+                  color: "#565656",
+                }}
+              >
+                Checkbox
+              </Typography>
               <FormGroup>
                 <FormControlLabel
                   control={<Checkbox defaultChecked />}
                   label="Label"
+                  sx={{
+                    "& .MuiTypography-root": {
+                      fontSize: "12px",
+                    },
+                  }}
                 />
                 <FormControlLabel
                   required
                   control={<Checkbox />}
                   label="Required"
+                  sx={{
+                    "& .MuiTypography-root": {
+                      fontSize: "12px",
+                    },
+                  }}
                 />
                 <FormControlLabel
                   disabled
                   control={<Checkbox />}
                   label="Disabled"
+                  sx={{
+                    "& .MuiTypography-root": {
+                      fontSize: "12px",
+                    },
+                  }}
                 />
               </FormGroup>
             </Grid>

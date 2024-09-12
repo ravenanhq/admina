@@ -221,6 +221,7 @@ const FormGrid = () => {
                       fontSize: "12px",
                       color: "#565656",
                       letterSpacing: "0.7px",
+                      marginTop: "4px",
                     }}
                   >
                     Role
@@ -235,6 +236,11 @@ const FormGrid = () => {
                     renderValue={(value) => `${value}`}
                     sx={{
                       "& .MuiFormLabel-root": {
+                        fontSize: "12px",
+                        color: "#565656",
+                        letterSpacing: "0.7px",
+                      },
+                      "& .MuiSelect-select": {
                         fontSize: "12px",
                         color: "#565656",
                         letterSpacing: "0.7px",
@@ -499,7 +505,7 @@ const FormGrid = () => {
             style={{
               textTransform: "capitalize",
               background: "#007BFF",
-              padding: "5px 25px",
+              padding: "6px 25px 5px",
               borderRadius: "0",
             }}
             name="Submit"
@@ -512,7 +518,7 @@ const FormGrid = () => {
             style={{
               textTransform: "capitalize",
               background: "#75B8FF",
-              padding: "5px 25px",
+              padding: "6px 25px 5px",
               borderRadius: "0",
             }}
             name="Cancel"

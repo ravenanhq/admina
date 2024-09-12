@@ -246,7 +246,7 @@ const BasicWithIcon = () => {
           style={{
             textTransform: "capitalize",
             background: "#007BFF",
-            padding: "5px 25px",
+            padding: "6px 25px 5px",
             margin: "4px 0",
             borderRadius: "0",
           }}

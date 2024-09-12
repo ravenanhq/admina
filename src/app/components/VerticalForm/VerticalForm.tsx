@@ -67,7 +67,7 @@ const VerticalForm = () => {
   };
 
   return (
-    <Card variant="outlined" sx={{ borderRadius: "5px",border:"none" }}>
+    <Card variant="outlined" sx={{ borderRadius: "5px", border: "none" }}>
       <CardHeader
         title="Basic layout"
         sx={{ bgcolor: "#007BFF", color: "white" }}
@@ -181,8 +181,8 @@ const VerticalForm = () => {
           style={{
             textTransform: "capitalize",
             background: "#007BFF",
-            padding: "5px 25px",
-            borderRadius:"0"
+            padding: "6px 25px 5px",
+            borderRadius: "0",
           }}
           name="Submit"
         ></ButtonComponent>

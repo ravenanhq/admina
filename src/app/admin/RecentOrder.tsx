@@ -55,6 +55,13 @@ const RecentOrder = () => {
               backgroundColor: "#f1f1f1",
               borderRadius: "10px",
             },
+            "& .MuiDataGrid-cellContent": {
+              fontSize: "12px",
+              color:"#565656"
+            },
+            "& .MuiTableCell-root": {
+              color:"#565656"
+            },
             "&::-webkit-scrollbar-thumb": {
               backgroundColor: "#b0bec5",
               borderRadius: "10px",

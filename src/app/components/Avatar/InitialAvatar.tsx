@@ -9,7 +9,7 @@ import {
   orange,
   pink,
 } from "@mui/material/colors";
-import { Card, CardContent, Typography } from "@mui/material";
+import { Card, CardContent, CardHeader } from "@mui/material";
 import avatars from "./avatar.json";
 
 const colors = [
@@ -33,44 +33,43 @@ const getInitials = (name: string) => {
 const InitialAvatars = () => {
   return (
     <>
-      <Typography
-        variant="h6"
-        style={{
-          marginTop: "10px",
-          padding: "10px",
-        }}
-      >
-        Initial Avatar
-      </Typography>
-      <Card>
-        <CardContent>
-          <Stack
-            direction="row"
-            spacing={2}
-            sx={{
-              alignItems: "center",
-              justifyContent: "start",
-              flexWrap: "wrap",
-              padding: "16px 0",
-            }}
-          >
-            {avatars.map((avatar, index) => (
-              <Avatar
-                key={index}
-                className="avatarCircle"
-                sx={{
-                  bgcolor: colors[index % colors.length],
-                  width: size[index % size.length],
-                  height: size[index % size.length],
-                  fontSize: size[index % size.length] / 2.5,
-                }}
-              >
-                {getInitials(avatar.name)}
-              </Avatar>
-            ))}
-          </Stack>
-        </CardContent>
-      </Card>
+      {" "}
+      <div style={{ border: "1px solid #c0c0c0" }}>
+        <CardHeader
+          title=" Initial Avatar"
+          sx={{ bgcolor: "#007BFF", color: "white" }}
+          titleTypographyProps={{ fontSize: "14px" }}
+        />
+        <Card>
+          <CardContent>
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{
+                alignItems: "center",
+                justifyContent: "start",
+                flexWrap: "wrap",
+                padding: "16px 0",
+              }}
+            >
+              {avatars.map((avatar, index) => (
+                <Avatar
+                  key={index}
+                  className="avatarCircle"
+                  sx={{
+                    bgcolor: colors[index % colors.length],
+                    width: size[index % size.length],
+                    height: size[index % size.length],
+                    fontSize: size[index % size.length] / 2.5,
+                  }}
+                >
+                  {getInitials(avatar.name)}
+                </Avatar>
+              ))}
+            </Stack>
+          </CardContent>
+        </Card>
+      </div>
     </>
   );
 };
