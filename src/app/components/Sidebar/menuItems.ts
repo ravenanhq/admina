@@ -30,6 +30,16 @@ const menuItems = [
     ],
   },
   {
+    label: "Pages",
+    icon: getIcon("Page"),
+    activeIcon: getIcon("PageActive"),
+    submenu: [
+      { label: "404 Page", route: "/pages/404-page" },
+      { label: "Maintenance Page", route: "/pages/maintenance" },
+      { label: "Search Result Page", route: "/pages/searchresult" },
+    ],
+  },
+  {
     label: "Charts",
     route: "/chart",
     icon: getIcon("Chart"),
@@ -45,7 +55,7 @@ const menuItems = [
     label: "Drag and Drop",
     route: "/drag-and-drop",
     icon: getIcon("DragAndDrop"),
-    activeIcon: getIcon("DaraAndDropActive"),
+    activeIcon: getIcon("DragAndDropActive"),
   },
 ];
 
