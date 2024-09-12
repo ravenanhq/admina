@@ -55,7 +55,7 @@ const menuItems = [
     label: "Drag and Drop",
     route: "/drag-and-drop",
     icon: getIcon("DragAndDrop"),
-    activeIcon: getIcon("DaraAndDropActive"),
+    activeIcon: getIcon("DragAndDropActive"),
   },
 ];
 
