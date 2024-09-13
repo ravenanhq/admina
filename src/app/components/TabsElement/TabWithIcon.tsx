@@ -43,6 +43,7 @@ const TabWithIcon = () => {
               minHeight: "auto",
               fontSize: "12px",
               padding: "6px 31px",
+              color: "#565656",
               "& .MuiTab-root": {
                 color: "#565656",
               },
@@ -61,6 +62,7 @@ const TabWithIcon = () => {
               minHeight: "auto",
               fontSize: "12px",
               padding: "6px 31px",
+              color: "#565656",
               "& .MuiButtonBase-root": {
                 color: "#565656",
               },
@@ -79,6 +81,7 @@ const TabWithIcon = () => {
               minHeight: "auto",
               fontSize: "12px",
               padding: "6px 31px",
+              color: "#565656",
               "& .MuiButtonBase-root": {
                 color: "#565656",
               },

@@ -70,6 +70,7 @@ const CustomElements = () => {
                   label="Top"
                   labelPlacement="top"
                   sx={{
+                    marginLeft:"0",
                     "& .MuiTypography-root": {
                       fontSize: "12px",
                       color:"#565656"
@@ -82,6 +83,7 @@ const CustomElements = () => {
                   label="Start"
                   labelPlacement="start"
                   sx={{
+                    marginLeft:"0",
                     "& .MuiTypography-root": {
                       fontSize: "12px",
                       color:"#565656"

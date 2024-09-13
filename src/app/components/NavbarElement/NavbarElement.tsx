@@ -271,15 +271,16 @@ const Navbar = () => {
                     color: "#fff",
                     "& input": {
                       padding: "8px",
-                      color: "#fff",
+                      color: "#747474",
                       fontSize: "12px",
                     },
                     "& fieldset": {
-                      borderColor: "#fff",
+                      borderColor: "#fff !important",
+                      borderWidth: "1px !important",
                       borderRadius: "20px",
                     },
                     "& fieldset:hover": {
-                      borderColor: "#747474",
+                      borderColor: "#fff",
                     },
                     display: { xs: "none", sm: "block" },
                   }}
@@ -326,10 +327,14 @@ const Navbar = () => {
                   color: "#fff",
                   "& input": {
                     padding: "8px",
-                    color: "#fff",
+                    color: "#747474",
                     fontSize: "12px",
                   },
-                  "& fieldset": { borderColor: "#fff", borderRadius: "20px" },
+                  "& fieldset": {
+                    borderColor: "#fff !important",
+                    borderWidth: "1px !important",
+                    borderRadius: "20px",
+                  },
                   "& fieldset:hover": {
                     borderColor: "#fff",
                   },
