@@ -11,7 +11,7 @@ const TextButton = () => {
         gutterBottom
         sx={{ marginTop: "20px", fontSize: "14px", color: "#565656" }}
       >
-        Text button
+        Text Buttons
       </Typography>
       <Divider sx={{ margin: "0 auto", marginY: 2 }} />
       <Grid container spacing={3}>

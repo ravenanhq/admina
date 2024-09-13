@@ -17,14 +17,38 @@ const RadiousPagination = () => {
           count={6}
           shape="rounded"
           color="primary"
-          style={{ marginLeft: "8px" }}
+          sx={{
+            "& .MuiPagination-ul": {
+              marginLeft: "13px",
+            },
+            "& .MuiButtonBase-root": {
+              color: "#565656",
+            },
+            "& .MuiPaginationItem-root.Mui-selected": {
+              backgroundColor: "#007BFF",
+              color: "#fff",
+              borderColor: "#007BFF",
+            },
+          }}
         />
         <Pagination
           count={6}
           variant="outlined"
           shape="rounded"
           color="primary"
-          style={{ marginLeft: "10px" }}
+          sx={{
+            "& .MuiPagination-ul": {
+              marginLeft: "15px",
+            },
+            "& .MuiButtonBase-root": {
+              color: "#565656",
+            },
+            "& .MuiPaginationItem-root.Mui-selected": {
+              backgroundColor: "#007BFF",
+              color: "#fff",
+              borderColor: "#007BFF",
+            },
+          }}
         />
       </Stack>
     </Card>

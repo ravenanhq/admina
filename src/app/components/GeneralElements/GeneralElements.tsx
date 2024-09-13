@@ -41,7 +41,30 @@ const GeneralElements = () => {
           label="Outlined secondary"
           color="secondary"
           focused
-          style={{ marginLeft: "15px", marginTop: "15px" }}
+          sx={{
+            marginLeft: "15px",
+            marginTop: "15px",
+            "& .MuiInputLabel-root": {
+              color: "#B30086",
+            },
+            "& .MuiInputLabel-root.Mui-focused": {
+              color: "#B30086",
+            },
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: "#B30086",
+                borderWidth: "1px",
+              },
+              "&:hover fieldset": {
+                borderColor: "#B30086",
+                borderWidth: "1px",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "#B30086",
+                borderWidth: "1px",
+              },
+            },
+          }}
         />
         <TextField
           label="Filled success"
@@ -49,18 +72,60 @@ const GeneralElements = () => {
           color="success"
           focused
           size="small"
-          style={{ marginLeft: "15px", marginTop: "15px" }}
+          sx={{
+            marginLeft: "15px",
+            marginTop: "15px",
+            "& .MuiInputLabel-root": {
+              color: "#008744",
+            },
+            "& .MuiInputLabel-root.Mui-focused": {
+              color: "#008744",
+            },
+            "& .MuiFilledInput-root": {
+              "&:before": {
+                borderBottomColor: "#008744",
+                borderWidth: "1px",
+              },
+              "&:hover:not(.Mui-disabled):before": {
+                borderBottomColor: "#008744",
+                borderWidth: "1px",
+              },
+              "&:after": {
+                borderBottomColor: "#008744",
+                borderWidth: "1px",
+              },
+            },
+          }}
         />
+
         <TextField
           label="Standard warning"
           variant="standard"
           color="warning"
           size="small"
           focused
-          style={{
+          sx={{
             marginLeft: "15px",
             marginTop: "15px",
             marginBottom: "15px",
+            "& .MuiInputLabel-root": {
+              color: "#E65C00",
+            },
+            "& .MuiInputLabel-root.Mui-focused": {
+              color: "#E65C00",
+            },
+            "& .MuiInput-underline:before": {
+              borderBottomColor: "#E65C00",
+              borderWidth: "1px",
+            },
+            "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
+              borderBottomColor: "#E65C00",
+              borderWidth: "1px",
+            },
+            "& .MuiInput-underline:after": {
+              borderBottomColor: "#E65C00",
+              borderWidth: "1px",
+            },
           }}
         />
 
@@ -180,6 +245,7 @@ const GeneralElements = () => {
                     sx={{
                       "& .MuiTypography-root": {
                         fontSize: "12px",
+                        color: "#565656",
                       },
                     }}
                   />
@@ -190,6 +256,7 @@ const GeneralElements = () => {
                     sx={{
                       "& .MuiTypography-root": {
                         fontSize: "12px",
+                        color: "#565656",
                       },
                     }}
                   />
@@ -200,6 +267,7 @@ const GeneralElements = () => {
                     sx={{
                       "& .MuiTypography-root": {
                         fontSize: "12px",
+                        color: "#565656",
                       },
                     }}
                   />
@@ -226,6 +294,7 @@ const GeneralElements = () => {
                   sx={{
                     "& .MuiTypography-root": {
                       fontSize: "12px",
+                      color: "#565656",
                     },
                   }}
                 />
@@ -236,6 +305,7 @@ const GeneralElements = () => {
                   sx={{
                     "& .MuiTypography-root": {
                       fontSize: "12px",
+                      color: "#565656",
                     },
                   }}
                 />
@@ -246,6 +316,7 @@ const GeneralElements = () => {
                   sx={{
                     "& .MuiTypography-root": {
                       fontSize: "12px",
+                      color: "#565656",
                     },
                   }}
                 />

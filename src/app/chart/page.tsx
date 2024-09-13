@@ -17,7 +17,7 @@ export default function Charts() {
     <>
       <Typography
         variant="h2"
-        sx={{ pt: 2, color: "#007BFF", fontSize: "20px", fontWeight: "bold" }}
+        sx={{ pt: 2, color: "#007BFF", fontSize: "22px", fontWeight: "bold" }}
       >
         Charts
       </Typography>

@@ -40,6 +40,18 @@ const TableViewPagination = () => {
           "& .MuiToolbar-root": {
             width: "0",
           },
+          "& .MuiTablePagination-selectLabel": {
+            color: "#565656",
+          },
+          "& .MuiInputBase-root": {
+            color: "#565656",
+          },
+          "& .MuiTablePagination-displayedRows": {
+            color: "#565656",
+          },
+          "& .MuiSvgIcon-root": {
+            color: "#565656",
+          },
         }}
       />
     </Card>

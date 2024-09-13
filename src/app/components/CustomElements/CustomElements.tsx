@@ -69,24 +69,48 @@ const CustomElements = () => {
                   control={<Switch color="primary" />}
                   label="Top"
                   labelPlacement="top"
+                  sx={{
+                    "& .MuiTypography-root": {
+                      fontSize: "12px",
+                      color:"#565656"
+                    },
+                  }}
                 />
                 <FormControlLabel
                   value="start"
                   control={<Switch color="primary" />}
                   label="Start"
                   labelPlacement="start"
+                  sx={{
+                    "& .MuiTypography-root": {
+                      fontSize: "12px",
+                      color:"#565656"
+                    },
+                  }}
                 />
                 <FormControlLabel
                   value="bottom"
                   control={<Switch color="primary" />}
                   label="Bottom"
                   labelPlacement="bottom"
+                  sx={{
+                    "& .MuiTypography-root": {
+                      fontSize: "12px",
+                      color:"#565656"
+                    },
+                  }}
                 />
                 <FormControlLabel
                   value="end"
                   control={<Switch color="primary" />}
                   label="End"
                   labelPlacement="end"
+                  sx={{
+                    "& .MuiTypography-root": {
+                      fontSize: "12px",
+                      color:"#565656"
+                    },
+                  }}
                 />
               </FormGroup>
             </FormControl>
@@ -126,7 +150,7 @@ const CustomElements = () => {
                 "& > legend": { mt: 2 },
               }}
             >
-              <Typography component="legend" sx={{ fontSize: "12px" }}>
+              <Typography component="legend" sx={{ fontSize: "12px",color:"#565656" }}>
                 Controlled
               </Typography>
               <Rating
@@ -136,7 +160,7 @@ const CustomElements = () => {
                   setControlledValue(newValue);
                 }}
               />
-              <Typography component="legend" sx={{ fontSize: "12px" }}>
+              <Typography component="legend" sx={{ fontSize: "12px",color:"#565656" }}>
                 Read only
               </Typography>
               <Rating
@@ -147,11 +171,11 @@ const CustomElements = () => {
                 }}
                 readOnly
               />
-              <Typography component="legend" sx={{ fontSize: "12px" }}>
+              <Typography component="legend" sx={{ fontSize: "12px",color:"#565656" }}>
                 Disabled
               </Typography>
               <Rating name="disabled" value={disabledValue} disabled />
-              <Typography component="legend" sx={{ fontSize: "12px" }}>
+              <Typography component="legend" sx={{ fontSize: "12px",color:"#565656" }}>
                 No rating given
               </Typography>
               <Rating name="no-value" value={noValue} />

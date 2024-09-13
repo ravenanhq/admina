@@ -143,6 +143,13 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
                         transition: "width 0.3s",
                       },
                     }}
+                    inputProps={{
+                      style: {
+                        padding: "9px 2",
+                        fontSize: "12px",
+                        color: "#565656",
+                      },
+                    }}
                     sx={{
                       width: searchOpen ? "80vw" : 0,
                       marginLeft: 1,
@@ -187,7 +194,11 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
                     style: { backgroundColor: "#f5f5f5" },
                   }}
                   inputProps={{
-                    style: { padding: "9px 2", fontSize: "12px" },
+                    style: {
+                      padding: "9px 2px",
+                      fontSize: "12px",
+                      color: "#565656",
+                    },
                   }}
                   sx={{
                     width: 259,

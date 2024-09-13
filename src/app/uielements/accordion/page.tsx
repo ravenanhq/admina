@@ -13,7 +13,7 @@ export default function Accordions() {
     <Box style={{ overflow: "hidden" }}>
       <Typography
         variant="h2"
-        sx={{ pt: 2, color: "#007BFF", fontSize: "20px", fontWeight: "bold" }}
+        sx={{ pt: 2, color: "#007BFF", fontSize: "22px", fontWeight: "bold",paddingBottom:"6px" }}
       >
         UI Elements / Accordions
       </Typography>

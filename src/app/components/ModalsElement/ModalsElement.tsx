@@ -8,7 +8,7 @@ import {
   DialogContentText,
   DialogActions,
   CardHeader,
-  Grid, 
+  Grid,
 } from "@mui/material";
 import ButtonComponent from "../BaseComponent/Button";
 
@@ -138,7 +138,7 @@ const ModalsElement = () => {
       />
       <CardContent>
         <Grid container spacing={2}>
-          <Grid item xs={6} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <ModalSection
               title="Primary Modal Title"
               content="This is the content of the Primary Modal."
@@ -147,7 +147,7 @@ const ModalsElement = () => {
               size="small"
             />
           </Grid>
-          <Grid item xs={6} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <ModalSection
               title="Secondary Modal Title"
               content="This is the content of the Secondary Modal."
@@ -156,7 +156,7 @@ const ModalsElement = () => {
               size="small"
             />
           </Grid>
-          <Grid item xs={6} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <ModalSection
               title="Info Modal Title"
               content="This is the content of the Info Modal."
@@ -165,7 +165,7 @@ const ModalsElement = () => {
               size="small"
             />
           </Grid>
-          <Grid item xs={6} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <ModalSection
               title="Warning Modal Title"
               content="This is the content of the Warning Modal."
@@ -174,7 +174,7 @@ const ModalsElement = () => {
               size="small"
             />
           </Grid>
-          <Grid item xs={6} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <ModalSection
               title="Success Modal Title"
               content="This is the content of the Success Modal."
@@ -183,7 +183,7 @@ const ModalsElement = () => {
               size="small"
             />
           </Grid>
-          <Grid item xs={6} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <ModalSection
               title="Large Screen Modal"
               content="This is the content of the Large Modal."
@@ -192,7 +192,7 @@ const ModalsElement = () => {
               size="medium"
             />
           </Grid>
-          <Grid item xs={6} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <ModalSection
               title="Full Screen Modal"
               content="This is the content of the Success Modal."
@@ -201,7 +201,7 @@ const ModalsElement = () => {
               size="fullScreen"
             />
           </Grid>
-          <Grid item xs={6} sm={6} md={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <ModalSection
               title="Extra Large Screen Modal"
               content="This is the content of the Large Modal."

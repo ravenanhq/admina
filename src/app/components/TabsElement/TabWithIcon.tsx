@@ -43,8 +43,11 @@ const TabWithIcon = () => {
               minHeight: "auto",
               fontSize: "12px",
               padding: "6px 31px",
+              "& .MuiTab-root": {
+                color: "#565656",
+              },
               "&.Mui-selected": {
-                backgroundColor: "#1976d2",
+                backgroundColor: "#007BFF",
                 color: "#fff",
                 borderRadius: "5px",
               },
@@ -58,8 +61,11 @@ const TabWithIcon = () => {
               minHeight: "auto",
               fontSize: "12px",
               padding: "6px 31px",
+              "& .MuiButtonBase-root": {
+                color: "#565656",
+              },
               "&.Mui-selected": {
-                backgroundColor: "#1976d2",
+                backgroundColor: "#007BFF",
                 color: "#fff",
                 borderRadius: "5px",
               },
@@ -73,8 +79,11 @@ const TabWithIcon = () => {
               minHeight: "auto",
               fontSize: "12px",
               padding: "6px 31px",
+              "& .MuiButtonBase-root": {
+                color: "#565656",
+              },
               "&.Mui-selected": {
-                backgroundColor: "#1976d2",
+                backgroundColor: "#007BFF",
                 color: "#fff",
                 borderRadius: "5px",
               },

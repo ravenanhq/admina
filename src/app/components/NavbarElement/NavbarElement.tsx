@@ -72,7 +72,7 @@ const Navbar = () => {
                   <ListItem
                     key={text}
                     sx={{
-                      padding: "0 16px",
+                      padding: "0 14px",
                       cursor: "pointer",
                       fontSize: "12px",
                       position: "relative",
@@ -143,7 +143,7 @@ const Navbar = () => {
           onClose={toggleDrawer}
           sx={{
             "& .MuiDrawer-paper": {
-              width: "20%",
+              width: isMobile ? "40%" : "20%",
             },
           }}
         >
@@ -204,7 +204,7 @@ const Navbar = () => {
                       <ListItem
                         key={text}
                         sx={{
-                          padding: "0 16px",
+                          padding: "0 14px",
                           cursor: "pointer",
                           fontSize: "12px",
                           position: "relative",
@@ -258,7 +258,7 @@ const Navbar = () => {
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
-                        <IconButton edge="end" sx={{ color: "#565656" }}>
+                        <IconButton edge="end" sx={{ color: "#fff" }}>
                           <SearchIcon />
                         </IconButton>
                       </InputAdornment>
@@ -266,7 +266,7 @@ const Navbar = () => {
                   }}
                   sx={{
                     height: "40px",
-                    padding: isTablet ? "5px 8px 8px 8px" : "8px",
+                    padding: isTablet ? "7px 8px 8px 8px" : "8px",
                     width: "auto",
                     color: "#fff",
                     "& input": {
@@ -275,11 +275,11 @@ const Navbar = () => {
                       fontSize: "12px",
                     },
                     "& fieldset": {
-                      borderColor: "#565656",
+                      borderColor: "#fff",
                       borderRadius: "20px",
                     },
                     "& fieldset:hover": {
-                      borderColor: "#fff",
+                      borderColor: "#747474",
                     },
                     display: { xs: "none", sm: "block" },
                   }}
@@ -380,7 +380,7 @@ const Navbar = () => {
                       <ListItem
                         key={text}
                         sx={{
-                          padding: "0 16px",
+                          padding: "0 14px",
                           cursor: "pointer",
                           fontSize: "12px",
                           position: "relative",
@@ -476,7 +476,7 @@ const Navbar = () => {
                       style={{
                         padding: "5px 30px",
                         marginBottom: "10px",
-                        background: "#008cff",
+                        background: "#51B0FF",
                         marginLeft: "10px",
                         minWidth: isTablet ? "115px" : "64px",
                         marginTop: isTablet ? "-5px" : "",

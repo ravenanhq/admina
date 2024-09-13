@@ -23,7 +23,7 @@ const LastActiveBreadcrumbsElement = () => {
               underline="hover"
               color="inherit"
               href="/"
-              sx={{ fontSize: "12px" }}
+              sx={{ fontSize: "12px",color:"#747474" }}
             >
               Menu
             </Link>
@@ -31,7 +31,7 @@ const LastActiveBreadcrumbsElement = () => {
               underline="hover"
               color="inherit"
               href="/"
-              sx={{ fontSize: "12px" }}
+              sx={{ fontSize: "12px",color:"#747474" }}
             >
               Submenu1
             </Link>
@@ -40,7 +40,7 @@ const LastActiveBreadcrumbsElement = () => {
               color="text.primary"
               href="/"
               aria-current="page"
-              sx={{ fontSize: "12px" }}
+              sx={{ fontSize: "12px",color:"#565656"}}
             >
               Submenu2
             </Link>

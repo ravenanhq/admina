@@ -9,9 +9,9 @@ export default function Search() {
       <>
          <Typography
         variant="h2"
-        sx={{ pt: 2, color: "#007BFF", fontSize: "20px", fontWeight: "bold" }}
+        sx={{ pt: 2, color: "#007BFF", fontSize: "22px", fontWeight: "bold" }}
       >
-        UI Elements /Search</Typography>
+        UI Elements / Search</Typography>
         <div style={{ paddingTop: 10 }}>
           <Grid container spacing={3} style={{ paddingTop: 10 }}>
               <Grid item xs={12}>
