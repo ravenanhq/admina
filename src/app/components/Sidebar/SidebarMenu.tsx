@@ -174,7 +174,8 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
                   primaryTypographyProps={{
                     color: isActive ? "#007BFF" : "#747474",
                     fontSize: "14px",
-                  }}
+                    display: open ? "block" : "none"
+                   }}
                 />
                 {menuItem.submenu && (
                   <ListItemIcon

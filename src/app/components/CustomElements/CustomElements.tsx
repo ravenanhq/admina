@@ -34,6 +34,7 @@ const CustomElements = () => {
       <CardContent>
         <Grid container spacing={2}>
           <Grid item xs={12} lg={6}>
+            <div>
             <Typography
               variant="h6"
               gutterBottom
@@ -49,7 +50,7 @@ const CustomElements = () => {
             <Switch {...label} defaultChecked />
             <Switch {...label} />
             <Switch {...label} disabled defaultChecked />
-            <Switch {...label} disabled />
+            <Switch {...label} disabled /></div>
             <FormControl component="fieldset" sx={{ marginTop: "15px" }}>
               <Typography
                 variant="h6"
