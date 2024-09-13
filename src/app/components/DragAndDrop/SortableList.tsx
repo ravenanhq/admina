@@ -32,7 +32,12 @@ const SortableList = () => {
     <>
       <Typography
         variant="h4"
-        sx={{ fontSize: "20px", fontWeight: "700", margin: "20px 0" }}
+        sx={{
+          fontSize: "14px",
+          fontWeight: "600",
+          margin: "0 0 15px 0",
+          color: "#747474",
+        }}
       >
         Sortable List
       </Typography>
@@ -67,7 +72,7 @@ const SortableList = () => {
                         style={{
                           background: "#fff",
                           border: "1px solid #ccc",
-                          borderRadius: "10px",
+                          borderRadius: "5px",
                         }}
                       >
                         <CardContent
@@ -84,23 +89,34 @@ const SortableList = () => {
                             }}
                           >
                             <DragIndicatorIcon
-                              sx={{ marginTop: isMobile ? "10px" : "-2px" }}
+                              sx={{
+                                marginTop: isMobile ? "10px" : "-2px",
+                                color: "#747474",
+                              }}
                             />
                             <Typography
                               gutterBottom
                               variant="h5"
                               component="div"
                               sx={{
-                                fontSize: "14px",
                                 lineHeight: isMobile ? "18px" : "20px",
                                 marginLeft: "4px",
                                 marginRight: "10px",
+                                fontSize: "12px",
+                                color: "#565656",
                               }}
                             >
                               {list.details}
                             </Typography>
                           </div>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            sx={{
+                              fontSize: "12px",
+                              color: "#565656",
+                            }}
+                          >
                             {list.date}
                           </Typography>
                         </CardContent>
