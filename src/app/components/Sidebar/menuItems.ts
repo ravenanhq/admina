@@ -25,8 +25,7 @@ const menuItems = [
       { label: "Avatar", route: "/uielements/avatar" },
       { label: "Carousel", route: "/uielements/carousel" },
       { label: "Pagination", route: "/uielements/pagination" },
-      { label: "Accordian", route: "/uielements/accordion" },
-      { label: "404 Page", route: "/uielements/error-404" },
+      { label: "Accordions", route: "/uielements/accordion" },
     ],
   },
   {

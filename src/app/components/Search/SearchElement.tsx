@@ -29,10 +29,10 @@ const SearchElement: React.FC = () => {
                 width: "100%",
                 borderRadius: "3px",
                 "& .MuiFormLabel-root": {
-                  fontSize: "12px",
+                  fontSize: "14px",
                 },
                 "& .MuiInputBase-input": {
-                  fontSize: "12px",
+                  fontSize: "14px",
                   paddingTop: "13px",
                   color: "#ADB5BD",
                 },

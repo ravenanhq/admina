@@ -23,7 +23,15 @@ const BreadcrumbsWithIconElement = () => {
         <Breadcrumbs aria-label="breadcrumb">
           <Link
             underline="hover"
-            sx={{ display: "flex", alignItems: "center", fontSize: "12px" }}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              fontSize: "12px",
+              color: "#565656",
+              "& .MuiTypography-root": {
+                color: "#565656",
+              },
+            }}
             color="inherit"
             href="/"
           >
@@ -32,7 +40,15 @@ const BreadcrumbsWithIconElement = () => {
           </Link>
           <Link
             underline="hover"
-            sx={{ display: "flex", alignItems: "center", fontSize: "12px" }}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              fontSize: "12px",
+              color: "#565656",
+              "& .MuiTypography-root": {
+                color: "#565656",
+              },
+            }}
             color="inherit"
             href="/"
           >
@@ -40,7 +56,15 @@ const BreadcrumbsWithIconElement = () => {
             Submenu1
           </Link>
           <Typography
-            sx={{ display: "flex", alignItems: "center", fontSize: "12px" }}
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              fontSize: "12px",
+              color: "#747474",
+              "& .MuiTypography-root": {
+                color: "#747474",
+              },
+            }}
             color="text.primary"
           >
             <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />

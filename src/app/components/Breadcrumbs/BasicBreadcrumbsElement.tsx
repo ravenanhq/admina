@@ -24,7 +24,7 @@ const BasicBreadcrumbsElement = () => {
               underline="hover"
               color="inherit"
               href="/"
-              sx={{ fontSize: "12px" }}
+              sx={{ fontSize: "12px",color:"#747474" }}
             >
               Menu
             </Link>
@@ -32,11 +32,11 @@ const BasicBreadcrumbsElement = () => {
               underline="hover"
               color="inherit"
               href="/"
-              sx={{ fontSize: "12px" }}
+              sx={{ fontSize: "12px",color:"#747474" }}
             >
               Submenu1
             </Link>
-            <Typography color="text.primary" sx={{ fontSize: "12px" }}>
+            <Typography color="text.primary" sx={{ fontSize: "12px" ,color:"#565656"}}>
               Submenu2
             </Typography>
           </Breadcrumbs>

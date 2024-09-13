@@ -24,7 +24,7 @@ const AccordionWithActions: React.FC = () => {
       style={{
         padding: "20px",
         background: "#fff",
-        border: "1px solid #c0c0c0",
+        border: "1px solid #c0c0c0",minHeight:"188px"
       }}
     >
       <Accordion
@@ -56,6 +56,7 @@ const AccordionWithActions: React.FC = () => {
             onClick={handleAgree}
             style={{
               padding: "5px 10px 3px",
+              color:"#007BFF"
             }}
           >
             Agree

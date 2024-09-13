@@ -28,8 +28,15 @@ const BasicTab = () => {
           indicatorColor="primary"
           textColor="primary"
           sx={{
-            "& .MuiButtonBase-root": {
+            "& .MuiTab-root": {
+              color: "#565656",
               paddingBottom: "0",
+            },
+            "& .MuiTab-root.Mui-selected": {
+              color: "#007BFF",
+            },
+            "& .MuiTabs-indicator": {
+              display: "none",
             },
             "& .MuiTouchRipple-root": {
               borderBottom: "2px solid #565656",
@@ -39,9 +46,6 @@ const BasicTab = () => {
             "& .Mui-selected .MuiTouchRipple-root": {
               color: "#007BFF",
               borderBottom: "2px solid #007BFF",
-            },
-            "& .MuiTabs-indicator": {
-              display: "none",
             },
           }}
         >

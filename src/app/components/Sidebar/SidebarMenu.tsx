@@ -6,7 +6,6 @@ import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import CircleIcon from "@mui/icons-material/Circle";
 import { Link } from "@mui/material";
 import menuItems from "./menuItems";
@@ -93,8 +92,8 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
                       style={{ fontSize: "14px", color: "#007BFF" }}
                     />
                   ) : (
-                    <RadioButtonUncheckedIcon
-                      style={{ fontSize: "14px", color: "#565656" }}
+                    <CircleIcon
+                      style={{ fontSize: "14px", color: "#D9D9D9" }}
                     />
                   )}
                 </ListItemIcon>
@@ -175,7 +174,8 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
                   primaryTypographyProps={{
                     color: isActive ? "#007BFF" : "#747474",
                     fontSize: "14px",
-                  }}
+                    display: open ? "block" : "none"
+                   }}
                 />
                 {menuItem.submenu && (
                   <ListItemIcon

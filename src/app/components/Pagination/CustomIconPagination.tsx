@@ -28,6 +28,16 @@ const CustomIcons = () => {
               {...item}
             />
           )}
+          sx={{
+            "& .MuiButtonBase-root": {
+              color: "#565656",
+            },
+            "& .MuiPaginationItem-root.Mui-selected": {
+              backgroundColor: "#007BFF",
+              color: "#fff",
+              borderColor: "#007BFF",
+            },
+          }}
         />
         <Pagination
           count={6}
@@ -41,6 +51,16 @@ const CustomIcons = () => {
               {...item}
             />
           )}
+          sx={{
+            "& .MuiButtonBase-root": {
+              color: "#565656",
+            },
+            "& .MuiPaginationItem-root.Mui-selected": {
+              backgroundColor: "#007BFF",
+              color: "#fff",
+              borderColor: "#007BFF",
+            },
+          }}
         />
       </Stack>
     </Card>

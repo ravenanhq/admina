@@ -21,11 +21,24 @@ const SquarePagination = () => {
           renderItem={(item) => (
             <PaginationItem
               {...item}
-              style={{
+              sx={{
                 borderRadius: "0px",
               }}
             />
           )}
+          sx={{
+            "& .MuiPagination-ul": {
+              marginLeft: "3px",
+            },
+            "& .MuiButtonBase-root": {
+              color: "#565656",
+            },
+            "& .MuiPaginationItem-root.Mui-selected": {
+              backgroundColor: "#007BFF",
+              color: "#fff",
+              borderColor: "#007BFF",
+            },
+          }}
         />
         <Pagination
           count={6}
@@ -35,11 +48,24 @@ const SquarePagination = () => {
           renderItem={(item) => (
             <PaginationItem
               {...item}
-              style={{
+              sx={{
                 borderRadius: "0px",
               }}
             />
           )}
+          sx={{
+            "& .MuiPagination-ul": {
+              marginLeft: "3px",
+            },
+            "& .MuiButtonBase-root": {
+              color: "#565656",
+            },
+            "& .MuiPaginationItem-root.Mui-selected": {
+              backgroundColor: "#007BFF",
+              color: "#fff",
+              borderColor: "#007BFF",
+            },
+          }}
         />
         <Pagination
           count={6}
@@ -49,11 +75,22 @@ const SquarePagination = () => {
             <PaginationItem
               {...item}
               color="primary"
-              style={{
-                borderRadius: "0px",
-              }}
+              sx={{ borderRadius: "0px" }}
             />
           )}
+          sx={{
+            "& .MuiPagination-ul": {
+              marginLeft: "3px",
+            },
+            "& .MuiButtonBase-root": {
+              color: "#565656",
+            },
+            "& .MuiPaginationItem-root.Mui-selected": {
+              backgroundColor: "#007BFF",
+              color: "#fff",
+              borderColor: "#007BFF",
+            },
+          }}
         />
       </Stack>
     </Card>

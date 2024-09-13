@@ -17,14 +17,54 @@ export default function PaginationSize() {
           count={6}
           color="primary"
           size="small"
-          style={{ marginLeft: "8px" }}
+          sx={{
+            "& .MuiPagination-ul": {
+              marginLeft: "8px",
+            },
+            "& .MuiButtonBase-root": {
+              color: "#565656",
+            },
+            "& .MuiPaginationItem-root.Mui-selected": {
+              backgroundColor: "#007BFF",
+              color: "#fff",
+              borderColor: "#007BFF",
+            },
+          }}
         />
-        <Pagination count={6} color="primary" style={{ marginLeft: "4px" }} />
+        <Pagination
+          count={6}
+          color="primary"
+          sx={{
+            "& .MuiPagination-ul": {
+              marginLeft: "4px",
+            },
+            "& .MuiButtonBase-root": {
+              color: "#565656",
+            },
+            "& .MuiPaginationItem-root.Mui-selected": {
+              backgroundColor: "#007BFF",
+              color: "#fff",
+              borderColor: "#007BFF",
+            },
+          }}
+        />
         <Pagination
           count={6}
           color="primary"
           size="large"
-          style={{ marginLeft: "3px" }}
+          sx={{
+            "& .MuiPagination-ul": {
+              marginLeft: "3px",
+            },
+            "& .MuiButtonBase-root": {
+              color: "#565656",
+            },
+            "& .MuiPaginationItem-root.Mui-selected": {
+              backgroundColor: "#007BFF",
+              color: "#fff",
+              borderColor: "#007BFF",
+            },
+          }}
         />
       </Stack>
     </Card>
