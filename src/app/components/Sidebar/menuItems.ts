@@ -8,7 +8,7 @@ const menuItems = [
     activeIcon: getIcon("DashboardActive"),
   },
   {
-    label: "Components",
+    label: "UI Elements",
     icon: getIcon("Components"),
     activeIcon: getIcon("ChartActive"),
     submenu: [

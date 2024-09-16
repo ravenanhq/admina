@@ -32,7 +32,12 @@ const SortableList = () => {
     <>
       <Typography
         variant="h4"
-        sx={{ fontSize: "20px", fontWeight: "700", margin: "20px 0" }}
+        sx={{
+          fontSize: "14px",
+          fontWeight: "600",
+          margin: "0 0 15px 0",
+          color: "#747474",
+        }}
       >
         Sortable List
       </Typography>
@@ -67,13 +72,15 @@ const SortableList = () => {
                         style={{
                           background: "#fff",
                           border: "1px solid #ccc",
-                          borderRadius: "10px",
+                          borderRadius: "5px",
                         }}
                       >
                         <CardContent
                           style={{
                             display: "flex",
+                            flexDirection: isMobile ? "column" : "row",
                             justifyContent: "space-between",
+                            alignItems: "flex-start",
                             paddingBottom: "10px",
                           }}
                         >
@@ -81,26 +88,43 @@ const SortableList = () => {
                             style={{
                               display: "flex",
                               alignItems: "center",
+                              flexDirection: isMobile ? "row" : "row",
+                              marginBottom: isMobile ? "2px" : "0",
                             }}
                           >
                             <DragIndicatorIcon
-                              sx={{ marginTop: isMobile ? "10px" : "-2px" }}
+                              sx={{
+                                marginRight: "10px",
+                                color: "#747474",
+                                fontSize: "24px",
+                              }}
                             />
                             <Typography
                               gutterBottom
                               variant="h5"
                               component="div"
                               sx={{
-                                fontSize: "14px",
                                 lineHeight: isMobile ? "18px" : "20px",
                                 marginLeft: "4px",
                                 marginRight: "10px",
+                                fontSize: "12px",
+                                color: "#565656",
+                                textAlign: "left",
                               }}
                             >
                               {list.details}
                             </Typography>
                           </div>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            sx={{
+                              fontSize: "12px",
+                              color: "#565656",
+                              textAlign: "left",
+                              marginLeft: isMobile ? "40px" : "",
+                            }}
+                          >
                             {list.date}
                           </Typography>
                         </CardContent>
