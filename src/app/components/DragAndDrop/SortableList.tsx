@@ -78,7 +78,9 @@ const SortableList = () => {
                         <CardContent
                           style={{
                             display: "flex",
+                            flexDirection: isMobile ? "column" : "row",
                             justifyContent: "space-between",
+                            alignItems: "flex-start",
                             paddingBottom: "10px",
                           }}
                         >
@@ -86,12 +88,15 @@ const SortableList = () => {
                             style={{
                               display: "flex",
                               alignItems: "center",
+                              flexDirection: isMobile ? "row" : "row",
+                              marginBottom: isMobile ? "2px" : "0",
                             }}
                           >
                             <DragIndicatorIcon
                               sx={{
-                                marginTop: isMobile ? "10px" : "-2px",
+                                marginRight: "10px",
                                 color: "#747474",
+                                fontSize: "24px",
                               }}
                             />
                             <Typography
@@ -104,6 +109,7 @@ const SortableList = () => {
                                 marginRight: "10px",
                                 fontSize: "12px",
                                 color: "#565656",
+                                textAlign: "left",
                               }}
                             >
                               {list.details}
@@ -115,6 +121,8 @@ const SortableList = () => {
                             sx={{
                               fontSize: "12px",
                               color: "#565656",
+                              textAlign: "left",
+                              marginLeft: isMobile ? "40px" : "",
                             }}
                           >
                             {list.date}
