@@ -24,22 +24,28 @@ const NotFoundPage = () => {
     <>
       <Typography
         variant="h2"
-        sx={{ pt: 2, color: "#007BFF", fontSize: "22px", fontWeight: "bold" }}
+        sx={{
+          pt: { xs: 1, sm: 2, md: 3 },
+          color: "#007BFF",
+          fontSize: { xs: "18px", sm: "20px", md: "22px" },
+          fontWeight: "bold",
+        }}
       >
-        Page / Maintenance
+        Pages / Maintenance
       </Typography>
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          minHeight: "100vh",
+          minHeight: { xs: "70vh", sm: "70vh", md: "75vh" },
           textAlign: "center",
+          mt: { xs: 2, sm: 3 },
         }}
       >
         <Card
           sx={{
-            padding: "50px",
+            padding: { xs: "20px", sm: "25px", md: "40px" },
             position: "relative",
             overflow: "visible",
             boxShadow: "none",
@@ -52,7 +58,7 @@ const NotFoundPage = () => {
               spacing={2}
               justifyContent="center"
               className="errPage"
-              style={{ marginTop: "25px" }}
+              style={{ marginTop: "15px" }}
             >
               <Grid item>
                 <Image
