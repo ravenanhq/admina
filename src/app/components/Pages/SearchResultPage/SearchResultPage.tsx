@@ -24,7 +24,7 @@ const SearchResultPage = () => {
         variant="h2"
         sx={{ pt: 2, color: "#007BFF", fontSize: "22px", fontWeight: "bold" }}
       >
-        Page / Search Result
+        Pages / Search Result
       </Typography>
       <Box sx={{ mt: 2 }}>
         <TextField
