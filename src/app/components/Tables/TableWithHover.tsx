@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { Card, CardHeader, CardContent, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination } from '@mui/material';
+import {
+  Card, CardHeader, CardContent, Table, TableBody, TableCell,
+  TableContainer, TableHead, TableRow, Paper, TablePagination, TableSortLabel
+} from '@mui/material';
 
 const TableWithHover = () => {
-  const [data, setData] = useState([
+  const [data] = useState([
     { name: 'John', email: 'john@example.com', role: 'Admin' },
     { name: 'Jane', email: 'jane@example.com', role: 'User' },
     { name: 'Billy', email: 'billy@example.com', role: 'Manager' },
@@ -13,7 +16,7 @@ const TableWithHover = () => {
   const [rowsPerPage] = useState(5);
 
   const [orderBy, setOrderBy] = useState('name');
-  const [order, setOrder] = useState('asc');
+  const [order, setOrder] = useState<'asc' | 'desc'>('asc');
 
   const [filter, setFilter] = useState('');
 
@@ -36,10 +39,10 @@ const TableWithHover = () => {
   };
 
   return (
-    <Card variant="outlined" sx={{borderRadius:"10px"}}>
+    <Card variant="outlined" sx={{ borderRadius: "10px" }}>
       <CardHeader
         title="Table with Hover Style"
-        sx={{ bgcolor: '#0057e7', color: 'white' }}
+        sx={{ bgcolor: '#007BFF', color: 'white' }}
         titleTypographyProps={{ fontSize: '16px' }}
       />
 
@@ -48,23 +51,32 @@ const TableWithHover = () => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell
-                  onClick={() => handleRequestSort('name')}
-                  sx={{ cursor: 'pointer' }}
-                >
-                  Name
+                <TableCell sortDirection={orderBy === 'name' ? order : false} sx={{ fontWeight: 'bold' }}>
+                  <TableSortLabel
+                    active={orderBy === 'name'}
+                    direction={orderBy === 'name' ? order : 'asc'}
+                    onClick={() => handleRequestSort('name')}
+                  >
+                    Name
+                  </TableSortLabel>
                 </TableCell>
-                <TableCell
-                  onClick={() => handleRequestSort('email')}
-                  sx={{ cursor: 'pointer' }}
-                >
-                  Email
+                <TableCell sortDirection={orderBy === 'email' ? order : false} sx={{ fontWeight: 'bold' }}>
+                  <TableSortLabel
+                    active={orderBy === 'email'}
+                    direction={orderBy === 'email' ? order : 'asc'}
+                    onClick={() => handleRequestSort('email')}
+                  >
+                    Email
+                  </TableSortLabel>
                 </TableCell>
-                <TableCell
-                  onClick={() => handleRequestSort('role')}
-                  sx={{ cursor: 'pointer' }}
-                >
-                  Role
+                <TableCell sortDirection={orderBy === 'role' ? order : false} sx={{ fontWeight: 'bold' }}>
+                  <TableSortLabel
+                    active={orderBy === 'role'}
+                    direction={orderBy === 'role' ? order : 'asc'}
+                    onClick={() => handleRequestSort('role')}
+                  >
+                    Role
+                  </TableSortLabel>
                 </TableCell>
               </TableRow>
             </TableHead>

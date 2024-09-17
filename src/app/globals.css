@@ -449,3 +449,45 @@ margin-left: -5px;
 .notificationDataTable .MuiDataGrid-main .MuiDataGrid-virtualScroller {
   min-height: 50px;
 }
+
+.boldHeader .MuiDataGrid-columnHeaderTitle {
+  font-weight: bold;
+}
+.headertable-1 .css-levciy-MuiTablePagination-displayedRows, .headertable-1 .MuiTablePagination-actions
+{
+  display: none;
+}
+.headertable-1 .css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar {
+  padding-left: 0px;
+}
+.pagination {
+  border: 1px solid #c0c0c0;
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+}
+.pagination button {
+  position: relative;
+  text-decoration: none;
+  text-transform: none;
+  font-weight: 500;
+  border:none;
+  margin: 0px;
+}
+.pagination .css-m3n0jn-MuiButtonBase-root-MuiButton-root.Mui-disabled {
+  border: none;
+}
+.pagination button:hover {
+  border: none;
+  border-radius: 0px;
+
+}
+.pagination button.active {
+  border-radius: 0px;
+}
+.pagination button:disabled { 
+  border: none;
+}

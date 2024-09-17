@@ -44,6 +44,11 @@ const menuItems = [
     icon: getIcon("Chart"),
     activeIcon: getIcon("ChartActive"),
   },
+  { label: "Tables", 
+    route: "/tables", 
+    icon: getIcon("Tables"),
+    activeIcon: getIcon("TablesActive") 
+  },
   {
     label: "Forms",
     route: "/form",
