@@ -30,7 +30,7 @@ const StripedTable = () => {
       <CardHeader
         title="Striped Table"
         sx={{ bgcolor: '#007BFF', color: 'white' }}
-        titleTypographyProps={{ fontSize: '16px' }}
+        titleTypographyProps={{ fontSize: '14px' }}
       />
 
       <CardContent>
@@ -46,6 +46,7 @@ const StripedTable = () => {
                       fontWeight: 'bold',
                       cursor: 'pointer',
                       '&:hover': { backgroundColor: '#e0e0e0' },
+                      color: "#747474" 
                     }}
                   >
                     <TableSortLabel
@@ -65,9 +66,9 @@ const StripedTable = () => {
                   key={index}
                   sx={{ backgroundColor: index % 2 === 0 ? '#f5f5f5' : 'inherit' }}
                 >
-                  <TableCell>{row.name}</TableCell>
-                  <TableCell>{row.email}</TableCell>
-                  <TableCell>{row.role}</TableCell>
+                  <TableCell sx={{color: "#747474" }}>{row.name}</TableCell>
+                  <TableCell sx={{color: "#747474" }}>{row.email}</TableCell>
+                  <TableCell sx={{color: "#747474" }}>{row.role}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

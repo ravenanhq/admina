@@ -43,7 +43,7 @@ const TableWithHover = () => {
       <CardHeader
         title="Table with Hover Style"
         sx={{ bgcolor: '#007BFF', color: 'white' }}
-        titleTypographyProps={{ fontSize: '16px' }}
+        titleTypographyProps={{ fontSize: '14px' }}
       />
 
       <CardContent>
@@ -51,7 +51,7 @@ const TableWithHover = () => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell sortDirection={orderBy === 'name' ? order : false} sx={{ fontWeight: 'bold' }}>
+                <TableCell sortDirection={orderBy === 'name' ? order : false} sx={{ fontWeight: 'bold', color: "#747474" }}>
                   <TableSortLabel
                     active={orderBy === 'name'}
                     direction={orderBy === 'name' ? order : 'asc'}
@@ -60,7 +60,7 @@ const TableWithHover = () => {
                     Name
                   </TableSortLabel>
                 </TableCell>
-                <TableCell sortDirection={orderBy === 'email' ? order : false} sx={{ fontWeight: 'bold' }}>
+                <TableCell sortDirection={orderBy === 'email' ? order : false} sx={{ fontWeight: 'bold', color: "#747474" }}>
                   <TableSortLabel
                     active={orderBy === 'email'}
                     direction={orderBy === 'email' ? order : 'asc'}
@@ -69,7 +69,7 @@ const TableWithHover = () => {
                     Email
                   </TableSortLabel>
                 </TableCell>
-                <TableCell sortDirection={orderBy === 'role' ? order : false} sx={{ fontWeight: 'bold' }}>
+                <TableCell sortDirection={orderBy === 'role' ? order : false} sx={{ fontWeight: 'bold', color: "#747474" }}>
                   <TableSortLabel
                     active={orderBy === 'role'}
                     direction={orderBy === 'role' ? order : 'asc'}
@@ -92,9 +92,9 @@ const TableWithHover = () => {
                     key={index}
                     sx={{ '&:hover': { background: '#f5f5f5' } }} // Apply hover style
                   >
-                    <TableCell>{row.name}</TableCell>
-                    <TableCell>{row.email}</TableCell>
-                    <TableCell>{row.role}</TableCell>
+                    <TableCell sx={{color: "#747474" }}>{row.name}</TableCell>
+                    <TableCell sx={{color: "#747474" }}>{row.email}</TableCell>
+                    <TableCell sx={{color: "#747474" }}>{row.role}</TableCell>
                   </TableRow>
                 ))}
             </TableBody>
@@ -102,6 +102,7 @@ const TableWithHover = () => {
         </TableContainer>
 
         <TablePagination
+          sx={{color: "#747474" }}
           rowsPerPageOptions={[]}
           component="div"
           count={filteredData.length}
