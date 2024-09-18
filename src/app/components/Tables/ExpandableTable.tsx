@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
-import { Card, CardHeader, CardContent, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
+import { Card, CardHeader, CardContent, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Accordion, AccordionSummary, AccordionDetails, Typography, TableSortLabel } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const ExpandableTable = () => {
-  const data = [
+  const [data, setData] = useState([
     { name: 'John', email: 'john@example.com', role: 'Admin' },
     { name: 'Jane', email: 'jane@example.com', role: 'User' },
     { name: 'Billy', email: 'billy@example.com', role: 'Manager' },
     { name: 'Carl', email: 'carl@example.com', role: 'User' },
-  ];
+  ]);
 
-  const [expandedRows, setExpandedRows] = useState([]);
+  const [order, setOrder] = useState<'asc' | 'desc'>('asc');
+  const [orderBy, setOrderBy] = useState<string>('name');
+  const [expandedRows, setExpandedRows] = useState<number[]>([]);
 
-  const handleRowClick = (index) => {
+  const handleRequestSort = (property: string) => {
+    const isAsc = orderBy === property && order === 'asc';
+    setOrder(isAsc ? 'desc' : 'asc');
+    setOrderBy(property);
+  };
+
+  const handleRowClick = (index: number) => {
     if (expandedRows.includes(index)) {
       setExpandedRows(expandedRows.filter((item) => item !== index));
     } else {
@@ -20,11 +28,18 @@ const ExpandableTable = () => {
     }
   };
 
+  const sortedData = data.sort((a, b) => {
+    if (orderBy === 'name' || orderBy === 'email' || orderBy === 'role') {
+      return (a[orderBy] < b[orderBy] ? -1 : 1) * (order === 'asc' ? 1 : -1);
+    }
+    return 0;
+  });
+
   return (
-    <Card variant="outlined" sx={{borderRadius:"10px"}}>
+    <Card variant="outlined" sx={{ borderRadius: "10px" }}>
       <CardHeader
         title="Expandable Table"
-        sx={{ bgcolor: '#008744', color: 'white' }}
+        sx={{ bgcolor: '#007BFF', color: 'white' }}
         titleTypographyProps={{ fontSize: '16px' }}
       />
 
@@ -33,13 +48,29 @@ const ExpandableTable = () => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell>Email</TableCell>
-                <TableCell>Role</TableCell>
+                {['name', 'email', 'role'].map((column) => (
+                  <TableCell
+                    key={column}
+                    sortDirection={orderBy === column ? order : false}
+                    sx={{
+                      fontWeight: 'bold',
+                      cursor: 'pointer',
+                      '&:hover': { backgroundColor: '#e0e0e0' }, // Hover effect
+                    }}
+                  >
+                    <TableSortLabel
+                      active={orderBy === column}
+                      direction={orderBy === column ? order : 'asc'}
+                      onClick={() => handleRequestSort(column)}
+                    >
+                      {column.charAt(0).toUpperCase() + column.slice(1)}
+                    </TableSortLabel>
+                  </TableCell>
+                ))}
               </TableRow>
             </TableHead>
             <TableBody>
-              {data.map((row, index) => (
+              {sortedData.map((row, index) => (
                 <React.Fragment key={index}>
                   <TableRow onClick={() => handleRowClick(index)} style={{ cursor: 'pointer' }}>
                     <TableCell>{row.name}</TableCell>

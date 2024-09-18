@@ -9,6 +9,8 @@ import PageActive from "../../Icons/page-active.svg";
 import DragAndDropActive from "../../Icons/drag-and-drop-active.svg";
 import Form from "../../Icons/form.svg";
 import FormActive from "../../Icons/form-active.svg";
+import Tables from "../../Icons/tables.svg";
+import TablesActive from "../../Icons/tables-active.svg";
 
 const iconMap = {
   Dashboard,
@@ -17,6 +19,8 @@ const iconMap = {
   DragAndDrop,
   Chart,
   ChartActive,
+  Tables,
+  TablesActive,
   Page,
   PageActive,
   DragAndDropActive,
