@@ -1,0 +1,28 @@
+[
+  { "id": 1, "title": "Admina", "content": "This is the first search result." },
+  {
+    "id": 2,
+    "title": "Admina",
+    "content": "This is the second search result."
+  },
+  { "id": 3, "title": "Admina", "content": "This is the third search result." },
+  {
+    "id": 4,
+    "title": "Admina",
+    "content": "This is the fourth search result."
+  },
+  { "id": 5, "title": "Admina", "content": "This is the fifth search result." },
+  { "id": 6, "title": "Admina", "content": "This is the sixth search result." },
+  {
+    "id": 7,
+    "title": "Admina",
+    "content": "This is the seventh search result."
+  },
+  {
+    "id": 8,
+    "title": "Admina",
+    "content": "This is the eighth search result."
+  },
+  { "id": 9, "title": "Admina", "content": "This is the ninth search result." },
+  { "id": 10, "title": "Admina", "content": "This is the tenth search result." }
+]
