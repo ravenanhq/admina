@@ -49,10 +49,11 @@ const TableWithSearch = () => {
       <CardHeader
         title="Table with Search"
         sx={{ bgcolor: '#007BFF', color: 'white' }}
-        titleTypographyProps={{ fontSize: '16px' }}
+        titleTypographyProps={{ fontSize: '14px' }}
       />
 
       <CardContent>
+        <div>
         <Input
           placeholder="Search"
           onChange={handleFilterChange}
@@ -75,7 +76,8 @@ const TableWithSearch = () => {
                   sx={{
                     fontWeight: 'bold',
                     cursor: 'pointer',
-                    '&:hover': { backgroundColor: '#e0e0e0' }, // Hover effect
+                    '&:hover': { backgroundColor: '#e0e0e0' }, 
+                    color: "#747474"
                   }}
                 >
                   <TableSortLabel
@@ -91,7 +93,8 @@ const TableWithSearch = () => {
                   sx={{
                     fontWeight: 'bold',
                     cursor: 'pointer',
-                    '&:hover': { backgroundColor: '#e0e0e0' }, // Hover effect
+                    '&:hover': { backgroundColor: '#e0e0e0' }, 
+                     color: "#747474"
                   }}
                 >
                   <TableSortLabel
@@ -107,7 +110,8 @@ const TableWithSearch = () => {
                   sx={{
                     fontWeight: 'bold',
                     cursor: 'pointer',
-                    '&:hover': { backgroundColor: '#e0e0e0' }, // Hover effect
+                    '&:hover': { backgroundColor: '#e0e0e0' }, 
+                     color: "#747474"
                   }}
                 >
                   <TableSortLabel
@@ -123,14 +127,15 @@ const TableWithSearch = () => {
             <TableBody>
               {filteredData.map((row, index) => (
                 <TableRow key={index}>
-                  <TableCell>{row.name}</TableCell>
-                  <TableCell>{row.email}</TableCell>
-                  <TableCell>{row.role}</TableCell>
+                  <TableCell sx={{color: "#747474" }}>{row.name}</TableCell>
+                  <TableCell sx={{color: "#747474" }}>{row.email}</TableCell>
+                  <TableCell sx={{color: "#747474" }}>{row.role}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
+        </div>
       </CardContent>
     </Card>
   );

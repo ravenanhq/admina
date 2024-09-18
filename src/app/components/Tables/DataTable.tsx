@@ -23,12 +23,12 @@ const DataTable = () => {
             <CardHeader
                 title="DataTable"
                 sx={{ bgcolor: '#007BFF', color: 'white' }}
-                titleTypographyProps={{ fontSize: '16px' }}
+                titleTypographyProps={{ fontSize: '14px' }}
             />
 
             <CardContent>
                 <DataGrid
-                    sx={{ pb: "10px", pt: "10px" }}
+                    sx={{ pb: "10px", pt: "10px", color: "#747474" }}
                     className="boldHeader"
                     rows={rows}
                     columns={columns}

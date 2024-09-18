@@ -40,7 +40,7 @@ const ExpandableTable = () => {
       <CardHeader
         title="Expandable Table"
         sx={{ bgcolor: '#007BFF', color: 'white' }}
-        titleTypographyProps={{ fontSize: '16px' }}
+        titleTypographyProps={{ fontSize: '14px' }}
       />
 
       <CardContent>
@@ -56,6 +56,7 @@ const ExpandableTable = () => {
                       fontWeight: 'bold',
                       cursor: 'pointer',
                       '&:hover': { backgroundColor: '#e0e0e0' }, // Hover effect
+                      color: "#747474"
                     }}
                   >
                     <TableSortLabel
@@ -73,9 +74,9 @@ const ExpandableTable = () => {
               {sortedData.map((row, index) => (
                 <React.Fragment key={index}>
                   <TableRow onClick={() => handleRowClick(index)} style={{ cursor: 'pointer' }}>
-                    <TableCell>{row.name}</TableCell>
-                    <TableCell>{row.email}</TableCell>
-                    <TableCell>{row.role}</TableCell>
+                    <TableCell sx={{color: "#747474" }}>{row.name}</TableCell>
+                    <TableCell sx={{color: "#747474" }}>{row.email}</TableCell>
+                    <TableCell sx={{color: "#747474" }}>{row.role}</TableCell>
                   </TableRow>
                   {expandedRows.includes(index) && (
                     <TableRow>

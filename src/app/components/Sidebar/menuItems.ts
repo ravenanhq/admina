@@ -15,7 +15,6 @@ const menuItems = [
       { label: "Breadcrumbs", route: "/uielements/breadcrumbs" },
       { label: "Search", route: "/uielements/search" },
       { label: "Footers", route: "/uielements/footer" },
-      { label: "Tables", route: "/table" },
       { label: "Buttons", route: "/uielements/buttons" },
       { label: "Alerts", route: "/uielements/alerts" },
       { label: "Tabs", route: "/uielements/tabs" },

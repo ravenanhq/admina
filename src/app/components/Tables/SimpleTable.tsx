@@ -57,7 +57,7 @@ const SimpleTable = () => {
       <CardHeader
         title="Simple Table"
         sx={{ bgcolor: '#007BFF', color: 'white' }}
-        titleTypographyProps={{ fontSize: '16px' }}
+        titleTypographyProps={{ fontSize: '14px' }}
       />
 
       <CardContent>
@@ -65,7 +65,7 @@ const SimpleTable = () => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell sx={{ fontWeight: 'bold' }}>
+                <TableCell sx={{ fontWeight: 'bold', color: "#747474" }}>
                   <TableSortLabel
                     active={orderBy === 'name'}
                     direction={orderBy === 'name' ? order : 'asc'}
@@ -74,7 +74,7 @@ const SimpleTable = () => {
                     Name
                   </TableSortLabel>
                 </TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }}>
+                <TableCell sx={{ fontWeight: 'bold', color: "#747474" }}>
                   <TableSortLabel
                     active={orderBy === 'email'}
                     direction={orderBy === 'email' ? order : 'asc'}
@@ -83,7 +83,7 @@ const SimpleTable = () => {
                     Email
                   </TableSortLabel>
                 </TableCell>
-                <TableCell sx={{ fontWeight: 'bold' }}>
+                <TableCell sx={{ fontWeight: 'bold', color: "#747474" }}>
                   <TableSortLabel
                     active={orderBy === 'role'}
                     direction={orderBy === 'role' ? order : 'asc'}
@@ -97,9 +97,9 @@ const SimpleTable = () => {
             <TableBody>
               {stableSort(data, getComparator(order, orderBy)).map((row, index) => (
                 <TableRow key={index}>
-                  <TableCell>{row.name}</TableCell>
-                  <TableCell>{row.email}</TableCell>
-                  <TableCell>{row.role}</TableCell>
+                  <TableCell sx={{color: "#747474" }}>{row.name}</TableCell>
+                  <TableCell sx={{color: "#747474" }}>{row.email}</TableCell>
+                  <TableCell sx={{color: "#747474" }}>{row.role}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

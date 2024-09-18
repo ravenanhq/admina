@@ -97,7 +97,7 @@ const HeaderTable2 = () => {
       <CardHeader
         title="Header Table 2"
         sx={{ bgcolor: "#007BFF", color: "white" }}
-        titleTypographyProps={{ fontSize: "16px" }}
+        titleTypographyProps={{ fontSize: "14px" }}
       />
 
       <CardContent>
@@ -141,25 +141,25 @@ const HeaderTable2 = () => {
                       backgroundColor: index % 2 === 0 ? "#F5F7FA" : "white", // Striped effect
                     }}
                   >
-                    <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                    <TableCell sx={{ border: "1px solid #e0e0e0" ,color: "#747474" }}>
                       {row.name}
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                    <TableCell sx={{ border: "1px solid #e0e0e0",color: "#747474" }}>
                       {row.position}
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                    <TableCell sx={{ border: "1px solid #e0e0e0" ,color: "#747474"}}>
                       {row.office}
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                    <TableCell sx={{ border: "1px solid #e0e0e0" ,color: "#747474"}}>
                       {row.age}
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                    <TableCell sx={{ border: "1px solid #e0e0e0" ,color: "#747474"}}>
                       {row.date}
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                    <TableCell sx={{ border: "1px solid #e0e0e0" ,color: "#747474"}}>
                       {row.salary}
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                    <TableCell sx={{ border: "1px solid #e0e0e0" ,color: "#747474"}}>
                       {row.email}
                     </TableCell>
                   </TableRow>

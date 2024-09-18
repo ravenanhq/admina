@@ -154,7 +154,7 @@ const HeaderTable1 = () => {
       <CardHeader
         title="Header Table 1"
         sx={{ bgcolor: "#007BFF", color: "white" }}
-        titleTypographyProps={{ fontSize: "16px" }}
+        titleTypographyProps={{ fontSize: "14px" }}
       />
 
       <CardContent>
@@ -178,7 +178,7 @@ const HeaderTable1 = () => {
               setRowsPerPage(parseInt(event.target.value, 10));
               setPage(0);
             }}
-            sx={{ pl: 0 }}
+            sx={{ pl: 0, pr:8 }}
           />
 
           <TextField
@@ -205,7 +205,11 @@ const HeaderTable1 = () => {
                 ].map((key) => (
                   <TableCell
                     key={key}
-                    sx={{ border: "1px solid #e0e0e0", fontWeight: "bold" }}
+                    sx={{
+                      border: "1px solid #e0e0e0",
+                      fontWeight: "bold",
+                      color: "#747474",
+                    }}
                   >
                     <TableSortLabel
                       active={sortConfig.key === key}
@@ -230,25 +234,39 @@ const HeaderTable1 = () => {
                     backgroundColor: index % 2 === 0 ? "#F5F7FA" : "white", // Striped effect
                   }}
                 >
-                  <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                  <TableCell
+                    sx={{ border: "1px solid #e0e0e0", color: "#747474" }}
+                  >
                     {row.name}
                   </TableCell>
-                  <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                  <TableCell
+                    sx={{ border: "1px solid #e0e0e0", color: "#747474" }}
+                  >
                     {row.position}
                   </TableCell>
-                  <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                  <TableCell
+                    sx={{ border: "1px solid #e0e0e0", color: "#747474" }}
+                  >
                     {row.office}
                   </TableCell>
-                  <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                  <TableCell
+                    sx={{ border: "1px solid #e0e0e0", color: "#747474" }}
+                  >
                     {row.age}
                   </TableCell>
-                  <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                  <TableCell
+                    sx={{ border: "1px solid #e0e0e0", color: "#747474" }}
+                  >
                     {row.date}
                   </TableCell>
-                  <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                  <TableCell
+                    sx={{ border: "1px solid #e0e0e0", color: "#747474" }}
+                  >
                     {row.salary}
                   </TableCell>
-                  <TableCell sx={{ border: "1px solid #e0e0e0" }}>
+                  <TableCell
+                    sx={{ border: "1px solid #e0e0e0", color: "#747474" }}
+                  >
                     {row.email}
                   </TableCell>
                 </TableRow>
@@ -265,7 +283,12 @@ const HeaderTable1 = () => {
             mt: 2,
           }}
         >
-          <Typography variant="body1">
+          <Typography
+            variant="body1"
+            sx={{
+              fontSize: "14px", color: "#747474",
+            }}
+          >
             {`Showing ${from} to ${to} of ${count} entries`}
           </Typography>
           {/* Use Custom Pagination */}
