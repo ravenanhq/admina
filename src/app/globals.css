@@ -513,13 +513,13 @@ margin-left: -5px;
 main.sidebar-open.MuiBox-root {
   width: 70%;
 }
-@media (min-width: 1600px) {
-  .boldHeader {
-    padding-bottom: 22px;
+@media (min-width:1366px) and (max-height:1024px) {
+  .sidebar-closed .boldHeader {
+    padding-bottom: 26px;
   }
 }
-@media (min-width:1366px) and (max-height:1024px) {
+@media (min-width:1600px) {
   .boldHeader {
-    padding-bottom: 12px;
+    padding-bottom: 24px;
   }
 }
