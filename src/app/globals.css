@@ -491,3 +491,12 @@ margin-left: -5px;
 .pagination button:disabled { 
   border: none;
 }
+.headertable2 .css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root.Mui-active {
+  color: #fff;
+}
+.headertable2 .MuiTableSortLabel-root:hover {
+  color: #fff;
+}
+.headertable2 .css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root.Mui-active .MuiTableSortLabel-icon {
+  color: #fff;
+}

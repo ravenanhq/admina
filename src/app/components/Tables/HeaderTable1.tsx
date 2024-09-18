@@ -227,7 +227,7 @@ const HeaderTable1 = () => {
                 <TableRow
                   key={index}
                   sx={{
-                    backgroundColor: index % 2 === 0 ? "#f9f9f9" : "white", // Striped effect
+                    backgroundColor: index % 2 === 0 ? "#F5F7FA" : "white", // Striped effect
                   }}
                 >
                   <TableCell sx={{ border: "1px solid #e0e0e0" }}>
