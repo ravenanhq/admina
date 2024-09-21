@@ -30,7 +30,7 @@ const FadeEffect: React.FC = () => {
   return (
     <Card variant="outlined" sx={{ borderRadius: "10px" }}>
       <CardHeader
-        title="3D Fade effect"
+        title="3D Fade Effect"
         sx={{ bgcolor: "#007BFF", color: "white" }}
         titleTypographyProps={{ fontSize: "14px" }}
       />

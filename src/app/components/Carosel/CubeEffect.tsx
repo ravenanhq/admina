@@ -30,7 +30,7 @@ const CubeEffect: React.FC = () => {
   return (
     <Card variant="outlined" sx={{ borderRadius: "10px" }}>
       <CardHeader
-        title="3D Cube effect"
+        title="3D Cube Effect"
         sx={{ bgcolor: "#007BFF", color: "white" }}
         titleTypographyProps={{ fontSize: "14px" }}
       />
