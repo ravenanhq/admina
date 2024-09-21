@@ -215,26 +215,6 @@ const Header: React.FC<HeaderProps> = ({ sidebarOpen, setSidebarOpen }) => {
 
             {!searchOpen && (
               <Box sx={{ display: "flex", alignItems: "center" }}>
-                <NotificationButton />
-
-                <IconButton
-                  color="inherit"
-                  sx={{ color: "rgba(0,0,0,.5)", mx: 2 }}
-                >
-                  <Badge
-                    badgeContent={2}
-                    color="error"
-                    sx={{
-                      "& .MuiBadge-badge": {
-                        background: "#CE0000",
-                        padding: "0",
-                      },
-                    }}
-                  >
-                    <MailOutlineIcon />
-                  </Badge>
-                </IconButton>
-
                 <ProfileMenu />
               </Box>
             )}
