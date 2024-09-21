@@ -1,7 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards, Navigation, Pagination } from "swiper/modules";
-import { Box } from "@mui/material";
+import { Card, CardHeader, CardContent } from "@mui/material";
 
 const CardsEffect: React.FC = () => {
   const carouselItems = [
@@ -28,7 +28,14 @@ const CardsEffect: React.FC = () => {
   ];
 
   return (
-    <Box sx={{ textAlign: "center", py: 4 }}>
+      <Card variant="outlined" sx={{ borderRadius: "10px" }}>
+      <CardHeader
+        title="3D Cards Effect"
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
+      />
+      <div className="carousel">
+        <CardContent>
       <Swiper
         modules={[Pagination, EffectCards, Navigation]}
         effect={"cards"}
@@ -54,7 +61,9 @@ const CardsEffect: React.FC = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </Box>
+      </CardContent>
+      </div>
+    </Card>
   );
 };
 
