@@ -381,11 +381,12 @@ margin-left: -5px;
 
 .swiper.cube-carousel {
   width: 300px;
-  height: 300px;
+  height: 350px;
   left: 50%;
   top: 50%;
   margin-left: -150px;
-  margin-top: -150px;
+  padding-bottom: 50px;
+  /* margin-top: -150px; */
 }
 
 .cube-carousel .swiper-slide {
@@ -400,7 +401,7 @@ margin-left: -5px;
 
 .coverflow-carousel.swiper {
   width: 100%;
-  padding-top: 50px;
+  /* padding-top: 50px; */
   padding-bottom: 50px;
 }
 
@@ -527,4 +528,7 @@ main.sidebar-open.MuiBox-root {
   .boldHeader {
     padding-bottom: 25px;
   }
+}
+.carousel .MuiCardContent-root:last-child {
+  padding-bottom: 16px;
 }

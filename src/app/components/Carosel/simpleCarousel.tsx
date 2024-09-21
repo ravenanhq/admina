@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Card, CardHeader, CardContent } from "@mui/material";
 
 const Carousel: React.FC = () => {
   const carouselItems = [
@@ -27,44 +28,53 @@ const Carousel: React.FC = () => {
   ];
 
   return (
-    <Box sx={{ textAlign: "center", py: 4 }}>
-      <Swiper loop={true}>
-        {carouselItems.map((item, index) => (
-          <SwiperSlide
-            key={index}
-            style={{ maxWidth: "300px", width: "300px" }}
-          >
-            <div
-              style={{
-                position: "relative",
-                textAlign: "center",
-                width: "300px",
-              }}
-            >
-              <img
-                src={item.imgPath}
-                alt={item.label}
-                style={{ width: "100%", height: "auto" }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: "10px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  color: "#fff",
-                  backgroundColor: "rgba(0, 0, 0, 0.5)",
-                  padding: "5px 10px",
-                  borderRadius: "5px",
-                }}
+    <Card variant="outlined" sx={{ borderRadius: "10px" }}>
+      <CardHeader
+        title="Simple carousel"
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
+      />
+      <div className="carousel">
+        <CardContent>
+          <Swiper loop={true}>
+            {carouselItems.map((item, index) => (
+              <SwiperSlide
+                key={index}
+                // style={{ maxWidth: "300px", width: "300px"}}
               >
-                {item.label}
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </Box>
+                <div
+                  style={{
+                    position: "relative",
+                    textAlign: "center",
+                    // width: "300px",
+                  }}
+                >
+                  <img
+                    src={item.imgPath}
+                    alt={item.label}
+                    style={{ width: "100%", height: "300px" }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: "10px",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      color: "#fff",
+                      backgroundColor: "rgba(0, 0, 0, 0.5)",
+                      padding: "5px 10px",
+                      borderRadius: "5px",
+                    }}
+                  >
+                    {item.label}
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </CardContent>
+      </div>
+    </Card>
   );
 };
 
