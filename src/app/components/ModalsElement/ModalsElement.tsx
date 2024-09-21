@@ -116,7 +116,7 @@ const getColorBackground = (color) => {
     case "primary":
       return "#1976d2";
     case "secondary":
-      return "#004FA5";
+      return "#7b1fa2";
     case "info":
       return "#004186";
     case "warning":
