@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import Carousel from "@/app/components/Carosel/simpleCarousel";
 import NavigationCarousel from "@/app/components/Carosel/NavigationCarousel";
 import PaginationCarousel from "@/app/components/Carosel/PagenationCarousel";
@@ -29,16 +29,12 @@ import ThumbsGallery from "@/app/components/Carosel/ThumbsGallery";
 export default function Carosels() {
   return (
     <Box style={{ overflow: "hidden" }} className="carouselBox">
-      <h4
-        style={{
-          paddingTop: 16,
-          color: "#007BFF",
-          fontSize: "22px",
-          fontWeight: "bold",
-        }}
+      <Typography
+        variant="h2"
+        sx={{ pt: 2, color: "#007BFF", fontSize: "22px", fontWeight: "bold" }}
       >
         UI Elements / Carousel
-      </h4>
+      </Typography>
       <Grid
         container
         className="carouselContainer"

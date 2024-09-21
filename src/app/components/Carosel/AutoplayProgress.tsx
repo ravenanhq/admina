@@ -38,7 +38,7 @@ const AutoplayProgress: React.FC = () => {
   return (
     <Card variant="outlined" sx={{ borderRadius: "10px" }}>
       <CardHeader
-        title="Autoplay progress"
+        title="Autoplay Progress"
         sx={{ bgcolor: "#007BFF", color: "white" }}
         titleTypographyProps={{ fontSize: "14px" }}
       />

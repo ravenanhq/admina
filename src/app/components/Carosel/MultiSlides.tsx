@@ -34,7 +34,7 @@ const MultiSlidesCarousel: React.FC = () => {
   return (
     <Card variant="outlined" sx={{ borderRadius: "10px" }}>
       <CardHeader
-        title="Multiple slides"
+        title="Multiple Slides"
         sx={{ bgcolor: "#007BFF", color: "white" }}
         titleTypographyProps={{ fontSize: "14px" }}
       />

@@ -30,7 +30,7 @@ const Carousel: React.FC = () => {
   return (
     <Card variant="outlined" sx={{ borderRadius: "10px" }}>
       <CardHeader
-        title="Simple carousel"
+        title="Simple Carousel"
         sx={{ bgcolor: "#007BFF", color: "white" }}
         titleTypographyProps={{ fontSize: "14px" }}
       />
