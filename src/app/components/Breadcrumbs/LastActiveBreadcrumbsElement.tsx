@@ -6,6 +6,7 @@ import {
   CardHeader,
   Link,
   Breadcrumbs,
+  Typography,
 } from "@mui/material";
 
 const LastActiveBreadcrumbsElement = () => {
@@ -22,28 +23,23 @@ const LastActiveBreadcrumbsElement = () => {
             <Link
               underline="hover"
               color="inherit"
-              href="/"
-              sx={{ fontSize: "12px",color:"#747474" }}
+              sx={{ fontSize: "12px", color: "#747474", cursor: "pointer" }}
             >
               Menu
             </Link>
             <Link
               underline="hover"
               color="inherit"
-              href="/"
-              sx={{ fontSize: "12px",color:"#747474" }}
+              sx={{ fontSize: "12px", color: "#747474", cursor: "pointer" }}
             >
               Submenu1
             </Link>
-            <Link
-              underline="hover"
+            <Typography
               color="text.primary"
-              href="/"
-              aria-current="page"
-              sx={{ fontSize: "12px",color:"#565656"}}
+              sx={{ fontSize: "12px", color: "#565656" }}
             >
               Submenu2
-            </Link>
+            </Typography>
           </Breadcrumbs>
         </Box>
       </CardContent>

@@ -21,9 +21,8 @@ const CustomSeparatorBreadcrumbsElement = () => {
       underline="hover"
       key="1"
       color="inherit"
-      href="/"
       onClick={handleClick}
-      sx={{ fontSize: "12px",color:"#747474" }}
+      sx={{ fontSize: "12px", color: "#747474", cursor: "pointer" }}
     >
       Menu
     </Link>,
@@ -31,13 +30,16 @@ const CustomSeparatorBreadcrumbsElement = () => {
       underline="hover"
       key="2"
       color="inherit"
-      href="/"
       onClick={handleClick}
-      sx={{ fontSize: "12px",color:"#747474" }}
+      sx={{ fontSize: "12px", color: "#747474", cursor: "pointer" }}
     >
       Submenu1
     </Link>,
-    <Typography key="3" color="text.primary" sx={{ fontSize: "12px",color:"#565656" }}>
+    <Typography
+      key="3"
+      color="text.primary"
+      sx={{ fontSize: "12px", color: "#565656" }}
+    >
       Submenu2
     </Typography>,
   ];

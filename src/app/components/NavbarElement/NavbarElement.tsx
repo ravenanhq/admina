@@ -271,7 +271,7 @@ const Navbar = () => {
                     color: "#fff",
                     "& input": {
                       padding: "8px",
-                      color: "#747474",
+                      color: "#fff",
                       fontSize: "12px",
                     },
                     "& fieldset": {
@@ -327,7 +327,7 @@ const Navbar = () => {
                   color: "#fff",
                   "& input": {
                     padding: "8px",
-                    color: "#747474",
+                    color: "#fff",
                     fontSize: "12px",
                   },
                   "& fieldset": {
