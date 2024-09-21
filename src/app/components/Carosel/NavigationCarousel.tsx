@@ -1,7 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Controller } from "swiper/modules";
-import { Box } from "@mui/material";
+import { Card, CardHeader, CardContent } from "@mui/material";
 
 const NavigationCarousel: React.FC = () => {
   const carouselItems = [
@@ -28,49 +28,54 @@ const NavigationCarousel: React.FC = () => {
   ];
 
   return (
-    <Box sx={{ textAlign: "center", py: 4 }}>
-      <Swiper
-        modules={[Controller, Autoplay, Navigation]}
-        navigation
-        autoplay={{ delay: 3000 }}
-        loop={true}
-      >
-        {carouselItems.map((item, index) => (
-          <SwiperSlide
-            key={index}
-            style={{ maxWidth: "300px", width: "300px" }}
+    <Card variant="outlined" sx={{ borderRadius: "10px" }}>
+      <CardHeader
+        title="Navigation"
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
+      />
+      <div className="carousel">
+        <CardContent>
+          <Swiper
+            modules={[Controller, Autoplay, Navigation]}
+            navigation
+            autoplay={{ delay: 3000 }}
+            loop={true}
           >
-            <div
-              style={{
-                position: "relative",
-                textAlign: "center",
-                width: "300px",
-              }}
-            >
-              <img
-                src={item.imgPath}
-                alt={item.label}
-                style={{ width: "100%", height: "auto" }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: "10px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  color: "#fff",
-                  backgroundColor: "rgba(0, 0, 0, 0.5)",
-                  padding: "5px 10px",
-                  borderRadius: "5px",
-                }}
-              >
-                {item.label}
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </Box>
+            {carouselItems.map((item, index) => (
+              <SwiperSlide key={index}>
+                <div
+                  style={{
+                    position: "relative",
+                    textAlign: "center",
+                  }}
+                >
+                  <img
+                    src={item.imgPath}
+                    alt={item.label}
+                    style={{ width: "100%", height: "300px" }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: "10px",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      color: "#fff",
+                      backgroundColor: "rgba(0, 0, 0, 0.5)",
+                      padding: "5px 10px",
+                      borderRadius: "5px",
+                    }}
+                  >
+                    {item.label}
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </CardContent>
+      </div>
+    </Card>
   );
 };
 

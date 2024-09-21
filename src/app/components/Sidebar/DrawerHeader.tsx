@@ -38,13 +38,13 @@ const DrawerHeader: React.FC<DrawerHeaderProps> = ({ open, setOpen }) => {
         }}
       ></ListItemIcon>
       {open ? (
-        <Image src={Logo} alt="Logo" width="135" height="36" />
+        <Image src={Logo} alt="Logo" width="135" height="26" />
       ) : (
         <Image
           src={LogoSymbol}
           alt="customer support"
-          width="32"
-          height="36"
+          width="24"
+          height="22"
           style={{ marginLeft: !open ? "20px" : "" }}
         />
       )}

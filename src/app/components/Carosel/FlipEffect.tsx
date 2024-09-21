@@ -1,7 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFlip, Navigation, Pagination } from "swiper/modules";
-import { Box } from "@mui/material";
+import { Card, CardHeader, CardContent } from "@mui/material";
 
 const FlipEffect: React.FC = () => {
   const carouselItems = [
@@ -28,34 +28,43 @@ const FlipEffect: React.FC = () => {
   ];
 
   return (
-    <Box sx={{ textAlign: "center", py: 4 }}>
-      <Swiper
-        modules={[Pagination, EffectFlip, Navigation]}
-        pagination={{
-          clickable: true,
-        }}
-        centeredSlides={true}
-        slidesPerView={"auto"}
-        effect={"flip"}
-        grabCursor={true}
-        navigation={true}
-        loop={true}
-        className=""
-      >
-        {carouselItems.map((item, index) => (
-          <SwiperSlide
-            key={index}
-            style={{ maxWidth: "300px", width: "300px" }}
+    <Card variant="outlined" sx={{ borderRadius: "10px" }}>
+      <CardHeader
+        title="3D Flip Effect"
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
+      />
+      <div className="carousel">
+        <CardContent>
+          <Swiper
+            modules={[Pagination, EffectFlip, Navigation]}
+            pagination={{
+              clickable: true,
+            }}
+            centeredSlides={true}
+            slidesPerView={"auto"}
+            effect={"flip"}
+            grabCursor={true}
+            navigation={true}
+            loop={true}
+            className=""
           >
-            <img
-              src={item.imgPath}
-              alt={item.label}
-              style={{ width: "300px", height: "300px", objectFit: "contain" }}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </Box>
+            {carouselItems.map((item, index) => (
+              <SwiperSlide
+                key={index}
+                style={{ maxWidth: "300px", width: "300px" }}
+              >
+                <img
+                  src={item.imgPath}
+                  alt={item.label}
+                  style={{ height: "300px", objectFit: "cover" }}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </CardContent>
+      </div>
+    </Card>
   );
 };
 

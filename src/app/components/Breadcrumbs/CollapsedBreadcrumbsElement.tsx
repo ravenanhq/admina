@@ -21,32 +21,28 @@ const CollapsedBreadcrumbsElement = () => {
           <Link
             underline="hover"
             color="inherit"
-            href="#"
-            sx={{ fontSize: "12px",color:"#747474" }}
+            sx={{ fontSize: "12px", color: "#747474", cursor: "pointer" }}
           >
             Menu
           </Link>
           <Link
             underline="hover"
             color="inherit"
-            href="#"
-            sx={{ fontSize: "12px",color:"#747474" }}
+            sx={{ fontSize: "12px", color: "#747474", cursor: "pointer" }}
           >
             Submenu1
           </Link>
           <Link
             underline="hover"
             color="inherit"
-            href="#"
-            sx={{ fontSize: "12px",color:"#565656" }}
+            sx={{ fontSize: "12px", color: "#565656", cursor: "pointer" }}
           >
             Submenu2
           </Link>
           <Link
             underline="hover"
             color="inherit"
-            href="#"
-            sx={{ fontSize: "12px" }}
+            sx={{ fontSize: "12px", color: "#565656", cursor: "pointer" }}
           >
             Submenu3
           </Link>

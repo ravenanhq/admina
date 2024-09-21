@@ -1,7 +1,7 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Controller } from "swiper/modules";
-import { Box } from "@mui/material";
+import { Card, CardHeader, CardContent } from "@mui/material";
 
 const PaginationCarousel: React.FC = () => {
   const carouselItems = [
@@ -28,30 +28,39 @@ const PaginationCarousel: React.FC = () => {
   ];
 
   return (
-    <Box sx={{ textAlign: "center", py: 4 }}>
-      <Swiper
-        modules={[Controller, Autoplay, Pagination]}
-        pagination={{
-          dynamicBullets: true,
-          clickable: true,
-        }}
-        autoplay={{ delay: 3000 }}
-        loop={true}
-      >
-        {carouselItems.map((item, index) => (
-          <SwiperSlide
-            key={index}
-            style={{ maxWidth: "300px", width: "300px" }}
+    <Card variant="outlined" sx={{ borderRadius: "10px" }}>
+      <CardHeader
+        title="Pagination"
+        sx={{ bgcolor: "#007BFF", color: "white" }}
+        titleTypographyProps={{ fontSize: "14px" }}
+      />
+      <div className="carousel" style={{ height: "100%" }}>
+        <CardContent>
+          <Swiper
+            modules={[Controller, Autoplay, Pagination]}
+            pagination={{
+              dynamicBullets: true,
+              clickable: true,
+            }}
+            autoplay={{ delay: 3000 }}
+            loop={true}
           >
-            <img
-              src={item.imgPath}
-              alt={item.label}
-              style={{ width: "100%", height: "auto" }}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </Box>
+            {carouselItems.map((item, index) => (
+              <SwiperSlide
+                key={index}
+                style={{ maxWidth: "300px", width: "300px" }}
+              >
+                <img
+                  src={item.imgPath}
+                  alt={item.label}
+                  style={{ width: "100%", height: "300px" }}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </CardContent>
+      </div>
+    </Card>
   );
 };
 
