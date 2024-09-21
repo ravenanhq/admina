@@ -28,12 +28,12 @@ const BreadcrumbsWithIconElement = () => {
               alignItems: "center",
               fontSize: "12px",
               color: "#565656",
+              cursor: "pointer",
               "& .MuiTypography-root": {
                 color: "#565656",
               },
             }}
             color="inherit"
-            href="/"
           >
             <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
             Menu
@@ -45,12 +45,12 @@ const BreadcrumbsWithIconElement = () => {
               alignItems: "center",
               fontSize: "12px",
               color: "#565656",
+              cursor: "pointer",
               "& .MuiTypography-root": {
                 color: "#565656",
               },
             }}
             color="inherit"
-            href="/"
           >
             <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
             Submenu1
@@ -61,6 +61,7 @@ const BreadcrumbsWithIconElement = () => {
               alignItems: "center",
               fontSize: "12px",
               color: "#747474",
+              cursor: "pointer",
               "& .MuiTypography-root": {
                 color: "#747474",
               },

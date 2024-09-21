@@ -271,8 +271,12 @@ const Navbar = () => {
                     color: "#fff",
                     "& input": {
                       padding: "8px",
-                      color: "#747474",
+                      color: "#fff",
                       fontSize: "12px",
+                      "&::placeholder": {
+                        color: "#fff",
+                        opacity: 1,
+                      },
                     },
                     "& fieldset": {
                       borderColor: "#fff !important",
@@ -327,8 +331,12 @@ const Navbar = () => {
                   color: "#fff",
                   "& input": {
                     padding: "8px",
-                    color: "#747474",
+                    color: "#fff",
                     fontSize: "12px",
+                    "&::placeholder": {
+                      color: "#fff",
+                      opacity: 1,
+                    },
                   },
                   "& fieldset": {
                     borderColor: "#fff !important",
