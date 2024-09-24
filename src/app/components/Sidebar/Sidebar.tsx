@@ -7,6 +7,8 @@ import { SwipeableDrawer, useMediaQuery } from "@mui/material";
 import { usePathname } from "next/navigation";
 import DrawerHeader from "./DrawerHeader";
 import SidebarMenu from "./SidebarMenu";
+import menuItems from "./menuItems";
+import { useEffect, useState } from "react";
 
 const drawerWidth = 310;
 
@@ -18,6 +20,9 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
   const pathName = usePathname();
   const isMobile = useMediaQuery("(max-width:1023px)");
+  const [openSubMenus, setOpenSubMenus] = useState<{
+    [key: string]: boolean;
+  }>({});
 
   const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
@@ -71,6 +76,22 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
     setOpen(true);
   };
 
+  useEffect(() => {
+    if (open) {
+      const newOpenSubMenus: { [key: string]: boolean } = {};
+      menuItems.forEach((item) => {
+        if (item.submenu) {
+          newOpenSubMenus[item.label] = item.submenu.some(
+            (submenu) => submenu.route === pathName
+          );
+        }
+      });
+      setOpenSubMenus(newOpenSubMenus);
+    } else {
+      setOpenSubMenus({});
+    }
+  }, [open, pathName]);
+
   return (
     <>
       {showHeader ? (
@@ -95,7 +116,13 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
                 ""
               )}
               <Divider />
-              <SidebarMenu open={open} setOpen={setOpen} pathName={pathName} />
+              <SidebarMenu
+                open={open}
+                setOpen={setOpen}
+                pathName={pathName}
+                openSubMenus={openSubMenus}
+                setOpenSubMenus={setOpenSubMenus}
+              />
             </Drawer>
           </SwipeableDrawer>
         ) : (
@@ -112,7 +139,13 @@ const Sidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
               ""
             )}
             <Divider />
-            <SidebarMenu open={open} setOpen={setOpen} pathName={pathName} />
+            <SidebarMenu
+              open={open}
+              setOpen={setOpen}
+              pathName={pathName}
+              openSubMenus={openSubMenus}
+              setOpenSubMenus={setOpenSubMenus}
+            />
           </Drawer>
         )
       ) : null}
