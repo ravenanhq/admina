@@ -58,50 +58,45 @@ const BasicTab = () => {
             <div
               style={{ fontSize: "12px", color: "#565656", lineHeight: "21px" }}
             >
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form, by
-              injected humour, or randomised words which don't look even
-              slightly believable. If you are going to use a passage of Lorem
-              Ipsum, you need to be sure there isn't anything embarrassing
-              hidden in the middle of text. All the Lorem Ipsum generators on
-              the Internet tend to repeat predefined chunks as necessary, making
-              this the first true generator on the Internet. It uses a
-              dictionary of over 200 Latin words, combined with a handful of
-              model sentence structures, to generate Lorem Ipsum which looks
-              reasonable.
+              Etiam nec diam a dui pellentesque feugiat sed et mi. Morbi
+              suscipit sodales lectus, quis varius ipsum pharetra ut. Etiam
+              finibus pulvinar ultrices. Donec id magna venenatis, egestas magna
+              sit amet, volutpat diam. Duis lacus odio, blandit sed condimentum
+              eget, efficitur id lacus. Ut velit neque, vestibulum non efficitur
+              vitae, sollicitudin at nibh. Etiam tincidunt tincidunt venenatis.
+              Nullam ac quam sed augue dapibus interdum sit amet in velit.
+              Aenean tempus sit amet lacus eu volutpat. Mauris ornare mattis
+              nulla in varius. Vestibulum et ex eu nunc venenatis pellentesque.
+              Donec sit amet ligula et orci porttitor tempor. Donec at nunc
+              dapibus, pretium lacus at, malesuada erat. Aliquam consectetur
+              pellentesque mi eu semper. Etiam non nulla non velit varius
+              efficitur.
             </div>
           )}
           {tabValue === 1 && (
             <div
               style={{ fontSize: "12px", color: "#565656", lineHeight: "21px" }}
             >
-              Contrary to popular belief, Lorem Ipsum is not simply random text.
-              It has roots in a piece of classical Latin literature from 45 BC,
-              making it over 2000 years old. Richard McClintock, a Latin
-              professor at Hampden-Sydney College in Virginia, looked up one of
-              the more obscure Latin words, consectetur, from a Lorem Ipsum
-              passage, and going through the cites of the word in classical
-              literature, discovered the undoubtable source. Lorem Ipsum comes
-              from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
-              Malorum" (The Extremes of Good and Evil) by Cicero, written in 45
-              BC. This book is a treatise on the theory of ethics, very popular
-              during the Renaissance.
+              In condimentum ipsum id fermentum fermentum. Curabitur a
+              condimentum diam. Aenean nisi nisl, placerat pharetra quam ut,
+              egestas pellentesque orci. Duis nulla enim, pellentesque vitae
+              vulputate non, consequat at nisl. Pellentesque fermentum turpis
+              orci, non luctus mauris commodo ac. Donec molestie arcu rutrum
+              libero malesuada volutpat ac quis nunc. Donec malesuada, turpis
+              vel semper elementum, erat nulla blandit nibh, et sagittis dui
+              turpis lobortis quam.
             </div>
           )}
           {tabValue === 2 && (
             <div
               style={{ fontSize: "12px", color: "#565656", lineHeight: "21px" }}
             >
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters, as opposed to using 'Content here,
-              content here', making it look like readable English. Many desktop
-              publishing packages and web page editors now use Lorem Ipsum as
-              their default model text, and a search for 'lorem ipsum' will
-              uncover many web sites still in their infancy. Various versions
-              have evolved over the years, sometimes by accident, sometimes on
-              purpose (injected humour and the like).
+              Curabitur at felis a nunc facilisis interdum at id nisi.
+              Suspendisse ut leo ut justo venenatis maximus nec vitae nulla. Sed
+              vitae orci ut elit ultricies lobortis non at odio. Suspendisse ut
+              pharetra nulla, non aliquam lorem. Nulla rutrum tincidunt laoreet.
+              Proin lacus tortor, tincidunt quis fermentum at, fringilla quis
+              velit. In eget pretium enim.
             </div>
           )}
         </Box>

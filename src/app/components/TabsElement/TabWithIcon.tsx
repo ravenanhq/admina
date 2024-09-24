@@ -98,30 +98,43 @@ const TabWithIcon = () => {
             <div
               style={{ fontSize: "12px", color: "#565656", lineHeight: "21px" }}
             >
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form, by
-              injected humour, or randomised words which don't look even
-              slightly believable.{" "}
+              Ut vehicula nunc et ullamcorper imperdiet. Suspendisse ut libero
+              maximus, hendrerit sem ut, interdum lorem. Nunc finibus eros at
+              quam laoreet, vel sollicitudin nisl pharetra. Donec lorem ex,
+              finibus in metus ut, pretium blandit odio. Fusce congue, ipsum id
+              tempus ultrices, mauris lorem auctor sem, non dignissim elit lorem
+              quis quam. Praesent scelerisque lectus pharetra laoreet auctor.
+              Nullam malesuada neque nec urna sodales pellentesque.
             </div>
           )}
           {tabValue === 1 && (
             <div
               style={{ fontSize: "12px", color: "#565656", lineHeight: "21px" }}
             >
-              Contrary to popular belief, Lorem Ipsum is not simply random text.
-              It has roots in a piece of classical Latin literature from 45 BC,
-              making it over 2000 years old. Richard McClintock, a Latin
-              professor{" "}
+              Integer ut ultricies elit, sit amet sollicitudin arcu. Maecenas at
+              nunc turpis. Cras id nunc augue. Vestibulum quis magna lorem. Nam
+              massa tellus, sodales id mollis non, pulvinar at dolor. Mauris
+              vitae metus sed massa egestas faucibus non sed ante. Phasellus
+              rhoncus feugiat sagittis. Quisque molestie sagittis erat sit amet
+              sagittis. Maecenas posuere velit eu felis dapibus mattis. Mauris
+              dictum elit in mauris scelerisque, ut posuere justo viverra. Nunc
+              ut molestie turpis. Proin commodo metus a sapien porttitor
+              venenatis.
             </div>
           )}
           {tabValue === 2 && (
             <div
               style={{ fontSize: "12px", color: "#565656", lineHeight: "21px" }}
             >
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that it has a more-or-less normal
-              distribution of letters,{" "}
+              Sed in accumsan mi, et sodales erat. Fusce ultrices sapien id sem
+              volutpat porttitor. Nullam porttitor faucibus metus vitae
+              interdum. Quisque feugiat gravida massa, ut congue justo vulputate
+              vitae. Ut sed leo sed turpis porttitor interdum ac vitae ex. Sed
+              posuere, sapien quis ornare luctus, sapien ipsum tincidunt eros,
+              nec vulputate libero est at mauris. In et dapibus libero, in
+              auctor lorem. Curabitur vel tincidunt dolor. Nam placerat
+              scelerisque arcu, fermentum ultrices massa euismod non. Vestibulum
+              vitae ante lacinia, blandit purus eget, rhoncus lorem.
             </div>
           )}
         </Box>

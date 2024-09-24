@@ -1,27 +1,26 @@
 [
-    {
-        "id" : "1",
-        "image":"/assets/images/card-img.png",
-        "title":"This is a card Title1",
-        "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit consectetur eros at varius."
-    },
-    {
-        "id" : "2",
-        "image":"/assets/images/card-img.png",
-        "title":"This is a card Title2",
-        "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit consectetur eros at varius."
-    },
-    {
-        "id" : "3",
-        "image":"/assets/images/card-img.png",
-        "title":"This is a card Title3",
-        "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit consectetur eros at varius."
-    },
-    {
-        "id" : "4",
-        "image":"/assets/images/card-img.png",
-        "title":"This is a card Title4",
-        "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit consectetur eros at varius."
-    }
-
+  {
+    "id": "1",
+    "image": "/assets/images/card-img.png",
+    "title": "This is a card Title1",
+    "content": "Nulla arcu libero, interdum sit amet bibendum egestas, dignissim sit amet ex. Class aptent taciti."
+  },
+  {
+    "id": "2",
+    "image": "/assets/images/card-img.png",
+    "title": "This is a card Title2",
+    "content": "Praesent ornare arcu ut metus rutrum, id posuere augue commodo. Mauris egestas, massa quis egestas."
+  },
+  {
+    "id": "3",
+    "image": "/assets/images/card-img.png",
+    "title": "This is a card Title3",
+    "content": "Maecenas scelerisque, quam ac consequat lobortis, est erat tempor metus, eu mattis eros sem non."
+  },
+  {
+    "id": "4",
+    "image": "/assets/images/card-img.png",
+    "title": "This is a card Title4",
+    "content": "Duis pellentesque laoreet euismod. Maecenas vitae rhoncus felis, et lacinia sem. Etiam eget sem metus."
+  }
 ]
