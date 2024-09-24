@@ -174,6 +174,7 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
                   primary={menuItem.label}
                   primaryTypographyProps={{
                     color: isActive ? "#007BFF" : "#747474",
+                    fontWeight: isActive ? "600" : "normal",
                     fontSize: "14px",
                     display: open ? "block" : "none",
                   }}
