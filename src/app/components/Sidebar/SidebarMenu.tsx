@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -7,57 +7,54 @@ import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import CircleIcon from "@mui/icons-material/Circle";
-import { Link } from "@mui/material";
+import Link from "next/link";
 import menuItems from "./menuItems";
+import nprogress from "nprogress";
+import "nprogress/nprogress.css";
+
+nprogress.configure({ showSpinner: false, minimum: 0.1 });
 
 interface SidebarMenuProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   pathName: string;
+  openSubMenus: any;
+  setOpenSubMenus: any;
 }
 
 const SidebarMenu: React.FC<SidebarMenuProps> = ({
   open,
   setOpen,
   pathName,
+  openSubMenus,
+  setOpenSubMenus,
 }) => {
-  const [openSubMenus, setOpenSubMenus] = useState<{ [key: string]: boolean }>(
-    {}
-  );
-
-  useEffect(() => {
-    if (open) {
-      const newOpenSubMenus: { [key: string]: boolean } = {};
-      menuItems.forEach((item) => {
-        if (item.submenu) {
-          newOpenSubMenus[item.label] = item.submenu.some(
-            (submenu) => submenu.route === pathName
-          );
-        }
-      });
-      setOpenSubMenus(newOpenSubMenus);
-    } else {
-      setOpenSubMenus({});
-    }
-  }, [open, pathName]);
-
   const handleMenuClick = useCallback(
     (label: string) => {
-      setOpenSubMenus((prevOpenSubMenus) => ({
-        ...prevOpenSubMenus,
-        [label]: !prevOpenSubMenus[label],
-      }));
+      setOpenSubMenus((prevOpenSubMenus) => {
+        const newOpenSubMenus = { ...prevOpenSubMenus };
+        for (const key in newOpenSubMenus) {
+          if (key !== label) {
+            newOpenSubMenus[key] = false;
+          }
+        }
+        newOpenSubMenus[label] = !prevOpenSubMenus[label];
+        return newOpenSubMenus;
+      });
       setOpen(true);
     },
     [setOpen]
   );
 
   const handleSubMenuItemClick = useCallback((label: string) => {
-    console.log(`Clicked on ${label}`);
+    nprogress.start();
+    setTimeout(() => {
+      nprogress.done();
+    }, 500);
   }, []);
 
   const renderSubMenu = (submenu: any[], parentLabel: string) => (
-    <Collapse in={openSubMenus[parentLabel]} timeout="auto" unmountOnExit>
+    <Collapse in={openSubMenus[parentLabel]} timeout="auto">
       <List component="div" disablePadding>
         {submenu.map((subMenuItem) => {
           const isActive = subMenuItem.route === pathName;
@@ -66,7 +63,6 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
             <Link
               key={subMenuItem.label}
               href={subMenuItem.route}
-              underline="none"
               style={{
                 textDecoration: "none",
               }}
@@ -143,8 +139,8 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
           <div key={menuItem.label} style={{ display: "block" }}>
             <Link
               href={menuItem.route || "#"}
-              underline="none"
               className={isActive ? "activeMenu" : "sideMenuLink"}
+              style={{ textDecoration: "none" }}
             >
               <ListItemButton
                 sx={{
@@ -155,6 +151,11 @@ const SidebarMenu: React.FC<SidebarMenuProps> = ({
                 onClick={() => {
                   if (menuItem.submenu) {
                     handleMenuClick(menuItem.label);
+                  } else {
+                    nprogress.start();
+                    setTimeout(() => {
+                      nprogress.done();
+                    }, 500);
                   }
                 }}
                 className="parentMenu"
