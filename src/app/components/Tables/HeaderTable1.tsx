@@ -15,6 +15,8 @@ import {
   Box,
   TablePagination,
   TableSortLabel,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import CustomPagination from "./CustomPagination";
 
@@ -104,6 +106,8 @@ const HeaderTable1 = () => {
     key: null,
     direction: "asc",
   });
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const handleSearch = (event) => {
     setSearchText(event.target.value);
     setPage(0);
@@ -150,7 +154,7 @@ const HeaderTable1 = () => {
   const count = filteredData.length;
 
   return (
-    <Card variant="outlined" sx={{ borderRadius: "10px" }}>
+    <Card variant="outlined" sx={{ borderRadius: "5px" }}>
       <CardHeader
         title="Header Table 1"
         sx={{ bgcolor: "#007BFF", color: "white" }}
@@ -178,20 +182,82 @@ const HeaderTable1 = () => {
               setRowsPerPage(parseInt(event.target.value, 10));
               setPage(0);
             }}
-            sx={{ pl: 0, pr:8 }}
+            sx={{
+              pl: 0,
+              pr: 8,
+              "& .MuiSelect-select": {
+                border: "1px solid #c0c0c0",
+                "&:hover": {
+                  background: "transparent",
+                },
+              },
+            }}
           />
 
-          <TextField
-            label="Search"
-            variant="outlined"
-            value={searchText}
-            onChange={handleSearch}
-            sx={{ width: "300px" }}
-          />
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+            }}
+          >
+            <Typography
+              variant="body2"
+              sx={{ fontSize: "12px", color: "#565656", mt: 0.5 }}
+            >
+              Search:
+            </Typography>
+            <TextField
+              margin="normal"
+              id="name"
+              name="search"
+              variant="outlined"
+              value={searchText}
+              onChange={handleSearch}
+              size="small"
+              sx={{
+                "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: "#C0C0C0",
+                },
+                "& .MuiInputBase-input": {
+                  fontSize: "12px",
+                  color: "#565656",
+                  padding: "9px 14px",
+                },
+                "& .MuiFormLabel-root": {
+                  fontSize: "12px",
+                  color: "#565656",
+                  letterSpacing: "0.7px",
+                },
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    borderColor: "#c0c0cc0",
+                    borderWidth: "1px",
+                  },
+                  "&:hover fieldset": {
+                    borderColor: "#c0c0c0",
+                    borderWidth: "1px",
+                  },
+                  "&.Mui-focused fieldset": {
+                    borderColor: "#c0c0c0",
+                    borderWidth: "1px",
+                  },
+                },
+              }}
+            />
+          </Box>
         </Box>
 
-        <TableContainer component={Paper}>
-          <Table sx={{ border: "1px solid #e0e0e0" }}>
+        <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
+          <Table
+            sx={{
+              border: "1px solid #e0e0e0",
+              "& .MuiTableCell-root": {
+                padding: "15px",
+                fontSize: "12px",
+              },
+            }}
+          >
             <TableHead>
               <TableRow>
                 {[
@@ -231,7 +297,7 @@ const HeaderTable1 = () => {
                 <TableRow
                   key={index}
                   sx={{
-                    backgroundColor: index % 2 === 0 ? "#F5F7FA" : "white", // Striped effect
+                    backgroundColor: index % 2 === 0 ? "#F5F7FA" : "white",
                   }}
                 >
                   <TableCell
@@ -278,15 +344,17 @@ const HeaderTable1 = () => {
         <Box
           sx={{
             display: "flex",
+            flexDirection: isMobile ? "column" : "row", // Stack on mobile
             justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: isMobile ? "flex-start" : "center",
             mt: 2,
           }}
         >
           <Typography
             variant="body1"
             sx={{
-              fontSize: "14px", color: "#747474",
+              fontSize: "14px",
+              color: "#747474",
             }}
           >
             {`Showing ${from} to ${to} of ${count} entries`}
@@ -297,6 +365,8 @@ const HeaderTable1 = () => {
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handlePageChange}
+            prevButtonContent="Previous"
+            nextButtonContent="Next"
           />
         </Box>
       </CardContent>

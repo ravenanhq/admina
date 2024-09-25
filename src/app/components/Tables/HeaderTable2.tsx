@@ -93,7 +93,7 @@ const HeaderTable2 = () => {
   };
 
   return (
-    <Card variant="outlined" sx={{ borderRadius: "10px" }}>
+    <Card variant="outlined" sx={{ borderRadius: "5px" }}>
       <CardHeader
         title="Header Table 2"
         sx={{ bgcolor: "#007BFF", color: "white" }}
@@ -101,9 +101,21 @@ const HeaderTable2 = () => {
       />
 
       <CardContent>
-        <TableContainer component={Paper}>
-          <Table sx={{ border: "1px solid #e0e0e0" }}>
-            <TableHead>
+        <TableContainer component={Paper} sx={{ boxShadow: "none" }}>
+          <Table
+            sx={{
+              border: "1px solid #e0e0e0",
+              "& .MuiTableCell-root": {
+                padding: "15px",
+                fontSize: "12px",
+              },
+            }}
+          >
+            <TableHead
+              sx={{
+                "& .MuiTableCell-root": { fontSize: "12px", fontWeight: "800" },
+              }}
+            >
               <TableRow className="headertable2" sx={{ bgcolor: "#007BFF" }}>
                 {[
                   "name",
@@ -138,28 +150,42 @@ const HeaderTable2 = () => {
                   <TableRow
                     key={index}
                     sx={{
-                      backgroundColor: index % 2 === 0 ? "#F5F7FA" : "white", // Striped effect
+                      backgroundColor: index % 2 === 0 ? "#F5F7FA" : "white",
                     }}
                   >
-                    <TableCell sx={{ border: "1px solid #e0e0e0" ,color: "#747474" }}>
+                    <TableCell
+                      sx={{ border: "1px solid #e0e0e0", color: "#747474" }}
+                    >
                       {row.name}
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid #e0e0e0",color: "#747474" }}>
+                    <TableCell
+                      sx={{ border: "1px solid #e0e0e0", color: "#747474" }}
+                    >
                       {row.position}
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid #e0e0e0" ,color: "#747474"}}>
+                    <TableCell
+                      sx={{ border: "1px solid #e0e0e0", color: "#747474" }}
+                    >
                       {row.office}
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid #e0e0e0" ,color: "#747474"}}>
+                    <TableCell
+                      sx={{ border: "1px solid #e0e0e0", color: "#747474" }}
+                    >
                       {row.age}
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid #e0e0e0" ,color: "#747474"}}>
+                    <TableCell
+                      sx={{ border: "1px solid #e0e0e0", color: "#747474" }}
+                    >
                       {row.date}
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid #e0e0e0" ,color: "#747474"}}>
+                    <TableCell
+                      sx={{ border: "1px solid #e0e0e0", color: "#747474" }}
+                    >
                       {row.salary}
                     </TableCell>
-                    <TableCell sx={{ border: "1px solid #e0e0e0" ,color: "#747474"}}>
+                    <TableCell
+                      sx={{ border: "1px solid #e0e0e0", color: "#747474" }}
+                    >
                       {row.email}
                     </TableCell>
                   </TableRow>
