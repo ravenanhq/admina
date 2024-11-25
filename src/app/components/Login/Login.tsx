@@ -1,17 +1,14 @@
+"use client";
 import React, { useState } from "react";
 import {
-  Card,
-  CardHeader,
-  CardContent,
   TextField,
   Grid,
   Typography,
-  CardActions,
   Checkbox,
   FormControlLabel,
   InputAdornment,
   Link,
-  Divider,
+  Box,
 } from "@mui/material";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -20,11 +17,16 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { signIn } from "next-auth/react";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { useRouter } from "next/navigation";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import ButtonComponent from "../BaseComponent/Button";
+import Image from "next/image";
+
+const Logo = "/assets/images/logo-admina.png";
+const LoginImg = "/assets/images/login-right.png";
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -98,275 +100,199 @@ const LoginForm = () => {
   };
 
   return (
-    <>
-      <Grid container rowSpacing={1} style={{ padding: "0 20px" }}>
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={6}
-          style={{
-            background: "#2b9b8e",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            paddingBottom: "15px",
-            borderTopLeftRadius: isMobile ? "0" : "10px",
-            borderBottomLeftRadius: isMobile ? "0" : "10px",
-            boxShadow: "0 4px 8px 0 #ccc",
-          }}
-        >
-          <CardHeader
-            title="ADMINA"
-            titleTypographyProps={{
-              fontSize: "30px",
-              fontWeight: "bold",
-              color: "#fff",
-            }}
-            style={{ padding: "7px" }}
+    <Grid container style={{ height: "100vh", overflow: "hidden" }}>
+      <Grid
+        item
+        xs={12}
+        md={6}
+        style={{
+          backgroundColor: "#E3F2FD",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "20px",
+        }}
+      >
+        <Box textAlign="center" mb={3}>
+          <Image src={Logo} alt="Logo"
+            width="130"
+            height="26"
+            style={{ width: "100%", height: "auto" }}
           />
-          <Typography
-            sx={{
-              fontSize: "12px",
-              textAlign: "center",
-              padding: "0 20px",
-              color: "#fff",
-            }}
-            component="div"
-          >
-            <div>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book
-            </div>
-          </Typography>
-          <Link
-            href="/signup/"
-            color="inherit"
-            underline="hover"
-            style={{ color: "#fff" }}
-          >
-            <ButtonComponent
-              variant="contained"
-              type="submit"
-              size="small"
-              prefix={<LoginIcon />}
-              style={{
-                padding: "0 13px",
-                marginTop: "10px",
-                background: "#fc9f66",
-              }}
-              name="Signup"
-            ></ButtonComponent>
-          </Link>
-        </Grid>
+        </Box>
 
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={6}
-          style={{
-            paddingTop: "0",
-            background: "#fff",
-            borderTopRightRadius: isMobile ? "0" : "10px",
-            borderBottomRightRadius: isMobile ? "0" : "10px",
-            boxShadow: "0 4px 8px 0 #ccc",
-          }}
+        <form
+          onSubmit={handleSubmit}
+          style={{ width: "100%", maxWidth: "400px" }}
         >
-          <Card
-            variant="outlined"
-            sx={{ paddingBottom: "10px", border: "none" }}
+          <TextField
+            fullWidth
+            margin="normal"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            error={!!errors.email}
+            helperText={errors.email}
+            size="small"
+            placeholder="Email"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <MailOutlineIcon />
+                </InputAdornment>
+              ),
+            }}
+            sx={{
+              backgroundColor: "#ffffff",
+              borderRadius: "5px",
+              "& input": {
+                fontSize: "15px",
+                color: "#808080",
+              },
+            }}
+          />
+          <TextField
+            fullWidth
+            margin="normal"
+            name="password"
+            type={showPassword ? "text" : "password"}
+            value={formData.password}
+            onChange={handleChange}
+            error={!!errors.password}
+            helperText={errors.password}
+            size="small"
+            placeholder="Password"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  {showPassword ? (
+                    <VisibilityOffIcon
+                      onClick={togglePasswordVisibility}
+                      sx={{ cursor: "pointer" }}
+                    />
+                  ) : (
+                    <VisibilityIcon
+                      onClick={togglePasswordVisibility}
+                      sx={{ cursor: "pointer" }}
+                    />
+                  )}
+                </InputAdornment>
+              ),
+            }}
+            sx={{
+              backgroundColor: "#ffffff",
+              borderRadius: "5px",
+              "& input": {
+                fontSize: "15px",
+                color: "#808080",
+              },
+            }}
+          />
+          {credentialsErr && (
+            <p style={{ color: "#d32f2f", fontSize: "14px" }}>
+              {credentialsErr}
+            </p>
+          )}
+
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+            mt={2}
           >
-            <CardContent sx={{ paddingBottom: "0", marginTop: "10px" }}>
-              <CardHeader
-                title="Login your account"
-                titleTypographyProps={{
-                  fontSize: "20px",
-                  textAlign: "center",
-                  fontWeight: "bold",
-                }}
-              />
-              <form onSubmit={handleSubmit}>
-                <TextField
-                  fullWidth
-                  margin="normal"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  error={!!errors.email}
-                  helperText={errors.email}
-                  size="small"
-                  placeholder="Email"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <MailOutlineIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                  sx={{
-                    "& input": {
-                      fontSize: "15px",
-                    },
-                  }}
-                />
-                <TextField
-                  fullWidth
-                  margin="normal"
-                  name="password"
-                  type={showPassword ? "text" : "password"}
-                  value={formData.password}
-                  onChange={handleChange}
-                  error={!!errors.password}
-                  helperText={errors.password}
-                  size="small"
-                  placeholder="Password"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        {showPassword ? (
-                          <VisibilityOffIcon
-                            onClick={togglePasswordVisibility}
-                            sx={{ cursor: "pointer" }}
-                          />
-                        ) : (
-                          <VisibilityIcon
-                            onClick={togglePasswordVisibility}
-                            sx={{ cursor: "pointer" }}
-                          />
-                        )}
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-                {credentialsErr && (
-                  <p style={{ color: "#d32f2f", fontSize: "14px" }}>
-                    {credentialsErr}
-                  </p>
-                )}
-              </form>
-            </CardContent>
-
-            <CardActions
-              sx={{ display: isMobile ? "block" : "flex", padding: 0 }}
+            <FormControlLabel
+              control={<Checkbox color="primary" />}
+              label={<Typography variant="body2">Remember me</Typography>}
+              labelPlacement="start"
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                marginLeft: "1px",
+                fontSize: "14px",
+                whiteSpace: isMobile ? "nowrap" : "normal",
+              }}
+            />
+            <Link
+              href="/forgot-password/"
+              color="inherit"
+              underline="hover"
+              sx={{
+                fontSize: "14px",
+                whiteSpace: isMobile ? "nowrap" : "normal",
+                display: "flex",
+                alignItems: "center",
+                fontWeight: 400,
+                fontFamily: theme.typography.fontFamily,
+              }}
             >
-              <Grid
-                container
-                alignItems="center"
-                justifyContent="space-between"
-                className="loginPage"
-                style={{
-                  marginBottom: "10px",
-                  display: isMobile ? "block" : "flex",
-                }}
-              >
-                <Grid
-                  item
-                  className="rememberMe"
-                  style={{ textAlign: "center" }}
-                >
-                  <FormControlLabel
-                    control={<Checkbox color="primary" />}
-                    label={<Typography variant="body2">Remember me</Typography>}
-                    labelPlacement="start"
-                    sx={{
-                      fontSize: "14px",
-                      whiteSpace: isMobile ? "nowrap" : "normal",
-                    }}
-                  />
-                </Grid>
+              Forgot password?
+            </Link>
+          </Box>
 
-                <Grid
-                  item
-                  className="forgotPassword"
-                  style={{ textAlign: "center" }}
-                >
-                  <Typography sx={{ fontSize: "14px" }}>
-                    <Link
-                      href="/forgot-password/"
-                      color="inherit"
-                      underline="hover"
-                      style={{ color: "#000", marginRight: "16px" }}
-                    >
-                      Forgot password?
-                    </Link>
-                  </Typography>
-                </Grid>
-              </Grid>
-            </CardActions>
-
-            <Grid container justifyContent="center">
+          <Box display="flex" justifyContent="center" gap={2} mt={3}>
             <ButtonComponent
               variant="contained"
               type="submit"
               size="small"
               onClick={handleSubmit}
               prefix={<LoginIcon />}
-              style={{
-                width: "94%",
-                  padding: "0",
-                  background: "#fc9f66",
-              }}
+              style={{ flex: 1, background: "#007BFF" }}
               name="Login"
             ></ButtonComponent>
-              
-            </Grid>
+            <ButtonComponent
+              variant="contained"
+              type="submit"
+              size="small"
+              onClick={handleSignUpClick}
+              prefix={<PersonAddIcon />}
+              style={{ flex: 1, background: "#AFD7FF", color: "#007BFF" }}
+              name="Signup"
+            ></ButtonComponent>
+          </Box>
 
-            <Divider
-              sx={{
-                margin: "0 auto",
-                marginY: 3,
-                width: "98%",
-                padding: "0 10px",
-                position: "relative",
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  backgroundColor: "white",
-                  padding: "0 10px",
-                }}
-              >
-                or sign in with
-              </div>
-            </Divider>
+          <Typography
+            variant="body2"
+            color="grey"
+            textAlign="center"
+            sx={{ my: 4 }}
+          >
+            Or Sign in with
+          </Typography>
 
-            <Grid
-              container
-              spacing={{ xs: 2 }}
-              sx={{
-                padding: "0 14px 5px 14px",
-                marginTop: "10px",
-                justifyContent: "center",
-              }}
-            >
-              <Grid item sx={{ display: "flex", justifyContent: "center" }}>
-                <GoogleIcon
-                  style={{ fontSize: 25, color: "#e46a76", cursor: "pointer" }}
-                />
-              </Grid>
-              <Grid item sx={{ display: "flex", justifyContent: "center" }}>
-                <FacebookIcon
-                  style={{ fontSize: 25, color: "#0866ff", cursor: "pointer" }}
-                />
-              </Grid>
-              <Grid item sx={{ display: "flex", justifyContent: "center" }}>
-                <TwitterIcon
-                  style={{ fontSize: 25, color: "#03c9d7", cursor: "pointer" }}
-                />
-              </Grid>
-            </Grid>
-          </Card>
-        </Grid>
+          <Box display="flex" justifyContent="center" gap={2}>
+            <GoogleIcon
+              style={{ fontSize: 25, color: "#e46a76", cursor: "pointer" }}
+            />
+            <FacebookIcon
+              style={{ fontSize: 25, color: "#0866ff", cursor: "pointer" }}
+            />
+            <TwitterIcon
+              style={{ fontSize: 25, color: "#03c9d7", cursor: "pointer" }}
+            />
+          </Box>
+        </form>
       </Grid>
-    </>
+
+      <Grid
+        item
+        xs={12}
+        md={6}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "#FFFFFF",
+        }}
+      >
+        <Box
+          component="img"
+          src={LoginImg}
+          alt="Login image"
+          style={{ width: "80%", height: "auto" }}
+        />
+      </Grid>
+    </Grid>
   );
 };
 
