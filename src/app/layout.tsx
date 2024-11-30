@@ -6,7 +6,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/authOptions";
 
 import Provider from "./components/Auth/Auth";
-import Dashboard from "./components/Dashboard/Dashboard";
+import LayoutSelector from "./layout-selector";
 
 export const metadata: Metadata = {
   title: "Admina",
@@ -26,7 +26,7 @@ export default async function RootLayout({
     <html>
       <body suppressHydrationWarning={true} style={{backgroundColor:"#f5f5f5"}}>
         <Provider session={session}>
-          <Dashboard children={children} />
+          <LayoutSelector>{children}</LayoutSelector>
         </Provider>
       </body>
     </html>

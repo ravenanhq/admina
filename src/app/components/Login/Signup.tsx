@@ -1,11 +1,8 @@
+"use client";
 import React, { useState } from "react";
 import {
-  Card,
-  CardHeader,
-  CardContent,
   TextField,
   Grid,
-  CardActions,
   InputAdornment,
   Link,
   Typography,
@@ -121,25 +118,49 @@ const SignupForm = () => {
 
   return (
     <>
-      <Card
-        variant="outlined"
-        style={{ borderRadius: "10px", boxShadow: "0 4px 8px 0 #ccc" }}
-      >
-        <CardHeader
-          title="SIGNUP"
-          titleTypographyProps={{ fontSize: "20px", fontWeight: "bold" }}
-          sx={{ bgcolor: "#2b9b8e", color: "white", textAlign: "center" }}
-        />
-        <CardHeader
-          title="Logo"
-          titleTypographyProps={{
-            fontSize: "20px",
-            textAlign: "center",
-            fontWeight: "bold",
+      <Grid container alignItems="center">
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{
+            background: "#DBECFF",
+            height: {
+              xs: "100vh",
+              sm: "auto",
+              md: "100vh",
+            },
+            "@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait)":
+              {
+                height: "100vh",
+              },
+            "@media (device-width: 320px) and (device-height: 568px) and (orientation: portrait)":
+              {
+                height: "auto",
+              },
+            "@media (max-width: 568px) and (max-height: 320px) and (orientation: landscape)":
+              {
+                height: "auto",
+              },
+            "@media (max-width: 932px) and (max-height: 430px) and (orientation: landscape)":
+              {
+                height: "auto",
+              },
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
           }}
-        />
-        <CardContent>
-          <form onSubmit={handleSubmit}>
+        >
+          <img
+            src="/assets/images/signup-logo.png"
+            alt="Signup Illustration"
+            style={{ height: "120px", marginBottom: "20px" }}
+          />
+          <form
+            onSubmit={handleSubmit}
+            style={{ width: "80%", maxWidth: "400px" }}
+          >
             <TextField
               fullWidth
               margin="normal"
@@ -157,6 +178,16 @@ const SignupForm = () => {
                     <MailOutlineIcon />
                   </InputAdornment>
                 ),
+              }}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 0,
+                  backgroundColor: "white", // Sets background color to white
+                },
+                "& .MuiInputBase-input::placeholder": {
+                  color: "gray", // Optional: change placeholder text color if needed
+                  opacity: 1, // Ensures placeholder is fully opaque
+                },
               }}
             />
             <TextField
@@ -176,6 +207,16 @@ const SignupForm = () => {
                   </InputAdornment>
                 ),
               }}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 0,
+                  backgroundColor: "white", // Sets background color to white
+                },
+                "& .MuiInputBase-input::placeholder": {
+                  color: "gray", // Optional: change placeholder text color if needed
+                  opacity: 1, // Ensures placeholder is fully opaque
+                },
+              }}
             />
             <TextField
               fullWidth
@@ -193,6 +234,16 @@ const SignupForm = () => {
                     <PersonIcon />
                   </InputAdornment>
                 ),
+              }}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 0,
+                  backgroundColor: "white", // Sets background color to white
+                },
+                "& .MuiInputBase-input::placeholder": {
+                  color: "gray", // Optional: change placeholder text color if needed
+                  opacity: 1, // Ensures placeholder is fully opaque
+                },
               }}
             />
             <TextField
@@ -223,6 +274,16 @@ const SignupForm = () => {
                   </InputAdornment>
                 ),
               }}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 0,
+                  backgroundColor: "white", // Sets background color to white
+                },
+                "& .MuiInputBase-input::placeholder": {
+                  color: "gray", // Optional: change placeholder text color if needed
+                  opacity: 1, // Ensures placeholder is fully opaque
+                },
+              }}
             />
             <TextField
               fullWidth
@@ -252,64 +313,96 @@ const SignupForm = () => {
                   </InputAdornment>
                 ),
               }}
+              sx={{
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: 0,
+                  backgroundColor: "white", // Sets background color to white
+                },
+                "& .MuiInputBase-input::placeholder": {
+                  color: "gray", // Optional: change placeholder text color if needed
+                  opacity: 1, // Ensures placeholder is fully opaque
+                },
+              }}
             />
+            <Grid container spacing={2} alignItems="center">
+              <Grid item xs={12} md={6}>
+                <ButtonComponent
+                  variant="contained"
+                  type="submit"
+                  size="large"
+                  onClick={handleSubmit}
+                  color="primary"
+                  style={{
+                    padding: "5px 10px",
+                    width: "100%",
+                    borderRadius: 0, // Removes border radius
+                    marginTop: "15px",
+                  }}
+                  name="Submit"
+                ></ButtonComponent>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <ButtonComponent
+                  variant="contained"
+                  type="button"
+                  size="large"
+                  onClick={handleCancel}
+                  style={{
+                    width: "100%",
+                    padding: "5px 10px",
+                    background: "#AFD7FF",
+                    borderRadius: 0, // Removes border radius
+                    marginTop: "15px",
+                    color: "#0000FF",
+                  }}
+                  name="Cancel"
+                ></ButtonComponent>
+              </Grid>
+            </Grid>
           </form>
-        </CardContent>
-
-        <CardActions>
-          <Grid
-            container
-            justifyContent="right"
-            sx={{ padding: "0 0 16px 10px" }}
+          <Snackbar
+            open={openSnackbar}
+            autoHideDuration={3000}
+            onClose={handleCloseSnackbar}
+            message={successMessage}
+            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+          />
+          <Link
+            href="/login/"
+            sx={{ color: "#0000FF", textDecoration: "none", marginTop: "10px" }}
           >
-            <ButtonComponent
-              variant="contained"
-              type="submit"
-              size="small"
-              onClick={handleSubmit}
-              style={{
-                padding: "5px 10px",
-                background: "#2b9b8e",
+            <Typography
+              sx={{
+                fontSize: "12px",
+                justifyContent: "flex-end", // Aligns to the right
+                display: "flex",
+                alignItems: "center", // Centers vertically for better alignment
               }}
-              name="Submit"
-            ></ButtonComponent>
-            <ButtonComponent
-              variant="contained"
-              type="submit"
-              size="small"
-              onClick={handleCancel}
-              style={{
-                marginLeft: "10px",
+              component="div"
+            >
+              <ArrowBackIcon sx={{ width: "17px", marginRight: "5px" }} />
+              <div style={{ lineHeight: "25px" }}>Back to login</div>
+            </Typography>
+          </Link>
+        </Grid>
 
-                padding: "5px 10px",
-                background: "#fc9f66",
-              }}
-              name="Cancel"
-            ></ButtonComponent>
-          </Grid>
-        </CardActions>
-      </Card>
-      <Snackbar
-        open={openSnackbar}
-        autoHideDuration={3000}
-        onClose={handleCloseSnackbar}
-        message={successMessage}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-      />
-      <Link href="/login/" sx={{ color: "#615E5E", textDecoration: "none" }}>
-        <Typography
+        <Grid
+          item
+          xs={12}
+          md={6}
           sx={{
-            fontSize: "12px",
-            marginTop: "10px",
-            justifyContent: "end",
-            display: "flex",
+            display: { xs: "none", sm: "none", md: "flex" },
+            alignItems: "center",
+            justifyContent: "center",
           }}
-          component="div"
         >
-          <ArrowBackIcon sx={{ width: "17px" }} />{" "}
-          <div style={{ lineHeight: "25px" }}>Back to login</div>
-        </Typography>
-      </Link>
+          <img
+            src="/assets/images/signup-right-side.svg"
+            alt="Signup Illustration"
+            style={{ width: "100%", maxWidth: "500px", borderRadius: "10px" }}
+          />
+        </Grid>
+      </Grid>
     </>
   );
 };

@@ -24,15 +24,12 @@ const FixedFooterElement = () => {
             align="left"
             sx={{ fontSize: "12px", color: "#565656" }}
           >
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
+            Morbi vitae rhoncus ante, in malesuada libero. Aliquam erat
+            volutpat. Phasellus sit amet efficitur purus. Vestibulum ac velit
+            vitae eros vehicula dignissim. Aenean dictum, est eget accumsan
+            venenatis, massa tortor varius risus, non laoreet mauris tellus at
+            tortor. Suspendisse potenti. Etiam justo dui, ultrices finibus
+            egestas quis, consectetur eu erat.
           </Typography>
           <br />
           <Typography
@@ -41,16 +38,17 @@ const FixedFooterElement = () => {
             align="left"
             sx={{ fontSize: "12px", color: "#565656" }}
           >
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ipsum is that it has a more-or-less normal
-            distribution of letters, as opposed to using 'Content here, content
-            here', making it look like readable English. Many desktop publishing
-            packages and web page editors now use Lorem Ipsum as their default
-            model text, and a search for 'lorem ipsum' will uncover many web
-            sites still in their infancy. Various versions have evolved over the
-            years, sometimes by accident, sometimes on purpose (injected humour
-            and the like).
+            Cras quam tellus, tincidunt sit amet malesuada eget, vulputate
+            auctor lorem. Proin purus risus, blandit ac ornare et, interdum ut
+            dolor. Vestibulum tincidunt posuere ipsum sed scelerisque. Maecenas
+            pretium diam turpis. Ut fringilla, dolor vel tincidunt venenatis,
+            nunc nulla luctus tellus, sit amet faucibus urna ligula eget purus.
+            Cras lobortis fringilla leo condimentum tincidunt. Aenean eget
+            mollis ante. Donec ultrices, nulla ut elementum dignissim, leo felis
+            dictum sem, at feugiat turpis ligula sed arcu. Sed vel diam id orci
+            fringilla volutpat. Curabitur porta elit et ornare commodo. Nullam
+            finibus metus ut nunc condimentum vestibulum vitae in dolor.
+            Suspendisse sit amet dignissim urna.
           </Typography>
           <br />
           <Typography
@@ -59,18 +57,14 @@ const FixedFooterElement = () => {
             align="left"
             sx={{ fontSize: "12px", color: "#565656" }}
           >
-            Contrary to popular belief, Lorem Ipsum is not simply random text.
-            It has roots in a piece of classical Latin literature from 45 BC,
-            making it over 2000 years old. Richard McClintock, a Latin professor
-            at Hampden-Sydney College in Virginia, looked up one of the more
-            obscure Latin words, consectetur, from a Lorem Ipsum passage, and
-            going through the cites of the word in classical literature,
-            discovered the undoubtable source. Lorem Ipsum comes from sections
-            1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes
-            of Good and Evil) by Cicero, written in 45 BC. This book is a
-            treatise on the theory of ethics, very popular during the
-            Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
-            amet..", comes from a line in section 1.10.32.
+            Vivamus ac dui fringilla, imperdiet tellus ut, dapibus nulla.
+            Integer volutpat magna eget lectus ultrices dapibus. Quisque ac
+            turpis a leo fringilla tristique. Phasellus arcu augue, fermentum ut
+            dolor eget, posuere convallis nisl. Proin auctor, felis congue
+            sodales dictum, eros lacus gravida velit, at faucibus enim est eget
+            mauris. Nullam placerat gravida quam vel iaculis. Aenean placerat in
+            sem at ullamcorper. Duis id nisi ut est varius aliquet eu eu ante.
+            Integer at eleifend libero.
           </Typography>
           <br />
           <Typography
@@ -79,18 +73,16 @@ const FixedFooterElement = () => {
             align="left"
             sx={{ fontSize: "12px", color: "#565656" }}
           >
-            There are many variations of passages of Lorem Ipsum available, but
-            the majority have suffered alteration in some form, by injected
-            humour, or randomised words which don't look even slightly
-            believable. If you are going to use a passage of Lorem Ipsum, you
-            need to be sure there isn't anything embarrassing hidden in the
-            middle of text. All the Lorem Ipsum generators on the Internet tend
-            to repeat predefined chunks as necessary, making this the first true
-            generator on the Internet. It uses a dictionary of over 200 Latin
-            words, combined with a handful of model sentence structures, to
-            generate Lorem Ipsum which looks reasonable. The generated Lorem
-            Ipsum is therefore always free from repetition, injected humour, or
-            non-characteristic words etc.
+            Aenean at justo mollis, vulputate odio vitae, gravida odio. Duis
+            molestie, risus nec tempus aliquet, erat sapien tempor lorem, vitae
+            gravida urna tellus scelerisque nunc. Cras auctor libero tellus, ac
+            convallis elit hendrerit in. Curabitur quis elementum urna,
+            dignissim pulvinar tellus. Nam in risus ac justo tristique
+            consectetur et ac purus. Aenean pharetra varius leo ut elementum.
+            Quisque finibus, sapien nec rhoncus interdum, dui nisl vestibulum
+            libero, vehicula porta ligula purus non ipsum. Aliquam efficitur
+            nisi ut leo placerat pellentesque. Sed placerat arcu et arcu iaculis
+            mattis.
           </Typography>
         </Box>
       </CardContent>

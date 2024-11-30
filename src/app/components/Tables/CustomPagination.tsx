@@ -1,7 +1,16 @@
 import React from "react";
 import { Box, Button, useMediaQuery } from "@mui/material";
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
+import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 
-const CustomPagination = ({ count, rowsPerPage, page, onPageChange }) => {
+const CustomPagination = ({
+  count,
+  rowsPerPage,
+  page,
+  onPageChange,
+  prevButtonContent = "Previous",
+  nextButtonContent = "Next",
+}) => {
   const totalPages = Math.ceil(count / rowsPerPage);
 
   const isMobile = useMediaQuery("(max-width:600px)");
@@ -31,15 +40,25 @@ const CustomPagination = ({ count, rowsPerPage, page, onPageChange }) => {
         alignItems: "center",
         mt: 2,
         flexWrap: isMobile ? "wrap" : "nowrap",
+        "& .active": {
+          background: "#007BFF",
+        },
       }}
     >
       <Button
         variant="outlined"
-        sx={{ margin: isMobile ? "0 0 4px 0" : "0 4px" }}
+        sx={{
+          margin: isMobile ? "0 0 4px 0" : "0 4px",
+          padding: isMobile ? "4px 8px" : "0px 10px",
+          borderTop: "1px solid #c0c0c0",
+          borderBottom: "1px solid #c0c0c0",
+          fontSize: "12px",
+          color: "#747474",
+        }}
         disabled={page === 0}
         onClick={handlePrevPage}
       >
-        Previous
+        {prevButtonContent == "arrow" ? <ArrowLeftIcon /> : prevButtonContent}
       </Button>
       {[...Array(totalPages)].map((_, index) => (
         <Button
@@ -48,7 +67,9 @@ const CustomPagination = ({ count, rowsPerPage, page, onPageChange }) => {
           sx={{
             margin: isMobile ? "0 0 4px 0" : "0 4px",
             minWidth: isMobile ? "30px" : "auto",
-            padding: isMobile ? "4px 8px" : "6px 16px",
+            padding: isMobile ? "4px 8px" : "0px 10px",
+            borderTop: "1px solid #c0c0c0",
+            borderBottom: "1px solid #c0c0c0",
           }}
           onClick={() => handlePageClick(index)}
           className={index === page ? "active" : ""}
@@ -58,11 +79,16 @@ const CustomPagination = ({ count, rowsPerPage, page, onPageChange }) => {
       ))}
       <Button
         variant="outlined"
-        sx={{ margin: isMobile ? "0 0 8px 0" : "0 8px" }}
         disabled={page === totalPages - 1}
         onClick={handleNextPage}
+        sx={{
+          margin: isMobile ? "0 0 8px 0" : "0 8px",
+          borderTop: "1px solid #c0c0c0",
+          borderBottom: "1px solid #c0c0c0",
+          fontSize: "12px",
+        }}
       >
-        Next
+        {prevButtonContent == "arrow" ? <ArrowRightIcon /> : nextButtonContent}
       </Button>
     </Box>
   );
