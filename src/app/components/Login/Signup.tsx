@@ -126,8 +126,18 @@ const SignupForm = () => {
           sx={{
             background: "#DBECFF",
             height: {
-              xs: "auto",
+              xs: "100vh",
+              sm: "auto",
               md: "100vh",
+            },
+            "@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait)": {
+              height: "100vh",
+            },
+            "@media (device-width: 320px) and (device-height: 568px) and (orientation: portrait)": {
+              height: "auto",
+            },
+            "@media (max-width: 568px) and (max-height: 320px) and (orientation: landscape)": {
+              height: "auto",
             },
             display: "flex",
             flexDirection: "column",
