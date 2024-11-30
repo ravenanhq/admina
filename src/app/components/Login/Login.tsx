@@ -16,11 +16,11 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { signIn } from "next-auth/react";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import LoginIcon from "@mui/icons-material/Login";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import LoginIcon from '@mui/icons-material/Login';
+import PersonAddAlt1OutlinedIcon from '@mui/icons-material/PersonAddAlt1Outlined';
 import { useRouter } from "next/navigation";
 import GoogleIcon from "@mui/icons-material/Google";
-import FacebookIcon from "@mui/icons-material/Facebook";
+import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import TwitterIcon from "@mui/icons-material/Twitter";
 import ButtonComponent from "../BaseComponent/Button";
 import Image from "next/image";
@@ -41,6 +41,7 @@ const LoginForm = () => {
   const [credentialsErr, setCredentialErr] = useState("");
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -100,13 +101,13 @@ const LoginForm = () => {
   };
 
   return (
-    <Grid container style={{ height: "100vh", overflow: "hidden" }}>
+    <Grid container style={{ height: "100vh" }}>
       <Grid
         item
         xs={12}
         md={6}
         style={{
-          backgroundColor: "#E3F2FD",
+          backgroundColor: "#DBECFF",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -200,17 +201,21 @@ const LoginForm = () => {
             justifyContent="space-between"
             alignItems="center"
             mt={2}
+            sx={{
+              flexWrap: "wrap",
+              width: "100%",
+            }}
           >
             <FormControlLabel
               control={<Checkbox color="primary" />}
               label={<Typography variant="body2">Remember me</Typography>}
               labelPlacement="start"
               sx={{
+                margin: 0,
+                fontSize: "14px",
+                whiteSpace: "nowrap",
                 display: "flex",
                 alignItems: "center",
-                marginLeft: "1px",
-                fontSize: "14px",
-                whiteSpace: isMobile ? "nowrap" : "normal",
               }}
             />
             <Link
@@ -219,25 +224,35 @@ const LoginForm = () => {
               underline="hover"
               sx={{
                 fontSize: "14px",
-                whiteSpace: isMobile ? "nowrap" : "normal",
+                whiteSpace: "nowrap",
                 display: "flex",
                 alignItems: "center",
                 fontWeight: 400,
                 fontFamily: theme.typography.fontFamily,
+                textAlign: "right",
               }}
             >
               Forgot password?
             </Link>
           </Box>
 
-          <Box display="flex" justifyContent="center" gap={2} mt={3}>
+          <Box
+            display="flex"
+            flexDirection={isMobile ? "column" : "row"}
+            gap={2}
+            mt={3}
+            sx={{
+              width: "100%",
+              flexWrap: "wrap",
+            }}
+          >
             <ButtonComponent
               variant="contained"
               type="submit"
               size="small"
               onClick={handleSubmit}
               prefix={<LoginIcon />}
-              style={{ flex: 1, background: "#007BFF" }}
+              style={{ flex: 1, background: "#007BFF", minWidth: isMobile ? "100%" : "auto" }}
               name="Login"
             ></ButtonComponent>
             <ButtonComponent
@@ -245,8 +260,8 @@ const LoginForm = () => {
               type="submit"
               size="small"
               onClick={handleSignUpClick}
-              prefix={<PersonAddIcon />}
-              style={{ flex: 1, background: "#AFD7FF", color: "#007BFF" }}
+              prefix={<PersonAddAlt1OutlinedIcon />}
+              style={{ flex: 1, background: "#AFD7FF", color: "#007BFF", minWidth: isMobile ? "100%" : "auto" }}
               name="Signup"
             ></ButtonComponent>
           </Box>
@@ -264,7 +279,7 @@ const LoginForm = () => {
             <GoogleIcon
               style={{ fontSize: 25, color: "#e46a76", cursor: "pointer" }}
             />
-            <FacebookIcon
+            <FacebookRoundedIcon
               style={{ fontSize: 25, color: "#0866ff", cursor: "pointer" }}
             />
             <TwitterIcon
@@ -279,7 +294,7 @@ const LoginForm = () => {
         xs={12}
         md={6}
         style={{
-          display: "flex",
+          display: isDesktop ? "flex" : "none",
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: "#FFFFFF",
