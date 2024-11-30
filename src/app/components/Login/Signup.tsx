@@ -1,12 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import {
-  Card,
-  CardHeader,
-  CardContent,
   TextField,
   Grid,
-  CardActions,
   InputAdornment,
   Link,
   Typography,
@@ -127,9 +123,12 @@ const SignupForm = () => {
           item
           xs={12}
           md={6}
-          style={{
+          sx={{
             background: "#DBECFF",
-            height: "100vh",
+            height: {
+              xs: "auto",
+              md: "100vh",
+            },
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -374,8 +373,8 @@ const SignupForm = () => {
           item
           xs={12}
           md={6}
-          style={{
-            display: "flex",
+          sx={{
+            display: { xs: "none", sm: "none", md: "flex" },
             alignItems: "center",
             justifyContent: "center",
           }}
