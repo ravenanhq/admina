@@ -19,14 +19,14 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import LoginIcon from '@mui/icons-material/Login';
 import PersonAddAlt1OutlinedIcon from '@mui/icons-material/PersonAddAlt1Outlined';
 import { useRouter } from "next/navigation";
-import GoogleIcon from "@mui/icons-material/Google";
-import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
-import TwitterIcon from "@mui/icons-material/Twitter";
 import ButtonComponent from "../BaseComponent/Button";
 import Image from "next/image";
 
 const Logo = "/assets/images/logo-admina.png";
 const LoginImg = "/assets/images/login-right.png";
+const googleIcon = "/assets/images/google.svg";
+const facebookIcon = "/assets/images/facebook.svg";
+const twitterIcon = "/assets/images/twitter.svg";
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -276,15 +276,21 @@ const LoginForm = () => {
           </Typography>
 
           <Box display="flex" justifyContent="center" gap={2}>
-            <GoogleIcon
-              style={{ fontSize: 25, color: "#e46a76", cursor: "pointer" }}
+          <Image src={googleIcon} alt="Logo"
+            width="23"
+            height="23"
+            style={{ cursor: "pointer" }}
             />
-            <FacebookRoundedIcon
-              style={{ fontSize: 25, color: "#0866ff", cursor: "pointer" }}
+            <Image src={facebookIcon} alt="Logo"
+            width="23"
+            height="23"
+            style={{ cursor: "pointer" }}
             />
-            <TwitterIcon
-              style={{ fontSize: 25, color: "#03c9d7", cursor: "pointer" }}
-            />
+            <Image src={twitterIcon} alt="Logo"
+            width="23"
+            height="23"
+            style={{ cursor: "pointer" }}
+          />
           </Box>
         </form>
       </Grid>
