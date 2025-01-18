@@ -181,12 +181,12 @@ const SignupForm = () => {
               }}
               sx={{
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 0,
-                  backgroundColor: "white", // Sets background color to white
+                  borderRadius: "3px",
+                  backgroundColor: "white",
                 },
                 "& .MuiInputBase-input::placeholder": {
-                  color: "gray", // Optional: change placeholder text color if needed
-                  opacity: 1, // Ensures placeholder is fully opaque
+                  color: "gray",
+                  opacity: 1,
                 },
               }}
             />
@@ -209,12 +209,12 @@ const SignupForm = () => {
               }}
               sx={{
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 0,
-                  backgroundColor: "white", // Sets background color to white
+                  borderRadius: "3px",
+                  backgroundColor: "white",
                 },
                 "& .MuiInputBase-input::placeholder": {
-                  color: "gray", // Optional: change placeholder text color if needed
-                  opacity: 1, // Ensures placeholder is fully opaque
+                  color: "gray",
+                  opacity: 1,
                 },
               }}
             />
@@ -237,12 +237,12 @@ const SignupForm = () => {
               }}
               sx={{
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 0,
-                  backgroundColor: "white", // Sets background color to white
+                  borderRadius: "3px",
+                  backgroundColor: "white",
                 },
                 "& .MuiInputBase-input::placeholder": {
-                  color: "gray", // Optional: change placeholder text color if needed
-                  opacity: 1, // Ensures placeholder is fully opaque
+                  color: "gray",
+                  opacity: 1,
                 },
               }}
             />
@@ -276,12 +276,12 @@ const SignupForm = () => {
               }}
               sx={{
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 0,
-                  backgroundColor: "white", // Sets background color to white
+                  borderRadius: "3px",
+                  backgroundColor: "white",
                 },
                 "& .MuiInputBase-input::placeholder": {
-                  color: "gray", // Optional: change placeholder text color if needed
-                  opacity: 1, // Ensures placeholder is fully opaque
+                  color: "gray",
+                  opacity: 1,
                 },
               }}
             />
@@ -315,12 +315,12 @@ const SignupForm = () => {
               }}
               sx={{
                 "& .MuiOutlinedInput-root": {
-                  borderRadius: 0,
-                  backgroundColor: "white", // Sets background color to white
+                  borderRadius: "3px",
+                  backgroundColor: "white",
                 },
                 "& .MuiInputBase-input::placeholder": {
-                  color: "gray", // Optional: change placeholder text color if needed
-                  opacity: 1, // Ensures placeholder is fully opaque
+                  color: "gray",
+                  opacity: 1,
                 },
               }}
             />
@@ -331,12 +331,13 @@ const SignupForm = () => {
                   type="submit"
                   size="large"
                   onClick={handleSubmit}
-                  color="primary"
                   style={{
                     padding: "5px 10px",
                     width: "100%",
-                    borderRadius: 0, // Removes border radius
+                    borderRadius: 0,
                     marginTop: "15px",
+                    background: "#007BFF",
+                    color: "#ffffff"
                   }}
                   name="Submit"
                 ></ButtonComponent>
@@ -351,14 +352,35 @@ const SignupForm = () => {
                     width: "100%",
                     padding: "5px 10px",
                     background: "#AFD7FF",
-                    borderRadius: 0, // Removes border radius
+                    borderRadius: 0,
                     marginTop: "15px",
-                    color: "#0000FF",
+                    color: "#007BFF",
                   }}
                   name="Cancel"
                 ></ButtonComponent>
               </Grid>
             </Grid>
+            <Link
+                  href="/login/"
+                  sx={{
+                    color: "#0000FF",
+                    textDecoration: "none",
+                    marginLeft: "auto",
+                  }}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: "12px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "flex-end",
+                    }}
+                    component="div"
+                  >
+                    <ArrowBackIcon sx={{ width: "17px", marginRight: "5px", marginTop: "15px" }} />
+                    <div style={{ lineHeight: "25px", marginTop: "15px" }}>Back to login</div>
+                  </Typography>
+                </Link>
           </form>
           <Snackbar
             open={openSnackbar}
@@ -367,23 +389,6 @@ const SignupForm = () => {
             message={successMessage}
             anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
           />
-          <Link
-            href="/login/"
-            sx={{ color: "#0000FF", textDecoration: "none", marginTop: "10px" }}
-          >
-            <Typography
-              sx={{
-                fontSize: "12px",
-                justifyContent: "flex-end", // Aligns to the right
-                display: "flex",
-                alignItems: "center", // Centers vertically for better alignment
-              }}
-              component="div"
-            >
-              <ArrowBackIcon sx={{ width: "17px", marginRight: "5px" }} />
-              <div style={{ lineHeight: "25px" }}>Back to login</div>
-            </Typography>
-          </Link>
         </Grid>
 
         <Grid
