@@ -12,7 +12,7 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import PersonIcon from "@mui/icons-material/Person";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ButtonComponent from "../BaseComponent/Button";
@@ -39,6 +39,7 @@ const SignupForm = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -46,6 +47,9 @@ const SignupForm = () => {
   const validateForm = () => {
     let isValid = true;
     const newErrors = { ...initialErrors };
+
+    const passwordRegex =
+    /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     if (formData.email.trim() === "") {
       newErrors.email = "Email is required";
@@ -71,6 +75,10 @@ const SignupForm = () => {
 
     if (formData.password.trim() === "") {
       newErrors.password = "Password is required";
+      isValid = false;
+    } else if (!passwordRegex.test(formData.password)) {
+      newErrors.password =
+        "Password must be at least 8 characters, with 1 uppercase letter, 1 number, and 1 special character";
       isValid = false;
     }
 
@@ -112,24 +120,30 @@ const SignupForm = () => {
     setErrors({ ...initialErrors });
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  const togglePasswordVisibility = (field) => {
+    if (field === "password") {
+      setShowPassword(!showPassword);
+    } else if (field === "confirmPassword") {
+      setShowConfirmPassword(!showConfirmPassword);
+    }
   };
 
   return (
     <>
-      <Grid container alignItems="center">
+      <Grid container
+        alignItems="center"
+        sx={{
+          width: "100%",
+          height: "100vh",
+        }}>
         <Grid
           item
           xs={12}
           md={6}
           sx={{
             background: "#DBECFF",
-            height: {
-              xs: "100vh",
-              sm: "auto",
-              md: "100vh",
-            },
+            minHeight: "100%",
+            padding: "20px",
             "@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait)":
               {
                 height: "100vh",
@@ -262,12 +276,12 @@ const SignupForm = () => {
                   <InputAdornment position="start">
                     {showPassword ? (
                       <VisibilityOffIcon
-                        onClick={togglePasswordVisibility}
+                        onClick={() => togglePasswordVisibility("password")}
                         sx={{ cursor: "pointer" }}
                       />
                     ) : (
                       <VisibilityIcon
-                        onClick={togglePasswordVisibility}
+                        onClick={() => togglePasswordVisibility("password")}
                         sx={{ cursor: "pointer" }}
                       />
                     )}
@@ -289,7 +303,7 @@ const SignupForm = () => {
               fullWidth
               margin="normal"
               name="confirmPassword"
-              type={showPassword ? "text" : "password"}
+              type={showConfirmPassword ? "text" : "password"}
               value={formData.confirmPassword}
               onChange={handleChange}
               error={!!errors.confirmPassword}
@@ -299,14 +313,18 @@ const SignupForm = () => {
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
-                    {showPassword ? (
+                    {showConfirmPassword ? (
                       <VisibilityOffIcon
-                        onClick={togglePasswordVisibility}
+                        onClick={() =>
+                          togglePasswordVisibility("confirmPassword")
+                        }
                         sx={{ cursor: "pointer" }}
                       />
                     ) : (
                       <VisibilityIcon
-                        onClick={togglePasswordVisibility}
+                        onClick={() =>
+                          togglePasswordVisibility("confirmPassword")
+                        }
                         sx={{ cursor: "pointer" }}
                       />
                     )}
@@ -366,6 +384,10 @@ const SignupForm = () => {
                     color: "#0000FF",
                     textDecoration: "none",
                     marginLeft: "auto",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-end",
+                    width: "fit-content",
                   }}
                 >
                   <Typography
@@ -377,8 +399,8 @@ const SignupForm = () => {
                     }}
                     component="div"
                   >
-                    <ArrowBackIcon sx={{ width: "17px", marginRight: "5px", marginTop: "15px" }} />
-                    <div style={{ lineHeight: "25px", marginTop: "15px" }}>Back to login</div>
+                    <ArrowCircleLeftIcon sx={{ marginRight: "5px", marginTop: "15px", color: "#007BFF" }} />
+                    <div style={{ lineHeight: "25px", marginTop: "15px", color: "#007BFF", }}>Back to login</div>
                   </Typography>
                 </Link>
           </form>
