@@ -40,7 +40,6 @@ const LoginForm = () => {
   });
   const [credentialsErr, setCredentialErr] = useState("");
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
@@ -145,8 +144,10 @@ const LoginForm = () => {
               ),
             }}
             sx={{
-              backgroundColor: "#ffffff",
-              borderRadius: "5px",
+             "& .MuiOutlinedInput-root": {
+                borderRadius: 0,
+                backgroundColor: "#ffffff",
+              },
               "& input": {
                 fontSize: "15px",
                 color: "#808080",
@@ -182,13 +183,15 @@ const LoginForm = () => {
               ),
             }}
             sx={{
-              backgroundColor: "#ffffff",
-              borderRadius: "5px",
-              "& input": {
-                fontSize: "15px",
-                color: "#808080",
-              },
-            }}
+              "& .MuiOutlinedInput-root": {
+                 borderRadius: 0,
+                 backgroundColor: "#ffffff",
+               },
+               "& input": {
+                 fontSize: "15px",
+                 color: "#808080",
+               },
+             }}
           />
           {credentialsErr && (
             <p style={{ color: "#d32f2f", fontSize: "14px" }}>
@@ -236,35 +239,43 @@ const LoginForm = () => {
             </Link>
           </Box>
 
-          <Box
-            display="flex"
-            flexDirection={isMobile ? "column" : "row"}
-            gap={2}
-            mt={3}
-            sx={{
-              width: "100%",
-              flexWrap: "wrap",
-            }}
-          >
-            <ButtonComponent
-              variant="contained"
-              type="submit"
-              size="small"
-              onClick={handleSubmit}
-              prefix={<LoginIcon />}
-              style={{ flex: 1, background: "#007BFF", minWidth: isMobile ? "100%" : "auto" }}
-              name="Login"
-            ></ButtonComponent>
-            <ButtonComponent
-              variant="contained"
-              type="submit"
-              size="small"
-              onClick={handleSignUpClick}
-              prefix={<PersonAddAlt1OutlinedIcon />}
-              style={{ flex: 1, background: "#AFD7FF", color: "#007BFF", minWidth: isMobile ? "100%" : "auto" }}
-              name="Signup"
-            ></ButtonComponent>
-          </Box>
+          <Grid container spacing={2} alignItems="center">
+            <Grid item xs={12} md={6}>
+              <ButtonComponent
+                variant="contained"
+                type="submit"
+                size="large"
+                onClick={handleSubmit}
+                prefix={<LoginIcon />}
+                color="primary"
+                style={{
+                  padding: 0,
+                  width: "100%",
+                  borderRadius: 0,
+                  marginTop: "15px",
+                }}
+                name="Login"
+              ></ButtonComponent>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <ButtonComponent
+                variant="contained"
+                type="button"
+                size="large"
+                onClick={handleSignUpClick}
+                prefix={<PersonAddAlt1OutlinedIcon />}
+                style={{
+                  width: "100%",
+                  padding: 0,
+                  background: "#AFD7FF",
+                  borderRadius: 0,
+                  marginTop: "15px",
+                  color: "#0000FF",
+                }}
+                name="Signup"
+              ></ButtonComponent>
+            </Grid>
+          </Grid>
 
           <Typography
             variant="body2"
