@@ -18,7 +18,7 @@ const ToggleModal = () => {
     <>
       <Card variant="outlined" style={{ borderRadius: "5px", border: "none" }}>
         <CardHeader
-          title="Toggle between modals"
+          title="Toggle between Modal"
           subheader="Toggle between multiple modals"
           sx={{ bgcolor: "#007BFF", color: "white" }}
           titleTypographyProps={{ fontSize: "14px" }}

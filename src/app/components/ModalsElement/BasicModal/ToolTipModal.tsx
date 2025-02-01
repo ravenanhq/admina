@@ -3,15 +3,29 @@ import {
   Card,
   CardContent,
   CardHeader,
+  Divider,
   IconButton,
   Modal,
+  Popover,
+  Tooltip,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import ButtonComponent from "../../BaseComponent/Button";
 import CloseIcon from "@mui/icons-material/Close";
 
 const ToolTipModal = ({ open, handleClose }) => {
+  const [popover, setPopover] = useState(null);
+
+  const handlePopoverOpen = (event) => {
+    setPopover(event.currentTarget);
+  };
+
+  const handlePopoverClose = () => {
+    setPopover(null);
+  };
+
+  const openPopover = Boolean(popover);
   return (
     <Modal open={open} onClose={handleClose}>
       <Box
@@ -55,11 +69,12 @@ const ToolTipModal = ({ open, handleClose }) => {
               Popover in a modal
             </Typography>
             <Typography variant="subtitle2" sx={{ pt: 2, color: "#747474" }}>
-              The{" "}
+              This{" "}
               <ButtonComponent
                 variant="contained"
                 name="Button"
                 size="large"
+                onClick={handlePopoverOpen}
                 style={{
                   height: "40px",
                   fontSize: "12px",
@@ -69,36 +84,86 @@ const ToolTipModal = ({ open, handleClose }) => {
                   background: "#005abb",
                   marginRight: "10px",
                 }}
-              />{" "}
-              triggers a popover on clicl
+              />
+              triggers a popover on click
             </Typography>
-            <Typography variant="subtitle2" sx={{ pt: 2, color: "#747474" }}>
+
+            <Popover
+              open={openPopover}
+              anchorEl={popover}
+              onClose={handlePopoverClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "center",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "center",
+              }}
+              sx={{ mt: 1 }}
+            >
+              <Box
+                sx={{
+                  width: 200,
+                  bgcolor: "white",
+                  borderRadius: "8px",
+                  boxShadow: 3,
+                  border: "1px solid #ddd",
+                }}
+              >
+                <Box
+                  sx={{
+                    bgcolor: "#F8F9FA",
+                    py: 1,
+                    px: 2,
+                    borderTopLeftRadius: "8px",
+                    borderTopRightRadius: "8px",
+                    fontWeight: "bold",
+                    color: "#5A5A5A",
+                    fontSize: "14px",
+                  }}
+                >
+                  Popover Title
+                </Box>
+                <Box sx={{ p: 2 }}>
+                  <Typography sx={{ fontSize: "13px", color: "#5A5A5A" }}>
+                    Popover body content is set in this attribute.
+                  </Typography>
+                </Box>
+              </Box>
+            </Popover>
+            <Typography variant="subtitle1" sx={{ pt: 2, color: "#747474" }}>
               Tooltips in a modal
             </Typography>
             <Typography variant="subtitle2" sx={{ pt: 2, color: "#747474" }}>
-              <a
-                href="#"
-                style={{
-                  color: "#007BFF",
-                  textDecoration: "none",
-                  marginLeft: "4px",
-                }}
-              >
-                This Link{" "}
-              </a>
+              <Tooltip title="This is a tooltip" arrow placement="top">
+                <a
+                  href="#"
+                  style={{
+                    color: "#007BFF",
+                    textDecoration: "none",
+                    marginLeft: "4px",
+                  }}
+                >
+                  This Link
+                </a>
+              </Tooltip>{" "}
               and{" "}
-              <a
-                href="#"
-                style={{
-                  color: "#007BFF",
-                  textDecoration: "none",
-                  marginLeft: "4px",
-                }}
-              >
-                That Link{" "}
-              </a>
-              have tooltips on hove
+              <Tooltip title="That is another tooltip" arrow placement="top">
+                <a
+                  href="#"
+                  style={{
+                    color: "#007BFF",
+                    textDecoration: "none",
+                    marginLeft: "4px",
+                  }}
+                >
+                  That Link
+                </a>
+              </Tooltip>{" "}
+              have tooltips on hover
             </Typography>
+            <Divider sx={{ margin: "0 auto", marginY: 2 }} />
             <Box
               sx={{
                 display: "flex",

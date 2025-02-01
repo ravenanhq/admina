@@ -48,9 +48,14 @@ const BasicModals = () => {
     <>
       <Card variant="outlined" style={{ borderRadius: "5px", border: "none" }}>
         <CardHeader
-          title="Basic Layout"
+          title="Basic Modal"
+          subheader="Different types of basic modals"
           sx={{ bgcolor: "#007BFF", color: "white" }}
           titleTypographyProps={{ fontSize: "14px" }}
+          subheaderTypographyProps={{
+            fontSize: "12px",
+            color: "rgba(255, 255, 255, 0.7)",
+          }}
         />
         <CardContent>
           <Grid container spacing={3}>

@@ -104,7 +104,7 @@ const SignUpModal = ({ open, handleClose }) => {
                           marginTop: isMobile ? "5px" : "10px",
                           width: isMobile ? "100%" : "80%",
                           "& .MuiOutlinedInput-notchedOutline": {
-                            borderCollor: "C0C0C0",
+                            border: "none",
                           },
                           "& .MuiInputBase-input": {
                             fontSize: "12px",
@@ -149,7 +149,9 @@ const SignUpModal = ({ open, handleClose }) => {
                         sx={{
                           marginTop: isMobile ? "5px" : "10px",
                           width: isMobile ? "100%" : "80%",
-                          "& .MuiOutlinedInput-notchedOutline": {},
+                          "& .MuiOutlinedInput-notchedOutline": {
+                            border: "none",
+                          },
                           "& .MuiInputBase-input": {
                             fontSize: "12px",
                             color: "#565656",
@@ -182,7 +184,7 @@ const SignUpModal = ({ open, handleClose }) => {
                           color: "#565656",
                         }}
                       >
-                        Email
+                        E-mail Address
                       </label>
                       <TextField
                         fullWidth
@@ -195,7 +197,7 @@ const SignUpModal = ({ open, handleClose }) => {
                           width: isMobile ? "100%" : "95%",
                           display: "block",
                           "& .MuiOutlinedInput-notchedOutline": {
-                            borderCollor: "C0C0C0",
+                            border: "none",
                           },
                           "& .MuiInputBase-input": {
                             fontSize: "12px",

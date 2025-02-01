@@ -25,89 +25,70 @@ const ScrollModal = ({ open, handleClose }) => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: 500,
+          width: "90%",
+          maxWidth: 500,
           bgcolor: "background.paper",
-          borderRadius: "8px",
+          borderRadius: 2,
           boxShadow: 24,
         }}
       >
-        <Card
-          variant="outlined"
-          style={{
-            borderRadius: "5px",
-            border: "none",
-            height: "300px",
-            overflow: "scroll",
-          }}
-        >
+        <Card variant="outlined" sx={{ border: "none" }}>
           <CardHeader
-            title="Scroll Modal"
-            sx={{ bgcolor: "#007BFF", color: "white" }}
+            title="Scrolling Modal"
+            sx={{
+              bgcolor: "#007BFF",
+              color: "white",
+              borderTopLeftRadius: 2,
+              borderTopRightRadius: 2,
+            }}
             titleTypographyProps={{ fontSize: "14px" }}
             action={
               <IconButton
                 aria-label="close"
                 onClick={handleClose}
-                sx={{
-                  color: "white",
-                  fontSize: "12px",
-                }}
+                sx={{ color: "white" }}
               >
                 <CloseIcon />
               </IconButton>
             }
           />
-          <CardContent>
+          <CardContent sx={{ maxHeight: 300, overflowY: "auto" }}>
             <Typography
               variant="subtitle2"
               sx={{ pt: 2, color: "#747474", fontWeight: "600" }}
             >
-              Web designer
+              Web Designer
             </Typography>
             <List sx={{ paddingLeft: 2 }}>
-              <ListItem sx={{ alignItems: "flex-start", paddingLeft: 0 }}>
-                <ListItemIcon
-                  sx={{
-                    minWidth: "20px",
-                    color: "#747474",
-                    marginTop: "8px",
-                  }}
+              {[
+                "For a site to be successful, a designer must be able to communicate their ideas, chat with a firm about what they want, and inquire about the target audience.",
+                "As a web designer, you either prefer to work freelance for several different businesses at once or you may choose to work for just one. In either case, you'll need good time management skills to keep several projects moving forward.",
+              ].map((text, index) => (
+                <ListItem
+                  key={index}
+                  sx={{ alignItems: "flex-start", paddingLeft: 0 }}
                 >
-                  <FiberManualRecordIcon sx={{ fontSize: "8px" }} />
-                </ListItemIcon>
-                <ListItemText
-                  primary="For a site to be successful, a designer must be able to communicate their ideas, chat with a firm about what they want, and inquire about the target audience."
-                  primaryTypographyProps={{
-                    sx: {
+                  <ListItemIcon
+                    sx={{
+                      minWidth: "20px",
+                      color: "#747474",
+                      marginTop: "8px",
+                    }}
+                  >
+                    <FiberManualRecordIcon sx={{ fontSize: "8px" }} />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={text}
+                    primaryTypographyProps={{
                       fontSize: "12px",
                       color: "#747474",
                       lineHeight: "1.5",
-                    },
-                  }}
-                />
-              </ListItem>
-              <ListItem sx={{ alignItems: "flex-start", paddingLeft: 0 }}>
-                <ListItemIcon
-                  sx={{
-                    minWidth: "20px",
-                    color: "#747474",
-                    marginTop: "8px",
-                  }}
-                >
-                  <FiberManualRecordIcon sx={{ fontSize: "8px" }} />
-                </ListItemIcon>
-                <ListItemText
-                  primary="As a web designer, you either prefer to work freelance for several different businesses at once or you may choose to work for just one. In either case, you'll need good time management skills to keep several projects moving forward."
-                  primaryTypographyProps={{
-                    sx: {
-                      fontSize: "12px",
-                      color: "#747474",
-                      lineHeight: "1.5",
-                    },
-                  }}
-                />
-              </ListItem>
+                    }}
+                  />
+                </ListItem>
+              ))}
             </List>
+
             <Typography
               variant="subtitle2"
               sx={{ pt: 2, color: "#747474", fontWeight: "600" }}
@@ -115,61 +96,39 @@ const ScrollModal = ({ open, handleClose }) => {
               UI UX Designer
             </Typography>
             <List sx={{ paddingLeft: 2 }}>
-              <ListItem sx={{ alignItems: "flex-start", paddingLeft: 0 }}>
-                <ListItemIcon
-                  sx={{
-                    minWidth: "20px",
-                    color: "#747474",
-                    marginTop: "8px",
-                  }}
+              {[
+                "User research, persona creation, building wireframes and interactive prototypes, and testing ideas are among the common tasks of a UX designer. These duties can differ greatly between organizations.",
+                "As a web designer, you either prefer to work freelance for several different businesses at once or you may choose to work for just one. In either case, you'll need good time management skills to keep several projects moving forward.",
+              ].map((text, index) => (
+                <ListItem
+                  key={index}
+                  sx={{ alignItems: "flex-start", paddingLeft: 0 }}
                 >
-                  <FiberManualRecordIcon sx={{ fontSize: "8px" }} />
-                </ListItemIcon>
-                <ListItemText
-                  primary="User research, persona creation, building wireframes and interactive prototypes, and testing ideas are among the common tasks of a UX designer. These duties can differ greatly between organizations."
-                  primaryTypographyProps={{
-                    sx: {
+                  <ListItemIcon
+                    sx={{
+                      minWidth: "20px",
+                      color: "#747474",
+                      marginTop: "8px",
+                    }}
+                  >
+                    <FiberManualRecordIcon sx={{ fontSize: "8px" }} />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={text}
+                    primaryTypographyProps={{
                       fontSize: "12px",
                       color: "#747474",
                       lineHeight: "1.5",
-                    },
-                  }}
-                />
-              </ListItem>
-              <ListItem sx={{ alignItems: "flex-start", paddingLeft: 0 }}>
-                <ListItemIcon
-                  sx={{
-                    minWidth: "20px",
-                    color: "#747474",
-                    marginTop: "8px",
-                  }}
-                >
-                  <FiberManualRecordIcon sx={{ fontSize: "8px" }} />
-                </ListItemIcon>
-                <ListItemText
-                  primary="As a web designer, you either prefer to work freelance for several different businesses at once or you may choose to work for just one. In either case, you'll need good time management skills to keep several projects moving forward."
-                  primaryTypographyProps={{
-                    sx: {
-                      fontSize: "12px",
-                      color: "#747474",
-                      lineHeight: "1.5",
-                    },
-                  }}
-                />
-              </ListItem>
+                    }}
+                  />
+                </ListItem>
+              ))}
             </List>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "right",
-                mt: 3,
-              }}
-            >
+
+            <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 3 }}>
               <ButtonComponent
                 variant="contained"
-                name="close"
+                name="Close"
                 onClick={handleClose}
                 size="large"
                 style={{
@@ -182,10 +141,9 @@ const ScrollModal = ({ open, handleClose }) => {
                   marginRight: "10px",
                 }}
               />
-
               <ButtonComponent
                 variant="contained"
-                name="save changes"
+                name="Save Changes"
                 onClick={handleClose}
                 size="large"
                 style={{

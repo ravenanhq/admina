@@ -279,6 +279,116 @@ const ToggleModalScreen = ({ open, handleClose }) => {
                   label={""}
                 />
               </Box>
+
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    pt: 2,
+                    color: "#747474",
+                    fontSize: "12px",
+                    textAlign: "center",
+                    fontWeight: "500",
+                  }}
+                >
+                  show closed assets
+                </Typography>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      defaultChecked
+                      color="primary"
+                      sx={{
+                        width: 62,
+                        height: 40,
+                        "& .MuiSwitch-track::before": {
+                          content: '"ON"',
+                          position: "absolute",
+                          top: "50%",
+                          left: 13,
+                          transform: "translateY(-50%)",
+                          fontSize: "10px",
+                          fontWeight: "bold",
+                          color: "white",
+                        },
+                        "& .MuiSwitch-track::after": {
+                          content: '"OFF"',
+                          position: "absolute",
+                          top: "50%",
+                          right: 12,
+                          transform: "translateY(-50%)",
+                          fontSize: "10px",
+                          fontWeight: "bold",
+                          color: "#fff",
+                        },
+                      }}
+                    />
+                  }
+                  labelPlacement="start"
+                  label={""}
+                />
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                <Typography
+                  variant="subtitle2"
+                  sx={{
+                    pt: 2,
+                    color: "#747474",
+                    fontSize: "12px",
+                    textAlign: "center",
+                    fontWeight: "500",
+                  }}
+                >
+                  show closed assets
+                </Typography>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      color="primary"
+                      sx={{
+                        width: 62,
+                        height: 40,
+                        "& .MuiSwitch-track::before": {
+                          content: '"ON"',
+                          position: "absolute",
+                          top: "50%",
+                          left: 13,
+                          transform: "translateY(-50%)",
+                          fontSize: "10px",
+                          fontWeight: "bold",
+                          color: "white",
+                        },
+                        "& .MuiSwitch-track::after": {
+                          content: '"OFF"',
+                          position: "absolute",
+                          top: "50%",
+                          right: 12,
+                          transform: "translateY(-50%)",
+                          fontSize: "10px",
+                          fontWeight: "bold",
+                          color: "#fff",
+                        },
+                      }}
+                    />
+                  }
+                  labelPlacement="start"
+                  label={""}
+                />
+              </Box>
             </Box>
           </CardContent>
         </Card>

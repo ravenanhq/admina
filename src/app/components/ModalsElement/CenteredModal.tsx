@@ -17,7 +17,7 @@ const CenteredModal = () => {
     <>
       <Card variant="outlined" style={{ borderRadius: "5px", border: "none" }}>
         <CardHeader
-          title="Centered modals"
+          title="Centered Modal"
           sx={{ bgcolor: "#007BFF", color: "white" }}
           titleTypographyProps={{ fontSize: "14px" }}
         />

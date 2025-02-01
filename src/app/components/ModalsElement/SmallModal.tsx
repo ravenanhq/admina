@@ -37,7 +37,6 @@ const SmallModal = ({ open, handleClose }) => {
             borderRadius: "5px",
             border: "none",
             height: "100%",
-            overflow: "scroll",
           }}
         >
           <CardHeader
