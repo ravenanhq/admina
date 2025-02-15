@@ -1,7 +1,7 @@
 import { Card, CardHeader, CardContent, Grid } from "@mui/material";
 import React, { useState } from "react";
 import ButtonComponent from "../BaseComponent/Button";
-import VericalCenteredModal from "./VericalCenteredModal";
+import VerticalCenteredModal from "./VerticalCenteredModal";
 
 const CenteredModal = () => {
   const [open, setOpen] = useState(false);
@@ -35,17 +35,17 @@ const CenteredModal = () => {
                   padding: "0 10px",
                   textTransform: "capitalize",
                   color: "#fff",
-                  background: "#7a70ba",
+                  background: "#007bff",
                 }}
               />
             </Grid>
           </Grid>
         </CardContent>
       </Card>
-      <VericalCenteredModal
+      <VerticalCenteredModal
         open={open}
         handleClose={handleClose}
-      ></VericalCenteredModal>
+      ></VerticalCenteredModal>
     </>
   );
 };

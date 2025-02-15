@@ -309,7 +309,7 @@ const ToggleModalScreen = ({ open, handleClose }) => {
                         width: 62,
                         height: 40,
                         "& .MuiSwitch-track::before": {
-                          content: '"ON"',
+                          content: '"NO"',
                           position: "absolute",
                           top: "50%",
                           left: 13,
@@ -319,7 +319,7 @@ const ToggleModalScreen = ({ open, handleClose }) => {
                           color: "white",
                         },
                         "& .MuiSwitch-track::after": {
-                          content: '"OFF"',
+                          content: '"YES"',
                           position: "absolute",
                           top: "50%",
                           right: 12,
@@ -363,7 +363,7 @@ const ToggleModalScreen = ({ open, handleClose }) => {
                         width: 62,
                         height: 40,
                         "& .MuiSwitch-track::before": {
-                          content: '"ON"',
+                          content: '"NO"',
                           position: "absolute",
                           top: "50%",
                           left: 13,
@@ -373,7 +373,7 @@ const ToggleModalScreen = ({ open, handleClose }) => {
                           color: "white",
                         },
                         "& .MuiSwitch-track::after": {
-                          content: '"OFF"',
+                          content: '"YES"',
                           position: "absolute",
                           top: "50%",
                           right: 12,

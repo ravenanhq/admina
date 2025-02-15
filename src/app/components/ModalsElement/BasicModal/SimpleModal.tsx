@@ -12,7 +12,7 @@ import ButtonComponent from "../../BaseComponent/Button";
 import Image from "next/image";
 import CloseIcon from "@mui/icons-material/Close";
 
-const ShoppingImange = "/assets/images/online-shopping 1.png";
+const ShoppingImage = "/assets/images/online-shopping 1.png";
 
 const SimpleModal = ({ open, handleClose }) => {
   return (
@@ -52,7 +52,7 @@ const SimpleModal = ({ open, handleClose }) => {
           />
           <CardContent>
             <Typography variant="subtitle2" sx={{ pt: 2, color: "#747474" }}>
-              this is the heading of the Simple Modal style.
+              This is the Simple Modal.
             </Typography>
             <Box
               sx={{
@@ -64,7 +64,7 @@ const SimpleModal = ({ open, handleClose }) => {
               }}
             >
               <Image
-                src={ShoppingImange}
+                src={ShoppingImage}
                 alt="customer support"
                 width="125"
                 height="125"
@@ -75,7 +75,7 @@ const SimpleModal = ({ open, handleClose }) => {
                   pt: 2,
                   color: "#747474",
                   fontsize: "12px",
-                  textAlign: "center",
+                  textAlign: "left",
                 }}
               >
                 Our difficulty in finding regular clothes that was of great
@@ -84,7 +84,7 @@ const SimpleModal = ({ open, handleClose }) => {
               </Typography>
               <ButtonComponent
                 variant="contained"
-                name="simple"
+                name="Close"
                 onClick={handleClose}
                 size="large"
                 style={{

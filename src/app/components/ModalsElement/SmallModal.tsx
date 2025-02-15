@@ -29,6 +29,8 @@ const SmallModal = ({ open, handleClose }) => {
           bgcolor: "background.paper",
           display: "flex",
           flexDirection: "column",
+          borderRadius: "8px",
+          boxShadow: 24,
         }}
       >
         <Card
@@ -41,14 +43,14 @@ const SmallModal = ({ open, handleClose }) => {
         >
           <CardHeader
             title="Small Modal"
-            sx={{ color: "#565656", borderBottom: "1px solid #efefef" }}
+            sx={{ bgcolor: "#007BFF", color: "white", borderBottom: "1px solid #efefef" }}
             titleTypographyProps={{ fontSize: "14px", fontWeight: "bold" }}
             action={
               <IconButton
                 aria-label="close"
                 onClick={handleClose}
                 sx={{
-                  color: "#747474",
+                  color: "white",
                   fontSize: "12px",
                 }}
               >
@@ -97,41 +99,6 @@ const SmallModal = ({ open, handleClose }) => {
               sx={{ pt: 2, color: "#747474", fontWeight: "600" }}
             >
               Content Marketing
-            </Typography>
-            <List sx={{ paddingLeft: 2 }}>
-              <ListItem sx={{ alignItems: "flex-start", paddingLeft: 0 }}>
-                <ListItemIcon
-                  sx={{
-                    minWidth: "20px",
-                    color: "#747474",
-                    marginTop: "8px",
-                  }}
-                >
-                  <KeyboardDoubleArrowRightIcon
-                    sx={{
-                      fontSize: "15px",
-                      color: "#007bff",
-                      marginTop: "-3px",
-                    }}
-                  />
-                </ListItemIcon>
-                <ListItemText
-                  primary="For a site to be successful, a designer must be able to communicate their ideas, chat with a firm about what they want, and inquire about the target audience."
-                  primaryTypographyProps={{
-                    sx: {
-                      fontSize: "12px",
-                      color: "#747474",
-                      lineHeight: "1.5",
-                    },
-                  }}
-                />
-              </ListItem>
-            </List>
-            <Typography
-              variant="subtitle2"
-              sx={{ pt: 2, color: "#747474", fontWeight: "600" }}
-            >
-              PPC
             </Typography>
             <List sx={{ paddingLeft: 2 }}>
               <ListItem sx={{ alignItems: "flex-start", paddingLeft: 0 }}>

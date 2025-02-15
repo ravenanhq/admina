@@ -25,10 +25,12 @@ const ExtraLargeModal = ({ open, handleClose }) => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: 1000,
+          width: 1200,
           bgcolor: "background.paper",
           display: "flex",
           flexDirection: "column",
+          borderRadius: "8px",
+          boxShadow: 24,
         }}
       >
         <Card
@@ -36,19 +38,18 @@ const ExtraLargeModal = ({ open, handleClose }) => {
           style={{
             borderRadius: "5px",
             border: "none",
-            height: "100%",
           }}
         >
           <CardHeader
             title="Extra Large Modal"
-            sx={{ color: "#565656", borderBottom: "1px solid #efefef" }}
+            sx={{bgcolor: "#007BFF", color: "white", borderBottom: "1px solid #efefef" }}
             titleTypographyProps={{ fontSize: "14px", fontWeight: "bold" }}
             action={
               <IconButton
                 aria-label="close"
                 onClick={handleClose}
                 sx={{
-                  color: "#747474",
+                  color: "white",
                   fontSize: "12px",
                 }}
               >
