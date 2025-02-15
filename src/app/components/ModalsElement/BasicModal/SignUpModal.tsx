@@ -244,7 +244,7 @@ const SignUpModal = ({ open, handleClose }) => {
                 >
                   <ButtonComponent
                     variant="contained"
-                    name="save changes"
+                    name="Submit"
                     onClick={handleClose}
                     size="large"
                     style={{

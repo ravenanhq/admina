@@ -3,9 +3,9 @@ import React from "react";
 import Image from "next/image";
 import ButtonComponent from "../BaseComponent/Button";
 
-const ShoppingImange = "/assets/images/danger.png";
+const ShoppingImage = "/assets/images/danger.png";
 
-const VericalCenteredModal = ({ open, handleClose }) => {
+const VerticalCenteredModal = ({ open, handleClose }) => {
   return (
     <Modal open={open} onClose={handleClose}>
       <Box
@@ -35,7 +35,7 @@ const VericalCenteredModal = ({ open, handleClose }) => {
               }}
             >
               <Image
-                src={ShoppingImange}
+                src={ShoppingImage}
                 alt="customer support"
                 width="90"
                 height="90"
@@ -64,8 +64,8 @@ const VericalCenteredModal = ({ open, handleClose }) => {
                 }}
               >
                 Attackers on malicious activity may trick you into doing
-                something dangrous like installing software or revealing your
-                personal informations.
+                something dangerous like installing software or revealing your
+                personal information.
               </Typography>
               <ButtonComponent
                 variant="contained"
@@ -90,4 +90,4 @@ const VericalCenteredModal = ({ open, handleClose }) => {
   );
 };
 
-export default VericalCenteredModal;
+export default VerticalCenteredModal;

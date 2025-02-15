@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import BasicModals from "./BasicModal/BasicModal";
 import SizesModals from "./SizesModals";
 import CenteredModal from "./CenteredModal";
