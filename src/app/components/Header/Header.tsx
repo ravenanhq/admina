@@ -2,7 +2,6 @@
 import * as React from "react";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import {
-  Badge,
   Box,
   IconButton,
   InputAdornment,
@@ -12,11 +11,9 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { usePathname } from "next/navigation";
-import NotificationButton from "../Notification/Notification";
 import ProfileMenu from "../Profile/ProfileMenu";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import VectorIcon from "../../../Icons/vector.svg";
 import MenuListIcon from "../../../Icons/menu-list-icon.svg";
 
