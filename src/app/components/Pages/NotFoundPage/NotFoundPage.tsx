@@ -38,16 +38,15 @@ const NotFoundPage = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          minHeight: { xs: "70vh", sm: "70vh", md: "75vh" },
+          minHeight: { xs: "70vh", sm: "70vh" },
           textAlign: "center",
           mt: { xs: 2, sm: 3 },
         }}
       >
         <Card
           sx={{
-            padding: { xs: "20px", sm: "25px", md: "40px" },
+            padding: { xs: "20px", sm: "25px", md: "0" },
             position: "relative",
-            overflow: "visible",
             boxShadow: "none",
             background: "none",
           }}
@@ -58,7 +57,6 @@ const NotFoundPage = () => {
               spacing={2}
               justifyContent="center"
               className="errPage"
-              style={{ marginTop: "15px" }}
             >
               <Grid item>
                 <Image
@@ -66,7 +64,7 @@ const NotFoundPage = () => {
                   alt="customer support"
                   width={0}
                   height={0}
-                  sizes="100vw"
+                  sizes="80vw"
                   style={{ width: "100%", height: "auto" }}
                 />
               </Grid>
