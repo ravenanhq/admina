@@ -34,10 +34,11 @@ const ToolTipModal = ({ open, handleClose }) => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: 500,
+          width: { xs: "95%", sm: "90%", md: "80%", lg: "30%" },
           bgcolor: "background.paper",
           borderRadius: "8px",
           boxShadow: 24,
+          overflow: "hidden",
         }}
       >
         <Card

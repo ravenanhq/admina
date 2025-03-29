@@ -34,10 +34,11 @@ const SignUpModal = ({ open, handleClose }) => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: 500,
+          width: { xs: "80%", sm:"60%", md:"40%", xl:"30%"},
           bgcolor: "background.paper",
           borderRadius: "8px",
           boxShadow: 24,
+          overflow:"hidden",
         }}
       >
         <Card
@@ -64,7 +65,14 @@ const SignUpModal = ({ open, handleClose }) => {
               </IconButton>
             }
           />
-          <CardContent>
+          <CardContent
+            sx={{
+              flex: 1,
+              overflowY: "auto",
+              maxHeight: "80vh",
+              padding: 2,
+            }}
+          >
             <Box
               sx={{
                 display: "flex",
@@ -225,7 +233,7 @@ const SignUpModal = ({ open, handleClose }) => {
                       sx={{
                         margin: 0,
                         fontSize: "12px",
-                        whiteSpace: "nowrap",
+                        whiteSpace: "normal",
                         display: "flex",
                         alignItems: "center",
                         color: "#565656",

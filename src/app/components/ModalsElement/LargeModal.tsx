@@ -26,7 +26,7 @@ const LargeModal = ({ open, handleClose }) => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: 700,
+          width: { xs: "95%", sm: "90%", md: "80%", lg: "50%" },
           bgcolor: "background.paper",
           display: "flex",
           flexDirection: "column",
@@ -60,7 +60,14 @@ const LargeModal = ({ open, handleClose }) => {
               </IconButton>
             }
           />
-          <CardContent>
+          <CardContent
+            sx={{
+              flex: 1,
+              overflowY: "auto",
+              maxHeight: "80vh",
+              padding: 2,
+            }}
+          >
             <Box
               sx={{
                 display: "flex",

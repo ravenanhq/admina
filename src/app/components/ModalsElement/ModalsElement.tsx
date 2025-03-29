@@ -11,16 +11,16 @@ export default function Alerts() {
     <>
       <div style={{ paddingTop: 10 }}>
         <Grid container spacing={3} style={{ paddingTop: 10 }}>
-          <Grid item md={6} sm={12}>
+          <Grid item xs={12} md={6}>
             <BasicModals></BasicModals>
           </Grid>
-          <Grid item md={6} sm={12}>
+          <Grid item xs={12} md={6}>
             <SizesModals></SizesModals>
           </Grid>
-          <Grid item md={6} sm={12}>
+          <Grid item xs={12} md={6}>
             <CenteredModal></CenteredModal>
           </Grid>
-          <Grid item md={6} sm={12}>
+          <Grid item xs={12} md={6}>
             <ToggleModal></ToggleModal>
           </Grid>
         </Grid>

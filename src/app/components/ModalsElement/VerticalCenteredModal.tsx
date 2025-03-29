@@ -14,7 +14,7 @@ const VerticalCenteredModal = ({ open, handleClose }) => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: 500,
+          width: { xs: "95%", sm: "60%", md: "50%", lg: "30%" },
           bgcolor: "background.paper",
           borderRadius: "8px",
           boxShadow: 24,
@@ -24,7 +24,14 @@ const VerticalCenteredModal = ({ open, handleClose }) => {
           variant="outlined"
           style={{ borderRadius: "5px", border: "none" }}
         >
-          <CardContent>
+          <CardContent
+           sx={{
+            flex: 1,
+            overflowY: "auto",
+            maxHeight: "100vh",
+            padding: 2,
+            }}
+          >
             <Box
               sx={{
                 display: "flex",
