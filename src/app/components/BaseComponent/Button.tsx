@@ -1,49 +1,53 @@
 import React from "react";
 import { Button } from "@mui/material";
 
-interface ButtonComponentProps {
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  name: string;
+interface ButtonProps {
+  text: string;
   disabled?: boolean;
-  type?: "button" | "submit" | "reset";
-  style?: React.CSSProperties;
-  prefix?: React.ReactNode;
-  suffix?: React.ReactNode;
+  variant?: "text" | "outlined" | "contained";
+  rounded?: boolean;
+  type?: string;
   size?: "small" | "medium" | "large";
-  color?: "secondary" | "info" | "success" | "warning" | "primary";
-  variant?: "text" | "contained" | "outlined";
-  className?: string;
 }
 
-const ButtonComponent: React.FC<ButtonComponentProps> = ({
-  onClick,
-  color,
-  size,
-  style,
-  name,
+const ButtonComponent: React.FC<ButtonProps> = ({
+  text,
+  disabled = false,
   variant = "contained",
-  prefix,
-  suffix,
-  className,
+  rounded = false,
+  type = "primary",
+  size,
 }) => {
-  const defaultStyle: React.CSSProperties = {
-    borderRadius: "5px",
-    fontSize: "12px",
-    textTransform: "capitalize",
-  };
-
   return (
     <Button
       variant={variant}
-      style={{ ...defaultStyle, ...style }}
+      color="primary"
+      disabled={disabled}
       size={size}
-      onClick={onClick}
-      color={color}
-      className={className}
+      sx={{
+        borderRadius: rounded ? "25px" : "4px",
+        textTransform: "none",
+        px: 3,
+        bgcolor: type == "secondary" ? "#C8E2FF" : disabled ? "#EBEBEB" : "",
+        color: type == "secondary" ? "#007BFF" : "",
+        boxShadow: type == "elevated" ? "4px 4px 10px rgba(0,0,0,0.3)" : "",
+        "&:hover": {
+          bgcolor:
+            type === "hover"
+              ? "primary.dark"
+              : type === "secondary"
+              ? "#C8E2FF"
+              : "",
+          color:
+            type === "hover"
+              ? "#ffffff"
+              : type === "secondary"
+              ? "#007BFF"
+              : "",
+        },
+      }}
     >
-      {prefix && <span style={{ margin: "6px 5px 0 0" }}>{prefix}</span>}
-      {name}
-      {suffix && <span style={{ margin: "10px 0 0 4px" }}>{suffix}</span>}
+      {text}
     </Button>
   );
 };

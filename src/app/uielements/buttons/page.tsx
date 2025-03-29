@@ -12,13 +12,11 @@ export default function Button() {
       >
         UI Elements / Buttons
       </Typography>
-      <div style={{ paddingTop: 10 }}>
-        <Grid container spacing={3} style={{ paddingTop: 10 }}>
-          <Grid item md={12}>
-            <ButtonsElements></ButtonsElements>
-          </Grid>
+      <Grid container spacing={3} style={{ paddingTop: 10 }}>
+        <Grid item xs={12} sm={12} md={12}>
+          <ButtonsElements></ButtonsElements>
         </Grid>
-      </div>
+      </Grid>
     </>
   );
 }
