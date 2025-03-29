@@ -25,12 +25,15 @@ const ExtraLargeModal = ({ open, handleClose }) => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: 1200,
+          width: "90%",
+          maxWidth: "1200px",
+          maxHeight: "90vh",
           bgcolor: "background.paper",
           display: "flex",
           flexDirection: "column",
           borderRadius: "8px",
           boxShadow: 24,
+          overflow: "hidden",
         }}
       >
         <Card
@@ -57,7 +60,14 @@ const ExtraLargeModal = ({ open, handleClose }) => {
               </IconButton>
             }
           />
-          <CardContent>
+           <CardContent
+              sx={{
+                flex: 1,
+                overflowY: "auto",
+                maxHeight: "80vh",
+                padding: 2,
+              }}
+            >
             <Typography
               variant="subtitle2"
               sx={{ pt: 2, color: "#747474", fontWeight: "600" }}
@@ -205,6 +215,7 @@ const ExtraLargeModal = ({ open, handleClose }) => {
                 alignItems: "center",
                 justifyContent: "right",
                 mt: 3,
+                mb: 3,
               }}
             >
               <ButtonComponent

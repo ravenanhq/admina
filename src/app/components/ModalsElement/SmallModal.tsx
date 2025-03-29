@@ -25,7 +25,7 @@ const SmallModal = ({ open, handleClose }) => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: 400,
+          width: { xs: "95%", sm: "60%", md: "40%", lg: "30%" },
           bgcolor: "background.paper",
           display: "flex",
           flexDirection: "column",
@@ -58,7 +58,14 @@ const SmallModal = ({ open, handleClose }) => {
               </IconButton>
             }
           />
-          <CardContent>
+          <CardContent
+            sx={{
+              flex: 1,
+              overflowY: "auto",
+              maxHeight: "80vh",
+              padding: 2,
+            }}
+          >
             <Typography
               variant="subtitle2"
               sx={{ pt: 2, color: "#747474", fontWeight: "600" }}
