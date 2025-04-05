@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import ButtonComponent from "../../BaseComponent/Button";
 import Image from "next/image";
 
-const NotFoundPage = () => {
+const MaintenancePage = () => {
   const router = useRouter();
 
   const handleHomeRedirect = () => {
@@ -40,7 +40,6 @@ const NotFoundPage = () => {
           alignItems: "center",
           minHeight: { xs: "70vh", sm: "70vh" },
           textAlign: "center",
-          mt: { xs: 2, sm: 3 },
         }}
       >
         <Card
@@ -51,21 +50,27 @@ const NotFoundPage = () => {
             background: "none",
           }}
         >
-          <CardContent>
+          <CardContent
+          sx={{ padding: "0" }}>
             <Grid
               container
               spacing={2}
               justifyContent="center"
               className="errPage"
             >
-              <Grid item>
+              <Grid item
+              sx={{paddingBottom: "3px"}}>
                 <Image
                   src={MaintanceImage}
                   alt="customer support"
                   width={0}
                   height={0}
-                  sizes="90vw"
-                  style={{ width: "100%", height: "auto" }}
+                  sizes="(max-width: 600px) 80vw, (max-width: 900px) 60vw, 400px"
+                  style={{
+                    width: "400px",
+                    maxWidth: "400px",
+                    height: "auto",
+                  }}
                 />
               </Grid>
             </Grid>
@@ -95,7 +100,7 @@ const NotFoundPage = () => {
               soon. In the meantime, you can return to the home pahe
             </Typography>
           </CardContent>
-          <CardActions sx={{ justifyContent: "center", p: 0 }}>
+          <CardActions sx={{ justifyContent: "center", pt: 2 }}>
             <ButtonComponent
               variant="contained"
               size="large"
@@ -117,4 +122,4 @@ const NotFoundPage = () => {
   );
 };
 
-export default NotFoundPage;
+export default MaintenancePage;
