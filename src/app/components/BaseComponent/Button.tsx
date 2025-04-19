@@ -2,12 +2,17 @@ import React from "react";
 import { Button } from "@mui/material";
 
 interface ButtonProps {
-  text: string;
+  text?: string;
   disabled?: boolean;
   variant?: "text" | "outlined" | "contained";
   rounded?: boolean;
   type?: string;
   size?: "small" | "medium" | "large";
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  style?: React.CSSProperties;
+  name?: string;
+  prefix?: React.ReactNode;
+  color?: "inherit" | "primary" | "secondary" | "success" | "error" | "info" | "warning";
 }
 
 const ButtonComponent: React.FC<ButtonProps> = ({
