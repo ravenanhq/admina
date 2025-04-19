@@ -1,59 +1,50 @@
 import React from "react";
 import { Button } from "@mui/material";
 
-interface ButtonProps {
-  text?: string;
+interface ButtonComponentProps {
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  name: string;
   disabled?: boolean;
-  variant?: "text" | "outlined" | "contained";
-  rounded?: boolean;
-  type?: string;
-  size?: "small" | "medium" | "large";
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  type?: "button" | "submit" | "reset";
   style?: React.CSSProperties;
-  name?: string;
   prefix?: React.ReactNode;
-  color?: "inherit" | "primary" | "secondary" | "success" | "error" | "info" | "warning";
+  suffix?: React.ReactNode;
+  size?: "small" | "medium" | "large";
+  color?: "secondary" | "info" | "success" | "warning" | "primary";
+  variant?: "text" | "contained" | "outlined";
+  className?: string;
 }
 
-const ButtonComponent: React.FC<ButtonProps> = ({
-  text,
-  disabled = false,
-  variant = "contained",
-  rounded = false,
-  type = "primary",
+const ButtonComponent: React.FC<ButtonComponentProps> = ({
+  onClick,
+  color,
   size,
+  style,
+  name,
+  variant = "contained",
+  prefix,
+  suffix,
+  className,
 }) => {
+  const defaultStyle: React.CSSProperties = {
+    borderRadius: "5px",
+    fontSize: "12px",
+    textTransform: "capitalize",
+  };
+
   return (
     <Button
       variant={variant}
-      color="primary"
-      disabled={disabled}
+      style={{ ...defaultStyle, ...style }}
       size={size}
-      sx={{
-        borderRadius: rounded ? "25px" : "4px",
-        textTransform: "none",
-        px: 3,
-        bgcolor: type == "secondary" ? "#C8E2FF" : disabled ? "#EBEBEB" : "",
-        color: type == "secondary" ? "#007BFF" : "",
-        boxShadow: type == "elevated" ? "4px 4px 10px rgba(0,0,0,0.3)" : "",
-        "&:hover": {
-          bgcolor:
-            type === "hover"
-              ? "primary.dark"
-              : type === "secondary"
-              ? "#C8E2FF"
-              : "",
-          color:
-            type === "hover"
-              ? "#ffffff"
-              : type === "secondary"
-              ? "#007BFF"
-              : "",
-        },
-      }}
-    >
-      {text}
-    </Button>
+      onClick={onClick}
+      color={color}
+      className={className}
+      >
+      {prefix && <span style={{ margin: "6px 5px 0 0" }}>{prefix}</span>}
+      {name}
+      {suffix && <span style={{ margin: "10px 0 0 4px" }}>{suffix}</span>}
+      </Button>
   );
 };
 
