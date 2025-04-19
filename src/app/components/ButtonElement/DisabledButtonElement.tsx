@@ -5,7 +5,7 @@ import {
   CardHeader,
   Stack,
 } from "@mui/material";
-import ButtonComponent from "../BaseComponent/Button";
+import ButtonComponent from "./ButtonComponent";
 
 const DisabledButtonElement = () => {
   return (

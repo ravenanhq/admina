@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardContent, CardHeader, Stack } from "@mui/material";
-import ButtonComponent from "../BaseComponent/Button";
+import ButtonComponent from "./ButtonComponent";
 
 const ElevatedButton = () => {
   return (
