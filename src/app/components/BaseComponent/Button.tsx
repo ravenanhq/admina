@@ -40,11 +40,11 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({
       onClick={onClick}
       color={color}
       className={className}
-    >
+      >
       {prefix && <span style={{ margin: "6px 5px 0 0" }}>{prefix}</span>}
       {name}
       {suffix && <span style={{ margin: "10px 0 0 4px" }}>{suffix}</span>}
-    </Button>
+      </Button>
   );
 };
 

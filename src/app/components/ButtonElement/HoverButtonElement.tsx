@@ -2,12 +2,12 @@ import React from "react";
 import { Card, CardContent, CardHeader, Stack } from "@mui/material";
 import ButtonComponent from "./ButtonComponent";
 
-const ElevatedButton = () => {
+const HoverButtonElement = () => {
   return (
     <>
       <div style={{ border: "1px solid #c0c0c0" }}>
         <CardHeader
-          title="  Elevated Button"
+          title=" Button with Hover"
           sx={{ bgcolor: "#1976d2", color: "white" }}
           titleTypographyProps={{ fontSize: "14px" }}
         />
@@ -23,11 +23,11 @@ const ElevatedButton = () => {
                 minHeight:"80px"
               }}
             >
-              <ButtonComponent text="Home Button" type={"elevated"} />
+              <ButtonComponent variant="outlined" text="Home Button" type={"hover"} />
 
-              <ButtonComponent text="About Button" type={"elevated"} />
+              <ButtonComponent variant="outlined" text="About Button" type={"hover"} />
 
-              <ButtonComponent text="Search Button" type={"elevated"} />
+              <ButtonComponent variant="outlined" text="Search Button" type={"hover"} />
             </Stack>
           </CardContent>
         </Card>
@@ -36,4 +36,4 @@ const ElevatedButton = () => {
   );
 };
 
-export default ElevatedButton;
+export default HoverButtonElement;
