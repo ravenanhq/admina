@@ -13,6 +13,8 @@ interface ButtonProps {
   name?: string;
   prefix?: React.ReactNode;
   color?: "inherit" | "primary" | "secondary" | "success" | "error" | "info" | "warning";
+  className?: string ;
+  fullWidth?: boolean;
 }
 
 const ButtonComponent: React.FC<ButtonProps> = ({
@@ -22,24 +24,28 @@ const ButtonComponent: React.FC<ButtonProps> = ({
   rounded = false,
   type = "primary",
   size,
+  className
 }) => {
   return (
     <Button
       variant={variant}
-      color="primary"
       disabled={disabled}
       size={size}
+      className={className}
+      // background: #007BFF;
+
       sx={{
-        borderRadius: rounded ? "25px" : "4px",
+        borderRadius: rounded ? "30px" : 0,
         textTransform: "none",
         px: 3,
-        bgcolor: type == "secondary" ? "#C8E2FF" : disabled ? "#EBEBEB" : "",
+        bgcolor: type == "secondary" ? "#C8E2FF" : type === "buttonbg"?" #007BFF": disabled ? "#EBEBEB" : undefined,
         color: type == "secondary" ? "#007BFF" : "",
-        boxShadow: type == "elevated" ? "4px 4px 10px rgba(0,0,0,0.3)" : "",
+        boxShadow: type == "elevated" ? " #007BFF 4px 4px 10px rgba(0,0,0,0.3)" : "none" ,
+        background: type == "elevated" ? "#007BFF": "",
         "&:hover": {
           bgcolor:
             type === "hover"
-              ? "primary.dark"
+              ? "#007BFF"
               : type === "secondary"
               ? "#C8E2FF"
               : "",
@@ -51,7 +57,9 @@ const ButtonComponent: React.FC<ButtonProps> = ({
               : "",
         },
       }}
+      
     >
+      
       {text}
     </Button>
   );

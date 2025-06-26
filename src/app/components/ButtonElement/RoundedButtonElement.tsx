@@ -10,10 +10,10 @@ import ButtonComponent from "./ButtonComponent";
 const RoundedButtonElement = () => {
   return (
     <>
-      <div style={{ border: "1px solid #c0c0c0" }}>
+      <div style={{borderRadius:"0 0 5px 5px"}}>
         <CardHeader
           title=" Rounded Button"
-          sx={{ bgcolor: "#1976d2", color: "white" }}
+          sx={{ bgcolor: "#007BFF", color: "white" ,borderRadius: "5px 5px 0 0"}}
           titleTypographyProps={{ fontSize: "14px" }}
         />
         <Card>
@@ -28,9 +28,9 @@ const RoundedButtonElement = () => {
                 minHeight:"80px"
               }}
             >
-              <ButtonComponent text="Home Button" rounded />
+              <ButtonComponent  text="Home Button" rounded type="buttonbg"/>
 
-              <ButtonComponent text="About Button" rounded/>
+              <ButtonComponent text="About Button" rounded type="buttonbg"/>
             </Stack>
           </CardContent>
         </Card>
