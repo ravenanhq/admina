@@ -487,7 +487,7 @@ margin-left: -5px;
   padding: 1px 13px;
 }
 .pagination .css-m3n0jn-MuiButtonBase-root-MuiButton-root.Mui-disabled {
-  border: none;
+  border: none ;
 }
 .pagination button:hover {
   border: none;
@@ -533,3 +533,15 @@ main.sidebar-open.MuiBox-root {
 .carousel .MuiCardContent-root:last-child {
   padding-bottom: 16px;
 }
+
+/* @media (min-width: 604px) and (min-width: 1328px) {
+ .btn-res {
+    font-size: x-small !important;
+  }
+}
+
+@media (min-width: 853px) and (min-width: 1280px) {
+   .btn-res{
+    font-size: x-small !important;
+  }
+} */

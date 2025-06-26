@@ -11,10 +11,10 @@ import {
 const GroupButton = () => {
   return (
     <>
-      <div style={{ border: "1px solid #c0c0c0" }}>
+      <div style={{ border: "1px solid #EBEBEB" }}>
         <CardHeader
           title=" Group Button"
-          sx={{ bgcolor: "#1976d2", color: "white" }}
+          sx={{ bgcolor: "#007BFF", color: "white" ,borderRadius: "5px 5px 0 0"}}
           titleTypographyProps={{ fontSize: "14px" }}
         />
         <Card>
@@ -33,8 +33,8 @@ const GroupButton = () => {
                 variant="outlined"
                 aria-label="text success group"
               >
-                <Button>Home Button</Button>
-                <Button>About Button</Button>
+                <Button sx={{borderRadius:0, textTransform:"none"}}>Home Button</Button>
+                <Button sx={{borderRadius:0, textTransform:"none"}}>About Button</Button>
               </ButtonGroup>
             </Stack>
           </CardContent>
